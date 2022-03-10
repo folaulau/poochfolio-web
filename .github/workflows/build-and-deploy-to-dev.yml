@@ -55,9 +55,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-2
       - name: Sync app
-        run: aws s3 sync build s3://dev.poochfolio.net --delete
+        run: aws s3 sync build s3://dev.poochfolio.com --delete
       - name: Copy app
-        run: aws s3 cp s3://dev.poochfolio.net/index.html s3://dev.poochfolio.net/index.html --content-type 'text/html' --cache-control 'no-store, max-age=0' --metadata-directive REPLACE
+        run: aws s3 cp s3://dev.poochfolio.com/index.html s3://dev.poochfolio.com/index.html --content-type 'text/html' --cache-control 'no-store, max-age=0' --metadata-directive REPLACE
       - name: Clear cloudfront cache
         run: aws cloudfront create-invalidation --distribution-id=${{ secrets.DEV_CLOUDFRONT_DIST_ID }} --paths '/index.html' '/version.txt'
 
