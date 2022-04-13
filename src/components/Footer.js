@@ -2,10 +2,10 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div>
+    <footer className='h-20 bg-pooch-blue-3 flex flex-col justify-center items-center text-base font-Museo-Sans-Rounded-500 text-pooch-gray-1'>
         <p>Pooch Technologies Inc.</p>
-        <p>Privacy Policy</p> | <p>Terms of Use</p>
-    </div>
+        <p>Privacy Policy | Terms of Use</p>
+    </footer>
   )
 }
 

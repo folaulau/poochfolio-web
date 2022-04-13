@@ -7,7 +7,7 @@ export default function Header() {
                     <img src="/poochFolio.svg" width={120} height={54} />
                 </div>
                 <div>
-                    <button className='rounded-full px-4 py-4 bg-white font-Museo-Sans-Rounded-500 bg-pooch-blue-1 flex align-center'>
+                    <button className='rounded-full px-6 py-4 bg-white font-Museo-Sans-Rounded-500 bg-pooch-blue-1 flex align-center'>
                         <img className='shrink-0' src="/headset-icon.svg" />
                         <span className='ml-3.5 text-pooch-blue-2'>
                             Support

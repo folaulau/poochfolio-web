@@ -3,12 +3,12 @@ import { KeyIcon, UserIcon, ClipboardListIcon } from '@heroicons/react/solid'
 
 export default function Breadcrumbs() {
   return (
-    <nav className='flex h-32 bg-[#e7f0fd] items-center justify-center'>
-      <ol className='flex bg-[#ffffff] rounded-full min-w-[390px]' style={{height: '86px'}}>
+    <nav className='flex h-32 bg-[#e7f0fd] items-center justify-center font-Museo-Sans-Rounded-500 text-sm rounded-t-3xl'>
+      <ol className='flex bg-[#ffffff] rounded-full min-w-[390px]' style={{ height: '86px' }}>
         <li className='flex flex-1 justify-center'>
           <div className='flex flex-col w-6 self-center gap-y-1'>
-            <div className='rounded-full bg-red-100'>
-            <KeyIcon />
+            <div className='rounded-full bg-pooch-blue-5 p-5'>
+              <img src="/sign-up-icon.svg" />
             </div>
             <p className='text-xs w-12'>
               Sign up
@@ -17,8 +17,8 @@ export default function Breadcrumbs() {
         </li>
         <li className='flex flex-1 justify-center'>
           <div className='flex flex-col w-6 self-center gap-y-1'>
-            <div className='rounded bg-red-100'>
-            <UserIcon />
+            <div className='rounded'>
+              <UserIcon />
             </div>
             <p className='text-xs w-12'>
               Create Profile
@@ -27,8 +27,8 @@ export default function Breadcrumbs() {
         </li>
         <li className='flex flex-1 justify-center'>
           <div className='flex flex-col w-6 self-center gap-y-1'>
-            <div className='rounded bg-red-100'>
-            <ClipboardListIcon />
+            <div className='rounded'>
+              <ClipboardListIcon />
             </div>
             <p className='text-xs w-12'>
               Input Listing
