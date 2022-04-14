@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './Application';
 import reportWebVitals from './reportWebVitals';
-
-console.log("node env: " + process.env.NODE_ENV);
-console.log("app env: " + process.env.REACT_APP_ENV);
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 ReactDOM.render(
   <React.StrictMode>
+    <Header />
     <App />
+    <Footer />
   </React.StrictMode>,
   document.getElementById('root')
 );
