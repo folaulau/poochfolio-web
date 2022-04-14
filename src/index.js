@@ -6,9 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-console.log("node env: " + process.env.NODE_ENV);
-console.log("app env: " + process.env.REACT_APP_ENV);
-
 ReactDOM.render(
   <React.StrictMode>
     <Header />
