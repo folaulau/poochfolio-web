@@ -10,7 +10,7 @@ export default function Application() {
         <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='about' element={<AboutPage />} />
-            <Route path='email' element={<SignupEmailPage />} />
+            <Route path='signup-email-page' element={<SignupEmailPage />} />
         </Routes>
     </BrowserRouter>
   )
