@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './Application';
 import reportWebVitals from './reportWebVitals';
+import Breadcrumbs from './components/Breadcrumbs';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 ReactDOM.render(
   <React.StrictMode>
     <Header />
+    <Breadcrumbs />
+
     <App />
     <Footer />
   </React.StrictMode>,

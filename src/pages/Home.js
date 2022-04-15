@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export default function Home() {
     return (
         <>
-            <Breadcrumbs />
+            {/* <Breadcrumbs /> */}
             <main className='flex flex-col items-center bg-pooch-blue-4'>
                 <div>
                     <h1 className='text-[36px] text-center font-Museo-Sans-Rounded-900 mt-16 px-10 text-[#333333]'>Minimum Vacancy for All Kennels and Groomers</h1>
