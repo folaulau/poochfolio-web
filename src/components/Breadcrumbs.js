@@ -2,7 +2,7 @@
 import { ChevronRightIcon, HomeIcon } from '@heroicons/react/solid'
 
 const pages = [
-  { name: 'Sign Up', href: '#', current: true },
+  { name: 'Sign Up', href: '/', current: true },
   { name: 'Create Profile', href: '/create-profile', current: false },
   { name: 'Input Listing', href: '/input-listing', current: false },
 ]
