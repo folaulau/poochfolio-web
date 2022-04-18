@@ -4,16 +4,13 @@ import './index.css';
 import App from './Application';
 import reportWebVitals from './reportWebVitals';
 import Breadcrumbs from './components/Breadcrumbs';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Layout from "./components/Layout";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header />
-    <Breadcrumbs />
-
-    <App />
-    <Footer />
+    <Layout>
+      <App />
+    </Layout>
   </React.StrictMode>,
   document.getElementById('root')
 );
