@@ -1,21 +1,38 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Input from "../components/common/Input";
-import PlacesAutocomplete from "react-places-autocomplete";
-import {
-  geocodeByAddress,
-  geocodeByPlaceId,
-  getLatLng,
-} from "react-places-autocomplete";
+import Autocomplete from "react-google-autocomplete";
+import axios from "axios";
 
 const CreateProfilePage = () => {
+  const [address, setAddress] = useState(null);
+
+  useEffect(() => {
+    const From = async (text) => {
+      axios
+        .request({
+          method: "post",
+          url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyBBUKiVhLdMVGXio92_qCXb-xWDvHtC52Q`,
+        })
+        .then((response) => {
+          setLat(response.data.results[0].geometry.location.lat);
+          setLong(response.data.results[0].geometry.location.lng);
+        })
+        .catch((e) => {
+          // console.log(e.response);
+        });
+    };
+    From();
+  }, [address]);
+
+  const [lat, setLat] = useState("");
+  const [long, setLong] = useState("");
+  const [locationName, setLocationName] = useState("");
   const [servicesSelected, setServicesSelected] = useState({
     grooming: false,
     dayCare: false,
     overNight: false,
     pickDrop: false,
   });
-
-  const [address, setAddress] = useState("");
 
   const services = [
     {
@@ -83,14 +100,6 @@ const CreateProfilePage = () => {
     });
   };
 
-  const handleChange = (value) => {
-    setAddress(value);
-  };
-
-  const handleSelect = (value) => {
-    setAddress(value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("time to post the data...");
@@ -99,7 +108,7 @@ const CreateProfilePage = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      // body: JSON.stringify(data),
     });
   };
 
@@ -111,68 +120,86 @@ const CreateProfilePage = () => {
             labelText="First Name"
             placeholderText="John"
             type="name"
-            required={true}
+            // required={true}
           />
           <Input
             labelText="Last Name"
             placeholderText="Doe"
             type="name"
-            required={true}
+            // required={true}
           />
           <Input
             labelText="Business Name"
             placeholderText="John Corporations"
             type="name"
-            required={true}
+            // required={true}
           />
           <Input
             labelText="Email"
             placeholderText="johndoe@xyz.com"
             type="email"
-            required={true}
+            // required={true}
           />
           <Input
             labelText="Phone Number"
             placeholderText="123-45-6789"
             type="phone"
-            required={true}
+            // required={true}
           />
-          <PlacesAutocomplete
-            value={address}
-            onChange={handleChange}
-            onSelect={handleSelect}
-          >
-            {({
-              getInputProps,
-              suggestions,
-              getSuggestionItemProps,
-              loading,
-            }) => (
-              <div>
-                <Input
-                  {...getInputProps({
-                    placeholderText: "123 sesame street",
-                    labelText: "Address",
-                    type: "name",
-                    required: true,
-                  })}
-                />
-                <div>
-                  {loading && <div>Loading...</div>}
-                  {suggestions.map((suggestion) => {
-                    const style = suggestion.active
-                      ? { backgroundColor: "#a83232", cursoer: "pointer" }
-                      : { backgroundColor: "#ffffff", cursoer: "pointer" };
-                    return (
-                      <div {...getSuggestionItemProps(suggestion, { style })}>
-                        {suggestion.description}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-          </PlacesAutocomplete>
+          {/* <Input
+            placeholderText="123 sesame street"
+            labelText="Address"
+            type="name"
+            // required={true}
+          /> */}
+          <div className="mb-5">
+            <label
+              htmlFor="name"
+              className="text-[15px] text-[#666666] ml-2 font-Museo-Sans-Rounded-700"
+            >
+              Address
+            </label>
+            <div className="mt-3.5">
+              {/* <Autocomplete
+                type="name"
+                name="name"
+                id="name"
+                className="shadow-sm block w-full p-3 rounded-full w-80 text-[15px] text-[#a1a1a1] font-Museo-Sans-Rounded-500 bg-red-[#f1f7ff]"
+                apiKey={"AIzaSyBBUKiVhLdMVGXio92_qCXb-xWDvHtC52Q"}
+                onPlaceSelected={(place) => {
+                  console.log("myplace", place);
+                }}
+                style={{ border: "1px solid #85d8e7" }}
+              /> */}
+              <Autocomplete
+                apiKey={"AIzaSyBBUKiVhLdMVGXio92_qCXb-xWDvHtC52Q"}
+                style={{ paddingLeft: 10 }}
+                // style={{ width: "100%", padding:5, height: 90, borderColor:'black', borderRadius:20,    textInput: {height: 40,
+                //   margin: 12,
+                //   borderWidth: 1,
+                //   borderColor:'black',
+                //   padding: 10,
+                //   color:'red',
+                //  } }}
+                debounce={200}
+                onPlaceSelected={(place) => {
+                  console.log("hey how are you", place.formatted_address);
+                  setAddress(place.formatted_address);
+                  setLocationName(place.formatted_address);
+                }}
+                options={{
+                  types: ["(regions)"],
+                  fields: [
+                    "address_components",
+                    "geometry",
+                    "place_id",
+                    "formatted_address",
+                  ],
+                }}
+                placeholder="Search Locations"
+              />
+            </div>
+          </div>
         </section>
         <section className="flex flex-col justify-center items-center">
           <h4>Which Services does your business offer</h4>

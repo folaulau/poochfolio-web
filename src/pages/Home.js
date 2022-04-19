@@ -18,11 +18,12 @@ export default function Home() {
               Continue with
             </h5>
             <div className="grid grid-cols-2 lg:flex p-6 border-2 border-slate-200 rounded-2xl text-pooch-gray-1 text-[19px]">
-              <Link to="/signup-email-page">
-                <a className="flex flex-col p-8 justify-between items-center gap-y-8">
-                  <img src="/mail.png" className="self-center w-14 mt-1" />
-                  <span>Email</span>
-                </a>
+              <Link
+                to="/signup-email-page"
+                className="flex flex-col p-8 justify-between items-center gap-y-8"
+              >
+                <img src="/mail.png" className="self-center w-14 mt-1" />
+                <span>Email</span>
               </Link>
               <a className="flex flex-col p-8 justify-between items-center gap-y-8">
                 {/* <img src='/google.webp' className='self-center w-14' /> */}
