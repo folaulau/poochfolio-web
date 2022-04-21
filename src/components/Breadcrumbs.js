@@ -2,7 +2,7 @@
 import { ChevronRightIcon, HomeIcon } from "@heroicons/react/solid";
 
 const pages = [
-  { name: "Sign Up", href: "#", current: true },
+  { name: "Sign Up", href: "/", current: true },
   { name: "Create Profile", href: "/create-profile", current: false },
   { name: "Input Listing", href: "/input-listing", current: false },
 ];
@@ -11,14 +11,6 @@ export default function Breadcrumbs() {
   return (
     <nav className="flex justify-center h-16" aria-label="Breadcrumb">
       <ol role="list" className="flex items-center space-x-4">
-        {/* <li>
-          <div>
-            <a href="#" className="text-gray-400 hover:text-gray-500">
-              <HomeIcon className="flex-shrink-0 h-5 w-5" aria-hidden="true" />
-              <span className="sr-only">Home</span>
-            </a>
-          </div>
-        </li> */}
         {pages.map((page, index) => (
           <li key={page.name}>
             <div className="flex items-center">

@@ -1,4 +1,12 @@
-const Input = ({ labelText, placeholderText, type, required = false }) => {
+const Input = ({
+  labelText,
+  placeholderText,
+  type,
+  name,
+  handleChange,
+  value,
+  required = false,
+}) => {
   return (
     <div className="mb-5">
       <label
@@ -10,8 +18,10 @@ const Input = ({ labelText, placeholderText, type, required = false }) => {
       <div className="mt-3.5">
         <input
           type={type}
-          name={type}
+          name={name}
           id={type}
+          value={value}
+          onChange={handleChange}
           required={required ? true : false}
           className="shadow-sm block w-full p-3 rounded-full w-80 text-[15px] text-[#a1a1a1] font-Museo-Sans-Rounded-500 bg-red-[#f1f7ff]"
           placeholder={placeholderText}
