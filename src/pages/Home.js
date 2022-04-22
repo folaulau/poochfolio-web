@@ -42,9 +42,7 @@ export default function Home() {
           </section>
           <img
             src="/poochfolio-dashboard.webp"
-            width="379px"
-            height="238px"
-            className="mt-10 self-center"
+            className="mx-auto mt-10 self-center w-96 h-60"
           />
         </div>
         <section className="flex flex-col items-center justify-center mt-16">

@@ -80,14 +80,14 @@ export default function SignupEmailPage() {
           htmlFor="userName"
           className="block text-xs font-medium text-gray-900"
         >
-          Name
+          UserName
         </label>
         <input
           type="text"
           name="userName"
           id="userName"
           className="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm"
-          placeholder="Jane Doe"
+          placeholder="john123"
           value={userInfo.userName}
           onChange={handleInputChange}
         />
