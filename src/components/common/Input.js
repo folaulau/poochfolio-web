@@ -23,7 +23,7 @@ const Input = ({
           value={value}
           onChange={handleChange}
           required={required ? true : false}
-          className="shadow-sm block w-full p-3 rounded-full w-80 text-[15px] text-[#a1a1a1] font-Museo-Sans-Rounded-500 bg-red-[#f1f7ff]"
+          className="shadow-sm block w-full p-3 rounded-full w-80 text-[15px] text-[#a1a1a1] font-Museo-Sans-Rounded-500 bg-red-[#f1f7ff] text-black"
           placeholder={placeholderText}
           style={{ border: "1px solid #85d8e7" }}
         />

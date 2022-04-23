@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, createRef } from "react";
+import Dropzone from "react-dropzone";
+
 import { Switch } from "@headlessui/react";
 
 function classNames(...classes) {
@@ -24,13 +26,13 @@ export default function InputListingPage() {
     description: "",
     signUpStatus: "COMPLETED",
   });
+  const dropzoneRef = createRef();
 
   const handleBooleanChange = (e) => {
     setPoochInfo({
       ...poochInfo,
       [e.target.name]: !poochInfo[e.target.name],
     });
-    console.log("e.target.value", e.target.value);
   };
 
   const handleNumberChange = (e) => {
@@ -79,25 +81,8 @@ export default function InputListingPage() {
     });
   };
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center max-3-xl">
       <div className="px-4 sm:px-6 lg:px-8">
-        <div className="sm:flex sm:items-center">
-          <div className="sm:flex-auto">
-            <h1 className="text-xl font-semibold text-gray-900">Services</h1>
-            <p className="mt-2 text-sm text-gray-700">
-              A list of all the services in your account including prices for
-              small, medium and large dogs.
-            </p>
-          </div>
-          <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
-            >
-              Add Services
-            </button>
-          </div>
-        </div>
         <div className="mt-8 flex flex-col">
           <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -155,7 +140,7 @@ export default function InputListingPage() {
                         <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                           <a
                             href="#"
-                            className="text-indigo-600 hover:text-indigo-900"
+                            className="text-teal-600 hover:text-teal-900"
                           >
                             Edit<span className="sr-only">, {item.name}</span>
                           </a>
@@ -169,7 +154,12 @@ export default function InputListingPage() {
           </div>
         </div>
       </div>
-
+      <button
+        type="button"
+        className="inline-flex items-center justify-center rounded-md border border-transparent bg-teal-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 sm:w-auto"
+      >
+        Add Services
+      </button>
       <div className="mt-8 flex flex-col">
         <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -186,8 +176,8 @@ export default function InputListingPage() {
                         checked={enabled}
                         onChange={handleBooleanChange}
                         className={classNames(
-                          enabled ? "bg-indigo-600" : "bg-gray-200",
-                          "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          enabled ? "bg-teal-600" : "bg-gray-200",
+                          "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
                         )}
                       >
                         <span className="sr-only">Use setting</span>
@@ -252,7 +242,6 @@ export default function InputListingPage() {
           </div>
         </div>
       </div>
-
       <div>
         <h6>What is the Maximum Occupancy at Your Business?</h6>
         <input
@@ -261,7 +250,6 @@ export default function InputListingPage() {
           onChange={handleNumberChange}
         />
       </div>
-
       <div>
         <h6>Description</h6>
         <textarea
@@ -271,10 +259,31 @@ export default function InputListingPage() {
           value={poochInfo.description}
         ></textarea>
       </div>
-
-      <div>Drag and Drop Images</div>
-      <div>Drag and Drop Contract you need your customers to sign</div>
-
+      <Dropzone ref={dropzoneRef}>
+        {({ getRootProps, getInputProps }) => (
+          <div
+            {...getRootProps()}
+            className="w-96 h-96 border-black order-dashed rounded-2xl"
+            style={{ border: "3px dashed #95e8f7" }}
+          >
+            <input {...getInputProps()} />
+            <p>Drag 'n' drop some files here, or click to select files</p>
+          </div>
+        )}
+      </Dropzone>{" "}
+      <br />
+      <Dropzone ref={dropzoneRef}>
+        {({ getRootProps, getInputProps }) => (
+          <div
+            {...getRootProps()}
+            className="w-96 h-96 border-black order-dashed rounded-2xl"
+            style={{ border: "3px dashed #95e8f7" }}
+          >
+            <input {...getInputProps()} />
+            <p>Contracts you need your customers to sign</p>
+          </div>
+        )}
+      </Dropzone>{" "}
       <button
         type="button"
         className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997] mb-8"
