@@ -4,12 +4,24 @@ import Autocomplete from "react-google-autocomplete";
 import { services } from "../data/services";
 
 const CreateProfilePage = () => {
-  const [servicesSelected, setServicesSelected] = useState({
-    grooming: false,
-    dayCare: false,
-    overNight: false,
-    pickDrop: false,
-  });
+  const [careServices, setCareServices] = useState([
+    {
+      name: "Grooming",
+      labelName: "grooming",
+    },
+    {
+      name: "Dog Daycare",
+      labelName: "dayCare",
+    },
+    {
+      name: "Overnight",
+      labelName: "overNight",
+    },
+    {
+      name: "Pick Up",
+      labelName: "pickDrop",
+    },
+  ]);
 
   const [groomerInfo, setGroomerInfo] = useState({
     uuid: localStorage.getItem("uuid"),
@@ -32,18 +44,33 @@ const CreateProfilePage = () => {
     latitude: 0,
   });
 
-  const handleServiceSelect = (serviceInfo) => {
-    setServicesSelected({
-      ...servicesSelected,
-      [serviceInfo.service]: !servicesSelected[serviceInfo.service],
-    });
+  const handleServiceSelect = (selectedItem) => {
+    console.log("selectedItem", selectedItem);
+    const localCareServices = [...careServices];
+    const selectedIndex = localCareServices.findIndex(
+      (item) => item.labelName === selectedItem.labelName
+    );
+
+    if (selectedIndex > -1) {
+      //remove service from array
+      localCareServices.splice(selectedIndex, 1);
+      setCareServices(localCareServices);
+    } else {
+      //add service to array
+      localCareServices.push(selectedItem);
+      setCareServices(localCareServices);
+    }
   };
 
   const handleSubmit = (e) => {
     const putBody = {
       ...groomerInfo,
+      careServices: careServices.map((item) => ({
+        name: item.name,
+      })),
       addresses: [{ ...address }],
     };
+    console.log("putBody", putBody);
     e.preventDefault();
     fetch("https://dev-api.poochapp.net/v1/groomers/profile", {
       method: "PUT",
@@ -70,6 +97,25 @@ const CreateProfilePage = () => {
       phoneNumber: "",
       addresses: [],
     });
+
+    setCareServices([
+      {
+        name: "Grooming",
+        labelName: "grooming",
+      },
+      {
+        name: "Daycare",
+        labelName: "dayCare",
+      },
+      {
+        name: "Overnight",
+        labelName: "overNight",
+      },
+      {
+        name: "Pick/Drop",
+        labelName: "pickDrop",
+      },
+    ]);
   };
 
   const handleChange = (e) => {
@@ -79,9 +125,10 @@ const CreateProfilePage = () => {
     });
   };
 
+  console.log("careServices", careServices);
   return (
     <form onSubmit={handleSubmit} className="pt-16">
-      <section className="grid justify-center my-12 md:grid-cols-2 md:max-w-3xl mx-auto">
+      <section className="grid justify-center my-12 md:grid-cols-2 md:max-w-3xl mx-auto w-1/2 justify-items-center">
         <Input
           labelText="First Name"
           placeholderText="John"
@@ -121,7 +168,7 @@ const CreateProfilePage = () => {
         <Input
           labelText="Phone Number"
           placeholderText="123-45-6789"
-          type="phone"
+          type="tel"
           name="phoneNumber"
           handleChange={handleChange}
           value={groomerInfo.phoneNumber}
@@ -176,43 +223,42 @@ const CreateProfilePage = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col justify-center items-center">
+      <section className="flex flex-col justify-center items-center w-1/2 mx-auto">
         <h4>Which Services does your business offer</h4>
         <div className="my-8 md:flex md:flex-row">
-          {services.map((service) => (
-            <button
-              type="button"
-              key={service.name}
-              style={{ border: "1px solid rgb(133,216,231" }}
-              className={`w-40 h-[68px] rounded-xl ${
-                servicesSelected[service.service]
-                  ? "bg-[#95e8f7]"
-                  : "bg-[#f1f7ff]"
-              }  flex justify-center items-center gap-x-3 m-1`}
-              onClick={() => handleServiceSelect(service)}
-            >
-              <service.icon
-                className={`${
-                  servicesSelected[service.service]
-                    ? "text-[#077997]"
-                    : "text-[#9697a3]"
-                } h-8 w-8`}
-              />
-              <span
-                className={`${
-                  servicesSelected[service.service]
-                    ? "text-[#077997]"
-                    : "text-[#9697a3]"
-                } `}
+          {services.map((service) => {
+            const isSelected = careServices
+              .map((items) => items.labelName === service.labelName)
+              .includes(true);
+            return (
+              <button
+                type="button"
+                key={service.labelName}
+                style={{ boxShadow: "inset 0px 0px 15px #81d6e6" }}
+                className={`w-40 h-[68px] rounded-xl border ${
+                  isSelected ? "bg-[#95e8f7]" : "bg-[#f1f7ff]"
+                }  flex justify-center items-center gap-x-3 m-1`}
+                onClick={() => handleServiceSelect(service)}
               >
-                {service.name}
-              </span>
-            </button>
-          ))}
+                <service.icon
+                  className={`${
+                    isSelected ? "text-[#077997]" : "text-[#9697a3]"
+                  } h-8 w-8`}
+                />
+                <span
+                  className={`${
+                    isSelected ? "text-[#077997]" : "text-[#9697a3]"
+                  } `}
+                >
+                  {service.name}
+                </span>
+              </button>
+            );
+          })}
         </div>
         <button
           type="submit"
-          className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997] mb-8"
+          className="w-1/2 justify-center inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997] mb-8"
         >
           Continue
         </button>

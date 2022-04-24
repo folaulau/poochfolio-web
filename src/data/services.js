@@ -1,8 +1,7 @@
 export const services = [
   {
-    id: 0,
     name: "Grooming",
-    service: "grooming",
+    labelName: "grooming",
     icon: (props) => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" {...props}>
         <path
@@ -14,9 +13,8 @@ export const services = [
     ),
   },
   {
-    id: 1,
-    name: "Daycare",
-    service: "dayCare",
+    name: "Dog Daycare",
+    labelName: "dayCare",
     icon: (props) => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31" {...props}>
         <path
@@ -28,9 +26,8 @@ export const services = [
     ),
   },
   {
-    id: 2,
     name: "Overnight",
-    service: "overNight",
+    labelName: "overNight",
     icon: (props) => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 26" {...props}>
         <path
@@ -42,9 +39,8 @@ export const services = [
     ),
   },
   {
-    id: 3,
     name: "Pick/Drop",
-    service: "pickDrop",
+    labelName: "pickDrop",
     icon: (props) => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 33" {...props}>
         <path
