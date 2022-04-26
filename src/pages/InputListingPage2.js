@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { PlusCircleIcon } from "@heroicons/react/solid";
 import { Switch } from "@headlessui/react";
+import { useDropzone } from "react-dropzone";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -8,53 +9,21 @@ function classNames(...classes) {
 
 const InputListingPage2 = () => {
   const [enabled, setEnabled] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
+    disabled: isDisabled,
+  });
+
+  const files = acceptedFiles.map((file) => {
+    return (
+      <li key={file.path}>
+        {file.path} - {file.size} bytes
+      </li>
+    );
+  });
 
   return (
-    //container wrapper
     <div className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500">
-      {/* <div className="max-w-2xl ring-1 ring-gray-300 rounded-lg mt-10">
-        <table class="text-left">
-          <thead class="bg-white">
-            <tr>
-              <th scope="col" class="px-6 py-3">
-                Services Offered
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Small 1-20 lbs
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Medium 20-40 lbs
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Large 40+ lbs
-              </th>
-              <th scope="col" class="px-6 py-3">
-                <span class="sr-only">Edit</span>...
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-              >
-                Dog Daycare
-              </th>
-              <td class="px-4 py-4">
-                <input className="w-24 bg-[#ebfdff] rounded-2xl" />
-              </td>
-              <td class="px-4 py-4">
-                <input className="w-24 bg-[#ebfdff]" />
-              </td>
-              <td class="px-4 py-4">
-                <input className="w-24 bg-[#ebfdff]" type="number" />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div> */}
-
       <div class="w-1/2 mt-12">
         <div class="py-2 min-w-full">
           <div class="overflow-hidden ring-1 ring-gray-300 rounded-xl">
@@ -246,8 +215,14 @@ const InputListingPage2 = () => {
         ></textarea>
       </div>
 
-      <div className="w-1/2 mt-6 border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40 w-40"></div>
-      <div className="w-1/2 mt-6 border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40 w-40"></div>
+      <div
+        className="w-1/2 mt-6 border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40"
+        {...getRootProps({ classNames: "dropzone" })}
+      >
+        <input {...getInputProps()} />
+        <ul>{files}</ul>
+      </div>
+      <div className="w-1/2 mt-6 border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40"></div>
 
       <div className="w-1/2 flex justify-center">
         <button

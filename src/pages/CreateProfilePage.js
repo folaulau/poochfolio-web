@@ -17,10 +17,10 @@ const CreateProfilePage = () => {
       name: "Overnight",
       labelName: "overNight",
     },
-    {
-      name: "Pick Up",
-      labelName: "pickDrop",
-    },
+    // {
+    //   name: "Pick Up",
+    //   labelName: "pickDrop",
+    // },
   ]);
 
   const [groomerInfo, setGroomerInfo] = useState({
@@ -111,10 +111,10 @@ const CreateProfilePage = () => {
         name: "Overnight",
         labelName: "overNight",
       },
-      {
-        name: "Pick/Drop",
-        labelName: "pickDrop",
-      },
+      // {
+      //   name: "Pick/Drop",
+      //   labelName: "pickDrop",
+      // },
     ]);
   };
 
