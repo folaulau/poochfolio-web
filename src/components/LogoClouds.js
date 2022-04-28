@@ -16,20 +16,12 @@ export default function LogoClouds() {
           <img className="h-12" src="/salesForce.svg" alt="SalesForce" />
         </div>
         <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-          <img
-            className="h-10"
-            src="/intuit.svg"
-            alt="Intuit"
-          />
+          <img className="h-10" src="/intuit.svg" alt="Intuit" />
         </div>
         <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-          <img
-            className="h-10"
-            src="/docusign.svg"
-            alt="Docusign"
-          />
+          <img className="h-10" src="/docusign.svg" alt="Docusign" />
         </div>
       </div>
     </div>
-  )
+  );
 }

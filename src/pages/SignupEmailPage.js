@@ -2,25 +2,27 @@ import { useState } from "react";
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function SignupEmailPage() {
   const [userInfo, setUserInfo] = useState({
-    userName: '',
-    email: ''
-  })
+    email: "",
+    password: "",
+  });
+  let navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setUserInfo({
       ...userInfo,
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (e) => {
     setUserInfo({
-      userName: '',
-      email: ''
-    })
+      email: "",
+      password: "",
+    });
     e.preventDefault();
 
     const firebaseConfig = {
@@ -30,62 +32,101 @@ export default function SignupEmailPage() {
       storageBucket: "dev-pooch-technologies-inc.appspot.com",
       messagingSenderId: "783774460598",
       appId: "1:783774460598:web:b2cea9f39f0ccba48f9417",
-      measurementId: "G-CD147SVBFD"
+      measurementId: "G-CD147SVBFD",
     };
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const email = userInfo.email;
-    const password = userInfo.userName;
+    const password = userInfo.password;
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in 
         const user = userCredential.user;
-        console.log('userCredential', userCredential)
-        // ...
+        console.log("userCredential", userCredential);
+
+        fetch("https://dev-api.poochapp.net/v1/groomers/authenticate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-key": "k8sdfe4k",
+          },
+          body: JSON.stringify({
+            token: user.accessToken,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+            localStorage.setItem("poochToken", data.token);
+            localStorage.setItem("uuid", data.uuid);
+            navigate("/create-profile");
+          })
+          .catch((error) => {
+            console.log("Error", error);
+          });
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
+        console.error("Error: ", error);
       });
-  }
+  };
+
   return (
-    <form onSubmit={handleSubmit} className="isolate -space-y-px rounded-md shadow-sm">
-      <div className="relative border border-gray-300 rounded-md rounded-b-none px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
-        <label htmlFor="userName" className="block text-xs font-medium text-gray-900">
-          Name
+    <form
+      className="w-4/12 py-8 items-center justify-center mx-auto"
+      onSubmit={handleSubmit}
+    >
+      <div>
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Email address
         </label>
-        <input
-          type="text"
-          name="userName"
-          id="userName"
-          className="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm"
-          placeholder="Jane Doe"
-          value={userInfo.userName}
-          onChange={handleInputChange}
-        />
+        <div className="mt-1">
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            placeholder="johnsmith@example.com"
+            value={userInfo.email}
+            onChange={handleInputChange}
+            required
+            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
+          />
+        </div>
       </div>
-      <div className="relative border border-gray-300 rounded-md rounded-t-none px-3 py-2 focus-within:z-10 focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
-        <label htmlFor="email" className="block text-xs font-medium text-gray-900">
-          Email
+
+      <div className="mt-4">
+        <label
+          htmlFor="password"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Password
         </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          className="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm"
-          placeholder="you@example.com"
-          value={userInfo.email}
-          onChange={handleInputChange}
-        />
+        <div className="mt-1">
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autoComplete="current-password"
+            required
+            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
+            placeholder="********"
+            value={userInfo.password}
+            onChange={handleInputChange}
+          />
+        </div>
       </div>
-      <input
-        type="submit"
-        value="Submit"
-        className="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-      />
+      <div className="mt-4">
+        <button
+          type="submit"
+          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997]"
+        >
+          Sign in
+        </button>
+      </div>
     </form>
-  )
+  );
 }
