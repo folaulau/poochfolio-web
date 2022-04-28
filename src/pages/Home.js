@@ -21,20 +21,41 @@ export default function Home() {
               to="/signup-email-page"
               className="flex flex-col p-8 justify-between items-center gap-y-8"
             >
-              <img src="/mail.png" className="self-center w-14 mt-1" />
+              <img
+                src="/mail.png"
+                className="self-center w-14 mt-1"
+                alt="Email"
+              />
               <span>Email</span>
             </Link>
-            <a className="flex flex-col p-8 justify-between items-center gap-y-8">
+            <a
+              className="flex flex-col p-8 justify-between items-center gap-y-8"
+              href="/"
+            >
               {/* <img src='/google.webp' className='self-center w-14' /> */}
-              <img src="/facebook.svg" className="self-center w-14" />
+              <img
+                src="/facebook.svg"
+                className="self-center w-14"
+                alt="Facebook"
+              />
               <span>Facebook</span>
             </a>
-            <a className="flex flex-col p-8 justify-between items-center gap-y-8">
-              <img src="/google.webp" className="self-center w-14 mt-1" />
+            <a
+              className="flex flex-col p-8 justify-between items-center gap-y-8"
+              href="/"
+            >
+              <img
+                src="/google.webp"
+                className="self-center w-14 mt-1"
+                alt="Google"
+              />
               <span>Google</span>
             </a>
-            <a className="flex flex-col p-8 justify-between items-center gap-y-8">
-              <img src="/apple.webp" className="self-center w-14" />
+            <a
+              className="flex flex-col p-8 justify-between items-center gap-y-8"
+              href="/"
+            >
+              <img src="/apple.webp" className="self-center w-14" alt="Apple" />
               <span>Apple</span>
             </a>
           </div>
@@ -42,6 +63,7 @@ export default function Home() {
         <img
           src="/poochfolio-dashboard.webp"
           className="mx-auto mt-10 lg:mt-0 self-center w-96 h-60 lg:h-full lg:w-full flex-1"
+          alt="poochfolio dashboard"
         />
       </div>
       <section className="flex flex-col items-center justify-center mt-16">

@@ -39,7 +39,7 @@
 import { CheckIcon } from "@heroicons/react/solid";
 
 const steps = [
-  { id: "01", name: "Sign Up / Login", href: "/", status: "complete" },
+  { id: "01", name: "Sign Up", href: "/", status: "complete" },
   {
     id: "02",
     name: "Create Profile",
@@ -57,16 +57,13 @@ const steps = [
 export default function Breadcrumbs() {
   return (
     <nav aria-label="Progress" className="w-1/2 mx-auto py-12">
-      <ol
-        role="list"
-        className="border border-gray-300 rounded-md lg:rounded-full divide-y divide-gray-300 md:flex md:divide-y-0"
-      >
+      <ol className="border border-gray-300 rounded-md lg:rounded-full divide-y divide-gray-300 md:flex md:divide-y-0">
         {steps.map((step, stepIdx) => (
           <li key={step.name} className="relative md:flex-1 md:flex">
             {step.status === "complete" ? (
               <a href={step.href} className="group flex items-center w-full">
                 <span className="px-6 py-4 flex items-center text-sm font-medium">
-                  <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-teal-600 rounded-full group-hover:bg-teal-800">
+                  <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-[#077997] rounded-full group-hover:bg-[#094b5c]">
                     <CheckIcon
                       className="w-6 h-6 text-white"
                       aria-hidden="true"
@@ -83,10 +80,10 @@ export default function Breadcrumbs() {
                 className="px-6 py-4 flex items-center text-sm font-medium"
                 aria-current="step"
               >
-                <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-teal-600 rounded-full">
-                  <span className="text-teal-600">{step.id}</span>
+                <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-[#077997] rounded-full">
+                  <span className="text-[#077997]">{step.id}</span>
                 </span>
-                <span className="ml-4 text-sm font-medium text-teal-600">
+                <span className="ml-4 text-sm font-medium text-[#077997]">
                   {step.name}
                 </span>
               </a>

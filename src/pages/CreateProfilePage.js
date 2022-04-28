@@ -2,8 +2,10 @@ import { useState } from "react";
 import Input from "../components/common/Input";
 import Autocomplete from "react-google-autocomplete";
 import { services } from "../data/services";
+import { useNavigate } from "react-router-dom";
 
 const CreateProfilePage = () => {
+  let navigate = useNavigate();
   const [careServices, setCareServices] = useState([
     {
       name: "Grooming",
@@ -83,7 +85,10 @@ const CreateProfilePage = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
-        window.location.replace("http://localhost:3000/input-listing");
+        // window.location.replace("http://localhost:3000/input-listing");
+        setTimeout(() => {
+          navigate("/input-listing2");
+        }, 3000);
       })
       .catch((error) => {
         console.error("Error: ", error);

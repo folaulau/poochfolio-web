@@ -9,9 +9,9 @@ function classNames(...classes) {
 
 const InputListingPage2 = () => {
   const [enabled, setEnabled] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(false);
+  // const [isDisabled, setIsDisabled] = useState(false);
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
-    disabled: isDisabled,
+    disabled: false,
   });
 
   const files = acceptedFiles.map((file) => {

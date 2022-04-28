@@ -1,11 +1,11 @@
 import { useState, createRef } from "react";
 import Dropzone from "react-dropzone";
 
-import { Switch } from "@headlessui/react";
+// import { Switch } from "@headlessui/react";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+// function classNames(...classes) {
+//   return classes.filter(Boolean).join(" ");
+// }
 
 const services = [
   { name: "Dog Daycare", small: "$150", medium: "$150", large: "$150" },
@@ -137,14 +137,14 @@ export default function InputListingPage() {
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                           {item.large}
                         </td>
-                        <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                        {/* <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                           <a
-                            href="#"
+                            href="/"
                             className="text-teal-600 hover:text-teal-900"
                           >
                             Edit<span className="sr-only">, {item.name}</span>
                           </a>
-                        </td>
+                        </td> */}
                       </tr>
                     ))}
                   </tbody>

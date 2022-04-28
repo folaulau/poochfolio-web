@@ -2,12 +2,14 @@ import { useState } from "react";
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function SignupEmailPage() {
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",
   });
+  let navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setUserInfo({
@@ -58,15 +60,14 @@ export default function SignupEmailPage() {
             console.log("Success:", data);
             localStorage.setItem("poochToken", data.token);
             localStorage.setItem("uuid", data.uuid);
-            // window.location.replace("http://localhost:3000/create-profile");
+            navigate("/create-profile");
           })
           .catch((error) => {
             console.log("Error", error);
           });
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        console.error("Error: ", error);
       });
   };
 
