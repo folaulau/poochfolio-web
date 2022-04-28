@@ -1,25 +1,26 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/Home";
-import AboutPage from "./pages/About";
+import { Route, Routes } from "react-router-dom";
+import SignUpPage from "./pages/SignUpPage";
 import SignupEmailPage from "./pages/SignupEmailPage";
 import CreateProfilePage from "./pages/CreateProfilePage";
 import InputListingPage from "./pages/InputListingPage";
 import InputListingPage2 from "./pages/InputListingPage2";
 import Dashboard from "./pages/Dashboard";
+import Breadcrumbs from "./components/Breadcrumbs";
+import Home from "./pages/Home";
 
-export default function Application() {
+export default function PoochRoutes() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="about" element={<AboutPage />} />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="commonSignUp" element={<Breadcrumbs />}>
+        <Route path="signup" element={<SignUpPage />} />
         <Route path="signup-email-page" element={<SignupEmailPage />} />
         <Route path="create-profile" element={<CreateProfilePage />} />
         <Route path="input-listing" element={<InputListingPage />} />
         <Route path="input-listing2" element={<InputListingPage2 />} />
-        <Route path="dashboard" element={<Dashboard />} />
-      </Routes>
-    </BrowserRouter>
+      </Route>
+      <Route path="dashboard" element={<Dashboard />} />
+    </Routes>
   );
 }

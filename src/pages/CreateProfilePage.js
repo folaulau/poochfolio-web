@@ -19,10 +19,10 @@ const CreateProfilePage = () => {
       name: "Overnight",
       labelName: "overNight",
     },
-    // {
-    //   name: "Pick Up",
-    //   labelName: "pickDrop",
-    // },
+    {
+      name: "Pick Up",
+      labelName: "pickDrop",
+    },
   ]);
 
   const [groomerInfo, setGroomerInfo] = useState({
@@ -30,7 +30,6 @@ const CreateProfilePage = () => {
     firstName: "",
     lastName: "",
     businessName: "",
-    email: "",
     phoneNumber: "",
     addresses: [],
     signUpStatus: "CREATE_PROFILE",
@@ -72,7 +71,6 @@ const CreateProfilePage = () => {
       })),
       addresses: [{ ...address }],
     };
-    console.log("putBody", putBody);
     e.preventDefault();
     fetch("https://dev-api.poochapp.net/v1/groomers/profile", {
       method: "PUT",
@@ -98,7 +96,6 @@ const CreateProfilePage = () => {
       firstName: "",
       lastName: "",
       businessName: "",
-      email: "",
       phoneNumber: "",
       addresses: [],
     });
@@ -130,10 +127,9 @@ const CreateProfilePage = () => {
     });
   };
 
-  console.log("careServices", careServices);
   return (
     <form onSubmit={handleSubmit} className="pt-16">
-      <section className="grid justify-center my-12 md:grid-cols-2 md:max-w-3xl mx-auto w-1/2 justify-items-center">
+      <section className="grid grid-cols-1 sm:grid-cols-2 justify-center my-12 sm:gap-x-8 md:max-w-3xl mx-auto w-1/2">
         <Input
           labelText="First Name"
           placeholderText="John"
@@ -162,15 +158,6 @@ const CreateProfilePage = () => {
           required={true}
         />
         <Input
-          labelText="Email"
-          placeholderText="johndoe@xyz.com"
-          type="email"
-          name="email"
-          handleChange={handleChange}
-          value={groomerInfo.email}
-          required={true}
-        />
-        <Input
           labelText="Phone Number"
           placeholderText="123-45-6789"
           type="tel"
@@ -179,13 +166,7 @@ const CreateProfilePage = () => {
           value={groomerInfo.phoneNumber}
           required={true}
         />
-        {/* <Input
-            placeholderText="123 sesame street"
-            labelText="Address"
-            type="name"
-            // required={true}
-          /> */}
-        <div className="mb-5">
+        <div className="mb-5 sm:col-span-2">
           <label
             htmlFor="name"
             className="text-[15px] text-[#666666] ml-2 font-Museo-Sans-Rounded-700"
@@ -197,7 +178,7 @@ const CreateProfilePage = () => {
               type="address"
               name="name"
               id="name"
-              className="shadow-sm block w-full p-3 rounded-full w-80 text-[15px] text-[#a1a1a1] font-Museo-Sans-Rounded-500 bg-red-[#f1f7ff]"
+              className="shadow-sm block w-full p-3 rounded-full text-[15px] text-[#a1a1a1] font-Museo-Sans-Rounded-500 bg-red-[#f1f7ff]"
               apiKey="AIzaSyCWPe0Y1xqKVM4mMNqMxNYwSsmB5dsg-lk"
               onPlaceSelected={(place) => {
                 const formattedAddress = place.formatted_address;
@@ -216,15 +197,6 @@ const CreateProfilePage = () => {
                 types: ["address"],
               }}
             />
-            {/* <input
-                type="name"
-                name="name"
-                id="name"
-                
-                className="shadow-sm block w-full p-3 rounded-full w-80 text-[15px] text-[#a1a1a1] font-Museo-Sans-Rounded-500 bg-red-[#f1f7ff]"
-                placeholder={placeholderText}
-                style={{ border: "1px solid #85d8e7" }}
-              /> */}
           </div>
         </div>
       </section>
