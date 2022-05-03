@@ -9,6 +9,7 @@ import InputListingPage2 from "./pages/InputListingPage2";
 import Dashboard from "./pages/Dashboard";
 import Breadcrumbs from "./components/Breadcrumbs";
 import Home from "./pages/Home";
+import Payments from "./pages/dashboard/payments";
 
 export default function PoochRoutes() {
   return (
@@ -22,7 +23,9 @@ export default function PoochRoutes() {
         <Route path="input-listing" element={<InputListingPage />} />
         <Route path="input-listing2" element={<InputListingPage2 />} />
       </Route>
-      <Route path="dashboard" element={<Dashboard />} />
+      <Route path="dashboard" element={<Dashboard />}>
+        <Route path="payments" element={<Payments />} />
+      </Route>
     </Routes>
   );
 }
