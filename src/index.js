@@ -1,16 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./Application";
 import reportWebVitals from "./reportWebVitals";
-// import Breadcrumbs from './components/Breadcrumbs';
-import Layout from "./components/Layout";
+import { BrowserRouter } from "react-router-dom";
+import PoochRoutes from "./routes";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Layout>
-      <App />
-    </Layout>
+    <BrowserRouter>
+      <PoochRoutes />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

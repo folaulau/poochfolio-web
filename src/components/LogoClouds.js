@@ -1,4 +1,3 @@
-/* This example requires Tailwind CSS v2.0+ */
 export default function LogoClouds() {
   return (
     <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 mt-8">

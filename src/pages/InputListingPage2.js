@@ -23,69 +23,69 @@ const InputListingPage2 = () => {
   });
 
   return (
-    <div className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500">
-      <div class="w-1/2 mt-12">
-        <div class="py-2 min-w-full">
-          <div class="overflow-hidden ring-1 ring-gray-300 rounded-xl">
-            <table class="min-w-full bg-white">
+    <div className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500 bg-[#f3f8ff]">
+      <div className="w-1/2 mt-12">
+        <div className="py-2 min-w-full">
+          <div className="overflow-hidden ring-1 ring-gray-300 rounded-xl">
+            <table className="min-w-full bg-white">
               <thead
-                class="border-b "
+                className="border-b"
                 style={{ boxShadow: "0px 1px 10px #c9d9ef" }}
               >
                 <tr>
                   <th
                     scope="col"
-                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                   >
                     Services Offered
                   </th>
                   <th
                     scope="col"
-                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                   >
                     Small 1-20 lbs
                   </th>
                   <th
                     scope="col"
-                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                   >
                     Medium 20-40 lbs
                   </th>
                   <th
                     scope="col"
-                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                   >
                     Large 40+ lbs
                   </th>
                   <th
                     scope="col"
-                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                   >
                     ...
                   </th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="border-b">
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                <tr className="border-b">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                     Dog Daycare
                   </td>
-                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                     {/* <span>$</span> */}
                     <input
                       type="number"
                       className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
                     />
                   </td>
-                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                     <input className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold" />
                   </td>
-                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                     <input className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold" />
                   </td>
                 </tr>
                 <tr className="text-center">
-                  <td colspan="5" className="py-4">
+                  <td colSpan="5" className="py-4">
                     <button className="flex mx-auto items-center gap-x-1">
                       <PlusCircleIcon className="h-7 w-7 text-[#077997]" />
                       <span>Add Services</span>
@@ -217,7 +217,7 @@ const InputListingPage2 = () => {
 
       <div
         className="w-1/2 mt-6 border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40"
-        {...getRootProps({ classNames: "dropzone" })}
+        {...getRootProps({ className: "dropzone" })}
       >
         <input {...getInputProps()} />
         <ul>{files}</ul>
