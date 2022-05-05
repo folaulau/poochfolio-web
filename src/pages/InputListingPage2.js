@@ -23,13 +23,13 @@ const InputListingPage2 = () => {
   });
 
   return (
-    <div className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500">
+    <div className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500 bg-[#f3f8ff]">
       <div className="w-1/2 mt-12">
         <div className="py-2 min-w-full">
           <div className="overflow-hidden ring-1 ring-gray-300 rounded-xl">
             <table className="min-w-full bg-white">
               <thead
-                className="border-b "
+                className="border-b"
                 style={{ boxShadow: "0px 1px 10px #c9d9ef" }}
               >
                 <tr>

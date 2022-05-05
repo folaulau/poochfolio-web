@@ -1,19 +1,22 @@
 import { useState } from "react";
 import { CheckIcon } from "@heroicons/react/solid";
 import { Link, Outlet } from "react-router-dom";
+import Header from "./Header";
 
 const steps = [
   {
     id: "01",
     name: "Sign Up",
     href: "/commonSignUp/signup",
-    status: "complete",
+    // status: "complete",
+    status: "upcoming",
   },
   {
     id: "02",
     name: "Create Profile",
     href: "/commonSignUp/create-profile",
-    status: "current",
+    // status: "current",
+    status: "upcoming",
   },
   {
     id: "03",
@@ -28,6 +31,9 @@ export default function Breadcrumbs() {
 
   return (
     <>
+      <nav className="bg-pooch-blue-2 bg-center bg-cover bg-no-repeat bg-background-header">
+        <Header />
+      </nav>
       <nav aria-label="Progress" className="w-1/2 mx-auto py-12">
         <ol className="border border-gray-300 rounded-md lg:rounded-full divide-y divide-gray-300 md:flex md:divide-y-0">
           {signUpSteps.map((step, stepIdx) => (

@@ -85,7 +85,7 @@ const CreateProfilePage = () => {
         console.log("Success:", data);
         // window.location.replace("http://localhost:3000/input-listing");
         setTimeout(() => {
-          navigate("/input-listing2");
+          navigate("/sign-up/input-listing2");
         }, 3000);
       })
       .catch((error) => {
@@ -128,7 +128,7 @@ const CreateProfilePage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="pt-16">
+    <form onSubmit={handleSubmit} className="pt-16 bg-[#f3f8ff]">
       <section className="grid grid-cols-1 sm:grid-cols-2 justify-center my-12 sm:gap-x-8 md:max-w-3xl mx-auto w-1/2">
         <Input
           labelText="First Name"

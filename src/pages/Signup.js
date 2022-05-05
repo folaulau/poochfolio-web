@@ -1,6 +1,77 @@
+import { useState } from "react";
+import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import LandingHeader from "../components/landing-page/LandingHeader";
 
 const Signup = () => {
+  const [userInfo, setUserInfo] = useState({
+    email: "",
+    password: "",
+  });
+  let navigate = useNavigate();
+
+  const handleInputChange = (e) => {
+    setUserInfo({
+      ...userInfo,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    setUserInfo({
+      email: "",
+      password: "",
+    });
+    e.preventDefault();
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCWPe0Y1xqKVM4mMNqMxNYwSsmB5dsg-lk",
+      authDomain: "dev-pooch-technologies-inc.firebaseapp.com",
+      projectId: "dev-pooch-technologies-inc",
+      storageBucket: "dev-pooch-technologies-inc.appspot.com",
+      messagingSenderId: "783774460598",
+      appId: "1:783774460598:web:b2cea9f39f0ccba48f9417",
+      measurementId: "G-CD147SVBFD",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const email = userInfo.email;
+    const password = userInfo.password;
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("userCredential", userCredential);
+
+        fetch("https://dev-api.poochapp.net/v1/groomers/authenticate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-key": "k8sdfe4k",
+          },
+          body: JSON.stringify({
+            token: user.accessToken,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+            localStorage.setItem("poochToken", data.token);
+            localStorage.setItem("uuid", data.uuid);
+            navigate("/sign-up/create-profile");
+          })
+          .catch((error) => {
+            console.log("Error", error);
+          });
+      })
+      .catch((error) => {
+        console.error("Error: ", error);
+      });
+  };
+
   return (
     <>
       <LandingHeader />
@@ -27,7 +98,8 @@ const Signup = () => {
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <form className="space-y-6" action="#" method="POST">
+            {/* <form className="space-y-6" action="#" method="POST"> */}
+            <form className="space-y-6" action="#" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="email"
@@ -41,6 +113,8 @@ const Signup = () => {
                     name="email"
                     type="email"
                     autoComplete="email"
+                    value={userInfo.email}
+                    onChange={handleInputChange}
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
                   />
@@ -60,6 +134,8 @@ const Signup = () => {
                     name="password"
                     type="password"
                     autoComplete="current-password"
+                    value={userInfo.password}
+                    onChange={handleInputChange}
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
                   />
@@ -109,9 +185,7 @@ const Signup = () => {
                   <div className="w-full border-t border-gray-300" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-white text-gray-500">
-                    Or continue with
-                  </span>
+                  <span className="px-2 bg-white text-gray-500">Or</span>
                 </div>
               </div>
 
