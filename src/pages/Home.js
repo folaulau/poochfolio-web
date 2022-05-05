@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import H3 from "../components/landing-page/H3";
 import FootH3 from "../components/landing-page/FootH3";
 import H2 from "../components/landing-page/H2";
@@ -6,118 +5,37 @@ import ListItem from "../components/landing-page/ListItem";
 import FootListItem from "../components/landing-page/FootListItem";
 import Button from "../components/landing-page/Button";
 import LogoClouds from "../components/LogoClouds";
+import {
+  losAngelesCounty,
+  nationWideCities,
+  features,
+  poochMarketplace,
+  BusinessManagementFeatures,
+} from "../data/landingPage";
+import LandingHeader from "../components/landing-page/LandingHeader";
 
 export default function Home2() {
-  const losAngelesCounty = [
-    "Venice, CA",
-    "Santa Monica, CA",
-    "Culver City",
-    "Marina Del Rey, Ca",
-    "Malibu",
-    "Beverly Hills",
-    "Calabasas",
-    "Manhattan Beach",
-    "Hermosa Beach",
-    "Irvine",
-    "Laguna Beach",
-    "Laguna Niguel",
-    "Newport Beach",
-  ];
-
-  const nationWideCities = [
-    "Los Angeles, CA",
-    "San Diego",
-    "San Fransciso, CA",
-    "Mami, FL",
-    "New York, NY",
-    "Chicago",
-    "Houston",
-    "Phoenix",
-    "Philadelphia",
-    "Dallas",
-    "Austin",
-    "Denver",
-    "Las Vegas",
-  ];
-
-  const features = [
-    "List on the Pooch Marketplace",
-    "Dog leads from the Pooch Marketplace",
-    "Pooch profile and intake form",
-    "Client manamgent",
-    "Intant Bookings",
-    "Pick-up drop-off API for kennels and groomers",
-    "Machine learning SMS integration and automation",
-    "Cloud storage and data security",
-    "Payroll and Employiee managment",
-    "Add multiple users and set user permissions",
-    "Analyhtics and QuickBooks integration",
-    "QuickBooks Connect",
-    "POS hardware",
-    "Stripe integration",
-    "Text to pay",
-    "Calendar integration",
-    "AI Capital - expand your businesss!",
-  ];
-
-  const poochMarketplace = [
-    "Direct listing on the Pooch Marketplace.",
-    "Dog leads for Groomers, Day-cares and Kennels.",
-    "Instant bookings for dog hotels seeking minimum vacancy.",
-    "Pick-up and drop-off made easy with our custom software.",
-  ];
-  const BusinessManagementFeatures = [
-    "Pooch profile and intake form",
-    "Client management",
-    "Instant bookings",
-    "Pick-up drop-off API for kennels and grooomers",
-    "Machine learning SMS integration and automation",
-    "Cloud storage and data security",
-    "Payroll and Employee management",
-    "Add multiple users and set user permmissions",
-    "Analytics and QuickZBooks integration",
-    "QuickBooks Connect",
-    "POS hardware",
-    "Stripe integration",
-    "Text to pay",
-    "Calendar integration",
-    "Al Captial - expand your business!",
-  ];
-
   return (
     <div className="bg-[#077997]">
-      <header className="bg-[#077997] text-white font-Museo-Sans-Rounded-500 flex h-40 items-center justify-evenly">
-        <div>
-          <img src="/landing-page/poochFolio.svg" />
-        </div>
-        <div>
-          <button className="rounded-full px-4 py-2 border border-white flex gap-x-3.5">
-            <img
-              className="h-5"
-              src="/landing-page/headset.svg"
-              alt="Docusign"
-            />
-            Support
-          </button>
-        </div>
-        <img src="/landing-page/menu-icon.svg" className="h-6 text-white" />
-
-        <nav className="hidden">
-          <Link to="">Marketplace</Link>
-          <Link to="">Management</Link>
-          <Link to="">How It Works</Link>
-          <Link to="">Login</Link>
-          <Link to="">Sign Up</Link>
-        </nav>
-      </header>
+      <LandingHeader />
       <main className="bg-white rounded-t-2xl font-Museo-Sans-Rounded-900">
-        <h1 className="text-[45px] mx-7 text-center text-[#333333] pt-28">
+        <h1 className="text-[45px] mx-7 text-center text-[#333333] pt-28 md:max-w-[465px] md:text-left md:relative md:z-10">
           <span className="text-[#077997]">Marketing</span> and{" "}
           <span className="text-[#077997]">Management</span> for all Groomers
           and Kennels
         </h1>
-        <img src="/landing-page/dog@3x.webp" className="mt-12" />
-        <img src="/landing-page/poochapp3screens.webp" className="mt-12" />
+        <div className="hidden md:block md:z-20 md:absolute">
+          <Button text="Sign Up" />
+        </div>
+        <img src="/landing-page/dog@3x.webp" className="mt-12 md:hidden" />
+        <img
+          src="/landing-page/sliderbackground.png"
+          className="hidden top-[160px] md:block md:absolute "
+        />
+        <img
+          src="/landing-page/poochapp3screens.webp"
+          className="mt-12 md:w-1/2 md:mt-96"
+        />
         <section className="mx-7">
           <H3 text="Stop worrying about vacancy." />
           <H2
@@ -132,7 +50,7 @@ export default function Home2() {
           </ul>
           <Button text="List Your Business On Our Marketplace" />
         </section>
-        <section className="mx-7">
+        <section className="mx-7 mt-20">
           <H3 text="Management" />
           <H2 text="Business" colorText="Management Features" />
           <ul>
@@ -147,7 +65,7 @@ export default function Home2() {
         <img src="/landing-page/statistics@3x.webp" className="mt-14" />
         <section className="flex flex-col items-center mt-14">
           <H2 text="How It Works" />
-          <img src="/landing-page/dogstep2.svg" />
+          <img src="/landing-page/dogstep1.svg" />
           <img src="/landing-page/dogstep2.svg" />
           <img src="/landing-page/dogstep3.svg" />
         </section>

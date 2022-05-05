@@ -10,11 +10,16 @@ import Dashboard from "./pages/Dashboard";
 import Breadcrumbs from "./components/Breadcrumbs";
 import Home from "./pages/Home";
 import Payments from "./pages/dashboard/payments";
-
+import Login from "./pages/Signin";
+import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/forgotPassword";
 export default function PoochRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/signin" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/forgotpassword" element={<ForgotPassword />} />
       <Route path="sign-up" element={<Breadcrumbs />}>
         <Route path="signup" element={<SignUpPage />} />
         <Route path="new-signup-page" element={<NewSignUpPage />} />
