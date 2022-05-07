@@ -32,7 +32,7 @@ const CreateProfilePage = () => {
     businessName: "",
     phoneNumber: "",
     addresses: [],
-    signUpStatus: "CREATE_PROFILE",
+    signUpStatus: "ADD_SERVICES",
   });
 
   const [address, setAddress] = useState({

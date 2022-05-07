@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PlusCircleIcon } from "@heroicons/react/solid";
+import { PlusCircleIcon, PhotographIcon } from "@heroicons/react/solid";
 import { Switch } from "@headlessui/react";
 import { useDropzone } from "react-dropzone";
 
@@ -8,8 +8,17 @@ function classNames(...classes) {
 }
 
 const InputListingPage2 = () => {
-  const [enabled, setEnabled] = useState(false);
-  // const [isDisabled, setIsDisabled] = useState(false);
+  const [instantBooking, setInstantBooking] = useState(false);
+  const [services, setServices] = useState({
+    chargePerMile: 0,
+    numberOfOcupancy: 50,
+  });
+  const [pickDrop, setPickDrop] = useState({
+    offeredPickUp: false,
+    offeredDropOff: false,
+  });
+  const [description, setDescription] = useState("");
+
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     disabled: false,
   });
@@ -22,6 +31,30 @@ const InputListingPage2 = () => {
     );
   });
 
+  const handleChange = (e) => {
+    setServices({
+      ...services,
+      [e.target.name]: +e.target.value,
+    });
+  };
+
+  const handlePickDrop = (e) => {
+    setPickDrop({
+      ...pickDrop,
+      [e.target.name]: e.target.value === "true",
+    });
+  };
+
+  const pickUpServices = [
+    { id: "yes", title: "YES", value: true },
+    { id: "no", title: "NO", value: false },
+  ];
+  const dropOffServices = [
+    { id: "yes", title: "YES", value: true },
+    { id: "no", title: "NO", value: false },
+  ];
+
+  console.log("description", description);
   return (
     <div className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500 bg-[#f3f8ff]">
       <div className="w-1/2 mt-12">
@@ -104,8 +137,8 @@ const InputListingPage2 = () => {
             Instant Booking
           </h1>
           <Switch
-            checked={enabled}
-            onChange={setEnabled}
+            checked={instantBooking}
+            onChange={setInstantBooking}
             className="flex-shrink-0 group relative rounded-full inline-flex items-center justify-center h-5 w-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             <span className="sr-only">Use setting</span>
@@ -116,14 +149,14 @@ const InputListingPage2 = () => {
             <span
               aria-hidden="true"
               className={classNames(
-                enabled ? "bg-indigo-600" : "bg-gray-200",
+                instantBooking ? "bg-indigo-600" : "bg-gray-200",
                 "pointer-events-none absolute h-4 w-9 mx-auto rounded-full transition-colors ease-in-out duration-200"
               )}
             />
             <span
               aria-hidden="true"
               className={classNames(
-                enabled ? "translate-x-5" : "translate-x-0",
+                instantBooking ? "translate-x-5" : "translate-x-0",
                 "pointer-events-none absolute left-0 inline-block h-5 w-5 border border-gray-200 rounded-full bg-white shadow transform ring-0 transition-transform ease-in-out duration-200"
               )}
             />
@@ -131,65 +164,65 @@ const InputListingPage2 = () => {
         </div>
         <div className="flex py-8 px-7 justify-between">
           <h1>Do You Offer Pick Up Services?</h1>
-          <Switch
-            checked={enabled}
-            onChange={setEnabled}
-            className="flex-shrink-0 group relative rounded-full inline-flex items-center justify-center h-5 w-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            <span className="sr-only">Use setting</span>
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute bg-white w-full h-full rounded-md"
-            />
-            <span
-              aria-hidden="true"
-              className={classNames(
-                enabled ? "bg-indigo-600" : "bg-gray-200",
-                "pointer-events-none absolute h-4 w-9 mx-auto rounded-full transition-colors ease-in-out duration-200"
-              )}
-            />
-            <span
-              aria-hidden="true"
-              className={classNames(
-                enabled ? "translate-x-5" : "translate-x-0",
-                "pointer-events-none absolute left-0 inline-block h-5 w-5 border border-gray-200 rounded-full bg-white shadow transform ring-0 transition-transform ease-in-out duration-200"
-              )}
-            />
-          </Switch>
+          <fieldset>
+            <legend className="sr-only">Do You Offer Pick Up Services?</legend>
+            <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+              {pickUpServices.map((pickUpService) => (
+                <div key={pickUpService.id} className="flex items-center">
+                  <input
+                    id={pickUpService.id}
+                    name="offeredPickUp"
+                    type="radio"
+                    value={pickUpService.value === false ? false : true}
+                    defaultChecked={pickUpService.value === false}
+                    onChange={handlePickDrop}
+                    className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                  />
+                  <label
+                    htmlFor={pickUpService.id}
+                    className="ml-3 block text-sm font-medium text-gray-700"
+                  >
+                    {pickUpService.title}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </fieldset>
         </div>
         <div className="flex pb-8 px-7 justify-between">
           <h1>Do You Offer Drop Off Services?</h1>
-          <Switch
-            checked={enabled}
-            onChange={setEnabled}
-            className="flex-shrink-0 group relative rounded-full inline-flex items-center justify-center h-5 w-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            <span className="sr-only">Use setting</span>
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute bg-white w-full h-full rounded-md"
-            />
-            <span
-              aria-hidden="true"
-              className={classNames(
-                enabled ? "bg-indigo-600" : "bg-gray-200",
-                "pointer-events-none absolute h-4 w-9 mx-auto rounded-full transition-colors ease-in-out duration-200"
-              )}
-            />
-            <span
-              aria-hidden="true"
-              className={classNames(
-                enabled ? "translate-x-5" : "translate-x-0",
-                "pointer-events-none absolute left-0 inline-block h-5 w-5 border border-gray-200 rounded-full bg-white shadow transform ring-0 transition-transform ease-in-out duration-200"
-              )}
-            />
-          </Switch>
+          <fieldset>
+            <legend className="sr-only">Do You Offer Drop Off Services?</legend>
+            <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+              {dropOffServices.map((dropOffService) => (
+                <div key={dropOffService.id} className="flex items-center">
+                  <input
+                    id={dropOffService.id}
+                    name="offeredDropOff"
+                    type="radio"
+                    value={dropOffService.value}
+                    defaultChecked={dropOffService.value === false}
+                    onChange={handlePickDrop}
+                    className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                  />
+                  <label
+                    htmlFor={dropOffService.id}
+                    className="ml-3 block text-sm font-medium text-gray-700"
+                  >
+                    {dropOffService.title}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </fieldset>
         </div>
         <div className="flex pb-8 px-7 justify-between">
           <h1>How Much Do You Charge Per Mile?</h1>
           <input
             type="number"
             className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold border border-[#81d6e6]"
+            name="chargePerMile"
+            onChange={handleChange}
           />
         </div>
       </div>
@@ -197,9 +230,16 @@ const InputListingPage2 = () => {
       <div className="w-1/2">
         <div className="flex py-8 justify-between">
           <h1>What is the Maximum Occupancy at Your Business?</h1>
-          <h1 className="text-[#077977] font-bold">80 Dogs</h1>
+          <h1 className="text-[#077977] font-bold">
+            {services.numberOfOcupancy}
+          </h1>
         </div>
-        <input type="range" className="w-full accent-[#077997]" />
+        <input
+          type="range"
+          name="numberOfOcupancy"
+          onChange={handleChange}
+          className="w-full accent-[#077997]"
+        />
         <div className="flex py-8 justify-between">
           <h1>1 Dog</h1>
           <h1>200 Dogs</h1>
@@ -210,6 +250,8 @@ const InputListingPage2 = () => {
         <h1>Description</h1>
         <textarea
           className="w-full rounded-2xl border h-32 border-[#81d6e6] bg-inherit pt-6 pl-8"
+          onChange={(e) => setDescription(e.target.value)}
+          name="description"
           style={{ boxShadow: "inset 0px 0px 10px #81d6e6" }}
           placeholder="Type description"
         ></textarea>
@@ -222,7 +264,10 @@ const InputListingPage2 = () => {
         <input {...getInputProps()} />
         <ul>{files}</ul>
       </div>
-      <div className="w-1/2 mt-6 border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40"></div>
+      <div className="w-1/2 mt-6 border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40">
+        <PhotographIcon className="h-6 text-[#077997]" />
+        <p className="text-[#077997]">Drag and Drop Images</p>
+      </div>
 
       <div className="w-1/2 flex justify-center">
         <button

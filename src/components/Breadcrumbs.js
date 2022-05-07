@@ -7,21 +7,21 @@ const steps = [
   {
     id: "01",
     name: "Sign Up",
-    href: "/commonSignUp/signup",
+    href: "/sign-up/signup",
     // status: "complete",
     status: "upcoming",
   },
   {
     id: "02",
     name: "Create Profile",
-    href: "/commonSignUp/create-profile",
+    href: "/sign-up/create-profile",
     // status: "current",
     status: "upcoming",
   },
   {
     id: "03",
     name: "Input Listing",
-    href: "/commonSignUp/input-listing2",
+    href: "/sign-up/input-listing2",
     status: "upcoming",
   },
 ];

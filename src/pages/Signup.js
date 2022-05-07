@@ -50,7 +50,7 @@ const Signup = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "x-api-key": "k8sdfe4k",
+            "x-api-key": "f9609c0c-6e70-42c3-afaf-10f64bc02b21",
           },
           body: JSON.stringify({
             token: user.accessToken,

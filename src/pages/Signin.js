@@ -1,6 +1,32 @@
+import { useState, useEffect } from "react";
 import LandingHeader from "../components/landing-page/LandingHeader";
+import { useNavigate } from "react-router-dom";
+import { startFetchGetGroomer } from "../../src/components/hooks/getProfile";
 
 const Signin = () => {
+  const [profileData, setProfileData] = useState([]);
+  let navigate = useNavigate();
+  const poochToken = localStorage?.getItem("poochToken");
+
+  useEffect(async () => {
+    const data = await startFetchGetGroomer(poochToken);
+    setProfileData(data);
+  }, []);
+
+  if (poochToken && poochToken !== undefined) {
+    const { signUpStatus } = profileData?.groomer?.[0] || "";
+    console.log("signUpStatus", signUpStatus);
+    switch (signUpStatus) {
+      case "CREATE_PROFILE":
+        navigate("/sign-up/create-profile");
+        break;
+      case "ADD_SERVICES":
+        navigate("/sign-up/input-listing2");
+        break;
+      default:
+        navigate("/");
+    }
+  }
   return (
     <>
       <LandingHeader />

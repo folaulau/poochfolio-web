@@ -13,7 +13,7 @@ const LandingHeader = () => {
         <Link to="">Management</Link>
         <Link to="">How It Works</Link>
         <button className="border rounded-full bg-[#ebfdff] text-[#077997] py-2 px-6">
-          <Link to="/signin">Login</Link>
+          <Link to="/signin">Sign In</Link>
         </button>
         <button className="border rounded-full bg-[#ebfdff] text-[#077997] py-2 px-6">
           <Link to="/signup">Sign Up</Link>
