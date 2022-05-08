@@ -1,5 +1,9 @@
-import { useState } from "react";
-import { PlusCircleIcon, PhotographIcon } from "@heroicons/react/solid";
+import { useCallback, useState } from "react";
+import {
+  ClipboardCheckIcon,
+  PlusCircleIcon,
+  PhotographIcon,
+} from "@heroicons/react/solid";
 import { Switch } from "@headlessui/react";
 import { useDropzone } from "react-dropzone";
 
@@ -8,6 +12,7 @@ function classNames(...classes) {
 }
 
 const InputListingPage2 = () => {
+  const [images, setImages] = useState([]);
   const [instantBooking, setInstantBooking] = useState(false);
   const [services, setServices] = useState({
     chargePerMile: 0,
@@ -19,8 +24,20 @@ const InputListingPage2 = () => {
   });
   const [description, setDescription] = useState("");
 
+  const poochToken = localStorage.getItem("poochToken");
+  const poochUuid = localStorage.getItem("uuid");
+
+  const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
+    acceptedFiles.forEach((file) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImages((prevState) => [...prevState, reader.result]);
+      };
+      reader.readAsDataURL(file);
+    });
+  }, []);
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
-    disabled: false,
+    onDrop,
   });
 
   const files = acceptedFiles.map((file) => {
@@ -30,7 +47,12 @@ const InputListingPage2 = () => {
       </li>
     );
   });
+  // const onDrop = useCallback((acceptedFiles,))
+  //   acceptedFiles.forEach((file) => {
+  //     setImages((prevState) => [...prevState, file]);
+  //   });
 
+  console.log("images", images);
   const handleChange = (e) => {
     setServices({
       ...services,
@@ -54,7 +76,29 @@ const InputListingPage2 = () => {
     { id: "no", title: "NO", value: false },
   ];
 
-  console.log("description", description);
+  const handleImage = () => {
+    let formdata = new FormData();
+    formdata.append("images", acceptedFiles[0], acceptedFiles[0].path);
+
+    fetch(
+      `https://dev-api.poochapp.net/v1/groomers/${poochUuid}/profile/images`,
+      {
+        method: "POST",
+        headers: {
+          token: localStorage.getItem("poochToken"),
+        },
+        body: formdata,
+        redirect: "follow",
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error: ", error);
+      });
+  };
   return (
     <div className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500 bg-[#f3f8ff]">
       <div className="w-1/2 mt-12">
@@ -256,17 +300,32 @@ const InputListingPage2 = () => {
           placeholder="Type description"
         ></textarea>
       </div>
-
       <div
-        className="w-1/2 mt-6 border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40"
         {...getRootProps({ className: "dropzone" })}
+        className="w-1/2 mt-6 border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40 flex flex-col justify-center items-center"
       >
         <input {...getInputProps()} />
-        <ul>{files}</ul>
-      </div>
-      <div className="w-1/2 mt-6 border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40">
         <PhotographIcon className="h-6 text-[#077997]" />
         <p className="text-[#077997]">Drag and Drop Images</p>
+        <ul>{files}</ul>
+      </div>
+      <button
+        onClick={handleImage}
+        className="bg-red-300 border border-red-600"
+      >
+        Submit Image
+      </button>
+      <div
+        {...getRootProps({ className: "dropzone" })}
+        className="w-1/2 mt-6 border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40 flex flex-col justify-center items-center"
+      >
+        <ClipboardCheckIcon className="h-6 text-[#077997]" />
+        <input {...getInputProps()} />
+
+        <p className="text-[#077997]">Drag and Drop</p>
+        <p className="text-[#077997]">
+          Contract you need your customers to sign
+        </p>
       </div>
 
       <div className="w-1/2 flex justify-center">
