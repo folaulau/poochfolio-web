@@ -45,7 +45,7 @@ export default function Home2() {
           />
           <ul>
             {poochMarketplace.map((item) => (
-              <ListItem text={item} />
+              <ListItem text={item} key={item} />
             ))}
           </ul>
           <Button text="List Your Business On Our Marketplace" />
@@ -55,7 +55,7 @@ export default function Home2() {
           <H2 text="Business" colorText="Management Features" />
           <ul>
             {BusinessManagementFeatures.map((item) => (
-              <ListItem text={item} />
+              <ListItem text={item} key={item} />
             ))}
           </ul>
           <div>
@@ -104,21 +104,21 @@ export default function Home2() {
           <FootH3 text="Los Angeles County" />
           <ul className="ml-5">
             {losAngelesCounty.map((city) => (
-              <FootListItem text={city} />
+              <FootListItem text={city} key={city} />
             ))}
           </ul>
 
           <FootH3 text="Nationwide" className="mt-4" />
           <ul className="ml-5">
             {nationWideCities.map((city) => (
-              <FootListItem text={city} />
+              <FootListItem text={city} key={city} />
             ))}
           </ul>
 
           <FootH3 text="Features" />
           <ul className="ml-5">
             {features.map((feature) => (
-              <FootListItem text={feature} />
+              <FootListItem text={feature} key={feature}  />
             ))}
           </ul>
         </section>
