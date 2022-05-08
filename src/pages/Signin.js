@@ -25,7 +25,7 @@ const Signin = () => {
     GroomerGraphql.getProfile()
     .then((response) => {
       console.log("Success:", response);
-      let groomerInfo = response.data.data;
+      let groomerInfo = response.data.data?.groomer[0];
       console.log("groomerInfo:", groomerInfo);
 
       goToNextDestination(groomerInfo.status, groomerInfo.signUpStatus);
@@ -41,7 +41,7 @@ const Signin = () => {
     console.log("signUpStatus, ", signUpStatus)
     if(status==="ACTIVE" || status==="PENDING_APPROVAL"){
       navigate("/dashboard");
-    }else if(status==="SIGNIN_UP"){
+    }else if(status==="SIGNING_UP"){
       switch (signUpStatus) {
         case "CREATE_PROFILE":
           navigate("/sign-up/create-profile");
