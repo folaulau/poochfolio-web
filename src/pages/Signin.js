@@ -2,16 +2,32 @@ import { useState, useEffect } from "react";
 import LandingHeader from "../components/landing-page/LandingHeader";
 import { useNavigate } from "react-router-dom";
 import { startFetchGetGroomer } from "../../src/components/hooks/getProfile";
+import GroomerGraphql from "../graphql/GroomerGraphQL";
 
 const Signin = () => {
   const [profileData, setProfileData] = useState([]);
+
   let navigate = useNavigate();
   const poochToken = localStorage?.getItem("poochToken");
 
   useEffect(async () => {
-    const data = await startFetchGetGroomer(poochToken);
-    setProfileData(data);
+    // const data = await startFetchGetGroomer(poochToken);
+    // setProfileData(data);
+    loadProfile()
   }, []);
+
+  const loadProfile = () =>{
+    GroomerGraphql.getProfile()
+    .then((response) => {
+      console.log("Success:", response);
+      let groomer = response.data.data;
+      console.log("groomer:", groomer);
+      setProfileData(groomer)
+    })
+    .catch((error) => {
+      console.log("Error", error);
+    });
+  }
 
   if (poochToken && poochToken !== undefined) {
     const { signUpStatus } = profileData?.groomer?.[0] || "";
