@@ -5,7 +5,10 @@ import { startFetchGetGroomer } from "../../src/components/hooks/getProfile";
 import GroomerGraphql from "../graphql/GroomerGraphQL";
 
 const Signin = () => {
-  const [profileData, setProfileData] = useState([]);
+  const [groomerInfo, setGroomerInfo] = useState({
+    email: "folaudev+"+Math.floor(Math.random() * 1000000000)+"@gmail.com",
+    password: "Test1234!",
+  });
 
   let navigate = useNavigate();
   const poochToken = localStorage?.getItem("poochToken");
@@ -20,29 +23,34 @@ const Signin = () => {
     GroomerGraphql.getProfile()
     .then((response) => {
       console.log("Success:", response);
-      let groomer = response.data.data;
-      console.log("groomer:", groomer);
-      setProfileData(groomer)
+      let groomerInfo = response.data.data;
+      console.log("groomerInfo:", groomerInfo);
+      const { signUpStatus } = groomerInfo?.groomer?.[0] || "";
+      console.log("signUpStatus", signUpStatus);
+      // switch (signUpStatus) {
+      //   case "CREATE_PROFILE":
+      //     navigate("/sign-up/create-profile");
+      //     break;
+      //   case "ADD_SERVICES":
+      //     navigate("/sign-up/input-listing2");
+      //     break;
+      //   default:
+      //     navigate("/");
+      // }
+
     })
     .catch((error) => {
       console.log("Error", error);
     });
   }
 
-  if (poochToken && poochToken !== undefined) {
-    const { signUpStatus } = profileData?.groomer?.[0] || "";
-    console.log("signUpStatus", signUpStatus);
-    switch (signUpStatus) {
-      case "CREATE_PROFILE":
-        navigate("/sign-up/create-profile");
-        break;
-      case "ADD_SERVICES":
-        navigate("/sign-up/input-listing2");
-        break;
-      default:
-        navigate("/");
-    }
-  }
+  const handleInputChange = (e) => {
+    setGroomerInfo({
+      ...groomerInfo,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <>
       <LandingHeader />
@@ -83,6 +91,8 @@ const Signin = () => {
                     name="email"
                     type="email"
                     autoComplete="email"
+                    value={groomerInfo.email}
+                    onChange={handleInputChange}
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
                   />
@@ -102,6 +112,8 @@ const Signin = () => {
                     name="password"
                     type="password"
                     autoComplete="current-password"
+                    value={groomerInfo.password}
+                    onChange={handleInputChange}
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
                   />
