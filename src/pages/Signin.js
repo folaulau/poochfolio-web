@@ -2,31 +2,103 @@ import { useState, useEffect } from "react";
 import LandingHeader from "../components/landing-page/LandingHeader";
 import { useNavigate } from "react-router-dom";
 import { startFetchGetGroomer } from "../../src/components/hooks/getProfile";
+import GroomerGraphql from "../graphql/GroomerGraphQL";
+import FirebaseApi from "../api/FirebaseApi";
+import GroomerApi from "../api/GroomerApi";
 
 const Signin = () => {
-  const [profileData, setProfileData] = useState([]);
+  const [groomerInfo, setGroomerInfo] = useState({
+    email: "folaudev+"+Math.floor(Math.random() * 1000000000)+"@gmail.com",
+    password: "Test1234!",
+  });
+
   let navigate = useNavigate();
   const poochToken = localStorage?.getItem("poochToken");
 
   useEffect(async () => {
-    const data = await startFetchGetGroomer(poochToken);
-    setProfileData(data);
+    // const data = await startFetchGetGroomer(poochToken);
+    // setProfileData(data);
+    loadProfile()
   }, []);
 
-  if (poochToken && poochToken !== undefined) {
-    const { signUpStatus } = profileData?.groomer?.[0] || "";
-    console.log("signUpStatus", signUpStatus);
-    switch (signUpStatus) {
-      case "CREATE_PROFILE":
-        navigate("/sign-up/create-profile");
-        break;
-      case "ADD_SERVICES":
-        navigate("/sign-up/input-listing2");
-        break;
-      default:
-        navigate("/");
-    }
+  const loadProfile = () =>{
+    GroomerGraphql.getProfile()
+    .then((response) => {
+      console.log("Success:", response);
+      let groomerInfo = response.data.data?.groomer[0];
+      console.log("groomerInfo:", groomerInfo);
+
+      goToNextDestination(groomerInfo.status, groomerInfo.signUpStatus);
+    })
+    .catch((error) => {
+      console.log("Error", error);
+    });
   }
+
+  const goToNextDestination = (status,signUpStatus) => {
+    console.log("goToNextDestination")
+    console.log("status, ", status)
+    console.log("signUpStatus, ", signUpStatus)
+    if(status==="ACTIVE" || status==="PENDING_APPROVAL"){
+      navigate("/dashboard");
+    }else if(status==="SIGNING_UP"){
+      switch (signUpStatus) {
+        case "CREATE_PROFILE":
+          navigate("/sign-up/create-profile");
+          break;
+        case "ADD_SERVICES":
+          navigate("/sign-up/input-listing2");
+          break;
+        default:
+          navigate("/");
+      }
+    }else{
+      // display message to user that he's either inactive or blocked
+    }
+
+    
+  }
+
+  const handleInputChange = (e) => {
+    setGroomerInfo({
+      ...groomerInfo,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const signInWithEmail = () =>{
+    console.log("signInWithEmail")
+    console.log(groomerInfo)
+    FirebaseApi.signInWithEmail(groomerInfo.email, groomerInfo.password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log("userCredential", userCredential);
+
+      let authentication = {
+        "token": user.accessToken,
+        "rememberMe": true
+      };
+
+      GroomerApi.authenticate(authentication)
+      .then((response) => {
+          let auth = response.data;
+          console.log("auth, ", auth);
+          localStorage.setItem("poochToken", auth.token);
+          localStorage.setItem("uuid", auth.uuid);
+
+          goToNextDestination(auth.status, auth.signUpStatus);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
+
+    })
+    .catch((error) => {
+      console.error("Error: ", error);
+    });
+
+  }
+
   return (
     <>
       <LandingHeader />
@@ -67,6 +139,8 @@ const Signin = () => {
                     name="email"
                     type="email"
                     autoComplete="email"
+                    value={groomerInfo.email}
+                    onChange={handleInputChange}
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
                   />
@@ -86,6 +160,8 @@ const Signin = () => {
                     name="password"
                     type="password"
                     autoComplete="current-password"
+                    value={groomerInfo.password}
+                    onChange={handleInputChange}
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
                   />
@@ -121,7 +197,8 @@ const Signin = () => {
 
               <div>
                 <button
-                  type="submit"
+                  onClick={()=>signInWithEmail()}
+                  type="button"
                   className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997]"
                 >
                   Sign in

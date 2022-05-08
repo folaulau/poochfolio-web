@@ -1,15 +1,16 @@
 import { useState } from "react";
-import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import LandingHeader from "../components/landing-page/LandingHeader";
+import GroomerApi from "../api/GroomerApi";
+import FirebaseApi from "../api/FirebaseApi";
 
 const Signup = () => {
+
   const [userInfo, setUserInfo] = useState({
-    email: "",
-    password: "",
+    email: "folaudev+"+Math.floor(Math.random() * 1000000000)+"@gmail.com",
+    password: "Test1234!",
   });
+
   let navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -20,52 +21,28 @@ const Signup = () => {
   };
 
   const handleSubmit = (e) => {
-    setUserInfo({
-      email: "",
-      password: "",
-    });
+
     e.preventDefault();
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCWPe0Y1xqKVM4mMNqMxNYwSsmB5dsg-lk",
-      authDomain: "dev-pooch-technologies-inc.firebaseapp.com",
-      projectId: "dev-pooch-technologies-inc",
-      storageBucket: "dev-pooch-technologies-inc.appspot.com",
-      messagingSenderId: "783774460598",
-      appId: "1:783774460598:web:b2cea9f39f0ccba48f9417",
-      measurementId: "G-CD147SVBFD",
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const email = userInfo.email;
-    const password = userInfo.password;
-
-    createUserWithEmailAndPassword(auth, email, password)
+      FirebaseApi.signUpWithEmail(userInfo.email, userInfo.password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("userCredential", userCredential);
 
-        fetch("https://dev-api.poochapp.net/v1/groomers/authenticate", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-api-key": "f9609c0c-6e70-42c3-afaf-10f64bc02b21",
-          },
-          body: JSON.stringify({
-            token: user.accessToken,
-          }),
+        let authentication = {
+          "token": user.accessToken
+        };
+
+        GroomerApi.authenticate(authentication)
+        .then((response) => {
+          console.log("Success:", response.data);
+          localStorage.setItem("poochToken", response.data.token);
+          localStorage.setItem("uuid", response.data.uuid);
+          navigate("/sign-up/create-profile");
         })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log("Success:", data);
-            localStorage.setItem("poochToken", data.token);
-            localStorage.setItem("uuid", data.uuid);
-            navigate("/sign-up/create-profile");
-          })
-          .catch((error) => {
-            console.log("Error", error);
-          });
+        .catch((error) => {
+          console.log("Error", error);
+        });
       })
       .catch((error) => {
         console.error("Error: ", error);
@@ -105,7 +82,7 @@ const Signup = () => {
                   htmlFor="email"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Email address
+                  Email Address
                 </label>
                 <div className="mt-1">
                   <input
@@ -174,7 +151,7 @@ const Signup = () => {
                   type="submit"
                   className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997]"
                 >
-                  Sign in
+                  Sign Up
                 </button>
               </div>
             </form>
