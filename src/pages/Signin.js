@@ -3,6 +3,8 @@ import LandingHeader from "../components/landing-page/LandingHeader";
 import { useNavigate } from "react-router-dom";
 import { startFetchGetGroomer } from "../../src/components/hooks/getProfile";
 import GroomerGraphql from "../graphql/GroomerGraphQL";
+import FirebaseApi from "../api/FirebaseApi";
+import GroomerApi from "../api/GroomerApi";
 
 const Signin = () => {
   const [groomerInfo, setGroomerInfo] = useState({
@@ -25,23 +27,36 @@ const Signin = () => {
       console.log("Success:", response);
       let groomerInfo = response.data.data;
       console.log("groomerInfo:", groomerInfo);
-      const { signUpStatus } = groomerInfo?.groomer?.[0] || "";
-      console.log("signUpStatus", signUpStatus);
-      // switch (signUpStatus) {
-      //   case "CREATE_PROFILE":
-      //     navigate("/sign-up/create-profile");
-      //     break;
-      //   case "ADD_SERVICES":
-      //     navigate("/sign-up/input-listing2");
-      //     break;
-      //   default:
-      //     navigate("/");
-      // }
 
+      goToNextDestination(groomerInfo.status, groomerInfo.signUpStatus);
     })
     .catch((error) => {
       console.log("Error", error);
     });
+  }
+
+  const goToNextDestination = (status,signUpStatus) => {
+    console.log("goToNextDestination")
+    console.log("status, ", status)
+    console.log("signUpStatus, ", signUpStatus)
+    if(status==="ACTIVE" || status==="PENDING_APPROVAL"){
+      navigate("/dashboard");
+    }else if(status==="SIGNIN_UP"){
+      switch (signUpStatus) {
+        case "CREATE_PROFILE":
+          navigate("/sign-up/create-profile");
+          break;
+        case "ADD_SERVICES":
+          navigate("/sign-up/input-listing2");
+          break;
+        default:
+          navigate("/");
+      }
+    }else{
+      // display message to user that he's either inactive or blocked
+    }
+
+    
   }
 
   const handleInputChange = (e) => {
@@ -50,6 +65,39 @@ const Signin = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const signInWithEmail = () =>{
+    console.log("signInWithEmail")
+    console.log(groomerInfo)
+    FirebaseApi.signInWithEmail(groomerInfo.email, groomerInfo.password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log("userCredential", userCredential);
+
+      let authentication = {
+        "token": user.accessToken,
+        "rememberMe": true
+      };
+
+      GroomerApi.authenticate(authentication)
+      .then((response) => {
+          let auth = response.data;
+          console.log("auth, ", auth);
+          localStorage.setItem("poochToken", auth.token);
+          localStorage.setItem("uuid", auth.uuid);
+
+          goToNextDestination(auth.status, auth.signUpStatus);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
+
+    })
+    .catch((error) => {
+      console.error("Error: ", error);
+    });
+
+  }
 
   return (
     <>
@@ -149,7 +197,8 @@ const Signin = () => {
 
               <div>
                 <button
-                  type="submit"
+                  onClick={()=>signInWithEmail()}
+                  type="button"
                   className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997]"
                 >
                   Sign in

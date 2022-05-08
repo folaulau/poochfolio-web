@@ -1,26 +1,10 @@
 import { useState } from "react";
-import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import LandingHeader from "../components/landing-page/LandingHeader";
 import GroomerApi from "../api/GroomerApi";
+import FirebaseApi from "../api/FirebaseApi";
 
 const Signup = () => {
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyCWPe0Y1xqKVM4mMNqMxNYwSsmB5dsg-lk",
-    authDomain: "dev-pooch-technologies-inc.firebaseapp.com",
-    projectId: "dev-pooch-technologies-inc",
-    storageBucket: "dev-pooch-technologies-inc.appspot.com",
-    messagingSenderId: "783774460598",
-    appId: "1:783774460598:web:b2cea9f39f0ccba48f9417",
-    measurementId: "G-CD147SVBFD",
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
 
   const [userInfo, setUserInfo] = useState({
     email: "folaudev+"+Math.floor(Math.random() * 1000000000)+"@gmail.com",
@@ -40,7 +24,7 @@ const Signup = () => {
 
     e.preventDefault();
 
-    createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
+      FirebaseApi.signUpWithEmail(userInfo.email, userInfo.password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("userCredential", userCredential);
