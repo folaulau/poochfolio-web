@@ -18,45 +18,15 @@ const GroomerApi = {
         };
         return instance.post('/groomers/authenticate', JSON.stringify(payload), options);
     },
-    updatePassword: (passwordObj) => {
+    updateProfile: (groomer) => {
 
         const options = {
             headers: {
                 'Content-Type': 'application/json',
-                'token': localStorage.getItem("token")
+                'token': localStorage.getItem("poochToken")
             }
         };
-        return instance.put('/users/password', JSON.stringify(passwordObj), options);
-    }, 
-    addNewUser: (data) => {
-
-        const options = {
-            headers: {
-                'Content-Type': 'application/json',
-                'token': localStorage.getItem("token")
-            }
-        };
-        return instance.post('/users/add', JSON.stringify(data), options);
-    },   
-    removeUser: (uuid) => {
-
-        const options = {
-            headers: {
-                'Content-Type': 'application/json',
-                'token': localStorage.getItem("token")
-            }
-        };
-        return instance.delete('/users/remove?uuid='+uuid, options);
-    },
-    updateUser: (user) => {
-
-        const options = {
-            headers: {
-                'Content-Type': 'application/json',
-                'token': localStorage.getItem("token")
-            }
-        };
-        return instance.put('/users/student', JSON.stringify(user), options);
+        return instance.put('/groomers/profile', JSON.stringify(groomer), options);
     }
 }
 
