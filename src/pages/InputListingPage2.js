@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   ClipboardCheckIcon,
   PlusCircleIcon,
@@ -6,13 +6,17 @@ import {
 } from "@heroicons/react/solid";
 import { Switch } from "@headlessui/react";
 import { useDropzone } from "react-dropzone";
+import GroomerGraphql from "../graphql/GroomerGraphQL";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const InputListingPage2 = () => {
+  const [myData, setMyData] = useState([]);
+  const [careServices, setCareServices] = useState([]);
   const [images, setImages] = useState([]);
+  const [contracts, setContracts] = useState([]);
   const [instantBooking, setInstantBooking] = useState(false);
   const [services, setServices] = useState({
     chargePerMile: 0,
@@ -27,7 +31,14 @@ const InputListingPage2 = () => {
   const poochToken = localStorage.getItem("poochToken");
   const poochUuid = localStorage.getItem("uuid");
 
-  const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
+  useEffect(async () => {
+    const {
+      data: { data },
+    } = await GroomerGraphql.getProfile();
+    setCareServices(data.groomer[0].careServices);
+  }, []);
+  console.log("careServices", careServices);
+  const onImageDrop = useCallback((acceptedFiles, rejectedFiles) => {
     acceptedFiles.forEach((file) => {
       const reader = new FileReader();
       reader.onload = () => {
@@ -37,7 +48,24 @@ const InputListingPage2 = () => {
     });
   }, []);
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
-    onDrop,
+    onImageDrop,
+  });
+
+  const onContractDrop = useCallback((acceptedFiles, rejectedFiles) => {
+    acceptedFiles.forEach((file) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setContracts((prevState) => [...prevState, reader.result]);
+      };
+      reader.readAsDataURL(file);
+    });
+  }, []);
+  const {
+    acceptedFiles: af,
+    getRootProps: grp,
+    getInputProps: gip,
+  } = useDropzone({
+    onContractDrop,
   });
 
   const files = acceptedFiles.map((file) => {
@@ -47,12 +75,14 @@ const InputListingPage2 = () => {
       </li>
     );
   });
-  // const onDrop = useCallback((acceptedFiles,))
-  //   acceptedFiles.forEach((file) => {
-  //     setImages((prevState) => [...prevState, file]);
-  //   });
+  const contractFiles = af.map((file) => {
+    return (
+      <li key={file.path}>
+        {file.path} - {file.size} bytes
+      </li>
+    );
+  });
 
-  console.log("images", images);
   const handleChange = (e) => {
     setServices({
       ...services,
@@ -99,11 +129,56 @@ const InputListingPage2 = () => {
         console.error("Error: ", error);
       });
   };
+
+  const handleContract = () => {
+    let formdata = new FormData();
+    formdata.append("docs", af[0], af[0].path);
+    fetch(
+      `https://dev-api.poochapp.net/v1/groomers/${poochUuid}/contract/documents`,
+      {
+        method: "POST",
+        headers: {
+          token: localStorage.getItem("poochToken"),
+        },
+        body: formdata,
+        redirect: "follow",
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error: ", error);
+      });
+  };
+  const handleServicePrice = (e, id) => {
+    const updatedPrices = careServices.map((item) => ({
+      ...item,
+      [e.target.name]: id === item.id ? +e.target.value : +item[e.target.name],
+    }));
+    setCareServices(updatedPrices);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const putBody = {
+      instantBooking: instantBooking,
+      ...services,
+      ...pickDrop,
+      description: description,
+    };
+
+    console.log("putBody", putBody);
+  };
   return (
-    <div className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500 bg-[#f3f8ff]">
+    <form
+      className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500 bg-[#f3f8ff]"
+      onSubmit={handleSubmit}
+    >
       <div className="w-1/2 mt-12">
         <div className="py-2 min-w-full">
-          <div className="overflow-hidden ring-1 ring-gray-300 rounded-xl">
+          <div className="overflow-x-scroll ring-1 ring-gray-300 rounded-xl">
             <table className="min-w-full bg-white">
               <thead
                 className="border-b"
@@ -143,24 +218,37 @@ const InputListingPage2 = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    Dog Daycare
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    {/* <span>$</span> */}
-                    <input
-                      type="number"
-                      className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
-                    />
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    <input className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold" />
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    <input className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold" />
-                  </td>
-                </tr>
+                {careServices.map((service) => (
+                  <tr className="border-b" key={service.id}>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      {service.name}
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <input
+                        type="number"
+                        name="small_price"
+                        className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
+                        onChange={(e) => handleServicePrice(e, service.id)}
+                      />
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <input
+                        type="number"
+                        name="medium_price"
+                        className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
+                        onChange={(e) => handleServicePrice(e, service.id)}
+                      />
+                    </td>
+                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                      <input
+                        type="number"
+                        name="large_price"
+                        className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
+                        onChange={(e) => handleServicePrice(e, service.id)}
+                      />
+                    </td>
+                  </tr>
+                ))}
                 <tr className="text-center">
                   <td colSpan="5" className="py-4">
                     <button className="flex mx-auto items-center gap-x-1">
@@ -174,7 +262,6 @@ const InputListingPage2 = () => {
           </div>
         </div>
       </div>
-
       <div className="w-1/2 mt-6 bg-white ring-1 ring-1 ring-gray-300 rounded-xl">
         <div className="flex pt-8 px-7 justify-between">
           <h1 className="uppercase text-[#2a8ca6] font-bold">
@@ -270,7 +357,6 @@ const InputListingPage2 = () => {
           />
         </div>
       </div>
-
       <div className="w-1/2">
         <div className="flex py-8 justify-between">
           <h1>What is the Maximum Occupancy at Your Business?</h1>
@@ -289,13 +375,13 @@ const InputListingPage2 = () => {
           <h1>200 Dogs</h1>
         </div>
       </div>
-
       <div className="w-1/2 mt-6">
         <h1>Description</h1>
         <textarea
           className="w-full rounded-2xl border h-32 border-[#81d6e6] bg-inherit pt-6 pl-8"
           onChange={(e) => setDescription(e.target.value)}
           name="description"
+          value={description}
           style={{ boxShadow: "inset 0px 0px 10px #81d6e6" }}
           placeholder="Type description"
         ></textarea>
@@ -316,18 +402,24 @@ const InputListingPage2 = () => {
         Submit Image
       </button>
       <div
-        {...getRootProps({ className: "dropzone" })}
+        {...grp({ className: "dropzone" })}
         className="w-1/2 mt-6 border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40 flex flex-col justify-center items-center"
       >
         <ClipboardCheckIcon className="h-6 text-[#077997]" />
-        <input {...getInputProps()} />
+        <input {...gip()} />
 
         <p className="text-[#077997]">Drag and Drop</p>
         <p className="text-[#077997]">
           Contract you need your customers to sign
         </p>
+        <ul>{contractFiles}</ul>
       </div>
-
+      <button
+        onClick={handleContract}
+        className="bg-red-300 border border-red-600"
+      >
+        Submit Contracts
+      </button>{" "}
       <div className="w-1/2 flex justify-center">
         <button
           type="submit"
@@ -336,7 +428,7 @@ const InputListingPage2 = () => {
           Post listing
         </button>{" "}
       </div>
-    </div>
+    </form>
   );
 };
 
