@@ -8,6 +8,7 @@ import { Switch } from "@headlessui/react";
 import { useDropzone } from "react-dropzone";
 import GroomerGraphql from "../graphql/GroomerGraphQL";
 import GroomerApi from "../api/GroomerApi";
+import Modal from "../components/input-listing/modal";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -31,6 +32,7 @@ const InputListingPage2 = () => {
 
   const poochToken = localStorage.getItem("poochToken");
   const poochUuid = localStorage.getItem("uuid");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(async () => {
     const {
@@ -281,7 +283,10 @@ const InputListingPage2 = () => {
                 ))}
                 <tr className="text-center">
                   <td colSpan="5" className="py-4">
-                    <button className="flex mx-auto items-center gap-x-1">
+                    <button
+                      className="flex mx-auto items-center gap-x-1"
+                      onClick={() => setIsModalOpen(!isModalOpen)}
+                    >
                       <PlusCircleIcon className="h-7 w-7 text-[#077997]" />
                       <span>Add Services</span>
                     </button>
@@ -458,6 +463,7 @@ const InputListingPage2 = () => {
           Post listing
         </button>{" "}
       </div>
+      {isModalOpen && <Modal />}
     </form>
   );
 };
