@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PlusCircleIcon, PhotographIcon } from "@heroicons/react/solid";
 import { Switch } from "@headlessui/react";
 import { useDropzone } from "react-dropzone";
+import GroomerApi from "../api/GroomerApi";
+import GroomerGraphql from "../graphql/GroomerGraphQL";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -22,6 +24,36 @@ const InputListingPage2 = () => {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     disabled: false,
   });
+
+  useEffect(() => {
+    loadProfile();
+    loadServiceTypes();
+  },[]);
+
+
+  const loadProfile = () =>{
+    GroomerGraphql.getProfile()
+    .then((response) => {
+      console.log("Success:", response);
+      let groomerInfo = response.data.data?.groomer[0];
+      console.log("groomerInfo:", groomerInfo);
+    })
+    .catch((error) => {
+      console.log("Error", error);
+    });
+  }
+
+  const loadServiceTypes = () =>{
+    GroomerApi.getServiceTypes()
+    .then((response) => {
+      console.log("Success:", response);
+      let serviceTypes = response.data;
+      console.log("serviceTypes:", serviceTypes);
+    })
+    .catch((error) => {
+      console.log("Error", error);
+    });
+  }
 
   const files = acceptedFiles.map((file) => {
     return (
