@@ -90,24 +90,13 @@ const CreateProfilePage = () => {
 
       console.log("mainAddress:", mainAddress);
 
-      let groomerAddress = {
-        uuid: mainAddress?.uuid || "",
-        street: mainAddress?.street || "",
-        city: mainAddress?.city || "",
-        state: mainAddress?.state || "",
-        zipcode: mainAddress?.zipcode || "",
-        country: mainAddress?.country || "",
-        longitude: mainAddress?.longitude || 0,
-        latitude: mainAddress?.latitude || 0
-      }
-
-      if(groomerAddress!==""){
-        setAddressAsLine(groomerAddress.street+", "+groomerAddress.city+" "+groomerAddress.zipcode);
+      if(mainAddress!=undefined && mainAddress.uuid!=undefined && mainAddress.uuid!==""){
+        setAddressAsLine(mainAddress.street+", "+mainAddress.city+", "+mainAddress.state+" "+mainAddress.zipcode);
       }
     
       setAddress({
         ...address,
-        ...groomerAddress
+        ...mainAddress
       })
       
     })
@@ -154,11 +143,11 @@ const CreateProfilePage = () => {
       careServices: careServices.map((item) => ({
         name: item.name,
       })),
-      addresses: [{ ...address }],
+      address: address
     };
     
 
-    GroomerApi.updateProfile(putBody)
+    GroomerApi.createUpdateProfile(putBody)
     .then((response) => {
       console.log("Success:", response);
       navigate("/sign-up/input-listing2");
@@ -233,6 +222,7 @@ const CreateProfilePage = () => {
               onPlaceSelected={(place) => {
                 const formattedAddress = place.formatted_address;
                 setAddress({
+                  uuid: ((address.uuid!=="") ? address.uuid : ""),
                   street: formattedAddress.split(",")[0],
                   city: formattedAddress.split(",")[1].trim(),
                   state: formattedAddress.split(",")[2].trim().split(" ")[0],
