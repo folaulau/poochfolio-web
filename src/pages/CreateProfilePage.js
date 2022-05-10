@@ -22,7 +22,7 @@ const CreateProfilePage = () => {
       labelName: "overNight",
     },
     {
-      name: "Pick Up",
+      name: "Pick up/Drop off",
       labelName: "pickDrop",
     },
   ]);
@@ -33,11 +33,23 @@ const CreateProfilePage = () => {
     lastName: "",
     businessName: "",
     phoneNumber: "",
-    addresses: [],
+    careServices: [
+      {
+        "uuid": "",
+        "name": "",
+        "smallPrice": 0,
+        "serviceSmall": true,
+        "mediumPrice": 0,
+        "serviceMedium": true,
+        "largePrice": 0,
+        "serviceLarge": true
+      }
+    ],
     signUpStatus: "ADD_SERVICES",
   });
 
   const [address, setAddress] = useState({
+    uuid: "",
     street: "",
     city: "",
     state: "",
@@ -46,6 +58,8 @@ const CreateProfilePage = () => {
     longitude: 0,
     latitude: 0,
   });
+
+  const [addressAsLine, setAddressAsLine] = useState("");
 
   useEffect(() => {
     loadProfile();
@@ -56,8 +70,46 @@ const CreateProfilePage = () => {
     GroomerGraphql.getProfile()
     .then((response) => {
       console.log("Success:", response);
-      let groomerInfo = response.data.data?.groomer[0];
-      console.log("groomerInfo:", groomerInfo);
+      let groomer =  response.data.data?.groomer[0];
+
+      let groomerData = {
+        "firstName": groomer?.firstName || "",
+        "lastName": groomer?.lastName || "",
+        "businessName": groomer?.businessName || "",
+        "phoneNumber": groomer?.phoneNumber || ""
+      }
+
+      console.log("groomer:", groomerData);
+
+      setGroomerInfo({
+        ...groomerInfo,
+        ...groomerData
+      });
+
+      let mainAddress = groomer?.addresses?.[0];
+
+      console.log("mainAddress:", mainAddress);
+
+      let groomerAddress = {
+        uuid: mainAddress?.uuid || "",
+        street: mainAddress?.street || "",
+        city: mainAddress?.city || "",
+        state: mainAddress?.state || "",
+        zipcode: mainAddress?.zipcode || "",
+        country: mainAddress?.country || "",
+        longitude: mainAddress?.longitude || 0,
+        latitude: mainAddress?.latitude || 0
+      }
+
+      if(groomerAddress!==""){
+        setAddressAsLine(groomerAddress.street+", "+groomerAddress.city+" "+groomerAddress.zipcode);
+      }
+    
+      setAddress({
+        ...address,
+        ...groomerAddress
+      })
+      
     })
     .catch((error) => {
       console.log("Error", error);
@@ -95,6 +147,8 @@ const CreateProfilePage = () => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+
     const putBody = {
       ...groomerInfo,
       careServices: careServices.map((item) => ({
@@ -102,53 +156,17 @@ const CreateProfilePage = () => {
       })),
       addresses: [{ ...address }],
     };
-    e.preventDefault();
-    fetch("https://dev-api.poochapp.net/v1/groomers/profile", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        token: localStorage.getItem("poochToken"),
-      },
-      body: JSON.stringify(putBody),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        // window.location.replace("http://localhost:3000/input-listing");
-        setTimeout(() => {
-          navigate("/sign-up/input-listing2");
-        }, 3000);
-      })
-      .catch((error) => {
-        console.error("Error: ", error);
-      });
+    
 
-    setGroomerInfo({
-      firstName: "",
-      lastName: "",
-      businessName: "",
-      phoneNumber: "",
-      addresses: [],
+    GroomerApi.updateProfile(putBody)
+    .then((response) => {
+      console.log("Success:", response);
+      navigate("/sign-up/input-listing2");
+    })
+    .catch((error) => {
+      console.error("Error: ", error);
     });
 
-    setCareServices([
-      {
-        name: "Grooming",
-        labelName: "grooming",
-      },
-      {
-        name: "Daycare",
-        labelName: "dayCare",
-      },
-      {
-        name: "Overnight",
-        labelName: "overNight",
-      },
-      // {
-      //   name: "Pick/Drop",
-      //   labelName: "pickDrop",
-      // },
-    ]);
   };
 
   const handleChange = (e) => {
@@ -209,6 +227,7 @@ const CreateProfilePage = () => {
               type="address"
               name="name"
               id="name"
+              defaultValue={addressAsLine}
               className="shadow-sm block w-full p-3 rounded-full text-[15px] text-[#a1a1a1] font-Museo-Sans-Rounded-500 bg-red-[#f1f7ff]"
               apiKey="AIzaSyCWPe0Y1xqKVM4mMNqMxNYwSsmB5dsg-lk"
               onPlaceSelected={(place) => {
@@ -223,7 +242,7 @@ const CreateProfilePage = () => {
                   longitude: place.geometry.location.lng(),
                 });
               }}
-              style={{ border: "1px solid #85d8e7" }}
+              style={{ border: "1px solid #85d8e7", color: "black" }}
               options={{
                 types: ["address"],
               }}
