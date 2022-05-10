@@ -27,6 +27,16 @@ const GroomerApi = {
             }
         };
         return instance.put('/groomers/profile', JSON.stringify(groomer), options);
+    },
+    getServiceTypes: () => {
+
+        const options = {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-api-key': xApiKey
+            }
+        };
+        return instance.get('/groomers/service/types', options);
     }
 }
 

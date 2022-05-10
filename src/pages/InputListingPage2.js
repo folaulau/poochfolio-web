@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useCallback, useEffect, useState } from "react";
 import {
   ClipboardCheckIcon,
@@ -6,6 +7,13 @@ import {
 } from "@heroicons/react/solid";
 import { Switch } from "@headlessui/react";
 import { useDropzone } from "react-dropzone";
+=======
+import { useState, useEffect } from "react";
+import { PlusCircleIcon, PhotographIcon } from "@heroicons/react/solid";
+import { Switch } from "@headlessui/react";
+import { useDropzone } from "react-dropzone";
+import GroomerApi from "../api/GroomerApi";
+>>>>>>> 95d4fee45be8756a5661b4a3feefb15c1ba546c1
 import GroomerGraphql from "../graphql/GroomerGraphQL";
 
 function classNames(...classes) {
@@ -67,6 +75,36 @@ const InputListingPage2 = () => {
   } = useDropzone({
     onContractDrop,
   });
+
+  useEffect(() => {
+    loadProfile();
+    loadServiceTypes();
+  },[]);
+
+
+  const loadProfile = () =>{
+    GroomerGraphql.getProfile()
+    .then((response) => {
+      console.log("Success:", response);
+      let groomerInfo = response.data.data?.groomer[0];
+      console.log("groomerInfo:", groomerInfo);
+    })
+    .catch((error) => {
+      console.log("Error", error);
+    });
+  }
+
+  const loadServiceTypes = () =>{
+    GroomerApi.getServiceTypes()
+    .then((response) => {
+      console.log("Success:", response);
+      let serviceTypes = response.data;
+      console.log("serviceTypes:", serviceTypes);
+    })
+    .catch((error) => {
+      console.log("Error", error);
+    });
+  }
 
   const files = acceptedFiles.map((file) => {
     return (

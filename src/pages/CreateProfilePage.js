@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Input from "../components/common/Input";
 import Autocomplete from "react-google-autocomplete";
 import { services } from "../data/services";
 import { useNavigate } from "react-router-dom";
+import GroomerApi from "../api/GroomerApi";
+import GroomerGraphql from "../graphql/GroomerGraphQL";
 
 const CreateProfilePage = () => {
   let navigate = useNavigate();
@@ -44,6 +46,35 @@ const CreateProfilePage = () => {
     longitude: 0,
     latitude: 0,
   });
+
+  useEffect(() => {
+    loadProfile();
+    loadServiceTypes();
+  },[]);
+
+  const loadProfile = () =>{
+    GroomerGraphql.getProfile()
+    .then((response) => {
+      console.log("Success:", response);
+      let groomerInfo = response.data.data?.groomer[0];
+      console.log("groomerInfo:", groomerInfo);
+    })
+    .catch((error) => {
+      console.log("Error", error);
+    });
+  }
+
+  const loadServiceTypes = () =>{
+    GroomerApi.getServiceTypes()
+    .then((response) => {
+      console.log("Success:", response);
+      let serviceTypes = response.data;
+      console.log("serviceTypes:", serviceTypes);
+    })
+    .catch((error) => {
+      console.log("Error", error);
+    });
+  }
 
   const handleServiceSelect = (selectedItem) => {
     console.log("selectedItem", selectedItem);
