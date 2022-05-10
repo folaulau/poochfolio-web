@@ -60,6 +60,7 @@ const CreateProfilePage = () => {
   });
 
   const [addressAsLine, setAddressAsLine] = useState("");
+  const [addressUuid, setAddressUuid] = useState("");
 
   useEffect(() => {
     loadProfile();
@@ -88,17 +89,18 @@ const CreateProfilePage = () => {
 
       let mainAddress = groomer?.addresses?.[0];
 
+      setAddress({
+        ...address,
+        ...mainAddress
+      })
+
+      setAddressUuid(mainAddress.uuid)
+
       console.log("mainAddress:", mainAddress);
 
       if(mainAddress!=undefined && mainAddress.uuid!=undefined && mainAddress.uuid!==""){
         setAddressAsLine(mainAddress.street+", "+mainAddress.city+", "+mainAddress.state+" "+mainAddress.zipcode);
       }
-    
-      setAddress({
-        ...address,
-        ...mainAddress
-      })
-      
     })
     .catch((error) => {
       console.log("Error", error);
@@ -158,6 +160,29 @@ const CreateProfilePage = () => {
 
   };
 
+  const updateAddress = (place) => {
+    console.log("addressUuid, ", addressUuid)
+    
+    const formattedAddress = place.formatted_address;
+
+    let newAddress = {
+      street: formattedAddress.split(",")[0],
+      city: formattedAddress.split(",")[1].trim(),
+      state: formattedAddress.split(",")[2].trim().split(" ")[0],
+      zipcode: formattedAddress.split(",")[2].trim().split(" ")[1],
+      country: formattedAddress.split(",")[3].trim(),
+      latitude: place.geometry.location.lat(),
+      longitude: place.geometry.location.lng(),
+    };
+  
+    console.log("newAddress, ", newAddress)
+
+    setAddress(address => ({
+      ...address, 
+      ...newAddress
+    }));
+  };
+
   const handleChange = (e) => {
     setGroomerInfo({
       ...groomerInfo,
@@ -204,6 +229,15 @@ const CreateProfilePage = () => {
           value={groomerInfo.phoneNumber}
           required={true}
         />
+        <Input
+          labelText="Addr"
+          placeholderText="123-45-6789"
+          type="text"
+          name="address.street"
+          handleChange={handleChange}
+          value={address.street + `, ` + addressUuid}
+          required={true}
+        />
         <div className="mb-5 sm:col-span-2">
           <label
             htmlFor="name"
@@ -212,6 +246,7 @@ const CreateProfilePage = () => {
             Address
           </label>
           <div className="mt-3.5">
+
             <Autocomplete
               type="address"
               name="name"
@@ -219,19 +254,7 @@ const CreateProfilePage = () => {
               defaultValue={addressAsLine}
               className="shadow-sm block w-full p-3 rounded-full text-[15px] text-[#a1a1a1] font-Museo-Sans-Rounded-500 bg-red-[#f1f7ff]"
               apiKey="AIzaSyCWPe0Y1xqKVM4mMNqMxNYwSsmB5dsg-lk"
-              onPlaceSelected={(place) => {
-                const formattedAddress = place.formatted_address;
-                setAddress({
-                  uuid: ((address.uuid!=="") ? address.uuid : ""),
-                  street: formattedAddress.split(",")[0],
-                  city: formattedAddress.split(",")[1].trim(),
-                  state: formattedAddress.split(",")[2].trim().split(" ")[0],
-                  zipcode: formattedAddress.split(",")[2].trim().split(" ")[1],
-                  country: formattedAddress.split(",")[3].trim(),
-                  latitude: place.geometry.location.lat(),
-                  longitude: place.geometry.location.lng(),
-                });
-              }}
+              onPlaceSelected={(place) => updateAddress(place)}
               style={{ border: "1px solid #85d8e7", color: "black" }}
               options={{
                 types: ["address"],
