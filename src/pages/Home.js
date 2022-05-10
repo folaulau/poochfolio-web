@@ -118,7 +118,7 @@ export default function Home2() {
           <FootH3 text="Features" />
           <ul className="ml-5">
             {features.map((feature) => (
-              <FootListItem text={feature} key={feature}  />
+              <FootListItem text={feature} key={feature} />
             ))}
           </ul>
         </section>

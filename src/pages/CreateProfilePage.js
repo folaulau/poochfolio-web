@@ -22,7 +22,7 @@ const CreateProfilePage = () => {
       labelName: "overNight",
     },
     {
-      name: "Pick Up",
+      name: "Pick up/Drop off",
       labelName: "pickDrop",
     },
   ]);
@@ -34,7 +34,7 @@ const CreateProfilePage = () => {
     businessName: "",
     phoneNumber: "",
     addresses: [],
-    signUpStatus: "ADD_SERVICES",
+    signUpStatus: "PROFILE_CREATED",
   });
 
   const [address, setAddress] = useState({
@@ -50,45 +50,42 @@ const CreateProfilePage = () => {
   useEffect(() => {
     loadProfile();
     loadServiceTypes();
-  },[]);
+  }, []);
 
-  const loadProfile = () =>{
+  const loadProfile = () => {
     GroomerGraphql.getProfile()
-    .then((response) => {
-      console.log("Success:", response);
-      let groomerInfo = response.data.data?.groomer[0];
-      console.log("groomerInfo:", groomerInfo);
-    })
-    .catch((error) => {
-      console.log("Error", error);
-    });
-  }
+      .then((response) => {
+        console.log("Success:", response);
+        let groomerInfo = response.data.data?.groomer[0];
+        console.log("groomerInfo:", groomerInfo);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
+  };
 
-  const loadServiceTypes = () =>{
+  const loadServiceTypes = () => {
     GroomerApi.getServiceTypes()
-    .then((response) => {
-      console.log("Success:", response);
-      let serviceTypes = response.data;
-      console.log("serviceTypes:", serviceTypes);
-    })
-    .catch((error) => {
-      console.log("Error", error);
-    });
-  }
+      .then((response) => {
+        console.log("Success:", response);
+        let serviceTypes = response.data;
+        console.log("serviceTypes:", serviceTypes);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
+  };
 
   const handleServiceSelect = (selectedItem) => {
-    console.log("selectedItem", selectedItem);
     const localCareServices = [...careServices];
     const selectedIndex = localCareServices.findIndex(
       (item) => item.labelName === selectedItem.labelName
     );
 
     if (selectedIndex > -1) {
-      //remove service from array
       localCareServices.splice(selectedIndex, 1);
       setCareServices(localCareServices);
     } else {
-      //add service to array
       localCareServices.push(selectedItem);
       setCareServices(localCareServices);
     }
@@ -114,7 +111,6 @@ const CreateProfilePage = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
-        // window.location.replace("http://localhost:3000/input-listing");
         setTimeout(() => {
           navigate("/sign-up/input-listing2");
         }, 3000);
@@ -144,10 +140,10 @@ const CreateProfilePage = () => {
         name: "Overnight",
         labelName: "overNight",
       },
-      // {
-      //   name: "Pick/Drop",
-      //   labelName: "pickDrop",
-      // },
+      {
+        name: "Pick up/Drop off",
+        labelName: "pickDrop",
+      },
     ]);
   };
 

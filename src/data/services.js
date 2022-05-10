@@ -39,7 +39,7 @@ export const services = [
     ),
   },
   {
-    name: "Pick/Drop",
+    name: "Pick up/Drop off",
     labelName: "pickDrop",
     icon: (props) => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 33" {...props}>
