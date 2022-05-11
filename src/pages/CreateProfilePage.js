@@ -68,10 +68,10 @@ const CreateProfilePage = () => {
 
       let groomerData = {
         "uuid": groomer?.uuid || "",
-        "firstName": groomer?.firstName || "",
-        "lastName": groomer?.lastName || "",
-        "businessName": groomer?.businessName || "",
-        "phoneNumber": groomer?.phoneNumber || ""
+        "firstName": groomer?.firstName || "Folau",
+        "lastName": groomer?.lastName || "Kave",
+        "businessName": groomer?.businessName || "Test",
+        "phoneNumber": groomer?.phoneNumber || "3109934731"
       }
       
       console.log("groomer:", groomerData);
@@ -136,6 +136,8 @@ const CreateProfilePage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    console.log("address, ",address)
 
     const putBody = {
       ...groomerInfo,
@@ -239,6 +241,7 @@ const CreateProfilePage = () => {
               id="name"
               defaultValue={addressAsLine}
               ref={addressUuidInput}
+              required={true}
               className="shadow-sm block w-full p-3 rounded-full text-[15px] text-[#a1a1a1] font-Museo-Sans-Rounded-500 bg-red-[#f1f7ff]"
               apiKey="AIzaSyCWPe0Y1xqKVM4mMNqMxNYwSsmB5dsg-lk"
               onPlaceSelected={(place, inputRef, autocomplete) => updateAddress(place)}
