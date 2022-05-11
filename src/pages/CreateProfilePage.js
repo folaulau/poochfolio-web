@@ -68,10 +68,10 @@ const CreateProfilePage = () => {
 
       let groomerData = {
         "uuid": groomer?.uuid || "",
-        "firstName": groomer?.firstName || "Folau",
-        "lastName": groomer?.lastName || "Kave",
-        "businessName": groomer?.businessName || "Test",
-        "phoneNumber": groomer?.phoneNumber || "3109934731"
+        "firstName": groomer?.firstName || "",
+        "lastName": groomer?.lastName || "",
+        "businessName": groomer?.businessName || "",
+        "phoneNumber": groomer?.phoneNumber || ""
       }
       
       console.log("groomer:", groomerData);
