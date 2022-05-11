@@ -74,8 +74,6 @@ const CreateProfilePage = () => {
         "phoneNumber": groomer?.phoneNumber || ""
       }
       
-      console.log("groomer:", groomerData);
-
       setGroomerInfo(groomerData);
 
       let groomerCareServices = groomer?.careServices || [];
@@ -104,8 +102,6 @@ const CreateProfilePage = () => {
       let mainAddress = groomer?.addresses?.[0];
 
       setAddress(mainAddress)
-
-      console.log("mainAddress:", mainAddress);
 
       addressUuidInput.current = mainAddress?.uuid || ""
 
@@ -136,8 +132,6 @@ const CreateProfilePage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log("address, ",address)
 
     const putBody = {
       ...groomerInfo,
