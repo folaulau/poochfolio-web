@@ -82,7 +82,7 @@ const CreateProfilePage = () => {
       let groomer =  response.data.data?.groomer[0];
 
       let groomerData = {
-        "uuid": groomer.uuid,
+        "uuid": groomer?.uuid || "",
         "firstName": groomer?.firstName || "",
         "lastName": groomer?.lastName || "",
         "businessName": groomer?.businessName || "",
