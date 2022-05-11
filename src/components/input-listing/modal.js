@@ -1,13 +1,16 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { CheckIcon } from "@heroicons/react/outline";
+// import { XCircleIcon } from "@heroicons/react/outline";
 
-const Modal = () => {
-  const [open, setOpen] = useState(true);
-
+const Modal = ({
+  open,
+  setOpen,
+  careServices,
+  serviceTypes,
+  onServiceChange,
+}) => {
   const cancelButtonRef = useRef(null);
-
   return (
     <div>
       <Transition.Root show={open} as={Fragment}>
@@ -56,33 +59,29 @@ const Modal = () => {
                       >
                         Services
                       </Dialog.Title>
-                      <div className="mt-2">
-                        <p className="text-sm text-gray-500">
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Eius aliquam laudantium explicabo pariatur iste
-                          dolorem animi vitae error totam. At sapiente aliquam
-                          accusamus facere veritatis.
-                        </p>
-                      </div>
+
+                      {careServices.map((service) => (
+                        <>
+                          <div
+                            className="my-2 flex justify-between"
+                            key={service.name}
+                          >
+                            <p className="text-sm text-gray-500">
+                              {service.name}
+                            </p>
+                            {/* <XCircleIcon className="h-6 text-red-600" onClick={} /> */}
+                          </div>
+                          <hr />
+                        </>
+                      ))}
                     </div>
                   </div>
-                  <div className="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
-                    <button
-                      type="button"
-                      className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:col-start-2 sm:text-sm"
-                      onClick={() => setOpen(false)}
-                    >
-                      Deactivate
-                    </button>
-                    <button
-                      type="button"
-                      className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:col-start-1 sm:text-sm"
-                      onClick={() => setOpen(false)}
-                      ref={cancelButtonRef}
-                    >
-                      Cancel
-                    </button>
-                  </div>
+                  <select onChange={(e) => onServiceChange(e)}>
+                    <option>Add New Service</option>
+                    {serviceTypes.map((service) => (
+                      <option key={service.name}>{service.name}</option>
+                    ))}
+                  </select>
                 </Dialog.Panel>
               </Transition.Child>
             </div>

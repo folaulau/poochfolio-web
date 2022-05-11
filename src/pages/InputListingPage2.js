@@ -15,6 +15,7 @@ function classNames(...classes) {
 }
 
 const InputListingPage2 = () => {
+  const [open, setOpen] = useState(false);
   const [myData, setMyData] = useState([]);
   const [careServices, setCareServices] = useState([]);
   const [images, setImages] = useState([]);
@@ -29,7 +30,7 @@ const InputListingPage2 = () => {
     offeredDropOff: false,
   });
   const [description, setDescription] = useState("");
-
+  const [serviceTypes, setServiceTypes] = useState([]);
   const poochToken = localStorage.getItem("poochToken");
   const poochUuid = localStorage.getItem("uuid");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -40,7 +41,7 @@ const InputListingPage2 = () => {
     } = await GroomerGraphql.getProfile();
     setCareServices(data.groomer[0].careServices);
   }, []);
-  console.log("careServices", careServices);
+
   const onImageDrop = useCallback((acceptedFiles, rejectedFiles) => {
     acceptedFiles.forEach((file) => {
       const reader = new FileReader();
@@ -93,7 +94,7 @@ const InputListingPage2 = () => {
       .then((response) => {
         console.log("Success:", response);
         let serviceTypes = response.data;
-        console.log("serviceTypes:", serviceTypes);
+        setServiceTypes(serviceTypes);
       })
       .catch((error) => {
         console.log("Error", error);
@@ -184,6 +185,7 @@ const InputListingPage2 = () => {
         console.error("Error: ", error);
       });
   };
+
   const handleServicePrice = (e, id) => {
     const updatedPrices = careServices.map((item) => ({
       ...item,
@@ -192,6 +194,17 @@ const InputListingPage2 = () => {
     setCareServices(updatedPrices);
   };
 
+  const handleServiceTypes = (e) => {
+    const selectedValue = e.target.value;
+    const localCareServices = [...careServices];
+    if (careServices.some((el) => el.name === selectedValue)) {
+    } else {
+      localCareServices.push({
+        name: selectedValue,
+      });
+      setCareServices(localCareServices);
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     const putBody = {
@@ -203,6 +216,8 @@ const InputListingPage2 = () => {
 
     console.log("putBody", putBody);
   };
+
+  console.log("serviceTypes", serviceTypes);
   return (
     <form
       className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500 bg-[#f3f8ff]"
@@ -285,7 +300,7 @@ const InputListingPage2 = () => {
                   <td colSpan="5" className="py-4">
                     <button
                       className="flex mx-auto items-center gap-x-1"
-                      onClick={() => setIsModalOpen(!isModalOpen)}
+                      onClick={() => setOpen(true)}
                     >
                       <PlusCircleIcon className="h-7 w-7 text-[#077997]" />
                       <span>Add Services</span>
@@ -305,7 +320,7 @@ const InputListingPage2 = () => {
           <Switch
             checked={instantBooking}
             onChange={setInstantBooking}
-            className="flex-shrink-0 group relative rounded-full inline-flex items-center justify-center h-5 w-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="flex-shrink-0 group relative rounded-full inline-flex items-center justify-center h-5 w-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997]"
           >
             <span className="sr-only">Use setting</span>
             <span
@@ -315,7 +330,7 @@ const InputListingPage2 = () => {
             <span
               aria-hidden="true"
               className={classNames(
-                instantBooking ? "bg-indigo-600" : "bg-gray-200",
+                instantBooking ? "bg-[#077997]" : "bg-gray-200",
                 "pointer-events-none absolute h-4 w-9 mx-auto rounded-full transition-colors ease-in-out duration-200"
               )}
             />
@@ -342,7 +357,7 @@ const InputListingPage2 = () => {
                     value={pickUpService.value === false ? false : true}
                     defaultChecked={pickUpService.value === false}
                     onChange={handlePickDrop}
-                    className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                    className="focus:ring-[#077997] h-4 w-4 text-[#077997] border-gray-300"
                   />
                   <label
                     htmlFor={pickUpService.id}
@@ -369,7 +384,7 @@ const InputListingPage2 = () => {
                     value={dropOffService.value}
                     defaultChecked={dropOffService.value === false}
                     onChange={handlePickDrop}
-                    className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+                    className="focus:ring-[#077997] h-4 w-4 text-[#077997] border-gray-300"
                   />
                   <label
                     htmlFor={dropOffService.id}
@@ -463,7 +478,15 @@ const InputListingPage2 = () => {
           Post listing
         </button>{" "}
       </div>
-      {isModalOpen && <Modal />}
+      {open && (
+        <Modal
+          careServices={careServices}
+          serviceTypes={serviceTypes}
+          onServiceChange={handleServiceTypes}
+          open={open}
+          setOpen={setOpen}
+        />
+      )}
     </form>
   );
 };
