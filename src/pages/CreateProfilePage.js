@@ -76,7 +76,7 @@ const CreateProfilePage = () => {
   },[]);
 
   const loadProfile = () =>{
-    GroomerGraphql.getProfile()
+    GroomerGraphql.getOnlyProfile()
     .then((response) => {
       console.log("Success:", response);
       let groomer =  response.data.data?.groomer[0];

@@ -48,7 +48,7 @@ const GroomerGraphql = {
               updatedAt: updated_at
               createdAt: created_at
           }
-          careServices: care_services {
+          careServices: care_services(where: {deleted: {_eq: false}}) {
             id
             uuid
             name
@@ -62,13 +62,65 @@ const GroomerGraphql = {
             updatedAt: updated_at
             createdAt: created_at
           }
-          documents: s3files {
+          documents: s3files(where: {deleted: {_eq: false}}) {
             fileName: file_name
             fileType: file_type
             id
             url
             uuid
             isPublic: is_public
+            createdAt: created_at
+          }
+        }
+      }
+    `;
+    let request = {};
+    request.query = operationsDoc;
+    var options = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem('poochToken')
+      }
+    };
+    return instance.post("", JSON.stringify(request), options);
+  },
+  getOnlyProfile: () => {
+    const operationsDoc = `
+      query getOnlyProfileGroomer {
+        groomer {
+          id
+          uuid
+          phoneNumber: phone_number
+          businessName: business_name
+          description
+          firstName: first_name
+          lastName: last_name
+          signUpStatus: sign_up_status
+          status
+          createdAt: created_at
+          updatedAt: updated_at
+          addresses {
+              id
+              uuid
+              city
+              state
+              country
+              street
+              street2
+              timezone
+              primary: primary_address
+              longitude
+              latitude
+              zipcode
+              updatedAt: updated_at
+              createdAt: created_at
+          }
+          careServices: care_services(where: {deleted: {_eq: false}}) {
+            id
+            uuid
+            name
+            description
+            updatedAt: updated_at
             createdAt: created_at
           }
         }
