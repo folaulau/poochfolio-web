@@ -143,7 +143,7 @@ const CreateProfilePage = () => {
     });
   }
 
-  const handleServiceSelect = (careService) => {
+  const toggleCareService = (careService) => {
     
     let selctedCareServices = careServices.map((cs) => {
 
@@ -293,7 +293,7 @@ const CreateProfilePage = () => {
                 className={`w-40 h-[68px] rounded-xl border ${
                   isSelected ? "bg-[#95e8f7]" : "bg-[#f1f7ff]"
                 }  flex justify-center items-center gap-x-3 m-1`}
-                onClick={() => handleServiceSelect(careService)}
+                onClick={() => toggleCareService(careService)}
               >
                 <service.icon
                   className={`${
