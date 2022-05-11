@@ -7,29 +7,27 @@ import GroomerApi from "../api/GroomerApi";
 import GroomerGraphql from "../graphql/GroomerGraphQL";
 
 const CreateProfilePage = () => {
+  
   let navigate = useNavigate();
+
   const [careServices, setCareServices] = useState([
     {
       name: "Grooming",
-      labelName: "grooming",
       uuid: "",
       selected: true
     },
     {
       name: "Dog Daycare",
-      labelName: "dayCare",
       uuid: "",
       selected: true
     },
     {
       name: "Overnight",
-      labelName: "overNight",
       uuid: "",
       selected: true
     },
     {
       name: "Pick up/Drop off",
-      labelName: "pickDrop",
       uuid: "",
       selected: true
     },
@@ -41,18 +39,6 @@ const CreateProfilePage = () => {
     lastName: "",
     businessName: "",
     phoneNumber: "",
-    careServices: [
-      {
-        "uuid": "",
-        "name": "",
-        "smallPrice": 0,
-        "serviceSmall": true,
-        "mediumPrice": 0,
-        "serviceMedium": true,
-        "largePrice": 0,
-        "serviceLarge": true
-      }
-    ],
     signUpStatus: "ADD_SERVICES",
   });
 
@@ -72,7 +58,6 @@ const CreateProfilePage = () => {
 
   useEffect(() => {
     loadProfile();
-    loadServiceTypes();
   },[]);
 
   const loadProfile = () =>{
@@ -86,57 +71,48 @@ const CreateProfilePage = () => {
         "firstName": groomer?.firstName || "",
         "lastName": groomer?.lastName || "",
         "businessName": groomer?.businessName || "",
-        "phoneNumber": groomer?.phoneNumber || "",
-        "careServices": groomer?.careServices || []
+        "phoneNumber": groomer?.phoneNumber || ""
       }
-
+      
       console.log("groomer:", groomerData);
 
-      if(groomerData.careServices.length>0){
+      setGroomerInfo(groomerData);
 
+      let groomerCareServices = groomer?.careServices || [];
+
+      if(groomerCareServices.length>0){
+
+        /**
+         * By default careServices are all selected.
+         * Now select only the careServices that have been selected before
+         */
         let selctedCareServices = careServices.map((careService) => {
-          let groomerCareService = groomerData.careServices.find(groomerCareService => careService.name===groomerCareService.name);
-          console.log("groomerCareService:", groomerCareService);
+          let groomerCareService = groomerCareServices.find(groomerCareService => careService.name===groomerCareService.name);
           if(groomerCareService===undefined){
-            careService['selected'] = false
+            careService['selected'] = false;
             return careService;
           }else{
             careService['uuid'] = groomerCareService?.uuid || "";
+            careService['selected'] = true;
             return careService;
           }
-          
         }); 
 
-        console.log("selctedCareServices:", selctedCareServices);
         setCareServices(selctedCareServices);
-
       }
-
-      setGroomerInfo(groomerData);
 
       let mainAddress = groomer?.addresses?.[0];
 
       setAddress(mainAddress)
 
-      addressUuidInput.current = mainAddress?.uuid || ""
-
       console.log("mainAddress:", mainAddress);
+
+      addressUuidInput.current = mainAddress?.uuid || ""
 
       if(mainAddress!=undefined && mainAddress.uuid!=undefined && mainAddress.uuid!==""){
         setAddressAsLine(mainAddress.street+", "+mainAddress.city+", "+mainAddress.state+" "+mainAddress.zipcode);
       }
-    })
-    .catch((error) => {
-      console.log("Error", error);
-    });
-  }
 
-  const loadServiceTypes = () =>{
-    GroomerApi.getServiceTypes()
-    .then((response) => {
-      console.log("Success:", response);
-      let serviceTypes = response.data;
-      console.log("serviceTypes:", serviceTypes);
     })
     .catch((error) => {
       console.log("Error", error);
@@ -145,7 +121,7 @@ const CreateProfilePage = () => {
 
   const toggleCareService = (careService) => {
     
-    let selctedCareServices = careServices.map((cs) => {
+    let selectedCareServices = careServices.map((cs) => {
 
       if(careService.name === cs.name){
         cs.selected = !cs.selected
@@ -155,7 +131,7 @@ const CreateProfilePage = () => {
 
     }); 
 
-    setCareServices(selctedCareServices);
+    setCareServices(selectedCareServices);
   };
 
   const handleSubmit = (e) => {
@@ -195,8 +171,6 @@ const CreateProfilePage = () => {
       longitude: place.geometry.location.lng(),
     };
   
-    console.log("newAddress, ", newAddress)
-
     setAddress(address => ({
       ...address, 
       ...newAddress
@@ -288,7 +262,7 @@ const CreateProfilePage = () => {
             return (
               <button
                 type="button"
-                key={service.labelName}
+                key={service.name}
                 style={{ boxShadow: "inset 0px 0px 15px #81d6e6" }}
                 className={`w-40 h-[68px] rounded-xl border ${
                   isSelected ? "bg-[#95e8f7]" : "bg-[#f1f7ff]"

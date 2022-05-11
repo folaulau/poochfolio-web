@@ -1,7 +1,6 @@
 export const services = [
   {
     name: "Grooming",
-    labelName: "grooming",
     icon: (props) => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" {...props}>
         <path
@@ -14,7 +13,6 @@ export const services = [
   },
   {
     name: "Dog Daycare",
-    labelName: "dayCare",
     icon: (props) => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31" {...props}>
         <path
@@ -27,7 +25,6 @@ export const services = [
   },
   {
     name: "Overnight",
-    labelName: "overNight",
     icon: (props) => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 26" {...props}>
         <path
@@ -40,7 +37,6 @@ export const services = [
   },
   {
     name: "Pick up/Drop off",
-    labelName: "pickDrop",
     icon: (props) => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 33" {...props}>
         <path
