@@ -18,6 +18,16 @@ const GroomerApi = {
         };
         return instance.post('/groomers/authenticate', JSON.stringify(payload), options);
     },
+    createUpdateProfile: (groomer) => {
+
+        const options = {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': localStorage.getItem("poochToken")
+            }
+        };
+        return instance.put('/groomers/create-profile', JSON.stringify(groomer), options);
+    },
     updateProfile: (groomer) => {
 
         const options = {

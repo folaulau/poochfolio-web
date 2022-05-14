@@ -43,11 +43,14 @@ const Signin = () => {
       navigate("/dashboard");
     }else if(status==="SIGNING_UP"){
       switch (signUpStatus) {
-        case "CREATE_PROFILE":
+        case "SIGNED_UP":
           navigate("/sign-up/create-profile");
           break;
-        case "ADD_SERVICES":
+        case "PROFILE_CREATED":
           navigate("/sign-up/input-listing2");
+          break;
+        case "LISTING_CREATED":
+          navigate("/payment-method");
           break;
         default:
           navigate("/");
