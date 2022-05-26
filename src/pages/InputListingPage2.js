@@ -15,6 +15,7 @@ function classNames(...classes) {
 }
 
 const InputListingPage2 = () => {
+  
   const [open, setOpen] = useState(false);
   // const [myData, setMyData] = useState([]);
   const [careServices, setCareServices] = useState([]);
@@ -214,6 +215,7 @@ const InputListingPage2 = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const putBody = {
+      uuid: localStorage.getItem("uuid"),
       instantBooking: instantBooking,
       ...services,
       ...pickDrop,
@@ -221,6 +223,9 @@ const InputListingPage2 = () => {
     };
 
     console.log("putBody", putBody);
+    GroomerApi.createUpdateListings(putBody)
+    .then((response) => {})
+    .then((error) => {})
   };
 
   console.log("serviceTypes", serviceTypes);
