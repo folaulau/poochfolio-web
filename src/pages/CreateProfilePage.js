@@ -57,6 +57,7 @@ const CreateProfilePage = () => {
 
   useEffect(() => {
     loadProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadProfile = () => {
@@ -107,8 +108,8 @@ const CreateProfilePage = () => {
         addressUuidInput.current = mainAddress?.uuid || "";
 
         if (
-          mainAddress != undefined &&
-          mainAddress.uuid != undefined &&
+          mainAddress !== undefined &&
+          mainAddress.uuid !== undefined &&
           mainAddress.uuid !== ""
         ) {
           setAddressAsLine(

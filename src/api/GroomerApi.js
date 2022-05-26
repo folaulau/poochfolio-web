@@ -43,7 +43,7 @@ const GroomerApi = {
         const options = {
             headers: {
                 'Content-Type': 'application/json',
-                'x-api-key': xApiKey
+                'token': localStorage.getItem("poochToken")
             }
         };
         return instance.get('/groomers/service/types', options);

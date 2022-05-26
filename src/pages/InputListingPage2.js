@@ -16,7 +16,7 @@ function classNames(...classes) {
 
 const InputListingPage2 = () => {
   const [open, setOpen] = useState(false);
-  const [myData, setMyData] = useState([]);
+  // const [myData, setMyData] = useState([]);
   const [careServices, setCareServices] = useState([]);
   const [images, setImages] = useState([]);
   const [contracts, setContracts] = useState([]);
@@ -31,16 +31,10 @@ const InputListingPage2 = () => {
   });
   const [description, setDescription] = useState("");
   const [serviceTypes, setServiceTypes] = useState([]);
-  const poochToken = localStorage.getItem("poochToken");
+  // const poochToken = localStorage.getItem("poochToken");
   const poochUuid = localStorage.getItem("uuid");
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(async () => {
-    const {
-      data: { data },
-    } = await GroomerGraphql.getProfile();
-    setCareServices(data.groomer[0].careServices);
-  }, []);
 
   const onImageDrop = useCallback((acceptedFiles, rejectedFiles) => {
     acceptedFiles.forEach((file) => {
@@ -50,7 +44,12 @@ const InputListingPage2 = () => {
       };
       reader.readAsDataURL(file);
     });
+    images.forEach((img) => {
+
+    });
+    // eslint-disable-next-line
   }, []);
+
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     onImageDrop,
   });
@@ -63,7 +62,12 @@ const InputListingPage2 = () => {
       };
       reader.readAsDataURL(file);
     });
+    contracts.forEach((img) => {
+
+    });
+    // eslint-disable-next-line
   }, []);
+
   const {
     acceptedFiles: af,
     getRootProps: grp,
@@ -83,6 +87,8 @@ const InputListingPage2 = () => {
         console.log("Success:", response);
         let groomerInfo = response.data.data?.groomer[0];
         console.log("groomerInfo:", groomerInfo);
+
+        setCareServices(groomerInfo.careServices);
       })
       .catch((error) => {
         console.log("Error", error);

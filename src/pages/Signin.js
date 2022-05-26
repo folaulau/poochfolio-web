@@ -1,24 +1,25 @@
 import { useState, useEffect } from "react";
 import LandingHeader from "../components/landing-page/LandingHeader";
 import { useNavigate } from "react-router-dom";
-import { startFetchGetGroomer } from "../../src/components/hooks/getProfile";
 import GroomerGraphql from "../graphql/GroomerGraphQL";
 import FirebaseApi from "../api/FirebaseApi";
 import GroomerApi from "../api/GroomerApi";
 
 const Signin = () => {
+
   const [groomerInfo, setGroomerInfo] = useState({
     email: "folaudev+"+Math.floor(Math.random() * 1000000000)+"@gmail.com",
     password: "Test1234!",
   });
 
   let navigate = useNavigate();
-  const poochToken = localStorage?.getItem("poochToken");
 
-  useEffect(async () => {
+  useEffect(() => {
+
     // const data = await startFetchGetGroomer(poochToken);
     // setProfileData(data);
     loadProfile()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadProfile = () =>{
@@ -222,7 +223,7 @@ const Signin = () => {
               <div className="mt-6 grid grid-cols-3 gap-3">
                 <div>
                   <a
-                    href="#"
+                    href="/"
                     className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                   >
                     <span className="sr-only">Sign in with Facebook</span>
@@ -243,7 +244,7 @@ const Signin = () => {
 
                 <div>
                   <a
-                    href="#"
+                    href="/"
                     className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                   >
                     <span className="sr-only">Sign in with Twitter</span>
@@ -260,7 +261,7 @@ const Signin = () => {
 
                 <div>
                   <a
-                    href="#"
+                    href="/"
                     className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                   >
                     <span className="sr-only">Sign in with GitHub</span>

@@ -5,7 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import PoochRoutes from "./routes";
 
-console.log("node env: " + process.env.NODE_ENV);
+console.log("node env: " + process.env.REACT_APP_ENV);
 console.log("api x-api-key: " + process.env.REACT_APP_X_API_KEY);
 
 ReactDOM.render(

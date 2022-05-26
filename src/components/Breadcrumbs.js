@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { CheckIcon } from "@heroicons/react/solid";
 import { Link, Outlet } from "react-router-dom";
 import Header from "./Header";
@@ -27,7 +26,6 @@ const steps = [
 ];
 
 export default function Breadcrumbs() {
-  const [signUpSteps, setSignUpSteps] = useState(steps);
 
   return (
     <>
@@ -36,7 +34,7 @@ export default function Breadcrumbs() {
       </nav>
       <nav aria-label="Progress" className="w-1/2 mx-auto py-12">
         <ol className="border border-gray-300 rounded-md lg:rounded-full divide-y divide-gray-300 md:flex md:divide-y-0">
-          {signUpSteps.map((step, stepIdx) => (
+          {steps.map((step, stepIdx) => (
             <li key={step.name} className="relative md:flex-1 md:flex">
               {step.status === "complete" ? (
                 <Link to={step.href} className="group flex items-center w-full">
@@ -80,7 +78,7 @@ export default function Breadcrumbs() {
                 </Link>
               )}
 
-              {stepIdx !== signUpSteps.length - 1 ? (
+              {stepIdx !== steps.length - 1 ? (
                 <>
                   {/* Arrow separator for lg screens and up */}
                   <div

@@ -27,14 +27,16 @@ export default function Home2() {
         <div className="hidden md:block md:z-20 md:absolute">
           <Button text="Sign Up" />
         </div>
-        <img src="/landing-page/dog@3x.webp" className="mt-12 md:hidden" />
+        <img src="/landing-page/dog@3x.webp" alt="dog" className="mt-12 md:hidden" />
         <img
           src="/landing-page/sliderbackground.png"
           className="hidden top-[160px] md:block md:absolute "
+          alt="dog"
         />
         <img
           src="/landing-page/poochapp3screens.webp"
           className="mt-12 md:w-1/2 md:mt-96"
+          alt="dog"
         />
         <section className="mx-7">
           <H3 text="Stop worrying about vacancy." />
@@ -62,12 +64,12 @@ export default function Home2() {
             <Button text="Sign Up" />
           </div>
         </section>
-        <img src="/landing-page/statistics@3x.webp" className="mt-14" />
+        <img src="/landing-page/statistics@3x.webp" className="mt-14" alt="dog" />
         <section className="flex flex-col items-center mt-14">
           <H2 text="How It Works" />
-          <img src="/landing-page/dogstep1.svg" />
-          <img src="/landing-page/dogstep2.svg" />
-          <img src="/landing-page/dogstep3.svg" />
+          <img src="/landing-page/dogstep1.svg" alt="dog" />
+          <img src="/landing-page/dogstep2.svg"  alt="dog"/>
+          <img src="/landing-page/dogstep3.svg" alt="dog" />
         </section>
         <section className="flex flex-col items-center justify-center mt-16">
           <h5 className="relative top-3 bg-white h-fit w-fit px-8 font-Museo-Sans-Rounded-500 text-pooch-gray-1">
@@ -81,7 +83,7 @@ export default function Home2() {
       <footer className="text-white pb-20">
         <section className="flex flex-col items-center mt-14">
           <div>
-            <img src="/landing-page/poochFolio.svg" className="mb-7" />
+            <img src="/landing-page/poochFolio.svg" className="mb-7"  alt="dog"/>
           </div>
           <div className="text-[#c0ebf6] text-center">
             <h4>319 North Venice Blvd.</h4>
@@ -93,10 +95,10 @@ export default function Home2() {
           </div>
           <div className="flex gap-x-4 mt-4">
             <div>
-              <img src="/landing-page/apps-store@3x.webp" className="h-14" />
+              <img src="/landing-page/apps-store@3x.webp" className="h-14"  alt="dog"/>
             </div>
             <div>
-              <img src="/landing-page/google-play@3x.webp" className="h-14" />
+              <img src="/landing-page/google-play@3x.webp" className="h-14" alt="dog" />
             </div>
           </div>
         </section>
@@ -123,10 +125,10 @@ export default function Home2() {
           </ul>
         </section>
         <section className="flex justify-around mx-20 mt-20">
-          <img src="/landing-page/linkedin-icon.svg" />
-          <img src="/landing-page/linkedin-icon.svg" />
-          <img src="/landing-page/linkedin-icon.svg" />
-          <img src="/landing-page/linkedin-icon.svg" />
+          <img src="/landing-page/linkedin-icon.svg" alt="dog" />
+          <img src="/landing-page/linkedin-icon.svg"  alt="dog"/>
+          <img src="/landing-page/linkedin-icon.svg"  alt="dog"/>
+          <img src="/landing-page/linkedin-icon.svg"  alt="dog"/>
         </section>
         <section className="flex flex-col items-center mt-7 text-sm font-Museo-Sans-Rounded-300 text-[#c0ebf6]">
           <h6 className="uppercase">

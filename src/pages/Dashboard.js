@@ -5,7 +5,6 @@ import {
   CalendarIcon,
   ChartBarIcon,
   FolderIcon,
-  HomeIcon,
   InboxIcon,
   MenuIcon,
   UsersIcon,
@@ -124,7 +123,7 @@ export default function Dashboard() {
                   </nav>
                 </div>
                 <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
-                  <a href="#" className="flex-shrink-0 group block">
+                  <a href="/" className="flex-shrink-0 group block">
                     <div className="flex items-center">
                       <div>
                         <img
@@ -191,7 +190,7 @@ export default function Dashboard() {
               </nav>
             </div>
             <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
-              <a href="#" className="flex-shrink-0 w-full group block">
+              <a href="/" className="flex-shrink-0 w-full group block">
                 <div className="flex items-center">
                   <div>
                     <img

@@ -7,7 +7,7 @@ const LandingHeader = () => {
 
   return (
     <header className="bg-[#077997] text-white font-Museo-Sans-Rounded-500 flex h-40 items-center justify-evenly">
-      <a href="/"><img src="/landing-page/poochFolio.svg" /></a>
+      <a href="/"><img src="/landing-page/poochFolio.svg" alt="img" /></a>
       <nav className="hidden md:flex w-6/12 justify-evenly items-baseline uppercase">
         <Link to="">Marketplace</Link>
         <Link to="">Management</Link>
@@ -35,11 +35,11 @@ const LandingHeader = () => {
           <XIcon className="h-8 bg-[#077997]" />
         </button>
         <div className="ml-4 flex flex-col text-center text-[#077997] text-2xl">
-          <a className="mb-4 leading-8 block">Marketplace</a>
-          <a className="mb-4 leading-8 block">Management</a>
-          <a className="mb-4 leading-8 block">How it works</a>
-          <a className="mb-4 leading-8 block">Investor relations</a>
-          <a className="mb-4 leading-8 block">Contact</a>
+          <a className="mb-4 leading-8 block" href="/" >Marketplace</a>
+          <a className="mb-4 leading-8 block" href="/">Management</a>
+          <a className="mb-4 leading-8 block" href="/">How it works</a>
+          <a className="mb-4 leading-8 block"href="/">Investor relations</a>
+          <a className="mb-4 leading-8 block" href="/">Contact</a>
         </div>
       </nav>
     </header>
