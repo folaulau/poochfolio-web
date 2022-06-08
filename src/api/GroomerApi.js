@@ -57,6 +57,26 @@ const GroomerApi = {
             }
         };
         return instance.get('/groomers/service/types', options);
+    },
+    uploadProfileImages: (uuid, formdata) => {
+
+        const options = {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'token': localStorage.getItem("poochToken")
+            }
+        };
+        return instance.post(`/groomers/${uuid}/profile/images`, formdata, options);
+    },
+    uploadContracts: (uuid, formdata) => {
+
+        const options = {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'token': localStorage.getItem("poochToken")
+            }
+        };
+        return instance.post(`/groomers/${uuid}/contract/documents`, formdata, options);
     }
 }
 

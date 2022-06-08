@@ -150,20 +150,9 @@ const InputListingPage2 = () => {
     let formdata = new FormData();
     formdata.append("images", acceptedFiles[0], acceptedFiles[0].path);
 
-    fetch(
-      `https://dev-api.poochapp.net/v1/groomers/${poochUuid}/profile/images`,
-      {
-        method: "POST",
-        headers: {
-          token: localStorage.getItem("poochToken"),
-        },
-        body: formdata,
-        redirect: "follow",
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
+    GroomerApi.uploadProfileImages(localStorage.getItem("uuid"), formdata)
+      .then((response) => {
+        console.log("Success:", response);
       })
       .catch((error) => {
         console.error("Error: ", error);
@@ -173,20 +162,9 @@ const InputListingPage2 = () => {
   const handleContract = () => {
     let formdata = new FormData();
     formdata.append("docs", af[0], af[0].path);
-    fetch(
-      `https://dev-api.poochapp.net/v1/groomers/${poochUuid}/contract/documents`,
-      {
-        method: "POST",
-        headers: {
-          token: localStorage.getItem("poochToken"),
-        },
-        body: formdata,
-        redirect: "follow",
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
+    GroomerApi.uploadContracts(localStorage.getItem("uuid"), formdata)
+      .then((response) => {
+        console.log("Success:", response);
       })
       .catch((error) => {
         console.error("Error: ", error);
@@ -212,8 +190,7 @@ const InputListingPage2 = () => {
       setCareServices(localCareServices);
     }
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const postList = () => {
     const putBody = {
       uuid: localStorage.getItem("uuid"),
       instantBooking: instantBooking,
@@ -232,7 +209,6 @@ const InputListingPage2 = () => {
   return (
     <form
       className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500 bg-[#f3f8ff]"
-      onSubmit={handleSubmit}
     >
       <div className="w-1/2 mt-12">
         <div className="py-2 min-w-full">
@@ -458,6 +434,7 @@ const InputListingPage2 = () => {
       </div>
       <button
         onClick={handleImage}
+        type="button"
         className="bg-red-300 border border-red-600"
       >
         Submit Image
@@ -477,13 +454,15 @@ const InputListingPage2 = () => {
       </div>
       <button
         onClick={handleContract}
+        type="button"
         className="bg-red-300 border border-red-600"
       >
         Submit Contracts
       </button>{" "}
       <div className="w-1/2 flex justify-center">
         <button
-          type="submit"
+          type="button"
+          onClick={()=>postList()}
           className="mt-8 justify-center uppercase w-3/4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997] mb-8"
         >
           Post listing
