@@ -29,18 +29,11 @@ const InputListingPage2 = () => {
   const [images, setImages] = useState([]);
   const [contracts, setContracts] = useState([]);
   const [instantBooking, setInstantBooking] = useState(false);
-  const [services, setServices] = useState({
-    chargePerMile: 0,
-    numberOfOccupancy: 50,
-  });
   const [pickDrop, setPickDrop] = useState({
     offeredPickUp: false,
     offeredDropOff: false,
   });
-  const [description, setDescription] = useState("");
   const [serviceTypes, setServiceTypes] = useState([]);
-  // const poochToken = localStorage.getItem("poochToken");
-  const poochUuid = localStorage.getItem("uuid");
 
   const pickUpServices = [
     { id: "yes", title: "YES", value: true },
@@ -151,14 +144,6 @@ const InputListingPage2 = () => {
       </li>
     );
   });
-
-  const handleChange = (e) => {
-    
-    setServices({
-      ...services,
-      [e.target.name]: +e.target.value,
-    });
-  };
 
   const handleGroomerInfoChange = (event) => {
 
