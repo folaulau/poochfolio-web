@@ -6,6 +6,7 @@ import {
 } from "@heroicons/react/solid";
 import { Switch } from "@headlessui/react";
 import { useDropzone } from "react-dropzone";
+import { useNavigate } from "react-router-dom";
 import GroomerGraphql from "../graphql/GroomerGraphQL";
 import GroomerApi from "../api/GroomerApi";
 import Modal from "../components/input-listing/modal";
@@ -15,16 +16,22 @@ function classNames(...classes) {
 }
 
 const InputListingPage2 = () => {
+
+  let navigate = useNavigate();
   
   const [open, setOpen] = useState(false);
-  // const [myData, setMyData] = useState([]);
+  const [groomerInfo, setGroomerInfo] = useState({
+    numberOfOccupancy: 0,
+    description: '',
+    chargePerMile: 0
+  });
   const [careServices, setCareServices] = useState([]);
   const [images, setImages] = useState([]);
   const [contracts, setContracts] = useState([]);
   const [instantBooking, setInstantBooking] = useState(false);
   const [services, setServices] = useState({
     chargePerMile: 0,
-    numberOfOcupancy: 50,
+    numberOfOccupancy: 50,
   });
   const [pickDrop, setPickDrop] = useState({
     offeredPickUp: false,
@@ -34,6 +41,16 @@ const InputListingPage2 = () => {
   const [serviceTypes, setServiceTypes] = useState([]);
   // const poochToken = localStorage.getItem("poochToken");
   const poochUuid = localStorage.getItem("uuid");
+
+  const pickUpServices = [
+    { id: "yes", title: "YES", value: true },
+    { id: "no", title: "NO", value: false },
+  ];
+  const dropOffServices = [
+    { id: "yes", title: "YES", value: true },
+    { id: "no", title: "NO", value: false },
+  ];
+
   // const [isModalOpen, setIsModalOpen] = useState(false);
 
 
@@ -86,10 +103,22 @@ const InputListingPage2 = () => {
     GroomerGraphql.getProfile()
       .then((response) => {
         console.log("Success:", response);
-        let groomerInfo = response.data.data?.groomer[0];
-        console.log("groomerInfo:", groomerInfo);
+        let groomer = response.data.data?.groomer[0];
+        console.log("groomer:", groomer);
 
-        setCareServices(groomerInfo.careServices);
+        if(groomer.numberOfOccupancy===null || groomer.numberOfOccupancy===undefined){
+          groomer.numberOfOccupancy = 0
+        }
+
+        setPickDrop({
+          offeredDropOff: groomer.offeredDropOff,
+          offeredPickUp: groomer.offeredPickUp})
+
+        setGroomerInfo(groomer);
+
+        setInstantBooking(groomer.instantBooking)
+
+        setCareServices(groomer.careServices);
       })
       .catch((error) => {
         console.log("Error", error);
@@ -124,9 +153,23 @@ const InputListingPage2 = () => {
   });
 
   const handleChange = (e) => {
+    
     setServices({
       ...services,
       [e.target.name]: +e.target.value,
+    });
+  };
+
+  const handleGroomerInfoChange = (event) => {
+
+    const target = event.target;
+
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    setGroomerInfo({
+      ...groomerInfo,
+      [name]: value,
     });
   };
 
@@ -137,38 +180,23 @@ const InputListingPage2 = () => {
     });
   };
 
-  const pickUpServices = [
-    { id: "yes", title: "YES", value: true },
-    { id: "no", title: "NO", value: false },
-  ];
-  const dropOffServices = [
-    { id: "yes", title: "YES", value: true },
-    { id: "no", title: "NO", value: false },
-  ];
-
-  const handleImage = () => {
+  const uploadProfileImages = async () => {
+    if(acceptedFiles.length<=0){
+      return;
+    }
     let formdata = new FormData();
     formdata.append("images", acceptedFiles[0], acceptedFiles[0].path);
 
-    GroomerApi.uploadProfileImages(localStorage.getItem("uuid"), formdata)
-      .then((response) => {
-        console.log("Success:", response);
-      })
-      .catch((error) => {
-        console.error("Error: ", error);
-      });
+    return GroomerApi.uploadProfileImages(localStorage.getItem("uuid"), formdata);
   };
 
-  const handleContract = () => {
+  const uploadContracts = async () => {
+    if(af.length<=0){
+      return;
+    }
     let formdata = new FormData();
     formdata.append("docs", af[0], af[0].path);
-    GroomerApi.uploadContracts(localStorage.getItem("uuid"), formdata)
-      .then((response) => {
-        console.log("Success:", response);
-      })
-      .catch((error) => {
-        console.error("Error: ", error);
-      });
+    return GroomerApi.uploadContracts(localStorage.getItem("uuid"), formdata);
   };
 
   const handleServicePrice = (e, id) => {
@@ -190,22 +218,36 @@ const InputListingPage2 = () => {
       setCareServices(localCareServices);
     }
   };
-  const postList = () => {
-    const putBody = {
-      uuid: localStorage.getItem("uuid"),
-      instantBooking: instantBooking,
-      ...services,
-      ...pickDrop,
-      description: description,
-    };
+  const postList = async () => {
+    console.log("instantBooking, ", instantBooking)
 
-    console.log("putBody", putBody);
-    GroomerApi.createUpdateListings(putBody)
-    .then((response) => {})
+    let payload = groomerInfo;
+    payload.instantBooking = instantBooking;
+    payload.careServices = careServices;
+    payload.offeredDropOff = pickDrop.offeredDropOff;
+    payload.offeredPickUp = pickDrop.offeredPickUp;
+
+    console.log("payload", payload);
+    GroomerApi.createUpdateListings(payload)
+    .then((response) => {
+      console.log("response")
+      console.log(response)
+
+      uploadContracts().then((response)=>{
+        console.log("upload contracts responded")
+        uploadProfileImages().then((response)=>{
+          console.log("upload profileImages responded")
+          
+          navigate("/dashboard");
+
+        });
+      });
+    
+      
+    })
     .then((error) => {})
   };
 
-  console.log("serviceTypes", serviceTypes);
   return (
     <form
       className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500 bg-[#f3f8ff]"
@@ -260,7 +302,8 @@ const InputListingPage2 = () => {
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                       <input
                         type="number"
-                        name="small_price"
+                        name="smallPrice"
+                        value={service.smallPrice}
                         className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
                         onChange={(e) => handleServicePrice(e, service.id)}
                       />
@@ -268,7 +311,8 @@ const InputListingPage2 = () => {
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                       <input
                         type="number"
-                        name="medium_price"
+                        name="mediumPrice"
+                        value={service.mediumPrice}
                         className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
                         onChange={(e) => handleServicePrice(e, service.id)}
                       />
@@ -276,7 +320,8 @@ const InputListingPage2 = () => {
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                       <input
                         type="number"
-                        name="large_price"
+                        name="largePrice"
+                        value={service.largePrice}
                         className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
                         onChange={(e) => handleServicePrice(e, service.id)}
                       />
@@ -341,8 +386,8 @@ const InputListingPage2 = () => {
                     id={pickUpService.id}
                     name="offeredPickUp"
                     type="radio"
-                    value={pickUpService.value === false ? false : true}
-                    defaultChecked={pickUpService.value === false}
+                    value={pickUpService.value}
+                    checked={pickDrop.offeredPickUp===pickUpService.value}
                     onChange={handlePickDrop}
                     className="focus:ring-[#077997] h-4 w-4 text-[#077997] border-gray-300"
                   />
@@ -369,8 +414,8 @@ const InputListingPage2 = () => {
                     name="offeredDropOff"
                     type="radio"
                     value={dropOffService.value}
-                    defaultChecked={dropOffService.value === false}
-                    onChange={handlePickDrop}
+                    checked={pickDrop.offeredDropOff===dropOffService.value}
+                    onChange={handleGroomerInfoChange}
                     className="focus:ring-[#077997] h-4 w-4 text-[#077997] border-gray-300"
                   />
                   <label
@@ -390,7 +435,8 @@ const InputListingPage2 = () => {
             type="number"
             className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold border border-[#81d6e6]"
             name="chargePerMile"
-            onChange={handleChange}
+            value={groomerInfo.chargePerMile}
+            onChange={handleGroomerInfoChange}
           />
         </div>
       </div>
@@ -398,13 +444,14 @@ const InputListingPage2 = () => {
         <div className="flex py-8 justify-between">
           <h1>What is the Maximum Occupancy at Your Business?</h1>
           <h1 className="text-[#077977] font-bold">
-            {services.numberOfOcupancy}
+            {groomerInfo.numberOfOccupancy}
           </h1>
         </div>
         <input
           type="range"
-          name="numberOfOcupancy"
-          onChange={handleChange}
+          name="numberOfOccupancy"
+          value={groomerInfo.numberOfOccupancy}
+          onChange={handleGroomerInfoChange}
           className="w-full accent-[#077997]"
         />
         <div className="flex py-8 justify-between">
@@ -416,12 +463,12 @@ const InputListingPage2 = () => {
         <h1>Description</h1>
         <textarea
           className="w-full rounded-2xl border h-32 border-[#81d6e6] bg-inherit pt-6 pl-8"
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={handleGroomerInfoChange}
           name="description"
-          value={description}
+          value={groomerInfo.description}
           style={{ boxShadow: "inset 0px 0px 10px #81d6e6" }}
-          placeholder="Type description"
-        ></textarea>
+        >
+        </textarea>
       </div>
       <div
         {...getRootProps({ className: "dropzone" })}
@@ -432,13 +479,13 @@ const InputListingPage2 = () => {
         <p className="text-[#077997]">Drag and Drop Images</p>
         <ul>{files}</ul>
       </div>
-      <button
+      {/* <button
         onClick={handleImage}
         type="button"
         className="bg-red-300 border border-red-600"
       >
         Submit Image
-      </button>
+      </button> */}
       <div
         {...grp({ className: "dropzone" })}
         className="w-1/2 mt-6 border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40 flex flex-col justify-center items-center"
@@ -452,13 +499,13 @@ const InputListingPage2 = () => {
         </p>
         <ul>{contractFiles}</ul>
       </div>
-      <button
+      {/* <button
         onClick={handleContract}
         type="button"
         className="bg-red-300 border border-red-600"
       >
         Submit Contracts
-      </button>{" "}
+      </button>{" "} */}
       <div className="w-1/2 flex justify-center">
         <button
           type="button"
