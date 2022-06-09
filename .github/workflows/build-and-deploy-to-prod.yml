@@ -24,7 +24,7 @@ jobs:
         
       # build:dev uses .env.development
       - name: Build app
-        run: npm run build:prod
+        run: npm run build
       - name: Copy version to application and add build to GH outputs
         id: build-folder
         run: |
