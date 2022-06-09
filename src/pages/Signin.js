@@ -1,6 +1,108 @@
+import { useState, useEffect } from "react";
 import LandingHeader from "../components/landing-page/LandingHeader";
+import { useNavigate } from "react-router-dom";
+import GroomerGraphql from "../graphql/GroomerGraphQL";
+import FirebaseApi from "../api/FirebaseApi";
+import GroomerApi from "../api/GroomerApi";
 
 const Signin = () => {
+
+  const [groomerInfo, setGroomerInfo] = useState({
+    email: "",
+    password: "Test1234!",
+  });
+
+  let navigate = useNavigate();
+
+  useEffect(() => {
+
+    // const data = await startFetchGetGroomer(poochToken);
+    // setProfileData(data);
+    loadProfile()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const loadProfile = () =>{
+    GroomerGraphql.getProfile()
+    .then((response) => {
+      console.log("Success:", response);
+      let groomerInfo = response.data.data?.groomer[0];
+      console.log("groomerInfo:", groomerInfo);
+
+      goToNextDestination(groomerInfo.status, groomerInfo.signUpStatus);
+    })
+    .catch((error) => {
+      console.log("Error", error);
+    });
+  }
+
+  const goToNextDestination = (status,signUpStatus) => {
+    console.log("goToNextDestination")
+    console.log("status, ", status)
+    console.log("signUpStatus, ", signUpStatus)
+    if(status==="ACTIVE" || status==="PENDING_APPROVAL"){
+      navigate("/dashboard");
+    }else if(status==="SIGNING_UP"){
+      switch (signUpStatus) {
+        case "SIGNED_UP":
+          navigate("/sign-up/create-profile");
+          break;
+        case "PROFILE_CREATED":
+          navigate("/sign-up/input-listing2");
+          break;
+        case "LISTING_CREATED":
+          navigate("/payment-method");
+          break;
+        default:
+          navigate("/");
+      }
+    }else{
+      // display message to user that he's either inactive or blocked
+    }
+
+    
+  }
+
+  const handleInputChange = (e) => {
+    setGroomerInfo({
+      ...groomerInfo,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const signInWithEmail = () =>{
+    console.log("signInWithEmail")
+    console.log(groomerInfo)
+    FirebaseApi.signInWithEmail(groomerInfo.email, groomerInfo.password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log("userCredential", userCredential);
+
+      let authentication = {
+        "token": user.accessToken,
+        "rememberMe": true
+      };
+
+      GroomerApi.authenticate(authentication)
+      .then((response) => {
+          let auth = response.data;
+          console.log("auth, ", auth);
+          localStorage.setItem("poochToken", auth.token);
+          localStorage.setItem("uuid", auth.uuid);
+
+          goToNextDestination(auth.status, auth.signUpStatus);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
+
+    })
+    .catch((error) => {
+      console.error("Error: ", error);
+    });
+
+  }
+
   return (
     <>
       <LandingHeader />
@@ -41,6 +143,8 @@ const Signin = () => {
                     name="email"
                     type="email"
                     autoComplete="email"
+                    value={groomerInfo.email}
+                    onChange={handleInputChange}
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
                   />
@@ -60,6 +164,8 @@ const Signin = () => {
                     name="password"
                     type="password"
                     autoComplete="current-password"
+                    value={groomerInfo.password}
+                    onChange={handleInputChange}
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
                   />
@@ -95,7 +201,8 @@ const Signin = () => {
 
               <div>
                 <button
-                  type="submit"
+                  onClick={()=>signInWithEmail()}
+                  type="button"
                   className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997]"
                 >
                   Sign in
@@ -116,7 +223,7 @@ const Signin = () => {
               <div className="mt-6 grid grid-cols-3 gap-3">
                 <div>
                   <a
-                    href="#"
+                    href="/"
                     className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                   >
                     <span className="sr-only">Sign in with Facebook</span>
@@ -137,7 +244,7 @@ const Signin = () => {
 
                 <div>
                   <a
-                    href="#"
+                    href="/"
                     className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                   >
                     <span className="sr-only">Sign in with Twitter</span>
@@ -154,7 +261,7 @@ const Signin = () => {
 
                 <div>
                   <a
-                    href="#"
+                    href="/"
                     className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                   >
                     <span className="sr-only">Sign in with GitHub</span>

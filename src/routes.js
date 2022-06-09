@@ -13,6 +13,7 @@ import Payments from "./pages/dashboard/payments";
 import Login from "./pages/Signin";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/forgotPassword";
+
 export default function PoochRoutes() {
   return (
     <Routes>

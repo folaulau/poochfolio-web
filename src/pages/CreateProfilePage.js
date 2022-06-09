@@ -1,28 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Input from "../components/common/Input";
 import Autocomplete from "react-google-autocomplete";
 import { services } from "../data/services";
 import { useNavigate } from "react-router-dom";
+import GroomerApi from "../api/GroomerApi";
+import GroomerGraphql from "../graphql/GroomerGraphQL";
 
 const CreateProfilePage = () => {
   let navigate = useNavigate();
+
   const [careServices, setCareServices] = useState([
     {
       name: "Grooming",
-      labelName: "grooming",
+      uuid: "",
+      selected: true,
     },
     {
       name: "Dog Daycare",
-      labelName: "dayCare",
+      uuid: "",
+      selected: true,
     },
     {
       name: "Overnight",
-      labelName: "overNight",
+      uuid: "",
+      selected: true,
     },
-    {
-      name: "Pick Up",
-      labelName: "pickDrop",
-    },
+    // {
+    //   name: "Pick up/Drop off",
+    //   uuid: "",
+    //   selected: true,
+    // },
   ]);
 
   const [groomerInfo, setGroomerInfo] = useState({
@@ -31,11 +38,11 @@ const CreateProfilePage = () => {
     lastName: "",
     businessName: "",
     phoneNumber: "",
-    addresses: [],
-    signUpStatus: "CREATE_PROFILE",
+    signUpStatus: "ADD_SERVICES",
   });
 
   const [address, setAddress] = useState({
+    uuid: "",
     street: "",
     city: "",
     state: "",
@@ -45,79 +52,133 @@ const CreateProfilePage = () => {
     latitude: 0,
   });
 
-  const handleServiceSelect = (selectedItem) => {
-    console.log("selectedItem", selectedItem);
-    const localCareServices = [...careServices];
-    const selectedIndex = localCareServices.findIndex(
-      (item) => item.labelName === selectedItem.labelName
-    );
+  const [addressAsLine, setAddressAsLine] = useState("");
+  const addressUuidInput = useRef(null);
 
-    if (selectedIndex > -1) {
-      //remove service from array
-      localCareServices.splice(selectedIndex, 1);
-      setCareServices(localCareServices);
-    } else {
-      //add service to array
-      localCareServices.push(selectedItem);
-      setCareServices(localCareServices);
-    }
+  useEffect(() => {
+    loadProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const loadProfile = () => {
+    GroomerGraphql.getOnlyProfile()
+      .then((response) => {
+        console.log("Success:", response);
+        let groomer = response.data.data?.groomer[0];
+
+        let groomerData = {
+          uuid: groomer?.uuid || "",
+          firstName: groomer?.firstName || "",
+          lastName: groomer?.lastName || "",
+          businessName: groomer?.businessName || "",
+          phoneNumber: groomer?.phoneNumber || "",
+        };
+
+        setGroomerInfo(groomerData);
+
+        let groomerCareServices = groomer?.careServices || [];
+
+        if (groomerCareServices.length > 0) {
+          /**
+           * By default careServices are all selected.
+           * Now select only the careServices that have been selected before
+           */
+          let selctedCareServices = careServices.map((careService) => {
+            let groomerCareService = groomerCareServices.find(
+              (groomerCareService) =>
+                careService.name === groomerCareService.name
+            );
+            if (groomerCareService === undefined) {
+              careService["selected"] = false;
+              return careService;
+            } else {
+              careService["uuid"] = groomerCareService?.uuid || "";
+              careService["selected"] = true;
+              return careService;
+            }
+          });
+
+          setCareServices(selctedCareServices);
+        }
+
+        let mainAddress = groomer?.addresses?.[0];
+
+        setAddress(mainAddress);
+
+        addressUuidInput.current = mainAddress?.uuid || "";
+
+        if (
+          mainAddress !== undefined &&
+          mainAddress.uuid !== undefined &&
+          mainAddress.uuid !== ""
+        ) {
+          setAddressAsLine(
+            mainAddress.street +
+              ", " +
+              mainAddress.city +
+              ", " +
+              mainAddress.state +
+              " " +
+              mainAddress.zipcode
+          );
+        }
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
+  };
+
+  const toggleCareService = (careService) => {
+    let selectedCareServices = careServices.map((cs) => {
+      if (careService.name === cs.name) {
+        cs.selected = !cs.selected;
+      }
+
+      return cs;
+    });
+
+    setCareServices(selectedCareServices);
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+
     const putBody = {
       ...groomerInfo,
-      careServices: careServices.map((item) => ({
-        name: item.name,
-      })),
-      addresses: [{ ...address }],
+      careServices: careServices.filter((careService) => {
+        return careService.selected;
+      }),
+      address: address,
     };
-    e.preventDefault();
-    fetch("https://dev-api.poochapp.net/v1/groomers/profile", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        token: localStorage.getItem("poochToken"),
-      },
-      body: JSON.stringify(putBody),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        // window.location.replace("http://localhost:3000/input-listing");
-        setTimeout(() => {
-          navigate("/sign-up/input-listing2");
-        }, 3000);
+
+    GroomerApi.createUpdateProfile(putBody)
+      .then((response) => {
+        console.log("Success:", response);
+        navigate("/sign-up/input-listing2");
       })
       .catch((error) => {
         console.error("Error: ", error);
       });
+  };
 
-    setGroomerInfo({
-      firstName: "",
-      lastName: "",
-      businessName: "",
-      phoneNumber: "",
-      addresses: [],
-    });
+  const updateAddress = (place) => {
+    const formattedAddress = place.formatted_address;
 
-    setCareServices([
-      {
-        name: "Grooming",
-        labelName: "grooming",
-      },
-      {
-        name: "Daycare",
-        labelName: "dayCare",
-      },
-      {
-        name: "Overnight",
-        labelName: "overNight",
-      },
-      // {
-      //   name: "Pick/Drop",
-      //   labelName: "pickDrop",
-      // },
-    ]);
+    let newAddress = {
+      uuid: addressUuidInput?.current || "",
+      street: formattedAddress.split(",")[0],
+      city: formattedAddress.split(",")[1].trim(),
+      state: formattedAddress.split(",")[2].trim().split(" ")[0],
+      zipcode: formattedAddress.split(",")[2].trim().split(" ")[1],
+      country: formattedAddress.split(",")[3].trim(),
+      latitude: place.geometry.location.lat(),
+      longitude: place.geometry.location.lng(),
+    };
+
+    setAddress((address) => ({
+      ...address,
+      ...newAddress,
+    }));
   };
 
   const handleChange = (e) => {
@@ -178,21 +239,15 @@ const CreateProfilePage = () => {
               type="address"
               name="name"
               id="name"
+              defaultValue={addressAsLine}
+              ref={addressUuidInput}
+              required={true}
               className="shadow-sm block w-full p-3 rounded-full text-[15px] text-[#a1a1a1] font-Museo-Sans-Rounded-500 bg-red-[#f1f7ff]"
               apiKey="AIzaSyCWPe0Y1xqKVM4mMNqMxNYwSsmB5dsg-lk"
-              onPlaceSelected={(place) => {
-                const formattedAddress = place.formatted_address;
-                setAddress({
-                  street: formattedAddress.split(",")[0],
-                  city: formattedAddress.split(",")[1].trim(),
-                  state: formattedAddress.split(",")[2].trim().split(" ")[0],
-                  zipcode: formattedAddress.split(",")[2].trim().split(" ")[1],
-                  country: formattedAddress.split(",")[3].trim(),
-                  latitude: place.geometry.location.lat(),
-                  longitude: place.geometry.location.lng(),
-                });
-              }}
-              style={{ border: "1px solid #85d8e7" }}
+              onPlaceSelected={(place, inputRef, autocomplete) =>
+                updateAddress(place)
+              }
+              style={{ border: "1px solid #85d8e7", color: "black" }}
               options={{
                 types: ["address"],
               }}
@@ -204,18 +259,21 @@ const CreateProfilePage = () => {
         <h4>Which Services does your business offer</h4>
         <div className="my-8 md:flex md:flex-row">
           {services.map((service) => {
-            const isSelected = careServices
-              .map((items) => items.labelName === service.labelName)
-              .includes(true);
+            let careService = careServices.find(
+              (careService) => careService.name === service.name
+            );
+
+            const isSelected = careService.selected;
+
             return (
               <button
                 type="button"
-                key={service.labelName}
+                key={service.name}
                 style={{ boxShadow: "inset 0px 0px 15px #81d6e6" }}
                 className={`w-40 h-[68px] rounded-xl border ${
                   isSelected ? "bg-[#95e8f7]" : "bg-[#f1f7ff]"
                 }  flex justify-center items-center gap-x-3 m-1`}
-                onClick={() => handleServiceSelect(service)}
+                onClick={() => toggleCareService(careService)}
               >
                 <service.icon
                   className={`${

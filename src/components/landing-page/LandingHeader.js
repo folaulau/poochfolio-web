@@ -7,17 +7,13 @@ const LandingHeader = () => {
 
   return (
     <header className="bg-[#077997] text-white font-Museo-Sans-Rounded-500 flex h-40 items-center justify-evenly">
-      <img src="/landing-page/poochFolio.svg" />
+      <a href="/"><img src="/landing-page/poochFolio.svg" alt="img" /></a>
       <nav className="hidden md:flex w-6/12 justify-evenly items-baseline uppercase">
         <Link to="">Marketplace</Link>
         <Link to="">Management</Link>
         <Link to="">How It Works</Link>
-        <button className="border rounded-full bg-[#ebfdff] text-[#077997] py-2 px-6">
-          <Link to="/signin">Login</Link>
-        </button>
-        <button className="border rounded-full bg-[#ebfdff] text-[#077997] py-2 px-6">
-          <Link to="/signup">Sign Up</Link>
-        </button>
+        <Link to="/signin" className="border rounded-full bg-[#ebfdff] text-[#077997] py-2 px-6">Sign In</Link>
+        <Link to="/signup" className="border rounded-full bg-[#ebfdff] text-[#077997] py-2 px-6">Sign Up</Link>
       </nav>
       <button className="rounded-full px-4 py-2 border border-white flex gap-x-3.5">
         <img className="h-5" src="/landing-page/headset.svg" alt="Docusign" />
@@ -39,11 +35,11 @@ const LandingHeader = () => {
           <XIcon className="h-8 bg-[#077997]" />
         </button>
         <div className="ml-4 flex flex-col text-center text-[#077997] text-2xl">
-          <a className="mb-4 leading-8 block">Marketplace</a>
-          <a className="mb-4 leading-8 block">Management</a>
-          <a className="mb-4 leading-8 block">How it works</a>
-          <a className="mb-4 leading-8 block">Investor relations</a>
-          <a className="mb-4 leading-8 block">Contact</a>
+          <a className="mb-4 leading-8 block" href="/" >Marketplace</a>
+          <a className="mb-4 leading-8 block" href="/">Management</a>
+          <a className="mb-4 leading-8 block" href="/">How it works</a>
+          <a className="mb-4 leading-8 block"href="/">Investor relations</a>
+          <a className="mb-4 leading-8 block" href="/">Contact</a>
         </div>
       </nav>
     </header>
