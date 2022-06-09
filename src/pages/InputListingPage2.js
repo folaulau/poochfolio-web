@@ -46,7 +46,6 @@ const InputListingPage2 = () => {
 
   // const [isModalOpen, setIsModalOpen] = useState(false);
 
-
   const onImageDrop = useCallback((acceptedFiles, rejectedFiles) => {
     acceptedFiles.forEach((file) => {
       const reader = new FileReader();
@@ -61,9 +60,7 @@ const InputListingPage2 = () => {
     // eslint-disable-next-line
   }, []);
 
-  const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
-    onImageDrop,
-  });
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone({ onImageDrop, });
 
   const onContractDrop = useCallback((acceptedFiles, rejectedFiles) => {
     acceptedFiles.forEach((file) => {
@@ -79,13 +76,7 @@ const InputListingPage2 = () => {
     // eslint-disable-next-line
   }, []);
 
-  const {
-    acceptedFiles: af,
-    getRootProps: grp,
-    getInputProps: gip,
-  } = useDropzone({
-    onContractDrop,
-  });
+  const { acceptedFiles: af, getRootProps: grp, getInputProps: gip, } = useDropzone({ onContractDrop, });
 
   useEffect(() => {
     loadProfile();
