@@ -5,6 +5,7 @@ var instance = axios.create({
 });
 
 const GroomerGraphql = {
+
   getProfile: () => {
     const operationsDoc = `
       query getGroomer {
@@ -28,60 +29,6 @@ const GroomerGraphql = {
           offeredPickUp: offered_pick_up
           numberOfOccupancy: number_of_occupancy
           instantBooking: instant_booking
-          bookings {
-            booking_pooches {
-      breed
-      dob
-      full_name
-      gender
-      id
-      neutered
-      size
-      spayed
-      training
-      updated_at
-      uuid
-    }
-    id
-    uuid
-    end_date_time
-    drop_off_date_time
-    drop_off_cost
-    deleted
-    created_at
-    checked_out_at
-    checked_out
-    checked_in_at
-    checked_in
-    cancelled_at
-    booking_care_services {
-      id
-      size
-      toCareService {
-        name
-      }
-      price
-    }
-    total_charge_at_drop_off
-    total_charge_at_booking
-    total_amount
-    stripe_payment_intent_transfer_id
-    status
-    pick_up_cost
-    pick_up_date_time
-    start_date_time
-    parent {
-      email
-      full_name
-      id
-      s3files {
-        id
-        file_name
-        url
-        main_profile_image
-      }
-    }
-  }
           emailTemp: email_temp
           createdAt: created_at
           updatedAt: updated_at
@@ -125,7 +72,6 @@ const GroomerGraphql = {
             createdAt: created_at
           }
         }
-        
       }
     `;
     let request = {};
@@ -133,10 +79,10 @@ const GroomerGraphql = {
     var options = {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + localStorage.getItem('poochToken')
+        'Authorization': "Bearer " + localStorage.getItem('poochToken')
       }
     };
-    return instance.post('', JSON.stringify(request), options);
+    return instance.post("", JSON.stringify(request), options);
   },
   getOnlyProfile: () => {
     const operationsDoc = `
@@ -185,11 +131,11 @@ const GroomerGraphql = {
     var options = {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + localStorage.getItem('poochToken')
+        'Authorization': "Bearer " + localStorage.getItem('poochToken')
       }
     };
-    return instance.post('', JSON.stringify(request), options);
+    return instance.post("", JSON.stringify(request), options);
   }
-};
+}
 
 export default GroomerGraphql;

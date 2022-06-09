@@ -13,7 +13,6 @@ import Payments from "./pages/dashboard/payments";
 import Login from "./pages/Signin";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/forgotPassword";
-import BookingDetails from "./pages/BookingDetailsPage";
 
 export default function PoochRoutes() {
   return (
@@ -33,7 +32,6 @@ export default function PoochRoutes() {
       <Route path="dashboard" element={<Dashboard />}>
         <Route path="payments" element={<Payments />} />
       </Route>
-      <Route path="bookingdetails" element={<BookingDetails />}/> 
     </Routes>
   );
 }
