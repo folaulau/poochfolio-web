@@ -103,9 +103,17 @@ const InputListingPage2 = () => {
           groomer.numberOfOccupancy = 0
         }
 
+        if(groomer.chargePerMile===null || groomer.chargePerMile===undefined){
+          groomer.chargePerMile = ''
+        }
+
+        if(groomer.description===null || groomer.description===undefined){
+          groomer.description = ''
+        }
+
         setPickDrop({
-          offeredDropOff: groomer.offeredDropOff,
-          offeredPickUp: groomer.offeredPickUp})
+          offeredDropOff: groomer.offeredDropOff!=undefined && groomer.offeredDropOff,
+          offeredPickUp: groomer.offeredPickUp!=undefined && groomer.offeredPickUp})
 
         setGroomerInfo(groomer);
 
@@ -288,7 +296,7 @@ const InputListingPage2 = () => {
                       <input
                         type="number"
                         name="smallPrice"
-                        value={service.smallPrice}
+                        value={service.smallPrice!=null ? service.smallPrice : ''}
                         className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
                         onChange={(e) => handleServicePrice(e, service.id)}
                       />
@@ -297,7 +305,7 @@ const InputListingPage2 = () => {
                       <input
                         type="number"
                         name="mediumPrice"
-                        value={service.mediumPrice}
+                        value={service.mediumPrice!=null ? service.mediumPrice : ''}
                         className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
                         onChange={(e) => handleServicePrice(e, service.id)}
                       />
@@ -306,7 +314,7 @@ const InputListingPage2 = () => {
                       <input
                         type="number"
                         name="largePrice"
-                        value={service.largePrice}
+                        value={service.largePrice!=null ? service.largePrice : ''}
                         className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
                         onChange={(e) => handleServicePrice(e, service.id)}
                       />
