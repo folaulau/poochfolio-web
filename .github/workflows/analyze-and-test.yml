@@ -22,3 +22,4 @@ jobs:
         run: npm install -g sonarqube-scanner
       - name: Run test suite and get coverage report
         run: npm run test:coverage
+        
