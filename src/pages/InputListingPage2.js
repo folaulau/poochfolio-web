@@ -112,8 +112,8 @@ const InputListingPage2 = () => {
         }
 
         setPickDrop({
-          offeredDropOff: groomer.offeredDropOff!=undefined && groomer.offeredDropOff,
-          offeredPickUp: groomer.offeredPickUp!=undefined && groomer.offeredPickUp})
+          offeredDropOff: groomer.offeredDropOff!==undefined && groomer.offeredDropOff,
+          offeredPickUp: groomer.offeredPickUp!==undefined && groomer.offeredPickUp})
 
         setGroomerInfo(groomer);
 
