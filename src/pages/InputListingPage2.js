@@ -175,7 +175,7 @@ const InputListingPage2 = () => {
 
   const uploadProfileImages = async () => {
     if(acceptedFiles.length<=0){
-      return;
+      return "no profile images to upload";
     }
     let formdata = new FormData();
     formdata.append("images", acceptedFiles[0], acceptedFiles[0].path);
@@ -185,7 +185,7 @@ const InputListingPage2 = () => {
 
   const uploadContracts = async () => {
     if(af.length<=0){
-      return;
+      return "no contracts to upload";
     }
     let formdata = new FormData();
     formdata.append("docs", af[0], af[0].path);
@@ -228,17 +228,32 @@ const InputListingPage2 = () => {
 
       uploadContracts().then((response)=>{
         console.log("upload contracts responded")
+        console.log(response)
+
         uploadProfileImages().then((response)=>{
           console.log("upload profileImages responded")
+          console.log(response)
           
           navigate("/dashboard");
 
-        });
-      });
+        }).catch((error) => {
+          console.log("upload profileImages error")
+    
+          console.log(error)
+        })
+      }).catch((error) => {
+        console.log("upload contracts error")
+  
+        console.log(error)
+      })
     
       
     })
-    .then((error) => {})
+    .catch((error) => {
+      console.log("error")
+
+      console.log(error)
+    })
   };
 
   return (
