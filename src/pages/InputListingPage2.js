@@ -112,8 +112,8 @@ const InputListingPage2 = () => {
         }
 
         setPickDrop({
-          offeredDropOff: groomer.offeredDropOff!==undefined && groomer.offeredDropOff,
-          offeredPickUp: groomer.offeredPickUp!==undefined && groomer.offeredPickUp})
+          offeredDropOff: groomer.offeredDropOff,
+          offeredPickUp: groomer.offeredPickUp})
 
         setGroomerInfo(groomer);
 
@@ -376,7 +376,6 @@ const InputListingPage2 = () => {
               {pickUpServices.map((pickUpService) => (
                 <div key={pickUpService.id} className="flex items-center">
                   <input
-                    id={pickUpService.id}
                     name="offeredPickUp"
                     type="radio"
                     value={pickUpService.value}
@@ -403,12 +402,11 @@ const InputListingPage2 = () => {
               {dropOffServices.map((dropOffService) => (
                 <div key={dropOffService.id} className="flex items-center">
                   <input
-                    id={dropOffService.id}
                     name="offeredDropOff"
                     type="radio"
                     value={dropOffService.value}
                     checked={pickDrop.offeredDropOff===dropOffService.value}
-                    onChange={handleGroomerInfoChange}
+                    onChange={handlePickDrop}
                     className="focus:ring-[#077997] h-4 w-4 text-[#077997] border-gray-300"
                   />
                   <label
