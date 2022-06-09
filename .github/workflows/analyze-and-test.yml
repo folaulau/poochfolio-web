@@ -1,0 +1,25 @@
+name: Analyze repo with Sonarqube and run test suite
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  analyze-and-test:
+    name: Analyze and Test step
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '--skip-tests')"
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+      - name: Install sonarqube analyzer
+        run: npm install -g sonarqube-scanner
+      - name: Run test suite and get coverage report
+        run: npm run test --passWithNoTests
