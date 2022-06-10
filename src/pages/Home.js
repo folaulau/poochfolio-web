@@ -1,4 +1,5 @@
 import H3 from "../components/landing-page/H3";
+import React from 'react';
 import FootH3 from "../components/landing-page/FootH3";
 import H2 from "../components/landing-page/H2";
 import ListItem from "../components/landing-page/ListItem";

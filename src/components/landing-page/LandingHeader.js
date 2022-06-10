@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { MenuAlt3Icon, XIcon } from "@heroicons/react/solid";

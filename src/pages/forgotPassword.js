@@ -1,3 +1,4 @@
+import React from 'react';
 import LandingHeader from "../components/landing-page/LandingHeader";
 
 const ForgotPassword = () => {

@@ -1,3 +1,4 @@
+import React from 'react';
 import PaymentCard from "../../components/payment/PaymentCard";
 
 const Payments = () => {
