@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import React from 'react';
 import LandingHeader from "../components/landing-page/LandingHeader";
 import { useNavigate } from "react-router-dom";
 import GroomerGraphql from "../graphql/GroomerGraphQL";

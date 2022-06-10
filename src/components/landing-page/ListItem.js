@@ -1,3 +1,4 @@
+import React from 'react';
 import { CheckCircleIcon } from "@heroicons/react/solid";
 
 const ListItem = ({ text }) => {
