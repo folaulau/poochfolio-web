@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: npm install
         
-      # build:dev uses .env.development
+      # build uses .env.production
       - name: Build app
         run: npm run build
       - name: Copy version to application and add build to GH outputs
