@@ -323,16 +323,16 @@ export default function Dashboard() {
                 <div className="relative flex justify-between xl:grid xl:grid-cols-12 lg:gap-8">
                   <div className="flex md:absolute md:left-0 md:inset-y-0 lg:static xl:col-span-2">
                     <div className="flex-shrink-0 flex items-center">
-                      <a  className="flex items-center" alt="groomerImage">
+                      <span  className="flex items-center" >
                         <img
                           className="block h-12 w-auto rounded-full mr-2"
                           src={questions[0].author.imageUrl}
-                          alt="grommerImage"
+                          alt="grommer"
                         />
                         <span className="text-pooch-blue-2 font-Museo-Sans-Rounded-700">
                           {allGroomerInfo?.businessName}
                         </span>
-                      </a>
+                      </span>
                     </div>
                   </div>
                   <div className="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6 ">
@@ -374,7 +374,7 @@ export default function Dashboard() {
                     </Popover.Button>
                   </div>
                   <div className="hidden lg:flex lg:items-center lg:justify-end xl:col-span-4">
-                    <a
+                    <span
                       className="text-sm font-medium text-gray-900 hover:underline"
                       alt="settings"
                     >
@@ -384,8 +384,8 @@ export default function Dashboard() {
                         aria-hidden="true"
                         alt="settings"
                       />
-                    </a>
-                    <a
+                    </span>
+                    <span
                       className="ml-5 flex-shrink-0  rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500"
                       alt="notifications"
                     >
@@ -396,7 +396,7 @@ export default function Dashboard() {
                         aria-hidden="true"
                         alt="notifications"
                       />
-                    </a>
+                    </span>
 
                     {/* Profile dropdown */}
                     <Menu as="div" className="flex-shrink-0 relative ml-5">
@@ -503,12 +503,12 @@ export default function Dashboard() {
 
                 <div className="mt-6 max-w-3xl mx-auto px-4 sm:px-6">
                   <div className="mt-6 flex justify-center">
-                    <a
+                    <span
                       className="text-base font-medium text-gray-900 hover:underline"
                       alt="settings"
                     >
                       Go Premium
-                    </a>
+                    </span>
                   </div>
                 </div>
               </Popover.Panel>
@@ -745,9 +745,8 @@ export default function Dashboard() {
                   </div>
                 </div>
                 <div className="hidden lg:flex lg:items-center lg:justify-end xl:col-span-2 mt-8">
-                  <a
+                  <span
                     className="text-sm font-medium text-gray-900 "
-                    alt="Reservations"
                   >
                     <button
                       type="button"
@@ -763,10 +762,9 @@ export default function Dashboard() {
                           />
                       Reservations
                     </button>
-                  </a>
-                  <a
+                  </span>
+                  <span
                     className="ml-5 flex-shrink-0  rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500"
-                    alt="Add Occupant"
                   >
                     <button
                       type="button"
@@ -782,7 +780,7 @@ export default function Dashboard() {
                           />
                       Add Occupants
                     </button>
-                  </a>
+                  </span>
                 </div>
               </div>
               {/* </div>  */}

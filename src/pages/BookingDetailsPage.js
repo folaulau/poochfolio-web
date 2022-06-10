@@ -183,7 +183,7 @@ export default function BookingDetails() {
                 <div className="relative flex justify-between xl:grid xl:grid-cols-12 lg:gap-8">
                   <div className="flex md:absolute md:left-0 md:inset-y-0 lg:static xl:col-span-2">
                     <div className="flex-shrink-0 flex items-center">
-                      <a  className="flex items-center" alt="parent-image">
+                      <span  className="flex items-center" >
                         <img
                           className="block h-12 w-auto rounded-full mr-2"
                           src={questions[0].author.imageUrl}
@@ -192,7 +192,7 @@ export default function BookingDetails() {
                         <span className="text-pooch-blue-2 font-Museo-Sans-Rounded-700">
                           {allGroomerInfo?.businessName}
                         </span>
-                      </a>
+                      </span>
                     </div>
                   </div>
                   <div className="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6 ">
@@ -234,9 +234,8 @@ export default function BookingDetails() {
                     </Popover.Button>
                   </div>
                   <div className="hidden lg:flex lg:items-center lg:justify-end xl:col-span-4">
-                    <a
+                    <span
                       className="text-sm font-medium text-gray-900 hover:underline"
-                      alt="settings link"
                     >
                       <img
                         src={require("../assessts/images/settings-gear.png")}
@@ -244,8 +243,8 @@ export default function BookingDetails() {
                         aria-hidden="true"
                         alt="settings"
                       />
-                    </a>
-                    <a
+                    </span>
+                    <span
                       className="ml-5 flex-shrink-0  rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500"
                       alt="notification link"
                     >
@@ -256,7 +255,7 @@ export default function BookingDetails() {
                         aria-hidden="true"
                         alt="notification icon"
                       />
-                    </a>
+                    </span>
 
                     {/* Profile dropdown */}
                     <Menu as="div" className="flex-shrink-0 relative ml-5">
@@ -266,7 +265,7 @@ export default function BookingDetails() {
                           <img
                             className="h-8 w-8 rounded-full"
                             src={user.imageUrl}
-                            alt="user-image"
+                            alt="user"
                           />
                         </Menu.Button>
                       </div>
@@ -328,7 +327,7 @@ export default function BookingDetails() {
                       <img
                         className="h-10 w-10 rounded-full"
                         src={user.imageUrl}
-                        alt="user-image"
+                        alt="user"
                       />
                     </div>
                     <div className="ml-3">
@@ -363,12 +362,12 @@ export default function BookingDetails() {
 
                 <div className="mt-6 max-w-3xl mx-auto px-4 sm:px-6">
                   <div className="mt-6 flex justify-center">
-                    <a
+                    <span
                       className="text-base font-medium text-gray-900 hover:underline"
-                      alt="settings link"
+                      
                     >
                       Clear
-                    </a>
+                    </span>
                   </div>
                 </div>
               </Popover.Panel>
@@ -461,7 +460,7 @@ export default function BookingDetails() {
                   </nav>
                 </div>
                 <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
-                  <a href="/" className="flex-shrink-0 group block" alt="temp-profile">
+                  <span  className="flex-shrink-0 group block" >
                     <div className="flex items-center">
                       <div>
                         <img
@@ -479,7 +478,7 @@ export default function BookingDetails() {
                         </p>
                       </div>
                     </div>
-                  </a>
+                  </span>
                 </div>
               </div>
             </Transition.Child>
@@ -494,7 +493,7 @@ export default function BookingDetails() {
             </span>
           </div>
           <div className="bg-white shadow overflow-hidden sm:rounded-md mb-8">
-            <a  className="block hover:bg-gray-50" alt="information-care">
+            <span  className="block hover:bg-gray-50" alt="information-care">
               <div className="px-4 py-4 sm:px-6">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-Museo-Sans-Rounded-900 text-pooch-black-1 truncate">
@@ -525,12 +524,12 @@ export default function BookingDetails() {
                   </div>
                 </div>
               </div>
-            </a>
+            </span>
           </div>
 
           {/**Dates */}
           <div className="bg-white shadow overflow-hidden sm:rounded-md mb-8">
-            <a  className="block hover:bg-gray-50" alt="dates-section">
+            <span  className="block hover:bg-gray-50" alt="dates-section">
               <div className="px-4 py-4 sm:px-6">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-Museo-Sans-Rounded-900 text-pooch-black-1 truncate">
@@ -577,11 +576,11 @@ export default function BookingDetails() {
                   </div>
                 </div>
               </div>
-            </a>
+            </span>
           </div>
 
           <div className="bg-white shadow overflow-hidden sm:rounded-md mb-8">
-            <a  className="block hover:bg-gray-50" alt="services-card">
+            <span  className="block hover:bg-gray-50" alt="services-card">
               <div className="px-4 py-4 sm:px-6">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-Museo-Sans-Rounded-900 text-pooch-black-1 truncate">
@@ -599,12 +598,12 @@ export default function BookingDetails() {
                   </div>
                 </div>
               </div>
-            </a>
+            </span>
           </div>
 
           {/*cost breakdown*/}
           <div className="bg-white shadow overflow-hidden sm:rounded-md mb-8">
-            <a  className="block hover:bg-gray-50" alt="cost-breakdown-card">
+            <span  className="block hover:bg-gray-50" alt="cost-breakdown-card">
               <div className="px-4 py-4 sm:px-6">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-Museo-Sans-Rounded-900 text-pooch-black-1 truncate">
@@ -642,12 +641,12 @@ export default function BookingDetails() {
                   </div>
                 </div>
               </div>
-            </a>
+            </span>
           </div>
 
           {/*pet Details*/}
           <div className="bg-white shadow overflow-hidden sm:rounded-md">
-            <a  className="block hover:bg-gray-50" alt="pet-details-card">
+            <span  className="block hover:bg-gray-50" alt="pet-details-card">
               <div className="px-4 py-4 sm:px-6">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-Museo-Sans-Rounded-900 text-pooch-black-1 truncate">
@@ -702,10 +701,10 @@ export default function BookingDetails() {
                   </div>
                 </div>
               </div>
-            </a>
+            </span>
           </div>
           <div className="hidden lg:flex lg:items-center lg:justify-center xl:col-span-2 mt-8 w-full mb-8">
-            <a  className="text-sm font-medium text-gray-900 " alt="accept-reservation-button">
+            <span  className="text-sm font-medium text-gray-900 " alt="accept-reservation-button">
               <button
                 type="button"
                 className=" px-3.5 py-2 shadow flex justify-around border-1 border-pooch-blue-2 text-sm leading-4 font-medium rounded-full shadow-sm text-pooch-blue-2 bg-pooch-blue-6 hover:bg-pooch-blue-2 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 self-center w-40 text-center"
@@ -719,8 +718,8 @@ export default function BookingDetails() {
               
                 Accept Reservation
               </button>
-            </a>
-            <a
+            </span>
+            <span
               className="ml-5 flex-shrink-0  rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500"
               alt="cancel-reservation-button"
             >
@@ -737,7 +736,7 @@ export default function BookingDetails() {
                 
                Cancel Reservation
               </button>
-            </a>
+            </span>
           </div>
         </div>
       </div>
