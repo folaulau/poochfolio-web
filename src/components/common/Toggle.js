@@ -1,18 +1,11 @@
 import { useState } from 'react';
 import { Switch } from '@headlessui/react';
-import PreviousMap from 'postcss/lib/previous-map';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
 export default function Toggle(props) {
-  const [enabled, setEnabled] = useState(false);
-
-  const handleToggle =() => {
-    setEnabled(!enabled);
-    props.onToggle();
-  }
 
   return (
     <Switch

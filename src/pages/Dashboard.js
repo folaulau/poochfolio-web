@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Fragment, useState, useEffect } from "react";
 import { Menu, Dialog, Transition, Popover } from "@headlessui/react";
 import {
@@ -18,7 +18,6 @@ import {
 } from "@heroicons/react/outline";
 import { SearchIcon } from "@heroicons/react/solid";
 import Toggle from "../components/common/Toggle";
-import GroomerApi from "../api/GroomerApi";
 import GroomerGraphql from "../graphql/GroomerGraphQL";
 
 const navigation = [
@@ -116,16 +115,7 @@ export default function Dashboard() {
     { name: "Settings", href: "#" },
     { name: "Sign out", href: "#" },
   ];
-  const communities = [
-    { name: "Movies", href: "#" },
-    { name: "Food", href: "#" },
-    { name: "Sports", href: "#" },
-    { name: "Animals", href: "#" },
-    { name: "Science", href: "#" },
-    { name: "Dinosaurs", href: "#" },
-    { name: "Talents", href: "#" },
-    { name: "Gaming", href: "#" },
-  ];
+
   const tabs = [
     { name: "Incoming Occupants", href: "#", current: true },
     { name: "Unpaid Occupants", href: "#", current: false },
@@ -155,29 +145,7 @@ export default function Dashboard() {
     },
     // More questions...
   ];
-  const whoToFollow = [
-    {
-      name: "Leonard Krasner",
-      handle: "leonardkrasner",
-      href: "#",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    // More people...
-  ];
-  const trendingPosts = [
-    {
-      id: 1,
-      user: {
-        name: "Floyd Miles",
-        imageUrl:
-          "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-      },
-      body: "What books do you have on your bookshelf just to look smarter than you actually are?",
-      comments: 291,
-    },
-    // More posts...
-  ];
+
 
   useEffect(() => {
     // const data = await startFetchGetGroomer(poochToken);
@@ -355,7 +323,7 @@ export default function Dashboard() {
                 <div className="relative flex justify-between xl:grid xl:grid-cols-12 lg:gap-8">
                   <div className="flex md:absolute md:left-0 md:inset-y-0 lg:static xl:col-span-2">
                     <div className="flex-shrink-0 flex items-center">
-                      <a href="#" className="flex items-center">
+                      <a href="#" className="flex items-center" alt="groomerImage">
                         <img
                           className="block h-12 w-auto rounded-full mr-2"
                           src={questions[0].author.imageUrl}
@@ -409,6 +377,7 @@ export default function Dashboard() {
                     <a
                       href="#"
                       className="text-sm font-medium text-gray-900 hover:underline"
+                      alt="settings"
                     >
                       <img
                         src={require("../assessts/images/settings-gear.png")}
@@ -419,6 +388,7 @@ export default function Dashboard() {
                     <a
                       href="#"
                       className="ml-5 flex-shrink-0  rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500"
+                      alt="notifications"
                     >
                       <span className="sr-only">View notifications</span>
                       <img
@@ -459,6 +429,7 @@ export default function Dashboard() {
                                     active ? "bg-gray-100" : "",
                                     "block py-2 px-4 text-sm text-gray-700"
                                   )}
+                                  alt={item.name}
                                 >
                                   {item.name}
                                 </a>
@@ -485,6 +456,7 @@ export default function Dashboard() {
                           : "hover:bg-gray-50",
                         "block rounded-md py-2 px-3 text-base font-medium"
                       )}
+                      alt={item.name}
                     >
                       {item.name}
                     </a>
@@ -521,6 +493,7 @@ export default function Dashboard() {
                         key={item.name}
                         href={item.href}
                         className="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+                        alt={item.name}
                       >
                         {item.name}
                       </a>
@@ -533,6 +506,7 @@ export default function Dashboard() {
                     <a
                       href="#"
                       className="text-base font-medium text-gray-900 hover:underline"
+                      alt="settings"
                     >
                       Go Premium
                     </a>
@@ -611,6 +585,7 @@ export default function Dashboard() {
                             : "text-pooch-blue-3 hover:bg-gray-50 hover:text-gray-900",
                           "group flex items-center px-2 py-2 text-sm font-medium rounded-md rounded-full py-2 px-4"
                         )}
+                        alt={item.name}
                       >
                         <item.icon
                           className={classNames(
@@ -627,7 +602,7 @@ export default function Dashboard() {
                   </nav>
                 </div>
                 <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
-                  <a href="/" className="flex-shrink-0 group block">
+                  <a href="/" className="flex-shrink-0 group block" alt="temp-user">
                     <div className="flex items-center">
                       <div>
                         <img
@@ -685,6 +660,7 @@ export default function Dashboard() {
                         : "text-pooch-blue-3 hover:bg-gray-50 hover:text-gray-900",
                       "group flex items-center px-2 py-2 text-sm font-medium rounded-md rounded-full py-2 px-4"
                     )}
+                    alt={item.name}
                   >
                     {/* {item.name !== "Reservations" && (
                       <item.icon
@@ -771,6 +747,7 @@ export default function Dashboard() {
                   <a
                     href="#"
                     className="text-sm font-medium text-gray-900 "
+                    alt="Reservations"
                   >
                     <button
                       type="button"
@@ -789,6 +766,7 @@ export default function Dashboard() {
                   <a
                     href="#"
                     className="ml-5 flex-shrink-0  rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500"
+                    alt="Add Occupant"
                   >
                     <button
                       type="button"
@@ -840,6 +818,7 @@ export default function Dashboard() {
                           tabIdx === tabs.length - 1 ? "rounded-r-lg" : "",
                           "group relative font-Museo-Sans-Rounded-700 min-w-0 flex-1 border-none overflow-hidden bg-transparent py-4 px-6 text-sm font-medium text-center  focus:z-10"
                         )}
+                        alt="Tab"
                       >
                         <span className="flex items-center justify-between">
                           <span>{tab.name}</span>
@@ -918,6 +897,7 @@ export default function Dashboard() {
                                   </button>
                                 )}
                                 {item.status !== "BOOKED" && (
+                                  <>
                                   <button
                                     type="button"
                                     className=" px-3.5 py-2 border border-pooch-blue-2 text-sm leading-4 font-medium rounded-full shadow-sm text-pooch-blue-2 bg-white-600 hover:bg-pooch-blue-2 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 self-center w-40 text-center"
@@ -927,6 +907,16 @@ export default function Dashboard() {
                                   >
                                     Accept Booking
                                   </button>
+                                  <button
+                                    type="button"
+                                    className="mt-2 px-3.5 py-2 border border-pooch-blue-2 text-sm leading-4 font-medium rounded-full shadow-sm text-pooch-blue-2 bg-white-600 hover:bg-pooch-blue-2 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 self-center w-40 text-center"
+                                    onClick={() => {
+                                      handlecCancelBooking(item.uuid);
+                                    }}
+                                  >
+                                    Cancel Booking
+                                  </button>
+                                  </>
                                 )}
                               </div>
                             </div>
@@ -972,6 +962,7 @@ export default function Dashboard() {
                           tabIdx === tabs.length - 1 ? "rounded-r-lg" : "",
                           "group relative font-Museo-Sans-Rounded-700 min-w-0 flex-1 border-none overflow-hidden bg-transparent py-4 px-6 text-sm font-medium text-center  focus:z-10"
                         )}
+                        alt={tab.name}
                       >
                         <span className="flex items-center justify-between">
                           <span>Current Occupants</span>

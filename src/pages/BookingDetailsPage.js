@@ -1,4 +1,4 @@
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Fragment, useState, useEffect } from "react";
 import { Menu, Dialog, Transition, Popover } from "@headlessui/react";
 import {
@@ -12,14 +12,8 @@ import {
   CurrencyDollarIcon,
   CreditCardIcon,
   ClipboardCheckIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  PlusCircleIcon,
-  LocationMarkerIcon,
 } from "@heroicons/react/outline";
 import { SearchIcon } from "@heroicons/react/solid";
-import Toggle from "../components/common/Toggle";
-import GroomerApi from "../api/GroomerApi";
 import GroomerGraphql from "../graphql/GroomerGraphQL";
 
 const navigation = [
@@ -66,42 +60,11 @@ export default function BookingDetails() {
   const [allGroomerInfo, setAllGroomerInfo] = useState(null);
   const { state } = useLocation();
   const navigate = useNavigate();
-  console.log("HEY THIS IS STATE", state);
 
   const userNavigation = [
     { name: "Your Profile", href: "#" },
     { name: "Settings", href: "#" },
     { name: "Sign out", href: "#" },
-  ];
-
-  const positions = [
-    {
-      id: 1,
-      title: "Back End Developer",
-      type: "Full-time",
-      location: "Remote",
-      department: "Engineering",
-      closeDate: "2020-01-07",
-      closeDateFull: "January 7, 2020",
-    },
-    {
-      id: 2,
-      title: "Front End Developer",
-      type: "Full-time",
-      location: "Remote",
-      department: "Engineering",
-      closeDate: "2020-01-07",
-      closeDateFull: "January 7, 2020",
-    },
-    {
-      id: 3,
-      title: "User Interface Designer",
-      type: "Full-time",
-      location: "Remote",
-      department: "Design",
-      closeDate: "2020-01-14",
-      closeDateFull: "January 14, 2020",
-    },
   ];
 
   const questions = [
@@ -127,31 +90,8 @@ export default function BookingDetails() {
     },
     // More questions...
   ];
-  const whoToFollow = [
-    {
-      name: "Leonard Krasner",
-      handle: "leonardkrasner",
-      href: "#",
-      imageUrl:
-        "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-    // More people...
-  ];
-  const trendingPosts = [
-    {
-      id: 1,
-      user: {
-        name: "Floyd Miles",
-        imageUrl:
-          "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-      },
-      body: "What books do you have on your bookshelf just to look smarter than you actually are?",
-      comments: 291,
-    },
-    // More posts...
-  ];
 
-  useEffect(() => {
+   useEffect(() => {
     // const data = await startFetchGetGroomer(poochToken);
     // setProfileData(data);
     loadProfile();
@@ -170,83 +110,6 @@ export default function BookingDetails() {
       })
       .catch((error) => {
         console.log("Error", error);
-      });
-  };
-
-  const handleListingToggle = () => {
-    const putBody = {
-      uuid: allGroomerInfo?.uuid,
-      on: !listingStatus,
-    };
-    fetch("https://dev-api.poochapp.net/v1/groomers/toggle-listing", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        token: localStorage.getItem("poochToken"),
-      },
-      body: JSON.stringify(putBody),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        setListingStatus(!listingStatus);
-        loadProfile();
-      })
-      .catch((error) => {
-        console.error("Error: ", error);
-      });
-  };
-
-  const handleCheckIn = (bookingUuid) => {
-    const putBody = {
-      groomerUuid: allGroomerInfo?.uuid, // groomer uuid
-      uuid: bookingUuid, // booking uuid
-    };
-    console.log("putBody:", putBody);
-
-    fetch("https://dev-api.poochapp.net/v1/bookings/checkin", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        token: localStorage.getItem("poochToken"),
-      },
-      body: JSON.stringify(putBody),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        alert("Checked In");
-        loadProfile();
-        // setListingStatus(!listingStatus)
-      })
-      .catch((error) => {
-        console.error("Error: ", error);
-      });
-  };
-
-  const handleCheckOut = (bookingUuid) => {
-    const putBody = {
-      groomerUuid: allGroomerInfo?.uuid, // groomer uuid
-      uuid: bookingUuid, // booking uuid
-    };
-    console.log("putBody:", putBody);
-
-    fetch("https://dev-api.poochapp.net/v1/bookings/checkout", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        token: localStorage.getItem("poochToken"),
-      },
-      body: JSON.stringify(putBody),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        alert("Checked Out");
-        loadProfile();
-      })
-      .catch((error) => {
-        console.error("Error: ", error);
       });
   };
 
@@ -324,7 +187,7 @@ export default function BookingDetails() {
                 <div className="relative flex justify-between xl:grid xl:grid-cols-12 lg:gap-8">
                   <div className="flex md:absolute md:left-0 md:inset-y-0 lg:static xl:col-span-2">
                     <div className="flex-shrink-0 flex items-center">
-                      <a href="#" className="flex items-center">
+                      <a href="#" className="flex items-center" alt="parent-image">
                         <img
                           className="block h-12 w-auto rounded-full mr-2"
                           src={questions[0].author.imageUrl}
@@ -378,22 +241,26 @@ export default function BookingDetails() {
                     <a
                       href="#"
                       className="text-sm font-medium text-gray-900 hover:underline"
+                      alt="settings link"
                     >
                       <img
                         src={require("../assessts/images/settings-gear.png")}
                         className="h-6 w-6"
                         aria-hidden="true"
+                        alt="settings"
                       />
                     </a>
                     <a
                       href="#"
                       className="ml-5 flex-shrink-0  rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500"
+                      alt="notification link"
                     >
                       <span className="sr-only">View notifications</span>
                       <img
                         src={require("../assessts/images/notification-bell.png")}
                         className="h-6 w-6"
                         aria-hidden="true"
+                        alt="notification icon"
                       />
                     </a>
 
@@ -405,7 +272,7 @@ export default function BookingDetails() {
                           <img
                             className="h-8 w-8 rounded-full"
                             src={user.imageUrl}
-                            alt=""
+                            alt="user-image"
                           />
                         </Menu.Button>
                       </div>
@@ -428,6 +295,7 @@ export default function BookingDetails() {
                                     active ? "bg-gray-100" : "",
                                     "block py-2 px-4 text-sm text-gray-700"
                                   )}
+                                  alt="user-navigation"
                                 >
                                   {item.name}
                                 </a>
@@ -447,6 +315,7 @@ export default function BookingDetails() {
                     <a
                       key={item.name}
                       href={item.href}
+                      alt="navigation"
                       aria-current={item.current ? "page" : undefined}
                       className={classNames(
                         item.current
@@ -465,7 +334,7 @@ export default function BookingDetails() {
                       <img
                         className="h-10 w-10 rounded-full"
                         src={user.imageUrl}
-                        alt=""
+                        alt="user-image"
                       />
                     </div>
                     <div className="ml-3">
@@ -490,6 +359,7 @@ export default function BookingDetails() {
                         key={item.name}
                         href={item.href}
                         className="block rounded-md py-2 px-3 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+                        alt="user-navigation"
                       >
                         {item.name}
                       </a>
@@ -502,8 +372,9 @@ export default function BookingDetails() {
                     <a
                       href="#"
                       className="text-base font-medium text-gray-900 hover:underline"
+                      alt="settings link"
                     >
-                      Go Premium
+                      Clear
                     </a>
                   </div>
                 </div>
@@ -580,6 +451,7 @@ export default function BookingDetails() {
                             : "text-pooch-blue-3 hover:bg-gray-50 hover:text-gray-900",
                           "group flex items-center px-2 py-2 text-sm font-medium rounded-md rounded-full py-2 px-4"
                         )}
+                        alt="sidebar-navigation"
                       >
                         <item.icon
                           className={classNames(
@@ -596,7 +468,7 @@ export default function BookingDetails() {
                   </nav>
                 </div>
                 <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
-                  <a href="/" className="flex-shrink-0 group block">
+                  <a href="/" className="flex-shrink-0 group block" alt="temp-profile">
                     <div className="flex items-center">
                       <div>
                         <img
@@ -629,7 +501,7 @@ export default function BookingDetails() {
             </span>
           </div>
           <div className="bg-white shadow overflow-hidden sm:rounded-md mb-8">
-            <a href="#" className="block hover:bg-gray-50">
+            <a href="#" className="block hover:bg-gray-50" alt="information-care">
               <div className="px-4 py-4 sm:px-6">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-Museo-Sans-Rounded-900 text-pooch-black-1 truncate">
@@ -665,7 +537,7 @@ export default function BookingDetails() {
 
           {/**Dates */}
           <div className="bg-white shadow overflow-hidden sm:rounded-md mb-8">
-            <a href="#" className="block hover:bg-gray-50">
+            <a href="#" className="block hover:bg-gray-50" alt="dates-section">
               <div className="px-4 py-4 sm:px-6">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-Museo-Sans-Rounded-900 text-pooch-black-1 truncate">
@@ -716,7 +588,7 @@ export default function BookingDetails() {
           </div>
 
           <div className="bg-white shadow overflow-hidden sm:rounded-md mb-8">
-            <a href="#" className="block hover:bg-gray-50">
+            <a href="#" className="block hover:bg-gray-50" alt="services-card">
               <div className="px-4 py-4 sm:px-6">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-Museo-Sans-Rounded-900 text-pooch-black-1 truncate">
@@ -739,7 +611,7 @@ export default function BookingDetails() {
 
           {/*cost breakdown*/}
           <div className="bg-white shadow overflow-hidden sm:rounded-md mb-8">
-            <a href="#" className="block hover:bg-gray-50">
+            <a href="#" className="block hover:bg-gray-50" alt="cost-breakdown-card">
               <div className="px-4 py-4 sm:px-6">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-Museo-Sans-Rounded-900 text-pooch-black-1 truncate">
@@ -782,7 +654,7 @@ export default function BookingDetails() {
 
           {/*pet Details*/}
           <div className="bg-white shadow overflow-hidden sm:rounded-md">
-            <a href="#" className="block hover:bg-gray-50">
+            <a href="#" className="block hover:bg-gray-50" alt="pet-details-card">
               <div className="px-4 py-4 sm:px-6">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-Museo-Sans-Rounded-900 text-pooch-black-1 truncate">
@@ -840,7 +712,7 @@ export default function BookingDetails() {
             </a>
           </div>
           <div className="hidden lg:flex lg:items-center lg:justify-center xl:col-span-2 mt-8 w-full mb-8">
-            <a href="#" className="text-sm font-medium text-gray-900 ">
+            <a href="#" className="text-sm font-medium text-gray-900 " alt="accept-reservation-button">
               <button
                 type="button"
                 className=" px-3.5 py-2 shadow flex justify-around border-1 border-pooch-blue-2 text-sm leading-4 font-medium rounded-full shadow-sm text-pooch-blue-2 bg-pooch-blue-6 hover:bg-pooch-blue-2 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 self-center w-40 text-center"
@@ -858,6 +730,7 @@ export default function BookingDetails() {
             <a
               href="#"
               className="ml-5 flex-shrink-0  rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500"
+              alt="cancel-reservation-button"
             >
               <button
                 type="button"
