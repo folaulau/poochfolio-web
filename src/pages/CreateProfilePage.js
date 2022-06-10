@@ -25,11 +25,11 @@ const CreateProfilePage = () => {
       uuid: "",
       selected: true,
     },
-    {
-      name: "Pick up/Drop off",
-      uuid: "",
-      selected: true,
-    },
+    // {
+    //   name: "Pick up/Drop off",
+    //   uuid: "",
+    //   selected: true,
+    // },
   ]);
 
   const [groomerInfo, setGroomerInfo] = useState({
