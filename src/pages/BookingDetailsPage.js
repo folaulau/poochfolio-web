@@ -56,15 +56,14 @@ export default function BookingDetails() {
   };
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [bookings, setBookings] = useState([]);
-  const [listingStatus, setListingStatus] = useState(false);
   const [allGroomerInfo, setAllGroomerInfo] = useState(null);
   const { state } = useLocation();
   const navigate = useNavigate();
 
   const userNavigation = [
-    { name: "Your Profile", href: "#" },
-    { name: "Settings", href: "#" },
-    { name: "Sign out", href: "#" },
+    { name: "Your Profile", href: "/" },
+    { name: "Settings", href: "/" },
+    { name: "Sign out", href: "/" },
   ];
 
   const questions = [
@@ -77,11 +76,11 @@ export default function BookingDetails() {
         name: "Dries Vincent",
         imageUrl:
           "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-        href: "#",
+        href: "/",
       },
       date: "December 9 at 11:43 AM",
       datetime: "2020-12-09T11:43:00",
-      href: "#",
+      href: "/",
       title: "Grooming",
       body: `
       <p>1.2 miles away</p>
@@ -105,7 +104,6 @@ export default function BookingDetails() {
         let groomerInfo = response.data.data?.groomer[0];
         console.log("groomerInfo:", groomerInfo);
         setBookings(groomerInfo?.bookings);
-        setListingStatus(groomerInfo?.listing);
         setAllGroomerInfo(groomerInfo);
       })
       .catch((error) => {
@@ -133,7 +131,6 @@ export default function BookingDetails() {
       .then((data) => {
         console.log("Success:", data);
         loadProfile();
-        // setListingStatus(!listingStatus)
       })
       .catch((error) => {
         console.error("Error: ", error);
@@ -160,7 +157,6 @@ export default function BookingDetails() {
         console.log("Success:", data);
         alert("Checked In");
         loadProfile();
-        // setListingStatus(!listingStatus)
       })
       .catch((error) => {
         console.error("Error: ", error);
@@ -187,7 +183,7 @@ export default function BookingDetails() {
                 <div className="relative flex justify-between xl:grid xl:grid-cols-12 lg:gap-8">
                   <div className="flex md:absolute md:left-0 md:inset-y-0 lg:static xl:col-span-2">
                     <div className="flex-shrink-0 flex items-center">
-                      <a href="#" className="flex items-center" alt="parent-image">
+                      <a  className="flex items-center" alt="parent-image">
                         <img
                           className="block h-12 w-auto rounded-full mr-2"
                           src={questions[0].author.imageUrl}
@@ -239,7 +235,6 @@ export default function BookingDetails() {
                   </div>
                   <div className="hidden lg:flex lg:items-center lg:justify-end xl:col-span-4">
                     <a
-                      href="#"
                       className="text-sm font-medium text-gray-900 hover:underline"
                       alt="settings link"
                     >
@@ -251,7 +246,6 @@ export default function BookingDetails() {
                       />
                     </a>
                     <a
-                      href="#"
                       className="ml-5 flex-shrink-0  rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500"
                       alt="notification link"
                     >
@@ -370,7 +364,6 @@ export default function BookingDetails() {
                 <div className="mt-6 max-w-3xl mx-auto px-4 sm:px-6">
                   <div className="mt-6 flex justify-center">
                     <a
-                      href="#"
                       className="text-base font-medium text-gray-900 hover:underline"
                       alt="settings link"
                     >
@@ -501,7 +494,7 @@ export default function BookingDetails() {
             </span>
           </div>
           <div className="bg-white shadow overflow-hidden sm:rounded-md mb-8">
-            <a href="#" className="block hover:bg-gray-50" alt="information-care">
+            <a  className="block hover:bg-gray-50" alt="information-care">
               <div className="px-4 py-4 sm:px-6">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-Museo-Sans-Rounded-900 text-pooch-black-1 truncate">
@@ -537,7 +530,7 @@ export default function BookingDetails() {
 
           {/**Dates */}
           <div className="bg-white shadow overflow-hidden sm:rounded-md mb-8">
-            <a href="#" className="block hover:bg-gray-50" alt="dates-section">
+            <a  className="block hover:bg-gray-50" alt="dates-section">
               <div className="px-4 py-4 sm:px-6">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-Museo-Sans-Rounded-900 text-pooch-black-1 truncate">
@@ -588,7 +581,7 @@ export default function BookingDetails() {
           </div>
 
           <div className="bg-white shadow overflow-hidden sm:rounded-md mb-8">
-            <a href="#" className="block hover:bg-gray-50" alt="services-card">
+            <a  className="block hover:bg-gray-50" alt="services-card">
               <div className="px-4 py-4 sm:px-6">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-Museo-Sans-Rounded-900 text-pooch-black-1 truncate">
@@ -611,7 +604,7 @@ export default function BookingDetails() {
 
           {/*cost breakdown*/}
           <div className="bg-white shadow overflow-hidden sm:rounded-md mb-8">
-            <a href="#" className="block hover:bg-gray-50" alt="cost-breakdown-card">
+            <a  className="block hover:bg-gray-50" alt="cost-breakdown-card">
               <div className="px-4 py-4 sm:px-6">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-Museo-Sans-Rounded-900 text-pooch-black-1 truncate">
@@ -654,7 +647,7 @@ export default function BookingDetails() {
 
           {/*pet Details*/}
           <div className="bg-white shadow overflow-hidden sm:rounded-md">
-            <a href="#" className="block hover:bg-gray-50" alt="pet-details-card">
+            <a  className="block hover:bg-gray-50" alt="pet-details-card">
               <div className="px-4 py-4 sm:px-6">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-Museo-Sans-Rounded-900 text-pooch-black-1 truncate">
@@ -712,7 +705,7 @@ export default function BookingDetails() {
             </a>
           </div>
           <div className="hidden lg:flex lg:items-center lg:justify-center xl:col-span-2 mt-8 w-full mb-8">
-            <a href="#" className="text-sm font-medium text-gray-900 " alt="accept-reservation-button">
+            <a  className="text-sm font-medium text-gray-900 " alt="accept-reservation-button">
               <button
                 type="button"
                 className=" px-3.5 py-2 shadow flex justify-around border-1 border-pooch-blue-2 text-sm leading-4 font-medium rounded-full shadow-sm text-pooch-blue-2 bg-pooch-blue-6 hover:bg-pooch-blue-2 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 self-center w-40 text-center"
@@ -728,7 +721,6 @@ export default function BookingDetails() {
               </button>
             </a>
             <a
-              href="#"
               className="ml-5 flex-shrink-0  rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500"
               alt="cancel-reservation-button"
             >

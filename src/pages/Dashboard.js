@@ -111,15 +111,15 @@ export default function Dashboard() {
     { date: "2022-02-06" },
   ];
   const userNavigation = [
-    { name: "Your Profile", href: "#" },
-    { name: "Settings", href: "#" },
-    { name: "Sign out", href: "#" },
+    { name: "Your Profile", href: "/" },
+    { name: "Settings", href: "/" },
+    { name: "Sign out", href: "/" },
   ];
 
   const tabs = [
-    { name: "Incoming Occupants", href: "#", current: true },
-    { name: "Unpaid Occupants", href: "#", current: false },
-    { name: "Past Reservations", href: "#", current: false },
+    { name: "Incoming Occupants", href: "/", current: true },
+    { name: "Unpaid Occupants", href: "/", current: false },
+    { name: "Past Reservations", href: "/", current: false },
   ];
 
   const questions = [
@@ -132,11 +132,11 @@ export default function Dashboard() {
         name: "Dries Vincent",
         imageUrl:
           "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-        href: "#",
+        href: "/",
       },
       date: "December 9 at 11:43 AM",
       datetime: "2020-12-09T11:43:00",
-      href: "#",
+      href: "/",
       title: "Grooming",
       body: `
       <p>1.2 miles away</p>
@@ -323,7 +323,7 @@ export default function Dashboard() {
                 <div className="relative flex justify-between xl:grid xl:grid-cols-12 lg:gap-8">
                   <div className="flex md:absolute md:left-0 md:inset-y-0 lg:static xl:col-span-2">
                     <div className="flex-shrink-0 flex items-center">
-                      <a href="#" className="flex items-center" alt="groomerImage">
+                      <a  className="flex items-center" alt="groomerImage">
                         <img
                           className="block h-12 w-auto rounded-full mr-2"
                           src={questions[0].author.imageUrl}
@@ -375,7 +375,6 @@ export default function Dashboard() {
                   </div>
                   <div className="hidden lg:flex lg:items-center lg:justify-end xl:col-span-4">
                     <a
-                      href="#"
                       className="text-sm font-medium text-gray-900 hover:underline"
                       alt="settings"
                     >
@@ -383,10 +382,10 @@ export default function Dashboard() {
                         src={require("../assessts/images/settings-gear.png")}
                         className="h-6 w-6"
                         aria-hidden="true"
+                        alt="settings"
                       />
                     </a>
                     <a
-                      href="#"
                       className="ml-5 flex-shrink-0  rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500"
                       alt="notifications"
                     >
@@ -395,6 +394,7 @@ export default function Dashboard() {
                         src={require("../assessts/images/notification-bell.png")}
                         className="h-6 w-6"
                         aria-hidden="true"
+                        alt="notifications"
                       />
                     </a>
 
@@ -406,7 +406,7 @@ export default function Dashboard() {
                           <img
                             className="h-8 w-8 rounded-full"
                             src={user.imageUrl}
-                            alt=""
+                            alt="userImg"
                           />
                         </Menu.Button>
                       </div>
@@ -504,7 +504,6 @@ export default function Dashboard() {
                 <div className="mt-6 max-w-3xl mx-auto px-4 sm:px-6">
                   <div className="mt-6 flex justify-center">
                     <a
-                      href="#"
                       className="text-base font-medium text-gray-900 hover:underline"
                       alt="settings"
                     >
@@ -682,6 +681,7 @@ export default function Dashboard() {
                           "mr-3 flex-shrink-0 h-6 w-6 group-hover:bg-pooch-blue-2 group-hover:rounded-full group-hover:h-8 group-hover:w-8 group-hover:p-1"
                         )}
                         src={item.iconRef}
+                        alt="icon"
                       />
                    
                     {item.name}
@@ -737,6 +737,7 @@ export default function Dashboard() {
                             src={require("../assessts/images/search.png")}
                             className="h-6 w-6 "
                             aria-hidden="true"
+                            alt="search"
                           />
                         </div>
                       </div>
@@ -745,7 +746,6 @@ export default function Dashboard() {
                 </div>
                 <div className="hidden lg:flex lg:items-center lg:justify-end xl:col-span-2 mt-8">
                   <a
-                    href="#"
                     className="text-sm font-medium text-gray-900 "
                     alt="Reservations"
                   >
@@ -759,12 +759,12 @@ export default function Dashboard() {
                     <img
                             src={require("../assessts/images/plus-sign.png")}
                             aria-hidden="true"
+                            alt="plus-sign"
                           />
                       Reservations
                     </button>
                   </a>
                   <a
-                    href="#"
                     className="ml-5 flex-shrink-0  rounded-full p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500"
                     alt="Add Occupant"
                   >
@@ -778,6 +778,7 @@ export default function Dashboard() {
                      <img
                             src={require("../assessts/images/plus-sign.png")}
                             aria-hidden="true"
+                            alt="plus-sign"
                           />
                       Add Occupants
                     </button>
