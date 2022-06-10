@@ -830,7 +830,6 @@ export default function Dashboard() {
               </div>
               <div className="mt-1 border-1 bg-local row-span-1 ">
                 <ul
-                  role="list"
                   className="space-y-4 overflow-x-scroll h-64 p-2 "
                 >
                   {bookings
@@ -971,7 +970,6 @@ export default function Dashboard() {
                   </nav>
                 </div>
                 <ul
-                  role="list"
                   className="space-y-4 overflow-x-scroll h-64 p-2 "
                 >
                   {bookings
