@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from "react";
-import React from 'react';
 import {
   ClipboardCheckIcon,
   PlusCircleIcon,
@@ -193,26 +192,32 @@ const InputListingPage2 = () => {
     return GroomerApi.uploadContracts(localStorage.getItem("uuid"), formdata);
   };
 
-  const handleServicePrice = (e, id) => {
+  const handleServicePrice = (e, serviceName) => {
     const updatedPrices = careServices.map((item) => ({
       ...item,
-      [e.target.name]: id === item.id ? +e.target.value : +item[e.target.name],
+      [e.target.name]: serviceName === item.name ? e.target.value : item[e.target.name],
     }));
     setCareServices(updatedPrices);
   };
 
   const handleServiceTypes = (e) => {
     const selectedValue = e.target.value;
+    console.log("selectedValue: "+selectedValue)
     const localCareServices = [...careServices];
-    if (careServices.some((el) => el.name === selectedValue)) {
+
+    if (careServices.some((careService) => careService.name === selectedValue)) {
     } else {
       localCareServices.push({
         name: selectedValue,
       });
+      // console.log("localCareServices: ")
+      // console.log(localCareServices)
       setCareServices(localCareServices);
     }
   };
-  const postList = async () => {
+  const postList = async (e) => {
+    e.preventDefault();
+
     console.log("instantBooking, ", instantBooking)
 
     let payload = groomerInfo;
@@ -258,7 +263,7 @@ const InputListingPage2 = () => {
   };
 
   return (
-    <form
+    <form onSubmit={postList}
       className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500 bg-[#f3f8ff]"
     >
       <div className="w-1/2 mt-12">
@@ -304,7 +309,7 @@ const InputListingPage2 = () => {
               </thead>
               <tbody>
                 {careServices.map((service) => (
-                  <tr className="border-b" key={service.id}>
+                  <tr className="border-b" key={service.name}>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                       {service.name}
                     </td>
@@ -312,27 +317,30 @@ const InputListingPage2 = () => {
                       <input
                         type="number"
                         name="smallPrice"
+                        required={true}
                         value={service.smallPrice!=null ? service.smallPrice : ''}
                         className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
-                        onChange={(e) => handleServicePrice(e, service.id)}
+                        onChange={(e) => handleServicePrice(e, service.name)}
                       />
                     </td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                       <input
                         type="number"
                         name="mediumPrice"
+                        required={true}
                         value={service.mediumPrice!=null ? service.mediumPrice : ''}
                         className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
-                        onChange={(e) => handleServicePrice(e, service.id)}
+                        onChange={(e) => handleServicePrice(e, service.name)}
                       />
                     </td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                       <input
                         type="number"
                         name="largePrice"
+                        required={true}
                         value={service.largePrice!=null ? service.largePrice : ''}
                         className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
-                        onChange={(e) => handleServicePrice(e, service.id)}
+                        onChange={(e) => handleServicePrice(e, service.name)}
                       />
                     </td>
                   </tr>
@@ -340,6 +348,7 @@ const InputListingPage2 = () => {
                 <tr className="text-center">
                   <td colSpan="5" className="py-4">
                     <button
+                    type="button"
                       className="flex mx-auto items-center gap-x-1"
                       onClick={() => setOpen(true)}
                     >
@@ -514,11 +523,7 @@ const InputListingPage2 = () => {
         Submit Contracts
       </button>{" "} */}
       <div className="w-1/2 flex justify-center">
-        <button
-          type="button"
-          onClick={()=>postList()}
-          className="mt-8 justify-center uppercase w-3/4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997] mb-8"
-        >
+        <button type="submit" className="mt-8 justify-center uppercase w-3/4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997] mb-8">
           Post listing
         </button>{" "}
       </div>

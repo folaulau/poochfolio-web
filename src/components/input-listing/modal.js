@@ -11,6 +11,9 @@ const Modal = ({
   onServiceChange,
 }) => {
   const cancelButtonRef = useRef(null);
+
+  console.log(careServices);
+
   return (
     <div>
       <Transition.Root show={open} as={Fragment}>
@@ -61,23 +64,20 @@ const Modal = ({
                       </Dialog.Title>
 
                       {careServices.map((service) => (
-                        <>
-                          <div
-                            className="my-2 flex justify-between"
-                            key={service.name}
-                          >
+                        <div key={service.name}>
+                          <div className="my-2 flex justify-between">
                             <p className="text-sm text-gray-500">
                               {service.name}
                             </p>
                             {/* <XCircleIcon className="h-6 text-red-600" onClick={} /> */}
                           </div>
                           <hr />
-                        </>
+                        </div>
                       ))}
                     </div>
                   </div>
-                  <select onChange={(e) => onServiceChange(e)}>
-                    <option>Add New Service</option>
+                  <select onChange={(e) => onServiceChange(e)}  className="text-sm text-gray-500">
+                    <option key={`add-new-service`}>Add New Service</option>
                     {serviceTypes.map((service) => (
                       <option key={service.name}>{service.name}</option>
                     ))}
