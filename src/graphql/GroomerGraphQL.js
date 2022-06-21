@@ -149,6 +149,7 @@ const GroomerGraphql = {
           description
           firstName: first_name
           lastName: last_name
+          email
           signUpStatus: sign_up_status
           status
           createdAt: created_at

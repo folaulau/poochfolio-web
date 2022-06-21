@@ -24,6 +24,9 @@ module.exports = {
         'Museo-Sans-Rounded-500': ['MuseoSansRounded-500'],
         'Museo-Sans-Rounded-700': ['MuseoSansRounded-700'],
         'Museo-Sans-Rounded-900': ['MuseoSansRounded-900']
+      },
+      spacing: {
+        '103': '30rem',
       }
     }
   },

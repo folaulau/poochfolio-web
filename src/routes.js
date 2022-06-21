@@ -17,7 +17,7 @@ import BookingDetails from "./pages/BookingDetailsPage";
 
 export default function PoochRoutes() {
   return (
-    <Routes>
+    <Routes >
       <Route path="/" element={<Home />} />
       <Route path="/signin" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
