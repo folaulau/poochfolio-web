@@ -90,7 +90,7 @@ const Sidebar = () => {
       current: false,
       iconRef: require('../assessts/images/capital-menu.png'),
     },
-  ]);
+  ];
 
   const isCurrentTab = () => {
     const name = window.location.pathname;
