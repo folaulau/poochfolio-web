@@ -224,7 +224,7 @@ const DashboardHeader = () => {
                   </span>
 
                   {/* Profile dropdown */}
-                  <Menu as="div" className="flex-shrink-0 relative ml-5 ">
+                  <Menu as="div" className="flex-shrink-0 relative ml-5 z-40">
                     <div>
                       <Menu.Button className="bg-white rounded-full flex  ">
                         <span className="sr-only">Open user menu</span>
