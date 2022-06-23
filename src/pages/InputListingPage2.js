@@ -192,11 +192,18 @@ const InputListingPage2 = () => {
     return GroomerApi.uploadContracts(localStorage.getItem("uuid"), formdata);
   };
 
-  const handleServicePrice = (e, serviceName) => {
-    const updatedPrices = careServices.map((item) => ({
-      ...item,
-      [e.target.name]: serviceName === item.name ? e.target.value : item[e.target.name],
-    }));
+  const handleServicePrice = (e, serviceName, serviceSize) => {
+    // const updatedPrices = careServices.map((item) => ({
+    //   ...item,
+    //   [e.target.name]: serviceName === item.name ? e.target.value : item[e.target.name],
+    // }));
+    const updatedPrices = careServices.map(item => {
+      if(serviceName === item.name ){
+        item[e.target.name] = e.target.value 
+        item[serviceSize] = true
+      }
+      return item
+    });
     setCareServices(updatedPrices);
   };
 
@@ -320,7 +327,7 @@ const InputListingPage2 = () => {
                         required={true}
                         value={service.smallPrice!=null ? service.smallPrice : ''}
                         className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
-                        onChange={(e) => handleServicePrice(e, service.name)}
+                        onChange={(e) => handleServicePrice(e, service.name, 'serviceSmall')}
                       />
                     </td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -330,7 +337,7 @@ const InputListingPage2 = () => {
                         required={true}
                         value={service.mediumPrice!=null ? service.mediumPrice : ''}
                         className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
-                        onChange={(e) => handleServicePrice(e, service.name)}
+                        onChange={(e) => handleServicePrice(e, service.name, 'serviceMedium')}
                       />
                     </td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -340,7 +347,7 @@ const InputListingPage2 = () => {
                         required={true}
                         value={service.largePrice!=null ? service.largePrice : ''}
                         className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
-                        onChange={(e) => handleServicePrice(e, service.name)}
+                        onChange={(e) => handleServicePrice(e, service.name, 'serviceLarge')}
                       />
                     </td>
                   </tr>
