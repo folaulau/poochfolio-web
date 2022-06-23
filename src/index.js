@@ -1,20 +1,25 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter } from "react-router-dom";
-import PoochRoutes from "./routes";
+import React, { Suspense } from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import PoochRoutes from './routes';
+import { BackdropProvider } from './context/BackDropProvider';
 
-console.log("node env: " + process.env.REACT_APP_ENV);
-console.log("api x-api-key: " + process.env.REACT_APP_X_API_KEY);
+console.log('node env: ' + process.env.REACT_APP_ENV);
+console.log('api x-api-key: ' + process.env.REACT_APP_X_API_KEY);
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <PoochRoutes />
-    </BrowserRouter>
+  <Suspense>
+    <BackdropProvider>
+      <BrowserRouter>
+        <PoochRoutes />
+      </BrowserRouter>
+    </BackdropProvider>
+  </Suspense>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -16,6 +16,7 @@ import {
 } from "@heroicons/react/outline";
 import { SearchIcon } from "@heroicons/react/solid";
 import GroomerGraphql from "../graphql/GroomerGraphQL";
+import GroomerApi from "../api/GroomerApi";
 
 const navigation = [
   { name: "Reservations", href: "/dashboard", icon: UsersIcon, current: true },
@@ -113,56 +114,28 @@ export default function BookingDetails() {
   };
 
   const handleAcceptBooking = (bookingUuid) => {
-    const putBody = {
-      uuid: bookingUuid, // booking uuid
-      approved: true,
-      note: "Accepted",
-    };
-    console.log("acceptedBooking:", putBody);
-
-    fetch("https://dev-api.poochapp.net/v1/bookings/groomer/approval", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        token: localStorage.getItem("poochToken"),
-      },
-      body: JSON.stringify(putBody),
+    GroomerApi.acceptBooking(bookingUuid)
+    .then((data) => {
+      console.log("Success:", data);
+      alert("Checked In");
+      loadProfile();
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        loadProfile();
-      })
-      .catch((error) => {
-        console.error("Error: ", error);
-      });
-  };
+    .catch((error) => {
+      console.error("Error: ", error);
+    });
+};
 
   const handlecCancelBooking = (bookingUuid) => {
-    const putBody = {
-      uuid: bookingUuid, // booking uuid
-      reason: "Cancelled by groomer",
-    };
-    console.log("acceptedBooking:", putBody);
-
-    fetch("https://dev-api.poochapp.net/v1/bookings/cancel", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        token: localStorage.getItem("poochToken"),
-      },
-      body: JSON.stringify(putBody),
+    GroomerApi.cancelBooking(bookingUuid)
+    .then((data) => {
+      console.log("Success:", data);
+      alert("Cancel booking");
+      loadProfile();
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        alert("Checked In");
-        loadProfile();
-      })
-      .catch((error) => {
-        console.error("Error: ", error);
-      });
-  };
+    .catch((error) => {
+      console.error("Error: ", error);
+    });
+};
 
   useEffect(() => {}, [bookings]);
 
