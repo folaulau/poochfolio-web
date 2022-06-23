@@ -46,7 +46,7 @@ const GroomerApi = {
                 'token': localStorage.getItem("poochToken")
             }
         };
-        return instance.put('/groomers/create-listing', JSON.stringify(groomer), options);
+        return instance.put('/groomers/update-listing', JSON.stringify(groomer), options);
     },
     updateProfile: (groomer) => {
 
