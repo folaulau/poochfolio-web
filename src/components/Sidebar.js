@@ -26,7 +26,7 @@ const Sidebar = () => {
   const [allGroomerInfo, setAllGroomerInfo] = useState(null);
   // const navigate = useNavigate()
 
-  const [navigation, setNavigation] = useState([
+  const navigation =[
     {
       name: 'Reservations',
       href: '/dashboard',
