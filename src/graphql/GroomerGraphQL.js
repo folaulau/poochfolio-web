@@ -123,6 +123,7 @@ const GroomerGraphql = {
             uuid
             isPublic: is_public
             createdAt: created_at
+            mainProfileImage: main_profile_image
           }
         }
         

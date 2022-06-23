@@ -22,7 +22,7 @@ const navigation = [
     href: '/dashboard',
     icon: UsersIcon,
     current: true,
-    iconRef: require('../assessts/images/shape-28.png'),
+    iconRef: require('../assessts/images/paw-menu.png'),
   },
   {
     name: 'Calendar',
@@ -241,16 +241,16 @@ const DashboardHeader = () => {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <Menu.Items className="origin-top-right absolute z-10 right-0 mt-2 w-103  rounded-xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 pt-1 focus:outline-none">
-                        <p className="font-MuseoSansRounded-700 text-pooch-blue-2 text-lg font-semibold ml-4 mt-4 mb-4">
+                        <p className="font-Museo-Sans-Rounded-700 text-pooch-blue-2 text-lg font-semibold ml-4 mt-4 mb-4">
                           Settings
                         </p>
                         <div className="mb-2">
                           <div className="ml-4 mr-8">
-                            <p className="text-sm mb-2 font-MuseoSansRounded-700 text-black-1 ">
+                            <p className="text-sm mb-2 font-Museo-Sans-Rounded-700 text-black-1 ">
                               Username
                             </p>
                             <div className="flex flex-row justify-between">
-                              <p className="text-xs font-MuseoSansRounded-700 text-pooch-blue-2 font-semibold">
+                              <p className="text-xs font-Museo-Sans-Rounded-700 text-pooch-blue-2 font-semibold">
                                 {allGroomerInfo?.email}
                               </p>
                               <img
@@ -262,11 +262,11 @@ const DashboardHeader = () => {
                             </div>
                           </div>
                           <div className="ml-4 mr-8 mt-3 mb-4">
-                            <p className="text-sm mb-2 font-MuseoSansRounded-700 text-black-1 ">
+                            <p className="text-sm mb-2 font-Museo-Sans-Rounded-700 text-black-1 ">
                               Password
                             </p>
                             <div className="flex flex-row justify-between">
-                              <p className="text-xs font-MuseoSansRounded-700 text-pooch-blue-2 font-semibold">
+                              <p className="text-xs font-Museo-Sans-Rounded-700 text-pooch-blue-2 font-semibold">
                                 ********
                               </p>
                               <img
@@ -281,7 +281,7 @@ const DashboardHeader = () => {
                         <div className="bg-pooch-blue-4  py-2 rounded-b-lg">
                           <div className="ml-4 mr-8 mt-3  ">
                             <div className="flex flex-row justify-between">
-                              <p className="text-sm mb-2 font-MuseoSansRounded-700 text-black-1 text-sm ">
+                              <p className="text-sm mb-2 font-Museo-Sans-Rounded-700 text-black-1 text-sm ">
                                 Sign Up Info
                               </p>
                               <img
@@ -294,73 +294,73 @@ const DashboardHeader = () => {
                           </div>
                           <div className=" bg-pooch-blue-4 grid grid-rows-4 grid-cols-2 gap-4 pr-4 pl-4 ">
                             <div className=" mr-8  py-2">
-                              <p className="text-xs mb-2 font-MuseoSansRounded-700 text-black-1 ">
+                              <p className="text-xs mb-2 font-Museo-Sans-Rounded-700 text-black-1 ">
                                 First Name
                               </p>
                               <div className="flex flex-row justify-between">
-                                <p className="text-xs font-MuseoSansRounded-700 text-pooch-blue-2 font-semibold">
+                                <p className="text-xs font-Museo-Sans-Rounded-700 text-pooch-blue-2 font-semibold">
                                 {allGroomerInfo?.firstName}
                                 </p>
                               </div>
                             </div>
                             <div className=" mr-8  py-2">
-                              <p className="text-xs mb-2 font-MuseoSansRounded-700 text--black-1 ">
+                              <p className="text-xs mb-2 font-Museo-Sans-Rounded-700 text--black-1 ">
                                 Last Name
                               </p>
                               <div className="flex flex-row justify-between">
-                                <p className="text-xs font-MuseoSansRounded-700 text-pooch-blue-2 font-semibold">
+                                <p className="text-xs font-Museo-Sans-Rounded-700 text-pooch-blue-2 font-semibold">
                                 {allGroomerInfo?.lastName}
                                 </p>
                               </div>
                             </div>
                             <div className=" mr-8  py-2">
-                              <p className="text-xs mb-2 font-MuseoSansRounded-700 text-black-1 whitespace-nowrap">
+                              <p className="text-xs mb-2 font-Museo-Sans-Rounded-700 text-black-1 whitespace-nowrap">
                                 Business Name
                               </p>
                               <div className="flex flex-row justify-between">
-                                <p className="text-xs font-MuseoSansRounded-700 text-pooch-blue-2 font-semibold">
+                                <p className="text-xs font-Museo-Sans-Rounded-700 text-pooch-blue-2 font-semibold">
                                 {allGroomerInfo?.businessName}
                                 </p>
                               </div>
                             </div>
                             <div className=" mr-8  py-2">
-                              <p className="text-xs mb-2 font-MuseoSansRounded-700 text-black-1 ">
+                              <p className="text-xs mb-2 font-Museo-Sans-Rounded-700 text-black-1 ">
                                 Email Address
                               </p>
                               <div className="flex flex-row justify-between">
-                                <p className="text-xs font-MuseoSansRounded-700 text-pooch-blue-2 font-semibold">
+                                <p className="text-xs font-Museo-Sans-Rounded-700 text-pooch-blue-2 font-semibold">
                                 {allGroomerInfo?.email}
                                 </p>
                               </div>
                             </div>
                             <div className=" mr-8  py-2">
-                              <p className="text-xs mb-2 font-MuseoSansRounded-700 text-black-1 ">
+                              <p className="text-xs mb-2 font-Museo-Sans-Rounded-700 text-black-1 ">
                                 Phone number
                               </p>
                               <div className="flex flex-row justify-between">
-                                <p className="text-xs font-MuseoSansRounded-700 text-pooch-blue-2 font-semibold">
+                                <p className="text-xs font-Museo-Sans-Rounded-700 text-pooch-blue-2 font-semibold">
                                 {allGroomerInfo?.phoneNumber}
                                 </p>
                               </div>
                             </div>
                             <div className=" mr-8  py-2">
-                              <p className="text-xs mb-2 font-MuseoSansRounded-700 text--black-1 ">
+                              <p className="text-xs mb-2 font-Museo-Sans-Rounded-700 text--black-1 ">
                                 Address
                               </p>
                               <div className="flex flex-row justify-between">
                                 <div>
-                                <p className="text-xs font-MuseoSansRounded-700 text-pooch-blue-2 font-semibold">
+                                <p className="text-xs font-Museo-Sans-Rounded-700 text-pooch-blue-2 font-semibold">
                                  {` ${allGroomerInfo?.addresses[0]?.city}, ${allGroomerInfo?.addresses[0]?.state}`}
                                 </p>
                                 </div>
                               </div>
                             </div>
                             <div className=" mr-8  py-2">
-                              <p className="text-xs mb-2 font-MuseoSansRounded-700 text-black-1 ">
+                              <p className="text-xs mb-2 font-Museo-Sans-Rounded-700 text-black-1 ">
                                 Services
                               </p>
                               <div className="flex flex-row justify-between">
-                                <p className="text-xs font-MuseoSansRounded-700 text-pooch-blue-2 font-semibold">
+                                <p className="text-xs font-Museo-Sans-Rounded-700 text-pooch-blue-2 font-semibold">
                                  {allGroomerInfo?.careServices[0].name}
                                 </p>
                                 <ChevronDownIcon className="h-4 w-4 text-pooch-blue-2" aria-hidden="true" />
