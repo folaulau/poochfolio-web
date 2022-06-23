@@ -244,7 +244,7 @@ export default function MarketPlace() {
     payload.offeredPickUp = pickDrop.offeredPickUp;
 
     console.log("payload", payload);
-    GroomerApi.createUpdateListings(payload)
+    GroomerApi.updateListings(payload)
       .then((response) => {
         console.log("response");
         console.log(response);

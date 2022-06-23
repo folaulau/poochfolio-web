@@ -227,7 +227,7 @@ const InputListingPage2 = () => {
     payload.offeredPickUp = pickDrop.offeredPickUp;
 
     console.log("payload", payload);
-    GroomerApi.createUpdateListings(payload)
+    GroomerApi.createListings(payload)
     .then((response) => {
       console.log("response")
       console.log(response)
