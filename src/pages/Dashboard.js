@@ -355,7 +355,7 @@ export default function Dashboard() {
                                   </button>
                                 )}
                                 {item.status !== "BOOKED" && (
-                                  <div className="flex flex-col pt-2 ml-8">
+                                  <div className="flex flex-col pt-2 ml-2">
                                     <button
                                       type="button"
                                       className="  font-Museo-Sans-Rounded-700 px-3.5 py-1 border border-pooch-blue-2 text-xs leading-4 font-medium rounded-full shadow-sm text-pooch-blue-2 bg-white-600 hover:bg-pooch-blue-2 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mb-2 self-center w-40 content-center"
