@@ -18,6 +18,7 @@ import MarketPlace from './pages/MarketPlace2';
 
 export default function PoochRoutes() {
   return (
+    <>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/signin" element={<Login />} />
@@ -37,5 +38,6 @@ export default function PoochRoutes() {
       <Route path="bookingdetails" element={<BookingDetails />} />
       <Route path="marketplace" element={<MarketPlace />} />
     </Routes>
+    </>
   );
 }

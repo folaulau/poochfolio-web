@@ -24,6 +24,7 @@ const Sidebar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [listingStatus, setListingStatus] = useState(false);
   const [allGroomerInfo, setAllGroomerInfo] = useState(null);
+  const [isActiveTab, setIsActiveTab] = useState(null);
   // const navigate = useNavigate()
 
   const navigation =[
@@ -97,22 +98,40 @@ const Sidebar = () => {
     console.log('THIS', navigation[0].current, name);
     switch (name) {
       case '/dashboard':
+        console.log('1')
+        setIsActiveTab("Reservations")
         break;
       case '/calendar':
+        console.log('2')
+        setIsActiveTab("Calendar")
         break;
       case '/marketplace':
+        console.log('3')
+        setIsActiveTab("Marketplace")
         break;
       case '/payments':
+        console.log('4')
+        setIsActiveTab("Payments")
         break;
       case '/invoice':
+        console.log('4')
+        setIsActiveTab("Invoice")
         break;
       case '/employees':
+        console.log('6')
+        setIsActiveTab("Employees")
         break;
       case '/quickbooks':
+        console.log('7')
+        setIsActiveTab("Quickbooks")
         break;
       case '/analytics':
+        console.log('8')
+        setIsActiveTab("Analytics")
         break;
       case '/capitol':
+        console.log('9')
+        setIsActiveTab("Capital")
         break;
       default:
         break;
@@ -219,7 +238,7 @@ const Sidebar = () => {
                       key={item.name}
                       href={item.href}
                       className={classNames(
-                        item.current
+                        item.name === isActiveTab
                           ? 'bg-gray-100 text-gray-900'
                           : 'text-pooch-blue-3 hover:bg-gray-50 hover:text-gray-900 ',
                         'group flex items-center px-2 py-2 text-sm font-medium rounded-md rounded-full py-2 px-4 font-Museo-Sans-Rounded-300  ',
@@ -228,7 +247,7 @@ const Sidebar = () => {
                     >
                       <item.icon
                         className={classNames(
-                          item.current
+                          item.name === isActiveTab
                             ? 'text-gray-500'
                             : 'text-pooch-blue-3 group-hover:text-gray-500',
                           'mr-3 flex-shrink-0 h-6 w-6',
@@ -252,10 +271,10 @@ const Sidebar = () => {
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-sidebar-background p-2">
           <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto ">
-            <div className="flex items-center justify-center flex-shrink-0 px-4 mb-4">
+            <div className="flex items-center justify-center flex-shrink-0 px-4 mb-24">
               <img className="h-12 w-auto" src="/landing-page/poochFolio.svg" alt="Workflow" />
             </div>
-            <nav className="mt-5 flex-1 px-2 space-y-1 bg-transparent ">
+            <nav className="mt-5 flex-1 px-2 space-y-1 bg-transparent mt-8 ">
               <div className="flex justify-evenly mb-6">
                 <span className="text-white text-sm font-Museo-Sans-Rounded-500">LISTING</span>
                 <Toggle toggle={listingStatus} onChange={handleListingToggle} />
@@ -265,12 +284,14 @@ const Sidebar = () => {
                   key={item.name}
                   href={item.href}
                   className={classNames(
-                    item.current
+                    item.name === isActiveTab
                       ? 'bg-gray-100 text-gray-900 justify-evenly'
                       : 'text-pooch-blue-3 hover:bg-gray-50 hover:text-gray-900',
-                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md rounded-full py-2 px-4 font-Museo-Sans-Rounded-300',
+                    'group flex items-center px-2 py-2 text-sm font-medium rounded-md rounded-full py-2 px-4  font-Museo-Sans-Rounded-300',
                   )}
                   alt={item.name}
+                  onClick={() => isCurrentTab()}
+                  style={{marginBottom: 20}}
                 >
                   {/* {item.name !== "Reservations" && (
                       <item.icon
@@ -286,7 +307,7 @@ const Sidebar = () => {
 
                   <img
                     className={classNames(
-                      item.current ? 'bg-pooch-blue-5 rounded-full h-8 w-8 p-1' : '',
+                      item.name === isActiveTab ? 'bg-pooch-blue-2 rounded-full h-8 w-8 p-1' : '',
                       'mr-3 flex-shrink-0 h-6 w-6 group-hover:bg-pooch-blue-2 group-hover:rounded-full group-hover:h-8 group-hover:w-8 group-hover:p-1',
                     )}
                     src={item.iconRef}
@@ -294,10 +315,10 @@ const Sidebar = () => {
                   />
 
                   {item.name}
-                  {item.current && (
+                  {item.name === isActiveTab && (
                     <PlusCircleIcon
                       className={classNames(
-                        item.current
+                        item.name === isActiveTab
                           ? 'text-gray-500'
                           : 'text-pooch-blue-3 group-hover:text-gray-500',
                         'ml-10 flex-shrink-0 h-6 w-6',

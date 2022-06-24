@@ -33,7 +33,9 @@ export default function MarketPlace() {
   });
   const [serviceTypes, setServiceTypes] = useState([]);
   const [selectedImage, setSelectedImage] = useState('https://pooch-api-local.s3.us-west-2.amazonaws.com/public/profile_images/groomer/30/a9d942b0-90f5-4684-8052-3fef6e51082d_female-dog-groomer.jpeg');
+  const [isActiveListing, setActiveListing] = useState(false);
 
+  const plusIcon = require('../assessts/images/plus.png')
   const pickUpServices = [
     { id: "yes", title: "YES", value: true },
     { id: "no", title: "NO", value: false },
@@ -207,12 +209,14 @@ export default function MarketPlace() {
     return GroomerApi.uploadContracts(localStorage.getItem("uuid"), formdata);
   };
 
-  const handleServicePrice = (e, serviceName) => {
-    const updatedPrices = careServices.map((item) => ({
-      ...item,
-      [e.target.name]:
-        serviceName === item.name ? e.target.value : item[e.target.name],
-    }));
+  const handleServicePrice = (e, serviceName, serviceSize) => {
+    const updatedPrices = careServices.map(item => {
+      if(serviceName === item.name ){
+        item[e.target.name] = e.target.value 
+        item[serviceSize] = true
+      }
+      return item
+    });
     setCareServices(updatedPrices);
   };
 
@@ -282,148 +286,416 @@ export default function MarketPlace() {
 
   return (
     <>
-      <DashboardHeader />
+      <DashboardHeader setIsActive={setActiveListing} />
       <Sidebar />
-        <p className="w-full left-96 ml-14  absolute mt-4 font-Museo-Sans-Rounded-700 text-pooch-blue-2">Listing Active</p>
-      <main className="lg:min-h-full lg:overflow-hidden lg:flex lg:flex-row-reverse ml-20">
+      <p className='w-full left-96 ml-14  absolute mt-4 font-Museo-Sans-Rounded-700 text-pooch-blue-2'>
+        {isActiveListing ? 'Listing Active' : 'Listing Not Active'}
+      </p>
+      <main className='lg:min-h-full lg:overflow-hidden lg:flex lg:flex-row-reverse ml-20'>
         {/**Preview section */}
         <section
-          aria-labelledby="summary-heading"
-          className="hidden bg-gray-50 w-full max-w-md flex-col lg:flex"
+          aria-labelledby='summary-heading'
+          className='hidden bg-gray-50 w-full max-w-md flex-col lg:flex'
         >
-          <div className="flex justify-center items-center mt-5 flex-col ">
-            <p className="font-Museo-Sans-Rounded-700 text-pooch-black-1">
+          <div className='flex justify-center items-center mt-5 flex-col '>
+            <p className='font-Museo-Sans-Rounded-700 text-pooch-black-1'>
               MarketPlace Profile Preview
             </p>
-            <div style={{height: '34rem'}}  className="mt-9 border-2 border-black w-1/2 p-100 rounded-xl relative">
-              <img className="rounded-t-lg h-48 w-full z-20 absolute  top-0"  src={selectedImage ?? ''} alt="profile"/>
-                <div style={{height: '100%'}} className=" bg-pooch-blue-3 rounded-xl  mb-8  border-2 pt-8 relative ">
+            <div
+              style={{ height: '32rem' }}
+              className='mt-9 border-2 border-black w-1/2 p-100 rounded-xl relative'
+            >
+              <img
+                className='rounded-t-lg h-48 w-full z-20 absolute  top-0'
+                src={selectedImage ?? ''}
+                alt='profile'
+              />
+              <div
+                style={{
+                  height: '68%',
+                  borderTopLeftRadius: 40,
+                  borderWidth: 1,
+                  borderColor: 'transparent',
+                  borderTopRightRadius: 40,
+                  position: 'absolute',
+                  bottom: 0,
+                  margin: 0,
+                  width: '100%',
+                  zIndex: 9999,
+                  borderBottomRightRadius: 10,
+                  borderBottomLeftRadius: 10
+                }}
+                className='bg-pooch-blue-4'
+              >
+                <div style={{ padding: 10 }}>
+                  <div
+                    className='mb-3'
+                    style={{ flexDirection: 'row', display: 'flex' }}
+                  >
+                    <p
+                      style={{ fontSize: 12, color: '#077997', paddingTop: 10 }}
+                      className='font-Museo-Sans-Rounded-700'
+                    >
+                      {groomerInfo?.businessName}
+                    </p>
+                    <p></p>
+                    <p
+                      className='font-Museo-Sans-Rounded-300 flex justify-center items-center'
+                      style={{ fontSize: 10, paddingTop: 12, marginLeft: 20, }}
+                    >
+                     <img src={require("../assessts/images/pin.png")} className="h-3 w-3 mr-1" alt="mapPin" /> 1.5 miles
+                    </p>
+                  </div>
+                  <div style={{ flexDirection: 'row', display: 'flex' }}>
+                  <img src={require("../assessts/images/ratiting-icon.png")} className="h-3 w-3 mr-1" alt="ratingStar" />
+                    <p
+                      className='font-Museo-Sans-Rounded-300'
+                      style={{ fontSize: 10 }}
+                    >
+                     {groomerInfo?.rating}
+                    </p>
+                  </div>
+                  <div
+                    style={{
+                      flexDirection: 'row',
+                      display: 'flex',
+                      marginBottom: 15
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: '30%',
+                        borderWidth: 1,
+                        paddingLeft: 10,
+                        paddingRight: 10,
+                        borderRadius: 20,
+                        marginTop: 10,
+                        marginRight: 10,
+                        alignContent: 'center',
+                        height: '10%',
+                        backgroundColor: '#95E8F7'
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontSize: 8,
+                          alignSelf: 'center',
+                          textAlign: 'center',
+                          color: '#077592'
+                        }}
+                        className='font-Museo-Sans-Rounded-700'
+                      >
+                        Small
+                      </p>
+                      <p
+                        style={{
+                          fontSize: 8,
+                          alignSelf: 'center',
+                          textAlign: 'center',
+                          color: '#077592'
+                        }}
+                        className='font-Museo-Sans-Rounded-700'
+                      >
+                        1-20lbs
+                      </p>
+                    </div>
+                    <div
+                      style={{
+                        width: '35%',
+                        borderWidth: 1,
+                        paddingLeft: 10,
+                        paddingRight: 10,
+                        borderRadius: 20,
+                        marginTop: 10,
+                        marginRight: 10,
+                        alignContent: 'center',
+                        height: '10%'
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontSize: 8,
+                          alignSelf: 'center',
+                          textAlign: 'center'
+                        }}
+                        className='font-Museo-Sans-Rounded-700 text-pooch-gray-2'
+                      >
+                        Medium
+                      </p>
+                      <p
+                        style={{
+                          fontSize: 8,
+                          alignSelf: 'center',
+                          textAlign: 'center'
+                        }}
+                        className='font-Museo-Sans-Rounded-700 text-pooch-gray-2'
+                      >
+                        20-40lbs
+                      </p>
+                    </div>
+                    <div
+                      style={{
+                        width: '30%',
+                        borderWidth: 1,
+                        paddingLeft: 10,
+                        paddingRight: 10,
+                        borderRadius: 20,
+                        marginTop: 10,
+                        marginRight: 10,
+                        alignContent: 'center',
+                        height: '10%'
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontSize: 8,
+                          alignSelf: 'center',
+                          textAlign: 'center'
+                        }}
+                        className='font-Museo-Sans-Rounded-700 text-pooch-gray-2'
+                      >
+                        Large
+                      </p>
+                      <p
+                        style={{
+                          fontSize: 8,
+                          alignSelf: 'center',
+                          textAlign: 'center'
+                        }}
+                        className='font-Museo-Sans-Rounded-700 text-pooch-gray-2'
+                      >
+                        40+ lbs
+                      </p>
+                    </div>
+                  </div>
+                  <tbody
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between'
+                      // marginTop: 10
+                    }}
+                  >
+                    {careServices.map(service => (
+                      <tr
+                        style={{
+                          flexDirection: 'row',
+                          justifyContent: 'space-between',
+                          // marginTop: 10,
+                          alignItems: 'center'
+                        }}
+                        key={service.name}
+                      >
+                        <td style={{ flexDirection: 'row' }}>
+                          <span
+                            style={{
+                              fontSize: 12,
+                              marginTop: 7,
+                              marginRight: 40
+                            }}
+                            className='font-Museo-Sans-Rounded-500 text-black-1'
+                          >
+                            {service.name}
+                          </span>
+                        </td>
+                        <span
+                          style={{
+                            borderWidth: 1,
+                            paddingLeft: 7,
+                            paddingRight: 7,
+                            borderRadius: 20,
+                            width: 40,
+                            marginTop: 10,
+                            alignItems: 'center',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            backgroundColor: '#ebfdff',
+                            paddingTop:2,
+                            paddingBottom:2
+                          }}
+                        >
+                          <p
+                            className=' text-center text-[#41a3bb] font-semibold'
+                            style={{ textAlign: 'center', fontSize: 10 }}
+                          >
+                            ${service.smallPrice}
+                          </p>
+                        </span>
+
+                        <td>
+                          <img
+                            src={plusIcon}
+                            alt='plusIcon'
+                            style={{ width: 17, marginTop: 10, marginLeft: 15 }}
+                          />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
                 </div>
+                <div
+                  className='p-1'
+                  style={{
+                    backgroundColor: '#077997',
+                    width: '90%',
+                    borderRadius: 20,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignSelf: 'center',
+                    position: 'absolute',
+                    bottom: 9,
+                    left: '5%'
+                  }}
+                >
+                  <p
+                    style={{
+                      justifyContent: 'center',
+                      display: 'flex',
+                      color: 'white'
+                    }}
+                    className='text-sm font-Museo-Sans-Rounded-500'
+                  >
+                    Book
+                  </p>
+                </div>
+              </div>
             </div>
+            <div></div>
           </div>
         </section>
 
         {/**Main section */}
         <section
-          aria-labelledby="payment-heading"
-          className="flex-auto overflow-y-auto px-4 pt-12 pb-16 sm:px-6 sm:pt-16 lg:px-8 lg:pt-0 lg:pb-24"
+          aria-labelledby='payment-heading'
+          className='flex-auto overflow-y-auto px-4 pt-12 pb-16 sm:px-6 sm:pt-16 lg:px-8 lg:pt-0 lg:pb-24'
         >
-          <div className="min-w-max mx-auto mt-4">
+          <div className='min-w-max mx-auto mt-4'>
             <form
               onSubmit={postList}
-              className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500 bg-[#f3f8ff]"
+              className='flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500 bg-[#f3f8ff]'
             >
-              <div className="w-1/2 mt-12">
-                <div className=" min-w-full rounded-xl">
-                  <div className="ring-1 ring-gray-300 rounded-xl">
+              <div className='w-1/2 mt-12'>
+                <div className=' min-w-full rounded-xl'>
+                  <div className='ring-1 ring-gray-300 rounded-xl'>
                     <table
-                      className="min-w-full bg-white rounded-xl border-pooch-blue-5"
-                      style={{ boxShadow: "0px 1px 10px #c9d9ef" }}
+                      className='min-w-full bg-white rounded-xl border-pooch-blue-5'
+                      style={{ boxShadow: '0px 1px 10px #c9d9ef' }}
                     >
                       <thead
-                        className="border-b"
-                        style={{ boxShadow: "0px 1px 10px #c9d9ef" }}
+                        className='border-b'
+                        style={{ boxShadow: '0px 1px 10px #c9d9ef' }}
                       >
-                        <tr className="rounded-xl">
+                        <tr className='rounded-xl'>
                           <th
-                            scope="col"
-                            className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                            scope='col'
+                            className='text-sm font-medium text-gray-900 px-6 py-4 text-left'
                           >
                             Services Offered
                           </th>
                           <th
-                            scope="col"
-                            className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                            scope='col'
+                            className='text-sm font-medium text-gray-900 px-6 py-4 text-left'
                           >
                             Small 1-20 lbs
                           </th>
                           <th
-                            scope="col"
-                            className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                            scope='col'
+                            className='text-sm font-medium text-gray-900 px-6 py-4 text-left'
                           >
                             Medium 20-40 lbs
                           </th>
                           <th
-                            scope="col"
-                            className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                            scope='col'
+                            className='text-sm font-medium text-gray-900 px-6 py-4 text-left'
                           >
                             Large 40+ lbs
                           </th>
                           <th
-                            scope="col"
-                            className="text-sm rounded-tl-lg font-medium text-gray-900 px-6 py-4 text-left"
+                            scope='col'
+                            className='text-sm rounded-tl-lg font-medium text-gray-900 px-6 py-4 text-left'
                           >
-                            <DotsHorizontalIcon className="h-6 text-[#077997]" />
+                            <DotsHorizontalIcon className='h-6 text-[#077997]' />
                           </th>
                         </tr>
                       </thead>
                       <tbody>
-                        {careServices.map((service) => (
-                          <tr className="" key={service.name}>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {careServices.map(service => (
+                          <tr className='' key={service.name}>
+                            <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900'>
                               {service.name}
                             </td>
-                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
                               <input
-                                type="number"
-                                name="smallPrice"
+                                type='number'
+                                name='smallPrice'
                                 required={true}
                                 value={
                                   service.smallPrice != null
                                     ? service.smallPrice
-                                    : ""
+                                    : ''
                                 }
-                                className="border-none w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
-                                onChange={(e) =>
-                                  handleServicePrice(e, service.name)
+                                className='border-none w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold'
+                                onChange={e =>
+                                  handleServicePrice(
+                                    e,
+                                    service.name,
+                                    'serviceSmall'
+                                  )
                                 }
                               />
                             </td>
-                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
                               <input
-                                type="number"
-                                name="mediumPrice"
+                                type='number'
+                                name='mediumPrice'
                                 required={true}
                                 value={
                                   service.mediumPrice != null
                                     ? service.mediumPrice
-                                    : ""
+                                    : ''
                                 }
-                                className="border-none w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
-                                onChange={(e) =>
-                                  handleServicePrice(e, service.name)
+                                className='border-none w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold'
+                                onChange={e =>
+                                  handleServicePrice(
+                                    e,
+                                    service.name,
+                                    'serviceMedium'
+                                  )
                                 }
                               />
                             </td>
-                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            <td className='text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap'>
                               <input
-                                type="number"
-                                name="largePrice"
+                                type='number'
+                                name='largePrice'
                                 required={true}
                                 value={
                                   service.largePrice != null
                                     ? service.largePrice
-                                    : ""
+                                    : ''
                                 }
-                                className="border-none w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
-                                onChange={(e) =>
-                                  handleServicePrice(e, service.name)
+                                className='border-none w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold'
+                                onChange={e =>
+                                  handleServicePrice(
+                                    e,
+                                    service.name,
+                                    'serviceLarge'
+                                  )
                                 }
                               />
                             </td>
                           </tr>
                         ))}
-                        <tr className="text-center ">
+                        <tr className='text-center '>
                           <td
-                            colSpan="5"
-                            className="py-4 border-t border-pooch-blue-5"
+                            colSpan='5'
+                            className='py-4 border-t border-pooch-blue-5'
                           >
                             <button
-                              type="button"
-                              className="flex mx-auto items-center gap-x-1"
+                              type='button'
+                              className='flex mx-auto items-center gap-x-1'
                               onClick={() => setOpen(true)}
                             >
-                              <PlusCircleIcon className="h-7 w-7 text-[#077997]" />
+                              <PlusCircleIcon className='h-7 w-7 text-[#077997]' />
                               <span>Add Services</span>
                             </button>
                           </td>
@@ -433,10 +705,10 @@ export default function MarketPlace() {
                   </div>
                 </div>
               </div>
-              <div className="w-1/2 mt-12">
-                <div className="min-w-full mt-6 bg-white ring-1 ring-gray-300 rounded-xl px-2 py-4 ">
-                  <div className="flex pt-8 px-7 justify-between">
-                    <h1 className="uppercase text-[#2a8ca6] font-bold">
+              <div className='w-1/2 mt-12'>
+                <div className='min-w-full mt-6 bg-white ring-1 ring-gray-300 rounded-xl px-2 py-4 '>
+                  <div className='flex pt-8 px-7 justify-between'>
+                    <h1 className='uppercase text-[#2a8ca6] font-bold'>
                       Instant Booking
                     </h1>
                     <Toggle
@@ -444,31 +716,31 @@ export default function MarketPlace() {
                       onChange={setInstantBooking}
                     />
                   </div>
-                  <div className="flex py-8 px-7 justify-between">
+                  <div className='flex py-8 px-7 justify-between'>
                     <h1>Do You Offer Pick Up Services?</h1>
                     <fieldset>
-                      <legend className="sr-only">
+                      <legend className='sr-only'>
                         Do You Offer Pick Up Services?
                       </legend>
-                      <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
-                        {pickUpServices.map((pickUpService) => (
+                      <div className='space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10'>
+                        {pickUpServices.map(pickUpService => (
                           <div
                             key={pickUpService.id}
-                            className="flex items-center"
+                            className='flex items-center'
                           >
                             <input
-                              name="offeredPickUp"
-                              type="checkbox"
+                              name='offeredPickUp'
+                              type='checkbox'
                               value={pickUpService.value}
                               checked={
                                 pickDrop.offeredPickUp === pickUpService.value
                               }
                               onChange={handlePickDrop}
-                              className="focus:ring-indigo-500 h-6 w-6 text-pooch-blue-2 border-pooch-blue-5 rounded"
+                              className='focus:ring-indigo-500 h-6 w-6 text-pooch-blue-2 border-pooch-blue-5 rounded'
                             />
                             <label
                               htmlFor={pickUpService.id}
-                              className="ml-3 block text-sm font-medium text-gray-700"
+                              className='ml-3 block text-sm font-medium text-gray-700'
                             >
                               {pickUpService.title}
                             </label>
@@ -477,31 +749,31 @@ export default function MarketPlace() {
                       </div>
                     </fieldset>
                   </div>
-                  <div className="flex pb-8 px-7 justify-between">
+                  <div className='flex pb-8 px-7 justify-between'>
                     <h1>Do You Offer Drop Off Services?</h1>
                     <fieldset>
-                      <legend className="sr-only">
+                      <legend className='sr-only'>
                         Do You Offer Drop Off Services?
                       </legend>
-                      <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
-                        {dropOffServices.map((dropOffService) => (
+                      <div className='space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10'>
+                        {dropOffServices.map(dropOffService => (
                           <div
                             key={dropOffService.id}
-                            className="flex items-center"
+                            className='flex items-center'
                           >
                             <input
-                              name="offeredDropOff"
-                              type="checkbox"
+                              name='offeredDropOff'
+                              type='checkbox'
                               value={dropOffService.value}
                               checked={
                                 pickDrop.offeredDropOff === dropOffService.value
                               }
                               onChange={handlePickDrop}
-                              className="focus:ring-indigo-500 h-6 w-6 text-pooch-blue-2 border-pooch-blue-5 rounded"
+                              className='focus:ring-indigo-500 h-6 w-6 text-pooch-blue-2 border-pooch-blue-5 rounded'
                             />
                             <label
                               htmlFor={dropOffService.id}
-                              className="ml-3 block text-sm font-medium text-gray-700"
+                              className='ml-3 block text-sm font-medium text-gray-700'
                             >
                               {dropOffService.title}
                             </label>
@@ -510,92 +782,90 @@ export default function MarketPlace() {
                       </div>
                     </fieldset>
                   </div>
-                  <div className="flex pb-8 px-7 justify-between">
+                  <div className='flex pb-8 px-7 justify-between'>
                     <h1>How Much Do You Charge Per Mile?</h1>
                     <input
-                      type="number"
-                      className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold border border-[#81d6e6]"
-                      name="chargePerMile"
+                      type='number'
+                      className='w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold border border-[#81d6e6]'
+                      name='chargePerMile'
                       value={groomerInfo.chargePerMile}
                       onChange={handleGroomerInfoChange}
                     />
                   </div>
                 </div>
               </div>
-              <div className="w-1/2 mt-12">
-                <div className="w-full ">
-                  <div className="flex py-8 justify-between">
+              <div className='w-1/2 mt-12'>
+                <div className='w-full '>
+                  <div className='flex py-8 justify-between'>
                     <h1>What is the Maximum Occupancy at Your Business?</h1>
-                    <h1 className="text-[#077977] font-bold">
+                    <h1 className='text-[#077977] font-bold'>
                       {groomerInfo.numberOfOccupancy}
                     </h1>
                   </div>
                   <input
-                    type="range"
-                    name="numberOfOccupancy"
+                    type='range'
+                    name='numberOfOccupancy'
                     value={groomerInfo.numberOfOccupancy}
                     onChange={handleGroomerInfoChange}
-                    className="w-full accent-[#077997]"
+                    className='w-full accent-[#077997]'
                   />
-                  <div className="flex py-8 justify-between">
+                  <div className='flex py-8 justify-between'>
                     <h1>1 Dog</h1>
                     <h1>200 Dogs</h1>
                   </div>
                 </div>
               </div>
-              <div className="w-1/2 mt-12">
-                <div className="w-full">
+              <div className='w-1/2 mt-12'>
+                <div className='w-full'>
                   <h1>Description</h1>
                   <textarea
-                    className="w-full rounded-2xl border h-32 border-[#81d6e6] bg-inherit pt-6 pl-8"
+                    className='w-full rounded-2xl border h-32 border-[#81d6e6] bg-inherit pt-6 pl-8'
                     onChange={handleGroomerInfoChange}
-                    name="description"
+                    name='description'
                     value={groomerInfo.description}
-                    style={{ boxShadow: "inset 0px 0px 10px #81d6e6" }}
+                    style={{ boxShadow: 'inset 0px 0px 10px #81d6e6' }}
                   ></textarea>
                 </div>
               </div>
 
-              <div className="w-1/2 mt-12 ">
-                <div
-                  className="w-full   border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-44 flex flex-row-reverse  justify-center items-center py-8"
-                >
-               <div  {...getRootProps({ className: "dropzone" })}> 
-                  <input {...getInputProps()} />
-                  <span className="justify-items-center flex-col items-center content-center place-content-center">
-                  <PlusIcon className="h-20 text-[#077997] self-center ml-8" />
-                  <ul>{files}</ul>
-                  <p className="text-[#077997] ">Drag and Drop Images</p>
-                  </span>
+              <div className='w-1/2 mt-12 '>
+                <div className='w-full   border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-44 flex flex-row-reverse  justify-center items-center py-8'>
+                  <div {...getRootProps({ className: 'dropzone' })}>
+                    <input {...getInputProps()} />
+                    <span className='justify-items-center flex-col items-center content-center place-content-center'>
+                      <PlusIcon className='h-20 text-[#077997] self-center ml-8' />
+                      <ul>{files}</ul>
+                      <p className='text-[#077997] '>Drag and Drop Images</p>
+                    </span>
                   </div>
-                  <div className="flex justify-around">{uploadedImages}</div>
+                  <div className='flex justify-around'>{uploadedImages}</div>
                 </div>
               </div>
 
-              <div className="w-1/2 mt-12">
+              <div className='w-1/2 mt-12'>
                 <div
-                  {...grp({ className: "dropzone" })}
-                  className="w-full  border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40 flex flex-col justify-center items-center"
+                  {...grp({ className: 'dropzone' })}
+                  className='w-full  border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40 flex flex-col justify-center items-center'
                 >
-                  <PlusIcon className="h-6 text-[#077997]" />
+                  <PlusIcon className='h-6 text-[#077997]' />
                   <input {...gip()} />
 
-                  <p className="text-[#077997]">Drag and Drop</p>
-                  <p className="text-[#077997]">
+                  <p className='text-[#077997]'>Drag and Drop</p>
+                  <p className='text-[#077997]'>
                     Contract you need your customers to sign
                   </p>
                   <ul>{contractFiles}</ul>
                 </div>
               </div>
 
-              <div className="w-1/2 mt-12">
-                <div className="w-full flex justify-center">
+              <div className='w-1/2 mt-12'>
+                <div className='w-full flex justify-center'>
                   <button
-                    type="submit"
-                    className="mt-8 justify-center uppercase w-3/4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997] mb-8"
+                    type='submit'
+                    className='mt-8 justify-center uppercase w-3/4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997] mb-8'
                   >
                     Save Changes
-                  </button>{" "}
+                  </button>{' '}
                 </div>
               </div>
               {open && (
