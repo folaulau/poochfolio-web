@@ -1,7 +1,6 @@
 import Chart from 'react-apexcharts'
-import LineChart from './LineChart'
 
-const ApexRadiarChart = () => {
+const DonutChart = () => {
   const donutColors = {
     series1: '#077997',
     series2: '#85d8e7',
@@ -127,4 +126,4 @@ const ApexRadiarChart = () => {
   )
 }
 
-export default ApexRadiarChart
+export default DonutChart
