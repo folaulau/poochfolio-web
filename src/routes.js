@@ -15,7 +15,7 @@ import Signup from './pages/Signup';
 import ForgotPassword from './pages/forgotPassword';
 import BookingDetails from './pages/BookingDetailsPage';
 import MarketPlace from './pages/MarketPlace2';
-
+import Footer from './components/Footer'
 export default function PoochRoutes() {
   return (
     <>
@@ -24,7 +24,7 @@ export default function PoochRoutes() {
       <Route path="/signin" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/forgotpassword" element={<ForgotPassword />} />
-      <Route path="sign-up" element={<Breadcrumbs />}>
+      <Route path="sign-up" element={<Breadcrumbs />} >
         <Route path="signup" element={<SignUpPage />} />
         <Route path="new-signup-page" element={<NewSignUpPage />} />
         <Route path="signup-email-page" element={<SignupEmailPage />} />

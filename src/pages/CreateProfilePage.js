@@ -14,17 +14,17 @@ const CreateProfilePage = () => {
     {
       name: "Grooming",
       uuid: "",
-      selected: true,
+      selected: false,
     },
     {
       name: "Dog Daycare",
       uuid: "",
-      selected: true,
+      selected: false,
     },
     {
       name: "Overnight",
       uuid: "",
-      selected: true,
+      selected: false,
     },
     // {
     //   name: "Pick up/Drop off",
@@ -190,8 +190,21 @@ const CreateProfilePage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="pt-16 bg-[#f3f8ff]">
-      <section className="grid grid-cols-1 sm:grid-cols-2 justify-center my-12 sm:gap-x-8 md:max-w-3xl mx-auto w-1/2">
+    <form
+      onSubmit={handleSubmit}
+      className="pt-4 bg-[#f3f8ff]"
+      style={{
+        borderWidth: 5,
+        borderLeftColor: 'transparent',
+        borderRightColor: 'transparent',
+        borderBottomColor: 'transparent',
+        borderTopColor: '#FFFFFF',
+      }}
+    >
+      <section
+        className="grid grid-cols-1 sm:grid-cols-2 justify-center my-12 sm:gap-x-8 md:max-w-3xl mx-auto w-1/2"
+        style={{ marginBottom: '41.97px' }}
+      >
         <Input
           labelText="First Name"
           placeholderText="John"
@@ -245,12 +258,15 @@ const CreateProfilePage = () => {
               required={true}
               className="shadow-sm block w-full p-3 rounded-full text-[15px] text-[#a1a1a1] font-Museo-Sans-Rounded-500 bg-red-[#f1f7ff]"
               apiKey="AIzaSyCWPe0Y1xqKVM4mMNqMxNYwSsmB5dsg-lk"
-              onPlaceSelected={(place, inputRef, autocomplete) =>
-                updateAddress(place)
-              }
-              style={{ border: "1px solid #85d8e7", color: "black" }}
+              onPlaceSelected={(place, inputRef, autocomplete) => updateAddress(place)}
+              style={{
+                border: '2px solid #85d8e7',
+                color: 'black',
+                height: '58.3px',
+                width: '729.29px',
+              }}
               options={{
-                types: ["address"],
+                types: ['address'],
               }}
             />
           </div>
@@ -258,11 +274,9 @@ const CreateProfilePage = () => {
       </section>
       <section className="flex flex-col justify-center items-center w-1/2 mx-auto">
         <h4>Which Services does your business offer</h4>
-        <div className="my-8 md:flex md:flex-row">
+        <div className="my-4 md:flex md:flex-row">
           {services.map((service) => {
-            let careService = careServices.find(
-              (careService) => careService.name === service.name
-            );
+            let careService = careServices.find((careService) => careService.name === service.name);
 
             const isSelected = careService.selected;
 
@@ -270,22 +284,20 @@ const CreateProfilePage = () => {
               <button
                 type="button"
                 key={service.name}
-                style={{ boxShadow: "inset 0px 0px 15px #81d6e6" }}
-                className={`w-40 h-[68px] rounded-xl border ${
-                  isSelected ? "bg-[#95e8f7]" : "bg-[#f1f7ff]"
+                style={{
+                  boxShadow: 'inset 0px 0px 15px #81d6e6',
+                  width: '158.94px',
+                  marginRight: '31.06px',
+                }}
+                className={`w-40 h-[66.94px] rounded-xl border ${
+                  isSelected ? 'bg-[#95e8f7]' : 'bg-[#f1f7ff]'
                 }  flex justify-center items-center gap-x-3 m-1`}
                 onClick={() => toggleCareService(careService)}
               >
                 <service.icon
-                  className={`${
-                    isSelected ? "text-[#077997]" : "text-[#9697a3]"
-                  } h-8 w-8`}
+                  className={`${isSelected ? 'text-[#077997]' : 'text-[#9697a3]'} h-8 w-8`}
                 />
-                <span
-                  className={`${
-                    isSelected ? "text-[#077997]" : "text-[#9697a3]"
-                  } `}
-                >
+                <span className={`${isSelected ? 'text-[#077997]' : 'text-[#9697a3]'} `}>
                   {service.name}
                 </span>
               </button>
@@ -295,6 +307,7 @@ const CreateProfilePage = () => {
         <button
           type="submit"
           className="w-1/2 justify-center inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997] mb-8"
+          style={{ marginTop: '34.16px', width: '544.62px', height: '56.48px' }}
         >
           Continue
         </button>
