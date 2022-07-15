@@ -15,29 +15,33 @@ import Signup from './pages/Signup';
 import ForgotPassword from './pages/forgotPassword';
 import BookingDetails from './pages/BookingDetailsPage';
 import MarketPlace from './pages/MarketPlace2';
-import Footer from './components/Footer'
+import Availability10 from './pages/Availability1';
 export default function PoochRoutes() {
+ 
+
+
   return (
     <>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/signin" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/forgotpassword" element={<ForgotPassword />} />
-      <Route path="sign-up" element={<Breadcrumbs />} >
-        <Route path="signup" element={<SignUpPage />} />
-        <Route path="new-signup-page" element={<NewSignUpPage />} />
-        <Route path="signup-email-page" element={<SignupEmailPage />} />
-        <Route path="create-profile" element={<CreateProfilePage />} />
-        <Route path="input-listing" element={<InputListingPage />} />
-        <Route path="input-listing2" element={<InputListingPage2 />} />
-      </Route>
-      <Route path="dashboard" element={<Dashboard />}>
-        <Route path="payments" element={<Payments />} />
-      </Route>
-      <Route path="bookingdetails" element={<BookingDetails />} />
-      <Route path="marketplace" element={<MarketPlace />} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="sign-up" element={<Breadcrumbs />}>
+          <Route path="signup" element={<SignUpPage />} />
+          <Route path="new-signup-page" element={<NewSignUpPage />} />
+          <Route path="signup-email-page" element={<SignupEmailPage />} />
+          <Route path="create-profile" element={<CreateProfilePage />} />
+          <Route path="input-listing" element={<InputListingPage />} />
+          <Route path="input-listing2" element={<InputListingPage2 />} />
+          <Route path="availability1" element={<Availability10 />} />
+        </Route>
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route path="payments" element={<Payments />} />
+        </Route>
+        <Route path="bookingdetails" element={<BookingDetails />} />
+        <Route path="marketplace" element={<MarketPlace />} />
+      </Routes>
     </>
   );
 }

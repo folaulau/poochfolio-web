@@ -11,9 +11,12 @@ import GroomerGraphql from "../graphql/GroomerGraphQL";
 import GroomerApi from "../api/GroomerApi";
 import Modal from "../components/input-listing/modal";
 import Toggle from '../components/common/Toggle';
-import "../components/common/thumbStyle.css"
+import "../components/common/thumbStyle.css";
+import SmallFooter from "../components/SmallFooter";
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import styled from 'styled-components';
+import { Museosansrounded500NormalGraniteGra } from '../styledMixins';
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -257,7 +260,7 @@ const handleGroomerOccupancy = (value) => {
           console.log("upload profileImages responded")
           console.log(response)
           
-          navigate("/dashboard");
+          navigate('/sign-up/availability1');
 
         }).catch((error) => {
           console.log("upload profileImages error")
@@ -282,6 +285,7 @@ const handleGroomerOccupancy = (value) => {
   return (
     <>
       <div style={{ height: 5, backgroundColor: 'white' }} />
+
       <form
         onSubmit={postList}
         className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500 bg-[#f3f8ff]"
@@ -551,10 +555,7 @@ const handleGroomerOccupancy = (value) => {
           <p className="text-[#077997]">Contract you need your customers to sign</p>
           <ul>{contractFiles}</ul>
         </div>
-        <div
-          className=" flex justify-center"
-          style={{ width: '729.57px',  }}
-        >
+        <div className=" flex justify-center" style={{ width: '729.57px' }}>
           <button
             type="submit"
             className="mt-8 justify-center uppercase w-3/4 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997] mb-8"
@@ -573,8 +574,48 @@ const handleGroomerOccupancy = (value) => {
           />
         )}
       </form>
+      <Powered>
+        <PoochTechnologiesInc>Pooch Technologies Inc</PoochTechnologiesInc>
+        <PrivacyPolicyTermsOfUse>
+          Privacy Policy&nbsp;&nbsp;|&nbsp;&nbsp; Terms of Use
+        </PrivacyPolicyTermsOfUse>
+      </Powered>
     </>
   );
 };
 
+const Powered = styled.div`
+  ${Museosansrounded500NormalGraniteGra}
+  position: absolute;
+  width: 100%;
+  height: 42px;
+  bottom: 1px;
+  // left: 3038px;
+  top:1668px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-color: var(--lily-white);
+`;
+
+const PoochTechnologiesInc = styled.div`
+  // margin-bottom: -30.5px;
+  width: 122px;
+  height: 25px;
+  margin-left: 175px;
+  letter-spacing: 0.5px;
+  // line-height: 100px;
+  white-space: nowrap;
+`;
+
+const PrivacyPolicyTermsOfUse = styled.p`
+  // margin-bottom: -30.5px;
+  width: 153px;
+  height: 25px;
+  margin-right: 177.5px;
+  text-align: right;
+  letter-spacing: 0.5px;
+  // line-height: 100px;
+  white-space: nowrap;
+`;
 export default InputListingPage2;

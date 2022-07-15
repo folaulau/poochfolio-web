@@ -1,6 +1,8 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './globals.css';
+import './styleguide.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import PoochRoutes from './routes';
