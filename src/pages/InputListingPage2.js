@@ -10,9 +10,9 @@ import { useNavigate } from "react-router-dom";
 import GroomerGraphql from "../graphql/GroomerGraphQL";
 import GroomerApi from "../api/GroomerApi";
 import Modal from "../components/input-listing/modal";
-import Toggle from '../components/common/Toggle';
+
 import "../components/common/thumbStyle.css";
-import SmallFooter from "../components/SmallFooter";
+
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import styled from 'styled-components';

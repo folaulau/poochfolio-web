@@ -8,7 +8,7 @@ import {
   GoogleAuthProvider,
 } from 'firebase/auth';
 import GroomerApi from './GroomerApi';
-import { useNavigate } from 'react-router-dom';
+
 const firebaseConfig = {
     apiKey: "AIzaSyCWPe0Y1xqKVM4mMNqMxNYwSsmB5dsg-lk",
     authDomain: "dev-pooch-technologies-inc.firebaseapp.com",
