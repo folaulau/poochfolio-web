@@ -598,6 +598,7 @@ const ButtonCopy5 = styled.div`
   background-color: var(--metallic-seaweed);
   border-radius: 28.24px;
   box-shadow: -9.184850467946473e-16px 15px 20px #00a3ce26;
+  
 `;
 
 const CONTINUE = styled.div`

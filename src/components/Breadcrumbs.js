@@ -22,7 +22,7 @@ const [AvailableStatus, setAvailableStatus] = useState('upcoming');
     {
       id: '01',
       name: 'Sign Up',
-      href: '/sign-up/signup',
+      href: '/signup',
       status: 'complete',
       iconComplete: require('../assessts/images/signUpCompleteIcon.png'),
     },
