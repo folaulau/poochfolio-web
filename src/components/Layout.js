@@ -5,7 +5,7 @@ import Footer from "./Footer";
 const Layout = ({ children }) => {
   return (
     <>
-      <nav className="bg-pooch-blue-2 bg-center bg-cover bg-no-repeat bg-background-header">
+      <nav className=" bg-center bg-cover bg-no-repeat ">
         <Header />
       </nav>
       {/* <Breadcrumbs /> */}

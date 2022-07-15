@@ -38,6 +38,15 @@ const GroomerApi = {
         };
         return instance.put('/groomers/create-listing', JSON.stringify(groomer), options);
     },
+    createAvailability: (groomer) => {
+         const options = {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': localStorage.getItem("poochToken")
+            }
+        };
+         return instance.put('/groomers/availability', JSON.stringify(groomer), options);
+    },
     updateListings: (groomer) => {
 
         const options = {

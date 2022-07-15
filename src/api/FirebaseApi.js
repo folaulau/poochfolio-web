@@ -1,6 +1,14 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  FacebookAuthProvider,
+  GoogleAuthProvider,
+} from 'firebase/auth';
+import GroomerApi from './GroomerApi';
+import { useNavigate } from 'react-router-dom';
 const firebaseConfig = {
     apiKey: "AIzaSyCWPe0Y1xqKVM4mMNqMxNYwSsmB5dsg-lk",
     authDomain: "dev-pooch-technologies-inc.firebaseapp.com",
@@ -13,15 +21,64 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
-const FirebaseApi = {
+ const provider = new FacebookAuthProvider();
+ const FirebaseApi = {
+    
 
     signUpWithEmail: (email,password) => {
         return createUserWithEmailAndPassword(auth, email, password)
     },
     signInWithEmail: (email,password) => {
         return signInWithEmailAndPassword(auth, email, password)
+    },
+    signInWithGoogle: async (navigate) => {
+    const googleProvider = new GoogleAuthProvider();
+    provider.addScope('profile');
+    provider.addScope('email');
+    try {
+      const res = await signInWithPopup(auth, googleProvider);
+      const user = res.user;
+      console.log('USER')
+  
+      console.log("this is the intent", user);
+         let authentication = {
+           'token': user.accessToken,
+         };
+
+         GroomerApi.authenticate(authentication).then((response) => {
+           console.log('Success:', response.data);
+           localStorage.setItem('poochToken', response.data.token);
+           localStorage.setItem('uuid', response.data.uuid);
+           navigate('/sign-up/create-profile');
+         });
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
     }
+  },
+   signInWithFacebook: async (navigate) => {
+    try {
+      const res = await signInWithPopup(auth, provider);
+   
+      const user = res.user;
+      console.log('USER');
+
+      console.log('this is the intent', user);
+      let authentication = {
+        'token': user.accessToken,
+      };
+
+      GroomerApi.authenticate(authentication).then((response) => {
+        console.log('Success:', response.data);
+        localStorage.setItem('poochToken', response.data.token);
+        localStorage.setItem('uuid', response.data.uuid);
+        navigate('/sign-up/create-profile');
+      });
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
+    }
+  }
 }
 
 export default FirebaseApi;
