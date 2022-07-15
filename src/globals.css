@@ -25,6 +25,35 @@
   src: url("https://fonts.animaapp.com/MuseoSansRounded-500") format("opentype");
 }
 
+
+@font-face {
+  font-family: "MyriadPro-Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://fonts.animaapp.com/MyriadPro-Regular") format("truetype");
+}
+
+.screen a {
+  display: contents;
+  text-decoration: none;
+}
+
+.container-center-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  pointer-events: none;
+  width: 100%;
+}
+
+.container-center-horizontal > * {
+  flex-shrink: 0;
+  pointer-events: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
 .screen a {
   display: contents;
   text-decoration: none;
