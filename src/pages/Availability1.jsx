@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import React from 'react';
 
-import SmallFooter from '../components/SmallFooter';
 
 import { useNavigate } from 'react-router-dom';
 import GroomerApi from '../api/GroomerApi';
