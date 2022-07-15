@@ -137,7 +137,7 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
     signUpStatus: 'ADD_SERVICES',
   });
 
-  const [address, setAddress] = useState({
+  const [ setAddress] = useState({
     uuid: '',
     street: '',
     city: '',
@@ -150,9 +150,9 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
 
   console.log('this is night options', selectedClosingHour)
 
-  const [addressAsLine, setAddressAsLine] = useState('');
+  const [setAddressAsLine] = useState('');
   const addressUuidInput = useRef(null);
-  const eShape2371 = require('../assessts/images/checkMark.png');
+ 
   useEffect(() => {
     loadProfile();
     // eslint-disable-next-line react-hooks/exhaustive-deps

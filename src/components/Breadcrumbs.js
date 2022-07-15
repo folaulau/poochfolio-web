@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { CheckIcon } from '@heroicons/react/solid';
+
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 
 export default function Breadcrumbs() {
   let location = useLocation();
-const [createProfileStatus, setCreateProfileStatus] = useState('complete')
+const [createProfileStatus] = useState('complete')
 const [inputListingStatus, setInputListingStatus] = useState('upcoming');
 const [AvailableStatus, setAvailableStatus] = useState('upcoming');
   useEffect(() => {
@@ -100,12 +100,12 @@ const [AvailableStatus, setAvailableStatus] = useState('upcoming');
                 >
                   <span className="px-6 py-4 flex items-center text-sm font-medium">
                     <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-[#077997] rounded-full group-hover:bg-[#094b5c]">
-                      <img style={{ height: 42, width: 42 }} src={step.iconComplete} />
+                      <img style={{ height: 42, width: 42 }} src={step.iconComplete} alt="" />
                     </span>
                     <span className="ml-4 text-sm font-medium text-gray-900">{step.name}</span>
                   </span>
                 </Link>
-              ) : step.status === 'complete' && step.id != '01' && step.id != '04' ? (
+              ) : step.status === 'complete' && step.id !== '01' && step.id !== '04' ? (
                 <Link
                   to={step.href}
                   className="px-6 py-4 flex items-center text-sm font-medium "
@@ -122,7 +122,7 @@ const [AvailableStatus, setAvailableStatus] = useState('upcoming');
                   }}
                 >
                   <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-[#077997] rounded-full">
-                    <img style={{ height: 42, width: 42 }} src={step.iconComplete} />
+                    <img style={{ height: 42, width: 42 }} src={step.iconComplete} alt="" />
                   </span>
                   <span className="ml-4 text-sm font-medium text-[#077997]">{step.name}</span>
                 </Link>
@@ -143,7 +143,7 @@ const [AvailableStatus, setAvailableStatus] = useState('upcoming');
                   }}
                 >
                   <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-[#077997] rounded-full">
-                    <img style={{ height: 42, width: 42 }} src={step.iconComplete} />
+                    <img style={{ height: 42, width: 42 }} src={step.iconComplete} alt="" />
                   </span>
                   <span className="ml-4 text-sm font-medium text-[#077997]">{step.name}</span>
                 </Link>
@@ -166,7 +166,7 @@ const [AvailableStatus, setAvailableStatus] = useState('upcoming');
                   }}
                 >
                   <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-[#077997] rounded-full">
-                    <img style={{ height: 24, width: 18.95 }} src={step.iconComplete} />
+                    <img style={{ height: 24, width: 18.95 }} src={step.iconComplete} alt="" />
                   </span>
                   <span className="ml-4 text-sm font-medium text-[#077997]">{step.name}</span>
                 </Link>
@@ -174,7 +174,7 @@ const [AvailableStatus, setAvailableStatus] = useState('upcoming');
                 <Link to={step.href} className="group flex items-center">
                   <span className="px-6 py-4 flex items-center text-sm font-medium">
                     <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400">
-                      <img style={{ height: 24, width: 18.95 }} src={step.iconNotComplete} />
+                      <img style={{ height: 24, width: 18.95 }} src={step.iconNotComplete} alt="" />
                     </span>
                     <span className="ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-900">
                       {step.name}
