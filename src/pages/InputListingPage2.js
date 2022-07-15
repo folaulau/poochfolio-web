@@ -289,6 +289,7 @@ const handleGroomerOccupancy = (value) => {
       <form
         onSubmit={postList}
         className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500 bg-[#f3f8ff]"
+       
       >
         <div className=" mt-12">
           <div className="py-2 " style={{ width: '729.57px', height: '195.91px', marginBottom: 8 }}>
@@ -589,13 +590,14 @@ const Powered = styled.div`
   position: absolute;
   width: 100%;
   height: 42px;
-  bottom: 1px;
+  bottom: -300px;
   // left: 3038px;
-  top:1668px;
+  top:1768px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   background-color: var(--lily-white);
+  
 `;
 
 const PoochTechnologiesInc = styled.div`

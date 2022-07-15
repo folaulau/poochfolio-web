@@ -6,6 +6,8 @@ import GroomerApi from "../api/GroomerApi";
 import FirebaseApi from "../api/FirebaseApi";
 import { Button } from 'react-bootstrap';
 import googleSvg from "../assessts/images/Google.svg"
+import styled from 'styled-components';
+import { Museosansrounded500NormalGraniteGra } from '../styledMixins';
 const Signup = () => {
 
   const [userInfo, setUserInfo] = useState({
@@ -195,8 +197,49 @@ const googleLogin = () => {
           </div>
         </div>
       </div>
+      <Powered>
+        <PoochTechnologiesInc>Pooch Technologies Inc</PoochTechnologiesInc>
+        <PrivacyPolicyTermsOfUse>
+          Privacy Policy&nbsp;&nbsp;|&nbsp;&nbsp; Terms of Use
+        </PrivacyPolicyTermsOfUse>
+      </Powered>
     </>
   );
 };
+
+const Powered = styled.div`
+  ${Museosansrounded500NormalGraniteGra}
+  position: absolute;
+  width: 100%;
+  height: 42px;
+  bottom: -300px;
+  // left: 3038px;
+  top: 948px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-color: var(--lily-white);
+`;
+
+const PoochTechnologiesInc = styled.div`
+  // margin-bottom: -30.5px;
+  width: 122px;
+  height: 25px;
+  margin-left: 175px;
+  letter-spacing: 0.5px;
+  // line-height: 100px;
+  white-space: nowrap;
+`;
+
+const PrivacyPolicyTermsOfUse = styled.p`
+  // margin-bottom: -30.5px;
+  width: 153px;
+  height: 25px;
+  margin-right: 177.5px;
+  text-align: right;
+  letter-spacing: 0.5px;
+  // line-height: 100px;
+  white-space: nowrap;
+`;
 
 export default Signup;
