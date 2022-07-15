@@ -16,6 +16,7 @@ import {
   Museosansrounded700NormalMetallicSe,
   Museosansrounded700NormalWhite15px,
   Border1pxSkyBlue,
+  Museosansrounded500NormalGraniteGra,
 } from '../styledMixins';
 import './Availability1.css';
 import Dropdown from 'react-dropdown';
@@ -328,99 +329,138 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
 
   return (
     <>
-   
       <div style={{ height: 5, backgroundColor: 'white' }} />
-    <div className="container-center-horizontal">
-      <div className="availability screen">
-        <OverlapGroup4>
-          <ColorFill2></ColorFill2>
-          <SmallFooter />
+      <div className="container-center-horizontal">
+        <div className="availability screen">
+          <OverlapGroup4>
+            <ColorFill2></ColorFill2>
+            {/* <SmallFooter /> */}
 
-          <Content>
-            <Title>Set Your Availability</Title>
-            <LetTheCustomerKno>
-              Let the customer know when you’re available to do services
-            </LetTheCustomerKno>
-            <Group15Copy>
-              <AvailableHours>Available Hours</AvailableHours>
-              <OverlapGroup3>
-                <OverlapGroup></OverlapGroup>
+            <Content>
+              <Title>Set Your Availability</Title>
+              <LetTheCustomerKno>
+                Let the customer know when you’re available to do services
+              </LetTheCustomerKno>
+              <Group15Copy>
+                <AvailableHours>Available Hours</AvailableHours>
+                <OverlapGroup3>
+                  <OverlapGroup></OverlapGroup>
 
-                <X0900am>
-                  <Dropdown
-                    options={options}
-                    onChange={onSelectOpeningHour}
-                    value={selectedOpeningHour}
-                    placeholder="Select an option"
-                  />
-                </X0900am>
-                <X0500pm>
-                  <Dropdown
-                    className="rounded-full"
-                    options={nightOptions}
-                    onChange={onSelectClosingHour}
-                    value={selectedClosingHour}
-                    placeholder="Select an option"
-                  />
-                </X0500pm>
-                <To>to</To>
-              </OverlapGroup3>
-            </Group15Copy>
-            <AvailableDaysCopy>
-              <AvailablesDays>{availabilityData.availablesDays}</AvailablesDays>
-              <OverlapGroup2>
-                <div className="my-4 md:flex md:flex-row">
-                  {days.map((service) => {
-                    let careService = careServices.find(
-                      (careService) => careService.name === service.name,
-                    );
+                  <X0900am>
+                    <Dropdown
+                      options={options}
+                      onChange={onSelectOpeningHour}
+                      value={selectedOpeningHour}
+                      placeholder="Select an option"
+                    />
+                  </X0900am>
+                  <X0500pm>
+                    <Dropdown
+                      className="rounded-full"
+                      options={nightOptions}
+                      onChange={onSelectClosingHour}
+                      value={selectedClosingHour}
+                      placeholder="Select an option"
+                    />
+                  </X0500pm>
+                  <To>to</To>
+                </OverlapGroup3>
+              </Group15Copy>
+              <AvailableDaysCopy>
+                <AvailablesDays>{availabilityData.availablesDays}</AvailablesDays>
+                <OverlapGroup2>
+                  <div className="my-4 md:flex md:flex-row">
+                    {days.map((service) => {
+                      let careService = careServices.find(
+                        (careService) => careService.name === service.name,
+                      );
 
-                    const isSelected = careService.selected;
+                      const isSelected = careService.selected;
 
-                    return (
-                      <button
-                        type="button"
-                        key={service.name}
-                        style={{
-                          boxShadow: 'inset 0px 0px 10px #81d6e6',
-                          width: '138px',
-                          height: '105px',
-                          marginRight: '31.06px',
-                        }}
-                        className={`w-40 h-[66.94px] rounded-xl border ${
-                          isSelected ? 'bg-[#95e8f7]' : 'bg-[#f1f7ff]'
-                        }  flex justify-center items-center gap-x-3 m-1`}
-                        onClick={() => toggleCareService(careService)}
-                      >
-                        {/* <service.icon
+                      return (
+                        <button
+                          type="button"
+                          key={service.name}
+                          style={{
+                            boxShadow: 'inset 0px 0px 10px #81d6e6',
+                            width: '138px',
+                            height: '105px',
+                            marginRight: '31.06px',
+                          }}
+                          className={`w-40 h-[66.94px] rounded-xl border ${
+                            isSelected ? 'bg-[#95e8f7]' : 'bg-[#f1f7ff]'
+                          }  flex justify-center items-center gap-x-3 m-1`}
+                          onClick={() => toggleCareService(careService)}
+                        >
+                          {/* <service.icon
                           className={`${isSelected ? 'text-[#077997]' : 'text-[#9697a3]'} h-8 w-8`}
                         /> */}
-                        <span className={`${isSelected ? 'text-[#077997]' : 'text-[#9697a3]'} `}>
-                          {service.name}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </OverlapGroup2>
-            </AvailableDaysCopy>
+                          <span className={`${isSelected ? 'text-[#077997]' : 'text-[#9697a3]'} `}>
+                            {service.name}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </OverlapGroup2>
+              </AvailableDaysCopy>
+              <YouCanCustomizeYourHoursLater>
+                You can customize your hours later
+              </YouCanCustomizeYourHoursLater>
+              <Button />
+            </Content>
+            <ButtonCopy5 onClick={handleSubmit}>
+              <CONTINUE>CONTINUE</CONTINUE>
+            </ButtonCopy5>
             <YouCanCustomizeYourHoursLater>
               You can customize your hours later
             </YouCanCustomizeYourHoursLater>
-            <Button />
-          </Content>
-          <ButtonCopy5 onClick={handleSubmit}>
-            <CONTINUE>CONTINUE</CONTINUE>
-          </ButtonCopy5>
-          <YouCanCustomizeYourHoursLater>
-            You can customize your hours later
-          </YouCanCustomizeYourHoursLater>
-        </OverlapGroup4>
+          </OverlapGroup4>
+        </div>
       </div>
-    </div>
+      <Powered>
+        <PoochTechnologiesInc>Pooch Technologies Inc</PoochTechnologiesInc>
+        <PrivacyPolicyTermsOfUse>
+          Privacy Policy&nbsp;&nbsp;|&nbsp;&nbsp; Terms of Use
+        </PrivacyPolicyTermsOfUse>
+      </Powered>
     </>
   );
 };
+
+const Powered = styled.div`
+  ${Museosansrounded500NormalGraniteGra}
+  position: absolute;
+  width: 100%;
+  height: 42px;
+  top: 1129px;
+  // left: 3038px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-color: var(--lily-white);
+`;
+
+const PoochTechnologiesInc = styled.div`
+  // margin-bottom: -30.5px;
+  width: 122px;
+  height: 25px;
+  margin-left: 175px;
+  letter-spacing: 0.5px;
+  // line-height: 100px;
+  white-space: nowrap;
+`;
+
+const PrivacyPolicyTermsOfUse = styled.p`
+  // margin-bottom: -30.5px;
+  width: 153px;
+  height: 25px;
+  margin-right: 177.5px;
+  text-align: right;
+  letter-spacing: 0.5px;
+  // line-height: 100px;
+  white-space: nowrap;
+`;
 
 const AvailableHours = styled.div`
   ${Museosansrounded900NormalGraniteGra}
@@ -463,7 +503,7 @@ const OverlapGroup2 = styled.div`
 const YouCanCustomizeYourHoursLater = styled.p`
   ${Museosansrounded300NormalGraniteGra}
   min-height: 20px;
-  margin-top: 80px;
+  margin-top: 140px;
   margin-left: 4.71px;
   min-width: 238px;
   max-width:238px
