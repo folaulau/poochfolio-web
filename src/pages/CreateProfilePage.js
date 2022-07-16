@@ -34,12 +34,22 @@ const CreateProfilePage = () => {
     // },
   ]);
 
+  const [phoneNumber, setPhoneNumber] = useState(null)
+const formatPhoneNumberForUpload = (number) => {
+  var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+  if (phoneRegex.test(number)) {
+    const secondCheckPhoneNumber = number?.replace(phoneRegex, '$1$2$3');
+    return secondCheckPhoneNumber;
+  } else {
+    alert('Please enter a valid phone number');
+  }
+};
+  console.log(formatPhoneNumberForUpload(phoneNumber))
   const [groomerInfo, setGroomerInfo] = useState({
     uuid: localStorage.getItem("uuid"),
     firstName: "",
     lastName: "",
     businessName: "",
-    phoneNumber: "",
     signUpStatus: "ADD_SERVICES",
   });
 
@@ -61,7 +71,6 @@ const CreateProfilePage = () => {
     loadProfile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   const loadProfile = () => {
     GroomerGraphql.getOnlyProfile()
       .then((response) => {
@@ -151,6 +160,7 @@ const CreateProfilePage = () => {
         return careService.selected;
       }),
       address: address,
+      phoneNumber: formatPhoneNumberForUpload(phoneNumber),
     };
 
     GroomerApi.createUpdateProfile(putBody)
@@ -189,7 +199,9 @@ const CreateProfilePage = () => {
       [e.target.name]: e.target.value,
     });
   };
-
+const handlePhone = e => {
+  setPhoneNumber(e.target.value)
+}
   return (
     <>
       <form
@@ -239,8 +251,8 @@ const CreateProfilePage = () => {
             placeholderText="123-45-6789"
             type="tel"
             name="phoneNumber"
-            handleChange={handleChange}
-            value={groomerInfo.phoneNumber}
+            handleChange={handlePhone}
+            value={phoneNumber}
             required={true}
           />
           <div className="mb-5 sm:col-span-2">
