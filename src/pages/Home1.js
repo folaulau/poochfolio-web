@@ -27,7 +27,6 @@ import LogoClouds from '../components/LogoClouds';
 
 function Home1(props) {
   const {
-    nav,
     logo,
     marketplace,
     management1,
@@ -64,29 +63,28 @@ function Home1(props) {
     spanText19,
     spanText20,
     spanText21,
-    spanText22,
+
     spanText23,
-    spanText24,
+
     spanText25,
-    spanText26,
+
     spanText27,
-    spanText28,
+
     spanText29,
-    spanText30,
+
     spanText31,
     spanText32,
-    spanText33,
-    spanText34,
+
     spanText35,
-    spanText36,
+
     spanText37,
-    spanText38,
+ 
     spanText39,
-    spanText40,
+
     spanText41,
-    spanText42,
+  
     spanText43,
-    spanText44,
+ 
     spanText45,
     shape6Copy3,
     eStatistics,
@@ -240,11 +238,17 @@ function Home1(props) {
           >
             <OverlapGroup>
               <MarketingAndManag>
-                <span className="museosansrounded-900-normal-metallic-seaweed-60px" style={{color:'#077997'}}>
+                <span
+                  className="museosansrounded-900-normal-metallic-seaweed-60px"
+                  style={{ color: '#077997' }}
+                >
                   {spanText1}
                 </span>
                 <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText2}</span>
-                <span className="museosansrounded-900-normal-metallic-seaweed-60px">
+                <span
+                  className="museosansrounded-900-normal-metallic-seaweed-60px"
+                  style={{ color: '#077997' }}
+                >
                   {spanText3}
                 </span>
                 <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText4}</span>
