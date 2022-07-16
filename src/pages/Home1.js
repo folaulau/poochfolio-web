@@ -208,7 +208,7 @@ function Home1(props) {
       <div className="landing-page screen">
         <OverlapGroup7>
           <ColorFill2></ColorFill2>
-          <Nav style={{ backgroundImage: `url(${nav})` }}>
+          <Nav style={{ backgroundColor: '#077997', zIndex: 1 }}>
             <Logo src={logo} />
             <MARKETPLACE>{marketplace}</MARKETPLACE>
             <MANAGEMENT>{management1}</MANAGEMENT>
@@ -233,23 +233,28 @@ function Home1(props) {
             </Link>
             <Group53 />
           </Nav>
-            <Slider style={{ backgroundImage: `url(${slider})`, zIndex: 1 , borderWidth:3, borderColor:'red'}}>
-              <OverlapGroup>
-                <MarketingAndManag>
-                  <span className="museosansrounded-900-normal-metallic-seaweed-60px">
-                    {spanText1}
-                  </span>
-                  <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText2}</span>
-                  <span className="museosansrounded-900-normal-metallic-seaweed-60px">
-                    {spanText3}
-                  </span>
-                  <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText4}</span>
-                  <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText5}</span>
-                  <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText6}</span>
-                </MarketingAndManag>
-                <ButtonCopy3 />
-              </OverlapGroup>
-            </Slider>
+          <Slider
+            style={{
+              backgroundImage: `url(${slider})`,
+            }}
+          >
+            <OverlapGroup>
+              <MarketingAndManag>
+                <span className="museosansrounded-900-normal-metallic-seaweed-60px">
+                  {spanText1}
+                </span>
+                <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText2}</span>
+                <span className="museosansrounded-900-normal-metallic-seaweed-60px">
+                  {spanText3}
+                </span>
+                <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText4}</span>
+                <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText5}</span>
+                <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText6}</span>
+              </MarketingAndManag>
+              <ButtonCopy3 />
+              <Untitled1 src={untitled1} />
+            </OverlapGroup>
+          </Slider>
           <Marketplace>
             <EIphoneX1Copy src={eIphoneX1Copy} />
             <FlexCol>
@@ -264,16 +269,28 @@ function Home1(props) {
                   </ThePoochMarketplac>
                   <STOPWORRYINGABOUTVACANCY>{stopWorryingAboutVacancy}</STOPWORRYINGABOUTVACANCY>
                   <DirectListingOnTh>
-                    <span className="museosansrounded-500-normal-granite-gray-15px">
+                    <span
+                      className="museosansrounded-500-normal-granite-gray-20px"
+                      style={{ fontSize: 16 }}
+                    >
                       {spanText10}
                     </span>
-                    <span className="museosansrounded-500-normal-granite-gray-15px">
+                    <span
+                      className="museosansrounded-500-normal-granite-gray-15px"
+                      style={{ fontSize: 16 }}
+                    >
                       {spanText11}
                     </span>
-                    <span className="museosansrounded-500-normal-granite-gray-15px">
+                    <span
+                      className="museosansrounded-500-normal-granite-gray-15px"
+                      style={{ fontSize: 16 }}
+                    >
                       {spanText12}
                     </span>
-                    <span className="museosansrounded-500-normal-granite-gray-15px">
+                    <span
+                      className="museosansrounded-500-normal-granite-gray-15px"
+                      style={{ fontSize: 16 }}
+                    >
                       {spanText13}
                     </span>
                   </DirectListingOnTh>
@@ -302,37 +319,127 @@ function Home1(props) {
             </BusinessManagementFeatures>
             <STOPWORRYINGABOUTVACANCY>{management2}</STOPWORRYINGABOUTVACANCY>
             <PoochProfileAndIn>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText17}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText18}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText19}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText20}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText21}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText22}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText23}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText24}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText25}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText26}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText27}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText28}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText29}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText30}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText31}</span>
+              <span
+                className="museosansrounded-500-normal-granite-gray-15px"
+                style={{ fontSize: 16 }}
+              >
+                {spanText17}
+              </span>
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText18}
+              </span>
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText19}
+              </span>
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText20}
+              </span>
+              <span
+                style={{ fontSize: 14 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText21}
+              </span>
+              <div style={{ height: 10 }} />
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText23}
+              </span>
+              <div style={{ height: 10 }} />
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText25}
+              </span>
+              <div style={{ height: 33 }} />
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText27}
+              </span>
+              <div style={{ height: 10 }} />
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText29}
+              </span>
+              <div style={{ height: 15 }} />
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText31}
+              </span>
             </PoochProfileAndIn>
             <AnalyticsAndQuickB>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText32}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText33}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText34}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText35}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText36}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText37}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText38}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText39}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText40}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText41}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText42}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText43}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText44}</span>
-              <span className="museosansrounded-500-normal-granite-gray-15px">{spanText45}</span>
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText32}
+              </span>
+              <div style={{ height: 22 }} />
+
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText35}
+              </span>
+              <div style={{ height: 22 }} />
+
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText37}
+              </span>
+              <div style={{ height: 17 }} />
+
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText39}
+              </span>
+              <div style={{ height: 20 }} />
+
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText41}
+              </span>
+              <div style={{ height: 19 }} />
+
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText43}
+              </span>
+              <div style={{ height: 17 }} />
+
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText45}
+              </span>
             </AnalyticsAndQuickB>
             <Shape6Copy3 src={shape6Copy3} />
             <Link
@@ -773,8 +880,8 @@ const SignUp = styled.div`
 
 const Slider = styled.div`
   position: absolute;
-  height: 823px;
-  top: 130px;
+  height: 905px;
+  top: 110px;
   left: 1159px;
   display: flex;
   padding: 68px 133.6px;
@@ -782,14 +889,25 @@ const Slider = styled.div`
   align-items: flex-start;
   min-width: 1402px;
   background-size: contain;
-  background-position: 50% 50%;
+  // background-position: 50% 50%;
   background-repeat: no-repeat;
+  z-index:900;
+  width:1800;
+  padding-right:200px;
 `;
 
 const OverlapGroup = styled.div`
-  width: 1237px;
+  width: 1337px;
   height: 874px;
   position: relative;
+`;
+const Untitled1 = styled.img`
+  position: absolute;
+  width: 761px;
+  height: 626px;
+  top: 0;
+  left: 476px;
+  object-fit: cover;
 `;
 
 const MarketingAndManag = styled.h1`
@@ -815,10 +933,10 @@ const Marketplace = styled.div`
 `;
 
 const EIphoneX1Copy = styled.img`
-  width: 724px;
-  height: 745px;
+  width: 654px;
+  height: 795px;
   margin-top: 0;
-  object-fit: cover;
+  object-fit: contain;
 `;
 const SIGNUP = styled.div`
   ${Museosansrounded900NormalMetallicSe}

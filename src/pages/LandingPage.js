@@ -21,7 +21,7 @@ export default function LandingPage() {
     management1: 'MANAGEMENT',
     howItWorks1: 'HOW IT WORKS',
     signUp: 'Sign Up',
-    slider: '/landing-page/sliderbackground.png',
+    slider: '/landing-page/testSlider.png',
     spanText1: 'Marketing',
     spanText2: (
       <React.Fragment>
@@ -168,6 +168,7 @@ export default function LandingPage() {
     spanText32: (
       <React.Fragment>
         Analytics and QuickBooks <br />
+        integration
       </React.Fragment>
     ),
     spanText33: (
