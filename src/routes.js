@@ -8,7 +8,7 @@ import InputListingPage from './pages/InputListingPage';
 import InputListingPage2 from './pages/InputListingPage2';
 import Dashboard from './pages/Dashboard';
 import Breadcrumbs from './components/Breadcrumbs';
-import Home from './pages/Home';
+// import Home from './pages/Home';
 import Payments from './pages/dashboard/payments';
 import Login from './pages/Signin';
 import Signup from './pages/Signup';
@@ -20,17 +20,7 @@ import LandingPage from './pages/LandingPage';
 export default function PoochRoutes() {
  
 
-const buttonCopy32Data = {
-  className: 'button-copy',
-};
 
-const buttonCopy33Data = {
-  className: 'button-copy-2',
-};
-
-const supportData = {
-  src: '',
-};
 
 
 
