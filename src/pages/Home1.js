@@ -240,7 +240,7 @@ function Home1(props) {
           >
             <OverlapGroup>
               <MarketingAndManag>
-                <span className="museosansrounded-900-normal-metallic-seaweed-60px">
+                <span className="museosansrounded-900-normal-metallic-seaweed-60px" style={{color:'#077997'}}>
                   {spanText1}
                 </span>
                 <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText2}</span>
