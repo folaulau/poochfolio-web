@@ -1,13 +1,19 @@
 import { useState } from "react";
 import React from 'react';
 import { useNavigate } from "react-router-dom";
-import LandingHeader from "../components/landing-page/LandingHeader";
+
 import GroomerApi from "../api/GroomerApi";
 import FirebaseApi from "../api/FirebaseApi";
 import { Button } from 'react-bootstrap';
 import googleSvg from "../assessts/images/Google.svg"
 import styled from 'styled-components';
-import { Museosansrounded500NormalGraniteGra } from '../styledMixins';
+
+import {
+  Museosansrounded500NormalMetallicSe,
+  Museosansrounded500NormalGraniteGra,
+  Museosansrounded500NormalWhite15px,
+} from '../styledMixins';
+
 const Signup = () => {
 
   const [userInfo, setUserInfo] = useState({
@@ -60,27 +66,25 @@ const googleLogin = () => {
 
   return (
     <>
-      <LandingHeader />
       <div
-        className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-Museo-Sans-Rounded-900"
+        className="min-h-full flex flex-col justify-center py-12  font-Museo-Sans-Rounded-900"
         style={{
           borderWidth: 3,
           borderColor: 'transparent',
-          borderTopLeftRadius: '30px',
-          borderTopRightRadius: '30px',
-          marginTop: -25,
+          // borderTopLeftRadius: '30px',
+          // borderTopRightRadius: '30px',
+          // marginTop: -25,
           backgroundColor: '#F3F8FF',
         }}
       >
-        <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <div style={{ height: 5, backgroundColor: 'white', marginTop:-50, width:'100%', marginBottom:55  }} />
+        <div>
           {/* <img
             className="mx-auto h-12 w-auto"
             src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
             alt="Workflow"
           /> */}
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            🐾 Sign Up for Pooch 🐶
-          </h2>
+          <p style={{ fontSize: '12px', textAlign: 'center', color: '#666666' }}>Sign up with</p>
           {/* <p className="mt-2 text-center text-sm text-gray-600">
             Or{" "}
             <a
@@ -91,13 +95,15 @@ const googleLogin = () => {
             </a>
           </p> */}
         </div>
-
-        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <div className="mt-8 " style={{ justifyContent: 'center', display: 'flex' }}>
+          <div className=" py-8 px-4   sm:px-10">
             {/* <form className="space-y-6" action="#" method="POST"> */}
             <form className="space-y-6" action="#" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="password"
+                  style={{ fontSize: '12px', color: '#666666', lineHeight: 3, marginLeft: 8 }}
+                >
                   Email Address
                 </label>
                 <div className="mt-1">
@@ -110,12 +116,23 @@ const googleLogin = () => {
                     onChange={handleInputChange}
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
+                    style={{
+                      width: '542px',
+                      height: '56px',
+                      borderWidth: 2,
+                      borderColor: '#85D8E7',
+                      borderRadius: 28,
+                      marginBottom: 20,
+                    }}
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="password"
+                  style={{ fontSize: '12px', color: '#666666', lineHeight: 3, marginLeft: 8 }}
+                >
                   Password
                 </label>
                 <div className="mt-1">
@@ -128,13 +145,59 @@ const googleLogin = () => {
                     onChange={handleInputChange}
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
+                    style={{
+                      width: '542px',
+                      height: '56px',
+                      borderWidth: 2,
+                      borderColor: '#85D8E7',
+                      borderRadius: 28,
+                      marginBottom: 20,
+                    }}
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  htmlFor="password"
+                  style={{ fontSize: '12px', color: '#666666', lineHeight: 3, marginLeft: 8 }}
+                >
+                  Confirm Password
+                </label>
+                <div className="mt-1">
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    autoComplete="current-password"
+                    value={userInfo.password}
+                    onChange={handleInputChange}
+                    required
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
+                    style={{
+                      width: '542px',
+                      height: '56px',
+                      borderWidth: 2,
+                      borderColor: '#85D8E7',
+                      borderRadius: 28,
+                      marginBottom: 20,
+                    }}
                   />
                 </div>
               </div>
               <div>
                 <button
                   type="submit"
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997]"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md    bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997]"
+                  style={{
+                    width: '542px',
+                    height: '56px',
+                    borderWidth: 2,
+                    alignText: 'center',
+                    alignItems: 'center',
+                    borderRadius: 28,
+                    fontSize: 15,
+                    color: 'white',
+                  }}
                 >
                   Sign Up
                 </button>
@@ -147,15 +210,24 @@ const googleLogin = () => {
                   <div className="w-full border-t border-gray-300" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-white text-gray-500">Or</span>
+                  <p style={{ fontSize: '12px', textAlign: 'center', color: '#666666' }}>
+                    or continue with
+                  </p>
                 </div>
               </div>
 
-              <div className="mt-6 grid grid-cols-2 gap-3">
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  marginTop: 30,
+                }}
+              >
                 <Button
                   onClick={() => facebookLogin()}
                   style={{
-                    width: '160px',
+                    width: '260px',
                     borderWidth: 1,
                     borderColor: '#C4DFEA',
                     borderRadius: 10,
@@ -171,7 +243,7 @@ const googleLogin = () => {
                 <Button
                   onClick={() => googleLogin()}
                   style={{
-                    width: '160px',
+                    width: '260px',
                     borderWidth: 1,
                     borderColor: '#C4DFEA',
                     borderRadius: 10,
@@ -239,6 +311,66 @@ const PrivacyPolicyTermsOfUse = styled.p`
   text-align: right;
   letter-spacing: 0.5px;
   // line-height: 100px;
+  white-space: nowrap;
+`;
+
+const Nav = styled.div`
+  ${Museosansrounded500NormalWhite15px}
+  position: absolute;
+  height: 130px;
+  top: 0;
+  left: 1144px;
+  display: flex;
+  padding: 25px 246px;
+  align-items: flex-start;
+  min-width: 1634px;
+  background-size: cover;
+  background-position: 50% 50%;
+`;
+
+const Logo = styled.img`
+  width: 142px;
+  height: 63px;
+  object-fit: cover;
+`;
+
+const MARKETPLACE = styled.div`
+  min-height: 20px;
+  margin-left: 80px;
+  margin-top: 10.98px;
+  min-width: 104px;
+  letter-spacing: 0;
+  line-height: 30.4px;
+  white-space: nowrap;
+`;
+
+const MANAGEMENT = styled.div`
+  min-height: 20px;
+  margin-left: 65px;
+  margin-top: 10.98px;
+  min-width: 105px;
+  letter-spacing: 0;
+  line-height: 30.4px;
+  white-space: nowrap;
+`;
+
+const HOWITWORKS = styled.div`
+  min-height: 20px;
+  margin-left: 84px;
+  margin-top: 10.98px;
+  min-width: 113px;
+  letter-spacing: 0;
+  line-height: 30.4px;
+  white-space: nowrap;
+`;
+
+const SignUp = styled.div`
+  ${Museosansrounded500NormalMetallicSe}
+  min-height: 20px;
+  min-width: 54px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 30.4px;
   white-space: nowrap;
 `;
 

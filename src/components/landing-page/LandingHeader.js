@@ -14,7 +14,7 @@ const LandingHeader = () => {
         <Link to="">Management</Link>
         <Link to="">How It Works</Link>
         <Link to="/signin" className="border rounded-full bg-[#ebfdff] text-[#077997] py-2 px-6">Sign In</Link>
-        <Link to="/signup" className="border rounded-full bg-[#ebfdff] text-[#077997] py-2 px-6">Sign Up</Link>
+        <Link to="/sign-up/signup" className="border rounded-full bg-[#ebfdff] text-[#077997] py-2 px-6">Sign Up</Link>
       </nav>
       <button className="rounded-full px-4 py-2 border border-white flex gap-x-3.5">
         <img className="h-5" src="/landing-page/headset.svg" alt="Docusign" />

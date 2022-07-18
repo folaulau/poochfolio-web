@@ -213,7 +213,7 @@ function Home1(props) {
             <HOWITWORKS>{howItWorks1}</HOWITWORKS>
             <Group9 />
             <Link
-              to="/signup"
+              to="sign-up/signup"
               style={{
                 height: '46px',
                 marginLeft: '16px',
@@ -832,6 +832,7 @@ const Nav = styled.div`
   min-width: 1634px;
   background-size: cover;
   background-position: 50% 50%;
+  width:100%
 `;
 
 const Logo = styled.img`

@@ -29,14 +29,12 @@ export default function PoochRoutes() {
     <>
       <Routes>
         {/* <Route path="/" element={<Home />} /> */}
-        <Route path='/' element={<LandingPage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        {/* <Route path="/signup" element={<Signup />} /> */}
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="sign-up" element={<Breadcrumbs />}>
-          <Route path="signup" element={<SignUpPage />} />
-          <Route path="new-signup-page" element={<NewSignUpPage />} />
-          <Route path="signup-email-page" element={<SignupEmailPage />} />
+          <Route path="signup" element={<Signup />} />
           <Route path="create-profile" element={<CreateProfilePage />} />
           <Route path="input-listing" element={<InputListingPage />} />
           <Route path="input-listing2" element={<InputListingPage2 />} />
