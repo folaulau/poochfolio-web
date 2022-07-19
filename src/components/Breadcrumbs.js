@@ -6,42 +6,12 @@ import {
   Museosansrounded500NormalMetallicSe,
   Museosansrounded500NormalWhite15px,
 } from '../styledMixins';
-import Group9 from '../components/landing-page/Group9';
-import Group53 from '../components/landing-page/Group53';
+
 import Header from './Header';
 
 export default function Breadcrumbs() {
-  const Nav = styled.div`
-    ${Museosansrounded500NormalWhite15px}
-    position: absolute;
-    height: 130px;
-    top: 0;
-    // left: 1144px;
-    display: flex;
-    padding: 25px 246px;
-    align-items: flex-start;
-    min-width: 1634px;
-    background-size: cover;
-    background-position: 50% 50%;
-  `;
-
-  const Logo = styled.img`
-    width: 142px;
-    height: 63px;
-    object-fit: cover;
-  `;
 
 
-
-  const SignUp = styled.div`
-    ${Museosansrounded500NormalMetallicSe}
-    min-height: 20px;
-    min-width: 54px;
-    text-align: center;
-    letter-spacing: 0;
-    line-height: 30.4px;
-    white-space: nowrap;
-  `;
   let location = useLocation();
 const [createProfileStatus, setCreateProfileStatus] = useState('upcoming')
 const [inputListingStatus, setInputListingStatus] = useState('upcoming');
@@ -95,31 +65,6 @@ const [AvailableStatus, setAvailableStatus] = useState('upcoming');
 
   return (
     <>
-      {/* <Nav style={{ backgroundColor: '#077997' }}>
-        <Logo
-          src={
-            'https://anima-uploads.s3.amazonaws.com/projects/62cb8b245e405a54f0618e96/releases/62cb96f0b9d72d70fcf63d71/img/logo@1x.png'
-          }
-        />
-        {/* <Group9 /> */}
-      {/* <Link
-          to="sign-up/signup"
-          style={{
-            height: '46px',
-            marginLeft: '16px',
-            marginTop: '2px',
-            display: 'flex',
-            padding: '9px 29.4px',
-            justifyContent: 'flex-end',
-            alignItems: 'flex-start',
-            minWidth: '108px',
-            backgroundColor: '#ebfdff',
-            borderRadius: '22.83px',
-          }}
-        >
-          <SignUp>Sign Up</SignUp>
-        </Link> */}
-
       <nav className="bg-pooch-blue-2 bg-center bg-cover bg-no-repeat">
         <Header />
       </nav>

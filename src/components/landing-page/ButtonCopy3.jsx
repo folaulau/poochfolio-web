@@ -12,7 +12,7 @@ function ButtonCopy3(props) {
         position: 'absolute',
         height: '68px',
         top: '449px',
-        left: 0,
+        left: 60,
         display: 'flex',
         padding: '10.9px 91.2px',
         justifyContent: 'flex-end',

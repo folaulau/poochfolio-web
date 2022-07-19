@@ -240,20 +240,40 @@ function Home1(props) {
               <MarketingAndManag>
                 <span
                   className="museosansrounded-900-normal-metallic-seaweed-60px"
-                  style={{ color: '#077997' }}
+                  style={{ color: '#077997', fontSize: 53 }}
                 >
                   {spanText1}
                 </span>
-                <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText2}</span>
+                <span
+                  className="museosansrounded-900-normal-mine-shaft-60px"
+                  style={{ fontSize: 53 }}
+                >
+                  {spanText2}
+                </span>
                 <span
                   className="museosansrounded-900-normal-metallic-seaweed-60px"
-                  style={{ color: '#077997' }}
+                  style={{ color: '#077997', fontSize: 53 }}
                 >
                   {spanText3}
                 </span>
-                <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText4}</span>
-                <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText5}</span>
-                <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText6}</span>
+                <span
+                  className="museosansrounded-900-normal-mine-shaft-60px"
+                  style={{ fontSize: 53 }}
+                >
+                  {spanText4}
+                </span>
+                <span
+                  className="museosansrounded-900-normal-mine-shaft-60px"
+                  style={{ fontSize: 53 }}
+                >
+                  {spanText5}
+                </span>
+                <span
+                  className="museosansrounded-900-normal-mine-shaft-60px"
+                  style={{ fontSize: 53 }}
+                >
+                  {spanText6}
+                </span>
               </MarketingAndManag>
               <ButtonCopy3 />
               <Untitled1 src={untitled1} />
@@ -532,82 +552,159 @@ function Home1(props) {
                       <LOSANGELESCOUNTY>{losAngelesCounty}</LOSANGELESCOUNTY>
                       <Rectangle1046></Rectangle1046>
                       <VeniceCAS>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText53}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+                        <span
+                          className="museosansrounded-300-normal-charlotte-16px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.1,
+                          }}
+                        >
                           {spanText54}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText55}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-16px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText56}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText57}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-16px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText58}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText59}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-16px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText60}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText61}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-16px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText62}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText63}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-16px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText64}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText65}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-16px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText66}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText67}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-16px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText68}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText69}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-16px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText70}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText71}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-16px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText72}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText73}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-16px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText74}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText75}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-16px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText76}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText77}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-16px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText78}
                         </span>
                       </VeniceCAS>
@@ -615,82 +712,159 @@ function Home1(props) {
                     <OverlapGroup12>
                       <NATIONWIDE>{nationwide}</NATIONWIDE>
                       <LosAngelesCA>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText79}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+                        <span
+                          className="museosansrounded-300-normal-charlotte-12px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText80}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText81}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-12px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText82}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText83}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-12px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText84}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText85}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-12px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText86}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText87}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-12px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText88}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText89}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-12px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText90}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText91}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-12px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText92}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText93}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-12px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText94}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText95}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-12px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText96}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText97}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-12px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText98}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText99}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-12px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText100}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText101}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-12px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText102}
                         </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText103}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
+
+                        <span
+                          className="museosansrounded-300-normal-charlotte-12px"
+                          style={{
+                            fontSize: 14,
+                            paddingnBottom: 40,
+                            marginTop: 10,
+                            lineHeight: 1.3,
+                          }}
+                        >
                           {spanText104}
                         </span>
                       </LosAngelesCA>
@@ -705,88 +879,221 @@ function Home1(props) {
                   <OverlapGroup22>
                     <NATIONWIDE>{features}</NATIONWIDE>
                     <ListOnThePooc>
-                      <span className="myriadpro-regular-normal-charlotte-12px">{spanText105}</span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
                         {spanText106}
                       </span>
-                      <span className="myriadpro-regular-normal-charlotte-12px">{spanText107}</span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
                         {spanText108}
                       </span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
-                        {spanText109}
-                      </span>
-                      <span className="myriadpro-regular-normal-charlotte-12px">{spanText110}</span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
                         {spanText111}
                       </span>
-                      <span className="myriadpro-regular-normal-charlotte-12px">{spanText112}</span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
                         {spanText113}
                       </span>
-                      <span className="myriadpro-regular-normal-charlotte-12px">{spanText114}</span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
                         {spanText115}
                       </span>
-                      <span className="myriadpro-regular-normal-charlotte-12px">{spanText116}</span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
                         {spanText117}
                       </span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
                         {spanText118}
                       </span>
-                      <span className="myriadpro-regular-normal-charlotte-12px">{spanText119}</span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
                         {spanText120}
                       </span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
-                        {spanText121}
-                      </span>
-                      <span className="myriadpro-regular-normal-charlotte-12px">{spanText122}</span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
                         {spanText123}
                       </span>
                     </ListOnThePooc>
                     <Rectangle1046></Rectangle1046>
                   </OverlapGroup22>
                   <PayrollAndEmpl>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText124}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
                       {spanText125}
                     </span>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText126}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
+
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
                       {spanText127}
                     </span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
-                      {spanText128}
-                    </span>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText129}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
+
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
                       {spanText130}
                     </span>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText131}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
+
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
                       {spanText132}
                     </span>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText133}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
+
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
                       {spanText134}
                     </span>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText135}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
+
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
                       {spanText136}
                     </span>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText137}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
+
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
                       {spanText138}
                     </span>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText139}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
+
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
                       {spanText140}
                     </span>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText141}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
+
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
                       {spanText142}
                     </span>
                   </PayrollAndEmpl>
@@ -921,7 +1228,7 @@ const MarketingAndManag = styled.h1`
   width: 559px;
   height: 466px;
   top: 125px;
-  left: 0;
+  left: 20px;
   letter-spacing: 0;
   line-height: 72px;
 `;
@@ -1314,7 +1621,7 @@ const Address = styled.p`
 const OverlapGroup8 = styled.div`
   position: absolute;
   width: 254px;
-  height: 410px;
+  height: 510px;
   top: 0;
   left: 205px;
 `;
@@ -1339,11 +1646,11 @@ const Rectangle1046 = styled.div`
   background-color: var(--anakiwa);
 `;
 
-const VeniceCAS = styled.p`
+const VeniceCAS = styled.div`
   ${MyriadproRegularNormalCharlotte12px}
   position: absolute;
   width: 197px;
-  height: 357px;
+  height: 457px;
   top: 53px;
   left: 2px;
   letter-spacing: 0;

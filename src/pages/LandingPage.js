@@ -292,175 +292,175 @@ export default function LandingPage() {
     ),
     spanText52: 'info@poochapp.com',
     losAngelesCounty: 'LOS ANGELES COUNTY',
-    spanText53: '•   ',
+    // spanText53: '•   Venice, CA ',
     spanText54: (
       <React.Fragment>
-        Venice, CA
+        • Venice, CA
         <br />
       </React.Fragment>
     ),
     spanText55: '•   ',
     spanText56: (
       <React.Fragment>
-        Santa Monica, CA
+        • Santa Monica, CA
         <br />
       </React.Fragment>
     ),
     spanText57: '•   ',
     spanText58: (
       <React.Fragment>
-        Culver City
+        • Culver City
         <br />
       </React.Fragment>
     ),
     spanText59: '•   ',
     spanText60: (
       <React.Fragment>
-        Marina Del Rey <br />
+        • Marina Del Rey <br />
       </React.Fragment>
     ),
     spanText61: '•   ',
     spanText62: (
       <React.Fragment>
-        Malibu
+        • Malibu
         <br />
       </React.Fragment>
     ),
     spanText63: '•   ',
     spanText64: (
       <React.Fragment>
-        Beverly Hills
+        • Beverly Hills
         <br />
       </React.Fragment>
     ),
     spanText65: '•   ',
     spanText66: (
       <React.Fragment>
-        Calabasas
+        • Calabasas
         <br />
       </React.Fragment>
     ),
     spanText67: '•   ',
     spanText68: (
       <React.Fragment>
-        Manhattan Beach
+        • Manhattan Beach
         <br />
       </React.Fragment>
     ),
     spanText69: '•   ',
     spanText70: (
       <React.Fragment>
-        Hermosa Beach
+        • Hermosa Beach
         <br />
       </React.Fragment>
     ),
     spanText71: '•   ',
     spanText72: (
       <React.Fragment>
-        Irvine
+        • Irvine
         <br />
       </React.Fragment>
     ),
     spanText73: '•   ',
     spanText74: (
       <React.Fragment>
-        Laguna Beach
+        • Laguna Beach
         <br />
       </React.Fragment>
     ),
     spanText75: '•   ',
     spanText76: (
       <React.Fragment>
-        Laguna Niguel <br />
+        • Laguna Niguel <br />
       </React.Fragment>
     ),
     spanText77: '•   ',
-    spanText78: 'Newport Beach',
+    spanText78: ' • Newport Beach',
     nationwide: 'NATIONWIDE',
     spanText79: '•   ',
     spanText80: (
       <React.Fragment>
-        Los Angeles, CA
+        • Los Angeles, CA
         <br />
       </React.Fragment>
     ),
     spanText81: '•   ',
     spanText82: (
       <React.Fragment>
-        San Diego
+        • San Diego
         <br />
       </React.Fragment>
     ),
     spanText83: '•   ',
     spanText84: (
       <React.Fragment>
-        San Francisco, CA
+        • San Francisco, CA
         <br />
       </React.Fragment>
     ),
     spanText85: '•   ',
     spanText86: (
       <React.Fragment>
-        Miami, FL
+        • Miami, FL
         <br />
       </React.Fragment>
     ),
     spanText87: '•   ',
     spanText88: (
       <React.Fragment>
-        New York, NY
+        • New York, NY
         <br />
       </React.Fragment>
     ),
     spanText89: '•   ',
     spanText90: (
       <React.Fragment>
-        Chicago
+        • Chicago
         <br />
       </React.Fragment>
     ),
     spanText91: '•   ',
     spanText92: (
       <React.Fragment>
-        Houston
+        • Houston
         <br />
       </React.Fragment>
     ),
     spanText93: '•   ',
     spanText94: (
       <React.Fragment>
-        Phoenix
+        • Phoenix
         <br />
       </React.Fragment>
     ),
     spanText95: '•   ',
     spanText96: (
       <React.Fragment>
-        Philadelphia
+        • Philadelphia
         <br />
       </React.Fragment>
     ),
     spanText97: '•   ',
     spanText98: (
       <React.Fragment>
-        Dallas
+        • Dallas
         <br />
       </React.Fragment>
     ),
     spanText99: '•   ',
     spanText100: (
       <React.Fragment>
-        Austin <br />
+        • Austin <br />
       </React.Fragment>
     ),
     spanText101: '•   ',
     spanText102: (
       <React.Fragment>
-        Denver <br />
+        • Denver <br />
       </React.Fragment>
     ),
     spanText103: '•   ',
-    spanText104: 'Las Vegas',
+    spanText104: ' • Las Vegas',
     poochMarketplace: 'Pooch Marketplace',
     eAppsStore: '',
     eGooglePlay: '',
@@ -468,14 +468,14 @@ export default function LandingPage() {
     spanText105: '•   ',
     spanText106: (
       <React.Fragment>
-        List on the Pooch Marketplace
+        • List on the Pooch Marketplace
         <br />
       </React.Fragment>
     ),
     spanText107: '•   ',
     spanText108: (
       <React.Fragment>
-        Dog leads from the Pooch Market
+        • Dog leads from the Pooch Market place
         <br />
       </React.Fragment>
     ),
@@ -488,26 +488,26 @@ export default function LandingPage() {
     spanText110: '•   ',
     spanText111: (
       <React.Fragment>
-        Pooch profile and intake form
+        • Pooch profile and intake form
         <br />
       </React.Fragment>
     ),
     spanText112: '•   ',
     spanText113: (
       <React.Fragment>
-        Client management <br />
+        • Client management <br />
       </React.Fragment>
     ),
     spanText114: '•   ',
     spanText115: (
       <React.Fragment>
-        Instant bookings <br />
+        • Instant bookings <br />
       </React.Fragment>
     ),
     spanText116: '•   ',
     spanText117: (
       <React.Fragment>
-        Pick-up drop-off API for kennels <br />
+        • Pick-up drop-off API for kennels <br />
       </React.Fragment>
     ),
     spanText118: (
@@ -520,7 +520,7 @@ export default function LandingPage() {
     spanText119: '•   ',
     spanText120: (
       <React.Fragment>
-        Machine learning SMS integration <br />
+        • Machine learning SMS integration and automation<br />
       </React.Fragment>
     ),
     spanText121: (
@@ -531,17 +531,17 @@ export default function LandingPage() {
       </React.Fragment>
     ),
     spanText122: '•   ',
-    spanText123: 'Cloud storage and data security',
+    spanText123: '• Cloud storage and data security',
     spanText124: '•   ',
     spanText125: (
       <React.Fragment>
-        Payroll and Employee management <br />
+        • Payroll and Employee management <br />
       </React.Fragment>
     ),
     spanText126: '•   ',
     spanText127: (
       <React.Fragment>
-        Add multiple users and set user <br />
+        • Add multiple users and set user <br />
       </React.Fragment>
     ),
     spanText128: (
@@ -553,42 +553,42 @@ export default function LandingPage() {
     spanText129: '•   ',
     spanText130: (
       <React.Fragment>
-        Analytics and QuickBooks integration <br />
+        • Analytics and QuickBooks integration <br />
       </React.Fragment>
     ),
     spanText131: '•   ',
     spanText132: (
       <React.Fragment>
-        QuickBooks Connect <br />
+        • QuickBooks Connect <br />
       </React.Fragment>
     ),
     spanText133: '•   ',
     spanText134: (
       <React.Fragment>
-        POS hardware <br />
+        • POS hardware <br />
       </React.Fragment>
     ),
     spanText135: '•   ',
     spanText136: (
       <React.Fragment>
-        Stripe integration
+        • Stripe integration
         <br />
       </React.Fragment>
     ),
     spanText137: '•   ',
     spanText138: (
       <React.Fragment>
-        Text to pay <br />
+        • Text to pay <br />
       </React.Fragment>
     ),
     spanText139: '•   ',
     spanText140: (
       <React.Fragment>
-        Calendar integration <br />
+        • Calendar integration <br />
       </React.Fragment>
     ),
     spanText141: '•   ',
-    spanText142: 'AI Capital – expand your business!',
+    spanText142: '• AI Capital – expand your business!',
     investorRelations: 'Investor Relations    |    Licensing    |     Privacy Policy',
     x2022PoochTechnol: '© 2022 POOCH TECHNOLOGIES INC  © POOCHFOLIO LLC',
     buttonCopy31Props: buttonCopy32Data,
