@@ -203,7 +203,7 @@ function Home1(props) {
 
   return (
     <div className="container-center-horizontal">
-      <div className="landing-page screen">
+      <div className="landing-page screen" style={{width:'100%'}}>
         <OverlapGroup7>
           <ColorFill2></ColorFill2>
           <Nav style={{ backgroundColor: '#077997', zIndex: 1 }}>
@@ -512,7 +512,7 @@ function Home1(props) {
                 position: 'absolute',
                 height: '68px',
                 top: '849px',
-                left: '1837px',
+                left: '450px',
                 display: 'flex',
                 padding: '10.9px 91.2px',
                 justifyContent: 'flex-end',
@@ -1112,18 +1112,18 @@ function Home1(props) {
 }
 
 const OverlapGroup7 = styled.div`
-  width: 8076px;
+  // width: 8076px;
   height: 7983px;
   position: relative;
-  margin-left: -1161px;
+  // margin-left: -1161px;
 `;
 
 const ColorFill2 = styled.div`
   position: absolute;
-  width: 7945px;
+  width: 100%
   height: 7983px;
   top: 0;
-  left: 131px;
+  // left: 131px;
   background-color: var(--white);
 `;
 
@@ -1132,7 +1132,8 @@ const Nav = styled.div`
   position: absolute;
   height: 130px;
   top: 0;
-  left: 1144px;
+  left:0;
+  // left: 1144px;
   display: flex;
   padding: 25px 246px;
   align-items: flex-start;
@@ -1150,7 +1151,7 @@ const Logo = styled.img`
 
 const MARKETPLACE = styled.div`
   min-height: 20px;
-  margin-left: 80px;
+  // margin-left: 80px;
   margin-top: 10.98px;
   min-width: 104px;
   letter-spacing: 0;
@@ -1160,7 +1161,7 @@ const MARKETPLACE = styled.div`
 
 const MANAGEMENT = styled.div`
   min-height: 20px;
-  margin-left: 65px;
+  // margin-left: 65px;
   margin-top: 10.98px;
   min-width: 105px;
   letter-spacing: 0;
@@ -1170,7 +1171,7 @@ const MANAGEMENT = styled.div`
 
 const HOWITWORKS = styled.div`
   min-height: 20px;
-  margin-left: 84px;
+  // margin-left: 84px;
   margin-top: 10.98px;
   min-width: 113px;
   letter-spacing: 0;
@@ -1194,17 +1195,17 @@ const Slider = styled.div`
   position: absolute;
   height: 905px;
   top: 110px;
-  left: 1159px;
+  // left: 1159px;
   display: flex;
   padding: 68px 133.6px;
   justify-content: flex-end;
   align-items: flex-start;
   min-width: 1402px;
-  background-size: contain;
-  // background-position: 50% 50%;
+  background-size: cover;
+  background-position: 50% 50%;
   background-repeat: no-repeat;
   z-index:900;
-  width:1800;
+  width:1950;
   padding-right:200px;
 `;
 
@@ -1215,7 +1216,7 @@ const OverlapGroup = styled.div`
 `;
 const Untitled1 = styled.img`
   position: absolute;
-  width: 761px;
+  width: 100%
   height: 626px;
   top: 0;
   left: 476px;
@@ -1238,7 +1239,7 @@ const Marketplace = styled.div`
   position: absolute;
   height: 745px;
   top: 965px;
-  left: 1311px;
+  // left: 1311px;
   display: flex;
   align-items: flex-start;
   min-width: 1341px;
@@ -1394,7 +1395,7 @@ const OverlapGroup3 = styled.div`
   width: 1188px;
   height: 726px;
   top: 1820px;
-  left: 1390px;
+  left: 90px;
 `;
 
 const PoochProfileAndIn = styled.p`
@@ -1439,8 +1440,8 @@ const EStatistics = styled.img`
 
 const OverlapGroup4 = styled.div`
   position: absolute;
-  width: 3709px;
-  height: 1647px;
+  width: 2709px;
+  height: 100%;
   top: 2308px;
   left: -1px;
 `;
@@ -1451,7 +1452,7 @@ const HowItWorks = styled.div`
   width: 585px;
   height: 164px;
   top: 427px;
-  left: 1670px;
+  // left: 1670px;
   text-align: center;
   letter-spacing: 0;
   line-height: 48px;
@@ -1470,7 +1471,7 @@ const OverlapGroup5 = styled.div`
   position: absolute;
   height: 316px;
   top: 532px;
-  left: 1346px;
+  // left: 1346px;
   display: flex;
   padding: 82.1px 9.3px;
   justify-content: flex-end;
@@ -1493,7 +1494,7 @@ const OverlapGroup11 = styled.div`
   position: absolute;
   height: 307px;
   top: 541px;
-  left: 1732px;
+  left: 432px;
   display: flex;
   padding: 73.1px 8.3px;
   justify-content: flex-end;
@@ -1507,7 +1508,7 @@ const OverlapGroup21 = styled.div`
   position: absolute;
   height: 311px;
   top: 537px;
-  left: 2121px;
+  left: 871px;
   display: flex;
   padding: 82.1px 9.3px;
   justify-content: flex-end;
@@ -1521,7 +1522,7 @@ const Powered = styled.div`
   position: absolute;
   width: 1108px;
   top: 3359px;
-  left: 1406px;
+  // left: 1406px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1554,7 +1555,7 @@ const Footer = styled.div`
   position: absolute;
   height: 904px;
   top: 3674px;
-  left: 1159px;
+  // left: 1159px;
   display: flex;
   padding: 107.1px 73.6px;
   justify-content: flex-end;
