@@ -7,7 +7,7 @@ const LandingHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-[#077997] text-white font-Museo-Sans-Rounded-500 flex h-40 items-center justify-evenly">
+    <header className="bg-[#077997] text-white font-Museo-Sans-Rounded-500 flex h-35 items-center justify-evenly" style={{position:'sticky'}}>
       <a href="/"><img src="/landing-page/poochFolio.svg" alt="img" /></a>
       <nav className="hidden md:flex w-6/12 justify-evenly items-baseline uppercase">
         <Link to="">Marketplace</Link>

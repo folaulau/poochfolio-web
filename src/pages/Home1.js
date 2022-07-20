@@ -202,11 +202,12 @@ function Home1(props) {
   } = props;
 
   return (
-    <div className="container-center-horizontal">
-      <div className="landing-page screen" style={{width:'100%'}}>
+
+      <div className="landing-page screen" >
+        
         <OverlapGroup7>
           <ColorFill2></ColorFill2>
-          <Nav style={{ backgroundColor: '#077997', zIndex: 1 }}>
+          <Nav style={{ backgroundColor: '#077997', zIndex:1, }}>
             <Logo src={logo} />
             <MARKETPLACE>{marketplace}</MARKETPLACE>
             <MANAGEMENT>{management1}</MANAGEMENT>
@@ -490,7 +491,7 @@ function Home1(props) {
           </OverlapGroup3>
           <OverlapGroup4>
             <HowItWorks>{howItWorks2}</HowItWorks>
-            <Group76 src={group76} />
+            {/* <Group76 src={group76} /> */}
             <OverlapGroup5 style={{ backgroundImage: `url(${overlapGroup})` }}>
               <SignUpAndInputAListing>
                 <span className="museosansrounded-700-normal-mine-shaft-18px">{spanText46}</span>
@@ -512,7 +513,7 @@ function Home1(props) {
                 position: 'absolute',
                 height: '68px',
                 top: '849px',
-                left: '450px',
+                left: '40%',
                 display: 'flex',
                 padding: '10.9px 91.2px',
                 justifyContent: 'flex-end',
@@ -1107,21 +1108,23 @@ function Home1(props) {
           </Footer>
         </OverlapGroup7>
       </div>
-    </div>
+
   );
 }
 
 const OverlapGroup7 = styled.div`
   // width: 8076px;
-  height: 7983px;
-  position: relative;
+  // height: 7983px;
+min-width:100%;
   // margin-left: -1161px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const ColorFill2 = styled.div`
-  position: absolute;
-  width: 100%
-  height: 7983px;
+  // position: absolute;
+  // width: 100%
+  // height: 7983px;
   top: 0;
   // left: 131px;
   background-color: var(--white);
@@ -1129,29 +1132,34 @@ const ColorFill2 = styled.div`
 
 const Nav = styled.div`
   ${Museosansrounded500NormalWhite15px}
-  position: absolute;
+  position: sticky;
   height: 130px;
-  top: 0;
-  left:0;
+  top: 30px;
+  left: 0;
+  right:0;
+  margin-left: auto;
+  margin-right: auto;
   // left: 1144px;
   display: flex;
-  padding: 25px 246px;
-  align-items: flex-start;
-  min-width: 1634px;
+  // padding: 25px 246px;
+  align-items: center;
+  // min-width: 1634px;
   background-size: cover;
   background-position: 50% 50%;
-  width:100%
+  // width: 100%;
+  padding-right:200px
 `;
 
 const Logo = styled.img`
   width: 142px;
   height: 63px;
   object-fit: cover;
+  margin-left: 8%;
 `;
 
 const MARKETPLACE = styled.div`
   min-height: 20px;
-  // margin-left: 80px;
+  padding-left: 12%;
   margin-top: 10.98px;
   min-width: 104px;
   letter-spacing: 0;
@@ -1161,7 +1169,7 @@ const MARKETPLACE = styled.div`
 
 const MANAGEMENT = styled.div`
   min-height: 20px;
-  // margin-left: 65px;
+  padding-left: 12%;
   margin-top: 10.98px;
   min-width: 105px;
   letter-spacing: 0;
@@ -1171,7 +1179,8 @@ const MANAGEMENT = styled.div`
 
 const HOWITWORKS = styled.div`
   min-height: 20px;
-  // margin-left: 84px;
+ padding-left: 12%;
+ 
   margin-top: 10.98px;
   min-width: 113px;
   letter-spacing: 0;
@@ -1189,37 +1198,41 @@ const SignUp = styled.div`
   letter-spacing: 0;
   line-height: 30.4px;
   white-space: nowrap;
+  marginLeft:8%;
+
 `;
 
-const Slider = styled.div`
-  position: absolute;
-  height: 905px;
-  top: 110px;
-  // left: 1159px;
-  display: flex;
-  padding: 68px 133.6px;
-  justify-content: flex-end;
-  align-items: flex-start;
-  min-width: 1402px;
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  z-index:900;
-  width:1950;
-  padding-right:200px;
-`;
+  const Slider = styled.div`
+    position: absolute;
+    height: 905px;
+    top: 110px;
+    // left: 1159px;
+    left:0;
+    display: flex;
+    padding: 68px 
+    padding-left:130px
+    justify-content: flex-end;
+    align-items: flex-start;
+    min-width: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
 
-const OverlapGroup = styled.div`
-  width: 1337px;
-  height: 874px;
-  position: relative;
-`;
-const Untitled1 = styled.img`
+    // width: 1950;
+    padding-right: 200px;
+  `;
+
+  const OverlapGroup = styled.div`
+    width: 100%;
+    height: 874px;
+    position: relative;
+  `;
+  const Untitled1 = styled.img`
   position: absolute;
   width: 100%
   height: 626px;
   top: 0;
-  left: 476px;
+  left: 60%;
   object-fit: cover;
 `;
 
@@ -1229,7 +1242,7 @@ const MarketingAndManag = styled.h1`
   width: 559px;
   height: 466px;
   top: 125px;
-  left: 20px;
+  left: 15%;
   letter-spacing: 0;
   line-height: 72px;
 `;
@@ -1239,9 +1252,9 @@ const Marketplace = styled.div`
   position: absolute;
   height: 745px;
   top: 965px;
-  // left: 1311px;
+  left: 8%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   min-width: 1341px;
 `;
 
@@ -1395,7 +1408,7 @@ const OverlapGroup3 = styled.div`
   width: 1188px;
   height: 726px;
   top: 1820px;
-  left: 90px;
+  left: 14%;
 `;
 
 const PoochProfileAndIn = styled.p`
@@ -1404,7 +1417,7 @@ const PoochProfileAndIn = styled.p`
   width: 237px;
   height: 515px;
   top: 163px;
-  left: 33px;
+  left: 28%;
   letter-spacing: 0;
   line-height: 22px;
 `;
@@ -1415,7 +1428,7 @@ const AnalyticsAndQuickB = styled.p`
   width: 223px;
   height: 516px;
   top: 163px;
-  left: 331px;
+  left: 3%;
   letter-spacing: 0;
   line-height: 22px;
 `;
@@ -1425,7 +1438,7 @@ const Shape6Copy3 = styled.img`
   width: 314px;
   height: 400px;
   top: 164px;
-  left: 0;
+  left: 8;
   object-fit: cover;
 `;
 
@@ -1434,25 +1447,28 @@ const EStatistics = styled.img`
   width: 669px;
   height: 675px;
   top: 31px;
-  left: 519px;
+  left: 50%;
   object-fit: cover;
 `;
 
 const OverlapGroup4 = styled.div`
   position: absolute;
-  width: 2709px;
+  width: 100%;
   height: 100%;
   top: 2308px;
   left: -1px;
+  justify-content:center;
+  align-items:center;
+  align-content:center;
 `;
 
 const HowItWorks = styled.div`
   ${Museosansrounded900NormalMineShaft4}
   position: absolute;
-  width: 585px;
+  width: 100%;
   height: 164px;
   top: 427px;
-  // left: 1670px;
+  justify-content:center;
   text-align: center;
   letter-spacing: 0;
   line-height: 48px;
@@ -1463,7 +1479,7 @@ const Group76 = styled.img`
   width: 3709px;
   height: 1647px;
   top: 0;
-  left: 0;
+  left: 8%;
   object-fit: cover;
 `;
 
@@ -1471,7 +1487,7 @@ const OverlapGroup5 = styled.div`
   position: absolute;
   height: 316px;
   top: 532px;
-  // left: 1346px;
+  left: 8%;
   display: flex;
   padding: 82.1px 9.3px;
   justify-content: flex-end;
@@ -1494,7 +1510,7 @@ const OverlapGroup11 = styled.div`
   position: absolute;
   height: 307px;
   top: 541px;
-  left: 432px;
+  left: 36%;
   display: flex;
   padding: 73.1px 8.3px;
   justify-content: flex-end;
@@ -1508,7 +1524,7 @@ const OverlapGroup21 = styled.div`
   position: absolute;
   height: 311px;
   top: 537px;
-  left: 871px;
+  left: 64%;
   display: flex;
   padding: 82.1px 9.3px;
   justify-content: flex-end;
@@ -1520,7 +1536,7 @@ const OverlapGroup21 = styled.div`
 
 const Powered = styled.div`
   position: absolute;
-  width: 1108px;
+  width: 100%;
   top: 3359px;
   // left: 1406px;
   display: flex;
@@ -1553,26 +1569,26 @@ const ELine2 = styled.img`
 
 const Footer = styled.div`
   position: absolute;
-  height: 904px;
+  height: 704px;
   top: 3674px;
   // left: 1159px;
   display: flex;
   padding: 107.1px 73.6px;
   justify-content: flex-end;
   align-items: flex-start;
-  min-width: 1602px;
+  min-width: 100%;
   background-size: cover;
-  background-position: 50% 50%;
+  // background-position: 50% 50%;
   background-color: #077997;
   border-top-right-radius:20px;
   border-top-left-radius:20px;
 `;
 
 const FlexCol3 = styled.div`
-  width: 1147px;
+  width: 90%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   min-height: 493px;
   // left: -200px;
 `;

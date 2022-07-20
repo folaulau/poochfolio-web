@@ -8,7 +8,7 @@ import InputListingPage from './pages/InputListingPage';
 import InputListingPage2 from './pages/InputListingPage2';
 import Dashboard from './pages/Dashboard';
 import Breadcrumbs from './components/Breadcrumbs';
-// import Home from './pages/Home';
+import Home from './pages/Home';
 import Payments from './pages/dashboard/payments';
 import Login from './pages/Signin';
 import Signup from './pages/Signup';
@@ -17,6 +17,8 @@ import BookingDetails from './pages/BookingDetailsPage';
 import MarketPlace from './pages/MarketPlace2';
 import Availability10 from './pages/Availability1';
 import LandingPage from './pages/LandingPage';
+
+import LandingPage2 from './pages/LandingPage2';
 export default function PoochRoutes() {
  
 
@@ -28,7 +30,7 @@ export default function PoochRoutes() {
   return (
     <>
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/home" element={<LandingPage2 />} />
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<Login />} />
         {/* <Route path="/signup" element={<Signup />} /> */}
