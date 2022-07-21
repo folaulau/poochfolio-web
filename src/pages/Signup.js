@@ -128,15 +128,7 @@ const googleLogin = () => {
           >
             <img className="self-center w-6" src={googleSvg} alt={googleSvg} />
           </Button>
-          {/* <div>
-                  <a
-                    href="/"
-                    className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
-                  >
-                    <span className="sr-only">Sign in with GitHub</span>
-                    <img src="/Google.svg" className="self-center w-14 mt-1" alt="Google" />
-                  </a>
-                </div> */}
+    
         </div>
         <div>
           {/* <img
@@ -146,19 +138,10 @@ const googleLogin = () => {
           /> */}
 
           <p style={{ fontSize: '12px', textAlign: 'center', color: '#666666' }}>or continue with </p>
-          {/* <p className="mt-2 text-center text-sm text-gray-600">
-            Or{" "}
-            <a
-              href="#"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
-            >
-              start your 14-day free trial
-            </a>
-          </p> */}
+        
         </div>
         <div className="mt-2 " style={{ justifyContent: 'center', display: 'flex' }}>
           <div className=" py-8 px-4   sm:px-10">
-            {/* <form className="space-y-6" action="#" method="POST"> */}
             <form className="space-y-6" action="#" onSubmit={handleSubmit}>
               <div>
                 <label
