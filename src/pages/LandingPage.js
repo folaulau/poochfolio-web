@@ -22,6 +22,7 @@ export default function LandingPage() {
     howItWorks1: 'HOW IT WORKS',
     signUp: 'Sign Up',
     slider: '/landing-page/testSlider.png',
+     eStatistics1:'/landing-page/testimage.png',
     spanText1: 'Marketing',
     spanText2: (
       <React.Fragment>
