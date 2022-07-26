@@ -8,7 +8,7 @@ function Group9() {
       to="/signin"
       style={{
         height: '46px',
-        marginLeft: '47px',
+        marginLeft: '8%',
         marginTop: '2px',
         display: 'flex',
         padding: '9px 29.4px',

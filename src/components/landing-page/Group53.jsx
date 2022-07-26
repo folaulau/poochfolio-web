@@ -21,6 +21,7 @@ const Group5 = styled.div`
   align-items: flex-start;
   min-width: 149px;
   border-radius: 22.83px;
+  marginRight:8%
 `;
 
 const EShape15 = styled.img`
