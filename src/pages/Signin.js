@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import React from 'react';
-import LoginHeader from "../components/landing-page/LoginHeader";
 import { useNavigate } from "react-router-dom";
 import GroomerGraphql from "../graphql/GroomerGraphQL";
 import FirebaseApi from "../api/FirebaseApi";
