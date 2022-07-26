@@ -9,9 +9,9 @@ import googleSvg from "../assessts/images/Google.svg"
 import styled from 'styled-components';
 
 import {
-  Museosansrounded500NormalMetallicSe,
+
   Museosansrounded500NormalGraniteGra,
-  Museosansrounded500NormalWhite15px,
+
 } from '../styledMixins';
 
 const Signup = () => {
