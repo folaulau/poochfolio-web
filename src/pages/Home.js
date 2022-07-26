@@ -31,7 +31,6 @@ function Home2(props) {
     marketplace,
     management1,
     howItWorks1,
-    signUp,
     slider,
     spanText1,
     spanText2,
@@ -870,15 +869,6 @@ const HOWITWORKS = styled.div`
   white-space: nowrap;
 `;
 
-const SignUp = styled.div`
-  ${Museosansrounded500NormalMetallicSe}
-  min-height: 20px;
-  min-width: 54px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: 30.4px;
-  white-space: nowrap;
-`;
 
 const Slider = styled.div`
   position: absolute;

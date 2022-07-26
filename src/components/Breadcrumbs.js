@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Link, Outlet, useLocation } from 'react-router-dom';
-import styled from 'styled-components';
-import {
-  Museosansrounded500NormalMetallicSe,
-  Museosansrounded500NormalWhite15px,
-} from '../styledMixins';
+import { Outlet, useLocation } from 'react-router-dom';
 
 import Header from './Header';
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import Home2 from './Home';
-import Home from './Home';
 
 export default function LandingPage2() {
   const buttonCopy32Data = {

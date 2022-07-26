@@ -304,64 +304,10 @@ const PrivacyPolicyTermsOfUse = styled.p`
   white-space: nowrap;
 `;
 
-const Nav = styled.div`
-  ${Museosansrounded500NormalWhite15px}
-  position: absolute;
-  height: 130px;
-  top: 0;
-  left: 1144px;
-  display: flex;
-  padding: 25px 246px;
-  align-items: flex-start;
-  min-width: 1634px;
-  background-size: cover;
-  background-position: 50% 50%;
-`;
 
-const Logo = styled.img`
-  width: 142px;
-  height: 63px;
-  object-fit: cover;
-`;
 
-const MARKETPLACE = styled.div`
-  min-height: 20px;
-  margin-left: 80px;
-  margin-top: 10.98px;
-  min-width: 104px;
-  letter-spacing: 0;
-  line-height: 30.4px;
-  white-space: nowrap;
-`;
 
-const MANAGEMENT = styled.div`
-  min-height: 20px;
-  margin-left: 65px;
-  margin-top: 10.98px;
-  min-width: 105px;
-  letter-spacing: 0;
-  line-height: 30.4px;
-  white-space: nowrap;
-`;
 
-const HOWITWORKS = styled.div`
-  min-height: 20px;
-  margin-left: 84px;
-  margin-top: 10.98px;
-  min-width: 113px;
-  letter-spacing: 0;
-  line-height: 30.4px;
-  white-space: nowrap;
-`;
 
-const SignUp = styled.div`
-  ${Museosansrounded500NormalMetallicSe}
-  min-height: 20px;
-  min-width: 54px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: 30.4px;
-  white-space: nowrap;
-`;
 
 export default Signup;
