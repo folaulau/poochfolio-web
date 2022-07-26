@@ -26,7 +26,7 @@ import './LandingPage.css';
 import LogoClouds from '../components/LogoClouds';
 // import checkmark from '../assessts/images/blue-check.png'
 function Home1(props) {
-  const checkMark = '../assessts/images/blue-check.png'
+
   const {
     logo,
     marketplace,
@@ -59,39 +59,11 @@ function Home1(props) {
     spanText15,
     spanText16,
     management2,
-    spanText17,
-    spanText18,
-    spanText19,
-    spanText20,
-    spanText21,
-
-    spanText23,
-
-    spanText25,
-
-    spanText27,
-
-    spanText29,
-
-    spanText31,
-    spanText32,
-
-    spanText35,
-
-    spanText37,
- 
-    spanText39,
-
-    spanText41,
-  
-    spanText43,
- 
-    spanText45,
-    shape6Copy3,
+   
     eStatistics,
     eStatistics1,
     howItWorks2,
-    group76,
+
     overlapGroup,
     spanText46,
     spanText47,
@@ -106,98 +78,84 @@ function Home1(props) {
     spanText51,
     spanText52,
     losAngelesCounty,
-    spanText53,
+
     spanText54,
-    spanText55,
+ 
     spanText56,
-    spanText57,
+
     spanText58,
-    spanText59,
+
     spanText60,
-    spanText61,
+ 
     spanText62,
-    spanText63,
+  
     spanText64,
-    spanText65,
+  
     spanText66,
-    spanText67,
+  
     spanText68,
-    spanText69,
+   
     spanText70,
-    spanText71,
+  
     spanText72,
-    spanText73,
+
     spanText74,
-    spanText75,
+
     spanText76,
-    spanText77,
+
     spanText78,
     nationwide,
-    spanText79,
+
     spanText80,
-    spanText81,
+
     spanText82,
-    spanText83,
+
     spanText84,
-    spanText85,
+
     spanText86,
-    spanText87,
+
     spanText88,
-    spanText89,
+  
     spanText90,
-    spanText91,
+
     spanText92,
-    spanText93,
+
     spanText94,
-    spanText95,
+ 
     spanText96,
-    spanText97,
+ 
     spanText98,
-    spanText99,
+
     spanText100,
-    spanText101,
+  
     spanText102,
-    spanText103,
+ 
     spanText104,
     poochMarketplace,
     features,
-    spanText105,
+   
     spanText106,
-    spanText107,
-    spanText108,
-    spanText109,
-    spanText110,
+  spanText108,
+
     spanText111,
-    spanText112,
+   
     spanText113,
-    spanText114,
     spanText115,
-    spanText116,
     spanText117,
     spanText118,
-    spanText119,
     spanText120,
-    spanText121,
-    spanText122,
     spanText123,
-    spanText124,
     spanText125,
-    spanText126,
     spanText127,
-    spanText128,
-    spanText129,
     spanText130,
-    spanText131,
     spanText132,
-    spanText133,
     spanText134,
-    spanText135,
     spanText136,
-    spanText137,
+   
     spanText138,
-    spanText139,
+  
     spanText140,
-    spanText141,
+  
     spanText142,
     investorRelations,
     x2022PoochTechnol,
@@ -209,7 +167,19 @@ function Home1(props) {
         <ColorFill2></ColorFill2>
         <Nav style={{ backgroundColor: '#077997', zIndex: 1, position: 'sticky' }}>
           <Logo src={logo} />
-          <MARKETPLACE>{marketplace}</MARKETPLACE>
+          <Link
+            to="landingpage/marketplace"
+            style={{
+              minHeight: '20px',
+              marginTop: '10.98px',
+              minWidth: '104px',
+              letterSpacing: 0,
+              lineHeight: '30.4px',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {marketplace}
+          </Link>
           <MANAGEMENT>{management1}</MANAGEMENT>
           <HOWITWORKS>{howItWorks1}</HOWITWORKS>
           <Group9 />
@@ -281,7 +251,7 @@ function Home1(props) {
             <Untitled1 src={untitled1} />
           </OverlapGroup>
         </Slider>
-        <Marketplace>
+        <Marketplace id="marketplace">
           <EIphoneX1Copy src={eIphoneX1Copy} />
           <FlexCol>
             <OverlapGroup2>
@@ -333,7 +303,10 @@ function Home1(props) {
             </Button>
           </FlexCol>
         </Marketplace>
-        <div style={{ position: 'relative', marginBottom: 100, height: 900, backgroundColor:'white' }}>
+        <div
+          style={{ position: 'relative', marginBottom: 100, height: 900, backgroundColor: 'white' }}
+          id="management"
+        >
           <OverlapGroup3>
             <BusinessManagementFeatures>
               <span className="museosansrounded-900-normal-mine-shaft-40px">{spanText14}</span>
@@ -495,7 +468,7 @@ function Home1(props) {
             <EStatistics src={eStatistics} />
           </OverlapGroup3>
         </div>
-        <OverlapGroup4>
+        <OverlapGroup4 id="works">
           <HowItWorks>{howItWorks2}</HowItWorks>
           {/* <Group76 src={group76} /> */}
           <OverlapGroup5 style={{ backgroundImage: `url(${overlapGroup})` }}>
@@ -1156,17 +1129,9 @@ const Logo = styled.img`
   height: 63px;
   object-fit: cover;
   margin-left: 8%;
+  margin-right:12%
 `;
 
-const MARKETPLACE = styled.div`
-  min-height: 20px;
-  padding-left: 12%;
-  margin-top: 10.98px;
-  min-width: 104px;
-  letter-spacing: 0;
-  line-height: 30.4px;
-  white-space: nowrap;
-`;
 
 const MANAGEMENT = styled.div`
   min-height: 20px;
@@ -1424,36 +1389,8 @@ const OverlapGroup3 = styled.div`
   padding-bottom:100px
 `;
 
-const PoochProfileAndIn = styled.p`
-  ${Museosansrounded500NormalGraniteGra}
-  position: absolute;
-  width: 280px;
-  height: 515px;
-  top: 163px;
-  padding-left: 1.5%;
-  letter-spacing: 0;
-  line-height: 22px;
-`;
 
-const AnalyticsAndQuickB = styled.p`
-  ${Museosansrounded500NormalGraniteGra}
-  position: absolute;
-  width: 673px;
-  height: 516px;
-  top: 163px;
-  padding-left: 13%;
-  letter-spacing: 0;
-  line-height: 22px;
-`;
 
-const Shape6Copy3 = styled.img`
-  position: absolute;
-  width: 314px;
-  height: 400px;
-  top: 164px;
-  left: 8;
-  object-fit: cover;
-`;
 
 const EStatistics = styled.img`
   position: absolute;
@@ -1498,14 +1435,6 @@ const HowItWorks = styled.div`
   background-color: white;
 `;
 
-const Group76 = styled.img`
-  position: absolute;
-  width: 3709px;
-  height: 1647px;
-  top: 0;
-  padding-left: 8%;
-  object-fit: cover;
-`;
 
 const OverlapGroup5 = styled.div`
   position: absolute;
