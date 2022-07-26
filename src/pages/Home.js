@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import {
   Museosansrounded500NormalGraniteGra1,
-  Museosansrounded500NormalMetallicSe,
   Museosansrounded700NormalWhite15px,
   Museosansrounded500NormalGraniteGra,
   Museosansrounded900NormalBlack16px,
