@@ -8,6 +8,7 @@ import GroomerGraphql from '../graphql/GroomerGraphQL';
 import Button from '../components/Button';
 import styled from 'styled-components';
 
+
 import {
   Museosansrounded700NormalGraniteGra,
   Museosansrounded300NormalGraniteGra,
@@ -385,16 +386,28 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
                             width: '138px',
                             height: '105px',
                             marginRight: '31.06px',
+                            flexDirection: 'column',
                           }}
                           className={`w-40 h-[66.94px] rounded-xl border ${
                             isSelected ? 'bg-[#95e8f7]' : 'bg-[#f1f7ff]'
-                          }  flex justify-center items-center gap-x-3 m-1`}
+                          }  flex justify-center items-center gap-x-2 m-1`}
                           onClick={() => toggleCareService(careService)}
                         >
-                          {/* <service.icon
-                          className={`${isSelected ? 'text-[#077997]' : 'text-[#9697a3]'} h-8 w-8`}
-                        /> */}
+                          {isSelected ? (
+                            <img
+                              src="/landing-page/bluecheck1.svg"
+                              alt=""
+                              style={{ height: 30, width: 30, paddingBottom: 10 }}
+                            />
+                          ) : (
+                            <img
+                              src="/landing-page/bluecircle.svg"
+                              alt=""
+                              style={{ height: 30, width: 30, paddingBottom: 10 }}
+                            />
+                          )}
                           <span className={`${isSelected ? 'text-[#077997]' : 'text-[#9697a3]'} `}>
+                      
                             {service.name}
                           </span>
                         </button>

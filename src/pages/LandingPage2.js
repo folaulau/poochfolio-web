@@ -1,7 +1,7 @@
 import React from 'react';
-import Home1 from './Home1';
+import Home2 from './Home';
 
-export default function LandingPage() {
+export default function LandingPage2() {
   const buttonCopy32Data = {
     className: 'button-copy',
   };
@@ -22,7 +22,6 @@ export default function LandingPage() {
     howItWorks1: 'HOW IT WORKS',
     signUp: 'Sign Up',
     slider: '/landing-page/testSlider.png',
-     eStatistics1:'/landing-page/testimage.png',
     spanText1: 'Marketing',
     spanText2: (
       <React.Fragment>
@@ -521,7 +520,8 @@ export default function LandingPage() {
     spanText119: '•   ',
     spanText120: (
       <React.Fragment>
-        • Machine learning SMS integration and automation<br />
+        • Machine learning SMS integration and automation
+        <br />
       </React.Fragment>
     ),
     spanText121: (
@@ -597,7 +597,7 @@ export default function LandingPage() {
     supportProps2: supportData,
   };
   return (
-    <Home1 {...landingPageData} />
+    <Home2 {...landingPageData} />
     // <div className="bg-[#077997]">
     //   <LandingHeader />
     //   <main className="bg-white rounded-t-2xl font-Museo-Sans-Rounded-900">

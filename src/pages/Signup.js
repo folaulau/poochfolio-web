@@ -1,13 +1,19 @@
 import { useState } from "react";
 import React from 'react';
 import { useNavigate } from "react-router-dom";
-import LandingHeader from "../components/landing-page/LandingHeader";
+
 import GroomerApi from "../api/GroomerApi";
 import FirebaseApi from "../api/FirebaseApi";
 import { Button } from 'react-bootstrap';
 import googleSvg from "../assessts/images/Google.svg"
 import styled from 'styled-components';
-import { Museosansrounded500NormalGraniteGra } from '../styledMixins';
+
+import {
+
+  Museosansrounded500NormalGraniteGra,
+
+} from '../styledMixins';
+
 const Signup = () => {
 
   const [userInfo, setUserInfo] = useState({
@@ -60,44 +66,88 @@ const googleLogin = () => {
 
   return (
     <>
-      <LandingHeader />
       <div
-        className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-Museo-Sans-Rounded-900"
+        className="min-h-full flex flex-col justify-center   font-Museo-Sans-Rounded-900"
         style={{
           borderWidth: 3,
           borderColor: 'transparent',
-          borderTopLeftRadius: '30px',
-          borderTopRightRadius: '30px',
-          marginTop: -25,
+          // borderTopLeftRadius: '30px',
+          // borderTopRightRadius: '30px',
+          // marginTop: -25,
           backgroundColor: '#F3F8FF',
         }}
       >
-        <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <div
+          style={{
+            height: 5,
+            backgroundColor: 'white',
+            marginTop: -240,
+            width: '100%',
+            marginBottom: 5,
+          }}
+        />
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginTop: 30,
+            width:'550px',
+            alignSelf:'center',
+            marginBottom:50
+          }}
+        >
+          <Button
+            onClick={() => facebookLogin()}
+            style={{
+              width: '260px',
+              borderWidth: 1,
+              borderColor: '#C4DFEA',
+              borderRadius: 10,
+              height: '42px',
+              justifyContent: 'center',
+              alignItems: 'center',
+              display: 'flex',
+            }}
+          >
+            <span className="sr-only">Sign in with Facebook</span>
+            <img src="/facebook.svg" className="self-center w-6" alt="Facebook" />
+          </Button>
+          <Button
+            onClick={() => googleLogin()}
+            style={{
+              width: '260px',
+              borderWidth: 1,
+              borderColor: '#C4DFEA',
+              borderRadius: 10,
+              height: '42px',
+              justifyContent: 'center',
+              alignItems: 'center',
+              display: 'flex',
+            }}
+          >
+            <img className="self-center w-6" src={googleSvg} alt={googleSvg} />
+          </Button>
+    
+        </div>
+        <div>
           {/* <img
             className="mx-auto h-12 w-auto"
             src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
             alt="Workflow"
           /> */}
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            🐾 Sign Up for Pooch 🐶
-          </h2>
-          {/* <p className="mt-2 text-center text-sm text-gray-600">
-            Or{" "}
-            <a
-              href="#"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
-            >
-              start your 14-day free trial
-            </a>
-          </p> */}
-        </div>
 
-        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            {/* <form className="space-y-6" action="#" method="POST"> */}
+          <p style={{ fontSize: '12px', textAlign: 'center', color: '#666666' }}>or continue with </p>
+        
+        </div>
+        <div className="mt-2 " style={{ justifyContent: 'center', display: 'flex' }}>
+          <div className=" py-8 px-4   sm:px-10">
             <form className="space-y-6" action="#" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="password"
+                  style={{ fontSize: '12px', color: '#666666', lineHeight: 3, marginLeft: 8 }}
+                >
                   Email Address
                 </label>
                 <div className="mt-1">
@@ -110,12 +160,23 @@ const googleLogin = () => {
                     onChange={handleInputChange}
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
+                    style={{
+                      width: '542px',
+                      height: '56px',
+                      borderWidth: 2,
+                      borderColor: '#85D8E7',
+                      borderRadius: 28,
+                      marginBottom: 20,
+                    }}
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="password"
+                  style={{ fontSize: '12px', color: '#666666', lineHeight: 3, marginLeft: 8 }}
+                >
                   Password
                 </label>
                 <div className="mt-1">
@@ -128,13 +189,59 @@ const googleLogin = () => {
                     onChange={handleInputChange}
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
+                    style={{
+                      width: '542px',
+                      height: '56px',
+                      borderWidth: 2,
+                      borderColor: '#85D8E7',
+                      borderRadius: 28,
+                      marginBottom: 20,
+                    }}
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  htmlFor="password"
+                  style={{ fontSize: '12px', color: '#666666', lineHeight: 3, marginLeft: 8 }}
+                >
+                  Confirm Password
+                </label>
+                <div className="mt-1">
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    autoComplete="current-password"
+                    value={userInfo.password}
+                    onChange={handleInputChange}
+                    required
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
+                    style={{
+                      width: '542px',
+                      height: '56px',
+                      borderWidth: 2,
+                      borderColor: '#85D8E7',
+                      borderRadius: 28,
+                      marginBottom: 20,
+                    }}
                   />
                 </div>
               </div>
               <div>
                 <button
                   type="submit"
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997]"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md    bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997]"
+                  style={{
+                    width: '542px',
+                    height: '56px',
+                    borderWidth: 2,
+                    alignText: 'center',
+                    alignItems: 'center',
+                    borderRadius: 28,
+                    fontSize: 15,
+                    color: 'white',
+                  }}
                 >
                   Sign Up
                 </button>
@@ -146,52 +253,7 @@ const googleLogin = () => {
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-300" />
                 </div>
-                <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-white text-gray-500">Or</span>
-                </div>
-              </div>
 
-              <div className="mt-6 grid grid-cols-2 gap-3">
-                <Button
-                  onClick={() => facebookLogin()}
-                  style={{
-                    width: '160px',
-                    borderWidth: 1,
-                    borderColor: '#C4DFEA',
-                    borderRadius: 10,
-                    height: '42px',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    display: 'flex',
-                  }}
-                >
-                  <span className="sr-only">Sign in with Facebook</span>
-                  <img src="/facebook.svg" className="self-center w-6" alt="Facebook" />
-                </Button>
-                <Button
-                  onClick={() => googleLogin()}
-                  style={{
-                    width: '160px',
-                    borderWidth: 1,
-                    borderColor: '#C4DFEA',
-                    borderRadius: 10,
-                    height: '42px',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    display: 'flex',
-                  }}
-                >
-                  <img className="self-center w-6" src={googleSvg} alt={googleSvg} />
-                </Button>
-                {/* <div>
-                  <a
-                    href="/"
-                    className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
-                  >
-                    <span className="sr-only">Sign in with GitHub</span>
-                    <img src="/Google.svg" className="self-center w-14 mt-1" alt="Google" />
-                  </a>
-                </div> */}
               </div>
             </div>
           </div>
@@ -214,7 +276,7 @@ const Powered = styled.div`
   height: 42px;
   bottom: -300px;
   // left: 3038px;
-  top: 948px;
+
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -241,5 +303,11 @@ const PrivacyPolicyTermsOfUse = styled.p`
   // line-height: 100px;
   white-space: nowrap;
 `;
+
+
+
+
+
+
 
 export default Signup;

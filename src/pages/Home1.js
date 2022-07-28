@@ -24,8 +24,9 @@ import {
 } from '../styledMixins';
 import './LandingPage.css';
 import LogoClouds from '../components/LogoClouds';
-
+// import checkmark from '../assessts/images/blue-check.png'
 function Home1(props) {
+
   const {
     logo,
     marketplace,
@@ -58,38 +59,11 @@ function Home1(props) {
     spanText15,
     spanText16,
     management2,
-    spanText17,
-    spanText18,
-    spanText19,
-    spanText20,
-    spanText21,
-
-    spanText23,
-
-    spanText25,
-
-    spanText27,
-
-    spanText29,
-
-    spanText31,
-    spanText32,
-
-    spanText35,
-
-    spanText37,
- 
-    spanText39,
-
-    spanText41,
-  
-    spanText43,
- 
-    spanText45,
-    shape6Copy3,
+   
     eStatistics,
+    eStatistics1,
     howItWorks2,
-    group76,
+
     overlapGroup,
     spanText46,
     spanText47,
@@ -104,213 +78,235 @@ function Home1(props) {
     spanText51,
     spanText52,
     losAngelesCounty,
-    spanText53,
+
     spanText54,
-    spanText55,
+ 
     spanText56,
-    spanText57,
+
     spanText58,
-    spanText59,
+
     spanText60,
-    spanText61,
+ 
     spanText62,
-    spanText63,
+  
     spanText64,
-    spanText65,
+  
     spanText66,
-    spanText67,
+  
     spanText68,
-    spanText69,
+   
     spanText70,
-    spanText71,
+  
     spanText72,
-    spanText73,
+
     spanText74,
-    spanText75,
+
     spanText76,
-    spanText77,
+
     spanText78,
     nationwide,
-    spanText79,
+
     spanText80,
-    spanText81,
+
     spanText82,
-    spanText83,
+
     spanText84,
-    spanText85,
+
     spanText86,
-    spanText87,
+
     spanText88,
-    spanText89,
+  
     spanText90,
-    spanText91,
+
     spanText92,
-    spanText93,
+
     spanText94,
-    spanText95,
+ 
     spanText96,
-    spanText97,
+ 
     spanText98,
-    spanText99,
+
     spanText100,
-    spanText101,
+  
     spanText102,
-    spanText103,
+ 
     spanText104,
     poochMarketplace,
     features,
-    spanText105,
+   
     spanText106,
-    spanText107,
-    spanText108,
-    spanText109,
-    spanText110,
+  spanText108,
+
     spanText111,
-    spanText112,
+   
     spanText113,
-    spanText114,
     spanText115,
-    spanText116,
     spanText117,
     spanText118,
-    spanText119,
     spanText120,
-    spanText121,
-    spanText122,
     spanText123,
-    spanText124,
     spanText125,
-    spanText126,
     spanText127,
-    spanText128,
-    spanText129,
     spanText130,
-    spanText131,
     spanText132,
-    spanText133,
     spanText134,
-    spanText135,
     spanText136,
-    spanText137,
+   
     spanText138,
-    spanText139,
+  
     spanText140,
-    spanText141,
+  
     spanText142,
     investorRelations,
     x2022PoochTechnol,
   } = props;
 
   return (
-    <div className="container-center-horizontal">
-      <div className="landing-page screen">
-        <OverlapGroup7>
-          <ColorFill2></ColorFill2>
-          <Nav style={{ backgroundColor: '#077997', zIndex: 1 }}>
-            <Logo src={logo} />
-            <MARKETPLACE>{marketplace}</MARKETPLACE>
-            <MANAGEMENT>{management1}</MANAGEMENT>
-            <HOWITWORKS>{howItWorks1}</HOWITWORKS>
-            <Group9 />
-            <Link
-              to="/signup"
-              style={{
-                height: '46px',
-                marginLeft: '16px',
-                marginTop: '2px',
-                display: 'flex',
-                padding: '9px 29.4px',
-                justifyContent: 'flex-end',
-                alignItems: 'flex-start',
-                minWidth: '108px',
-                backgroundColor: '#ebfdff',
-                borderRadius: '22.83px',
-              }}
-            >
-              <SignUp>{signUp}</SignUp>
-            </Link>
-            <Group53 />
-          </Nav>
-          <Slider
+    <div className="landing-page screen" style={{ backgroundColor: 'black' }}>
+      <OverlapGroup7>
+        <ColorFill2></ColorFill2>
+        <Nav style={{ backgroundColor: '#077997', zIndex: 1, position: 'sticky' }}>
+          <Logo src={logo} />
+          <Link
+            to="landingpage/marketplace"
             style={{
-              backgroundImage: `url(${slider})`,
+              minHeight: '20px',
+              marginTop: '10.98px',
+              minWidth: '104px',
+              letterSpacing: 0,
+              lineHeight: '30.4px',
+              whiteSpace: 'nowrap',
             }}
           >
-            <OverlapGroup>
-              <MarketingAndManag>
-                <span
-                  className="museosansrounded-900-normal-metallic-seaweed-60px"
-                  style={{ color: '#077997' }}
-                >
-                  {spanText1}
-                </span>
-                <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText2}</span>
-                <span
-                  className="museosansrounded-900-normal-metallic-seaweed-60px"
-                  style={{ color: '#077997' }}
-                >
-                  {spanText3}
-                </span>
-                <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText4}</span>
-                <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText5}</span>
-                <span className="museosansrounded-900-normal-mine-shaft-60px">{spanText6}</span>
-              </MarketingAndManag>
-              <ButtonCopy3 />
-              <Untitled1 src={untitled1} />
-            </OverlapGroup>
-          </Slider>
-          <Marketplace>
-            <EIphoneX1Copy src={eIphoneX1Copy} />
-            <FlexCol>
-              <OverlapGroup2>
-                <OverlapGroup1>
-                  <ThePoochMarketplac>
-                    <span className="museosansrounded-900-normal-metallic-seaweed-40px">
-                      {spanText7}
-                    </span>
-                    <span className="museosansrounded-900-normal-mine-shaft-40px">{spanText8}</span>
-                    <span className="museosansrounded-900-normal-mine-shaft-40px">{spanText9}</span>
-                  </ThePoochMarketplac>
-                  <STOPWORRYINGABOUTVACANCY>{stopWorryingAboutVacancy}</STOPWORRYINGABOUTVACANCY>
-                  <DirectListingOnTh>
-                    <span
-                      className="museosansrounded-500-normal-granite-gray-20px"
-                      style={{ fontSize: 16 }}
-                    >
-                      {spanText10}
-                    </span>
-                    <span
-                      className="museosansrounded-500-normal-granite-gray-15px"
-                      style={{ fontSize: 16 }}
-                    >
-                      {spanText11}
-                    </span>
-                    <span
-                      className="museosansrounded-500-normal-granite-gray-15px"
-                      style={{ fontSize: 16 }}
-                    >
-                      {spanText12}
-                    </span>
-                    <span
-                      className="museosansrounded-500-normal-granite-gray-15px"
-                      style={{ fontSize: 16 }}
-                    >
-                      {spanText13}
-                    </span>
-                  </DirectListingOnTh>
-                  <Shape6 src={shape6} />
-                </OverlapGroup1>
-                <Shape6Copy src={shape6Copy} />
-                <Shape6Copy2 src={shape6Copy21} />
-                <Shape6Copy21 src={shape6Copy22} />
-              </OverlapGroup2>
-              <Button>
-                <LISTYOURBUSINESSONOURMARKETPLACE>
-                  {listYourBusinessOnOurMarketplace}
-                </LISTYOURBUSINESSONOURMARKETPLACE>
-              </Button>
-            </FlexCol>
-          </Marketplace>
+            {marketplace}
+          </Link>
+          <MANAGEMENT>{management1}</MANAGEMENT>
+          <HOWITWORKS>{howItWorks1}</HOWITWORKS>
+          <Group9 />
+          <Link
+            to="sign-up/signup"
+            style={{
+              height: '46px',
+              marginLeft: '16px',
+              marginTop: '2px',
+              display: 'flex',
+              padding: '9px 29.4px',
+              justifyContent: 'flex-end',
+              alignItems: 'flex-start',
+              minWidth: '108px',
+              backgroundColor: '#ebfdff',
+              borderRadius: '22.83px',
+            }}
+          >
+            <SignUp>{signUp}</SignUp>
+          </Link>
+          <Group53 />
+        </Nav>
+        <Slider
+          style={{
+            backgroundImage: `url(${slider})`,
+            ZIndex: 999,
+          }}
+        >
+          <OverlapGroup>
+            <MarketingAndManag>
+              <span
+                className="museosansrounded-900-normal-metallic-seaweed-60px"
+                style={{ color: '#077997', fontSize: 53 }}
+              >
+                {spanText1}
+              </span>
+              <span
+                className="museosansrounded-900-normal-mine-shaft-60px"
+                style={{ fontSize: 53 }}
+              >
+                {spanText2}
+              </span>
+              <span
+                className="museosansrounded-900-normal-metallic-seaweed-60px"
+                style={{ color: '#077997', fontSize: 53 }}
+              >
+                {spanText3}
+              </span>
+              <span
+                className="museosansrounded-900-normal-mine-shaft-60px"
+                style={{ fontSize: 53 }}
+              >
+                {spanText4}
+              </span>
+              <span
+                className="museosansrounded-900-normal-mine-shaft-60px"
+                style={{ fontSize: 53 }}
+              >
+                {spanText5}
+              </span>
+              <span
+                className="museosansrounded-900-normal-mine-shaft-60px"
+                style={{ fontSize: 53 }}
+              >
+                {spanText6}
+              </span>
+            </MarketingAndManag>
+            <ButtonCopy3 />
+            <Untitled1 src={untitled1} />
+          </OverlapGroup>
+        </Slider>
+        <Marketplace id="marketplace">
+          <EIphoneX1Copy src={eIphoneX1Copy} />
+          <FlexCol>
+            <OverlapGroup2>
+              <OverlapGroup1>
+                <ThePoochMarketplac>
+                  <span className="museosansrounded-900-normal-metallic-seaweed-40px">
+                    {spanText7}
+                  </span>
+                  <span className="museosansrounded-900-normal-mine-shaft-40px">{spanText8}</span>
+                  <span className="museosansrounded-900-normal-mine-shaft-40px">{spanText9}</span>
+                </ThePoochMarketplac>
+                <STOPWORRYINGABOUTVACANCY>{stopWorryingAboutVacancy}</STOPWORRYINGABOUTVACANCY>
+                <DirectListingOnTh>
+                  <span
+                    className="museosansrounded-500-normal-granite-gray-20px"
+                    style={{ fontSize: 16 }}
+                  >
+                    {spanText10}
+                  </span>
+                  <span
+                    className="museosansrounded-500-normal-granite-gray-15px"
+                    style={{ fontSize: 16 }}
+                  >
+                    {spanText11}
+                  </span>
+                  <span
+                    className="museosansrounded-500-normal-granite-gray-15px"
+                    style={{ fontSize: 16 }}
+                  >
+                    {spanText12}
+                  </span>
+                  <span
+                    className="museosansrounded-500-normal-granite-gray-15px"
+                    style={{ fontSize: 16 }}
+                  >
+                    {spanText13}
+                  </span>
+                </DirectListingOnTh>
+                <Shape6 src={shape6} />
+              </OverlapGroup1>
+              <Shape6Copy src={shape6Copy} />
+              <Shape6Copy2 src={shape6Copy21} />
+              <Shape6Copy21 src={shape6Copy22} />
+            </OverlapGroup2>
+            <Button>
+              <LISTYOURBUSINESSONOURMARKETPLACE>
+                {listYourBusinessOnOurMarketplace}
+              </LISTYOURBUSINESSONOURMARKETPLACE>
+            </Button>
+          </FlexCol>
+        </Marketplace>
+        <div
+          style={{ position: 'relative', marginBottom: 100, height: 900, backgroundColor: 'white' }}
+          id="management"
+        >
           <OverlapGroup3>
             <BusinessManagementFeatures>
               <span className="museosansrounded-900-normal-mine-shaft-40px">{spanText14}</span>
@@ -322,6 +318,63 @@ function Home1(props) {
               </span>
             </BusinessManagementFeatures>
             <STOPWORRYINGABOUTVACANCY>{management2}</STOPWORRYINGABOUTVACANCY>
+            {/* <AnalyticsAndQuickB>
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+         
+                {spanText32}
+              </span>
+              <div style={{ height: 22 }} />
+
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText35}
+              </span>
+              <div style={{ height: 22 }} />
+
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText37}
+              </span>
+              <div style={{ height: 17 }} />
+
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText39}
+              </span>
+              <div style={{ height: 20 }} />
+
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText41}
+              </span>
+              <div style={{ height: 19 }} />
+
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText43}
+              </span>
+              <div style={{ height: 17 }} />
+
+              <span
+                style={{ fontSize: 16 }}
+                className="museosansrounded-500-normal-granite-gray-15px"
+              >
+                {spanText45}
+              </span>
+            </AnalyticsAndQuickB>
             <PoochProfileAndIn>
               <span
                 className="museosansrounded-500-normal-granite-gray-15px"
@@ -388,71 +441,16 @@ function Home1(props) {
               >
                 {spanText31}
               </span>
-            </PoochProfileAndIn>
-            <AnalyticsAndQuickB>
-              <span
-                style={{ fontSize: 16 }}
-                className="museosansrounded-500-normal-granite-gray-15px"
-              >
-                {spanText32}
-              </span>
-              <div style={{ height: 22 }} />
+            </PoochProfileAndIn> */}
 
-              <span
-                style={{ fontSize: 16 }}
-                className="museosansrounded-500-normal-granite-gray-15px"
-              >
-                {spanText35}
-              </span>
-              <div style={{ height: 22 }} />
-
-              <span
-                style={{ fontSize: 16 }}
-                className="museosansrounded-500-normal-granite-gray-15px"
-              >
-                {spanText37}
-              </span>
-              <div style={{ height: 17 }} />
-
-              <span
-                style={{ fontSize: 16 }}
-                className="museosansrounded-500-normal-granite-gray-15px"
-              >
-                {spanText39}
-              </span>
-              <div style={{ height: 20 }} />
-
-              <span
-                style={{ fontSize: 16 }}
-                className="museosansrounded-500-normal-granite-gray-15px"
-              >
-                {spanText41}
-              </span>
-              <div style={{ height: 19 }} />
-
-              <span
-                style={{ fontSize: 16 }}
-                className="museosansrounded-500-normal-granite-gray-15px"
-              >
-                {spanText43}
-              </span>
-              <div style={{ height: 17 }} />
-
-              <span
-                style={{ fontSize: 16 }}
-                className="museosansrounded-500-normal-granite-gray-15px"
-              >
-                {spanText45}
-              </span>
-            </AnalyticsAndQuickB>
-            <Shape6Copy3 src={shape6Copy3} />
+            {/* <Shape6Copy3 src={shape6Copy3} /> */}
             <Link
               to="/signup"
               style={{
                 position: 'absolute',
                 height: '68px',
                 top: '658px',
-                left: '1px',
+                marginLeft: '7%',
                 display: 'flex',
                 padding: '10.9px 91.2px',
                 justifyContent: 'flex-end',
@@ -466,393 +464,678 @@ function Home1(props) {
             >
               <SIGNUP className="sign-up-1">SIGN UP</SIGNUP>
             </Link>
+            <EStatistics1 src={eStatistics1} />
             <EStatistics src={eStatistics} />
           </OverlapGroup3>
-          <OverlapGroup4>
-            <HowItWorks>{howItWorks2}</HowItWorks>
-            <Group76 src={group76} />
-            <OverlapGroup5 style={{ backgroundImage: `url(${overlapGroup})` }}>
-              <SignUpAndInputAListing>
-                <span className="museosansrounded-700-normal-mine-shaft-18px">{spanText46}</span>
-                <span className="museosansrounded-700-normal-mine-shaft-18px">{spanText47}</span>
-              </SignUpAndInputAListing>
-            </OverlapGroup5>
-            <OverlapGroup11 style={{ backgroundImage: `url(${overlapGroup1})` }}>
-              <SignUpAndInputAListing>{acceptBookings}</SignUpAndInputAListing>
-            </OverlapGroup11>
-            <OverlapGroup21 style={{ backgroundImage: `url(${overlapGroup2})` }}>
-              <SignUpAndInputAListing>
-                <span className="museosansrounded-700-normal-mine-shaft-18px">{spanText48}</span>
-                <span className="museosansrounded-700-normal-mine-shaft-18px">{spanText49}</span>
-              </SignUpAndInputAListing>
-            </OverlapGroup21>
-            <Link
-              to="/signup"
-              style={{
-                position: 'absolute',
-                height: '68px',
-                top: '849px',
-                left: '1837px',
-                display: 'flex',
-                padding: '10.9px 91.2px',
-                justifyContent: 'flex-end',
-                alignItems: 'flex-start',
-                minWidth: '247px',
-                backgroundColor: '#95e8f7',
-                borderRadius: '33.95px',
-                boxShadow: '-9.184850467946473e-16px 15px 20px #00a3ce26',
-              }}
-            >
-              <SIGNUP className="sign-up-1">SIGN UP</SIGNUP>
-            </Link>
-          </OverlapGroup4>
-          <Powered>
-            <POWEREDBY>{poweredBy}</POWEREDBY>
-            <ELine2 src={eLine2} />
-            <LogoClouds />
-          </Powered>
-          <Footer>
-            <FlexCol3>
-              <GroupContainer>
-                <OverlapGroup6>
-                  <EShape1670Copy src={'/landing-page/poochFolio.svg'} />
-                  <OverlapGroup51>
-                    <Address>
-                      <span className="museosansrounded-300-normal-charlotte-15px">
-                        {spanText50}
-                      </span>
-                      <span className="museosansrounded-300-normal-charlotte-15px">
-                        {spanText51}
-                      </span>
-                      <span className="museosansrounded-300-normal-charlotte-15px">
-                        {spanText52}
-                      </span>
-                    </Address>
-                    <OverlapGroup8>
-                      <LOSANGELESCOUNTY>{losAngelesCounty}</LOSANGELESCOUNTY>
-                      <Rectangle1046></Rectangle1046>
-                      <VeniceCAS>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText53}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText54}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText55}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText56}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText57}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText58}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText59}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText60}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText61}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText62}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText63}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText64}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText65}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText66}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText67}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText68}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText69}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText70}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText71}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText72}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText73}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText74}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText75}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText76}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText77}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText78}
-                        </span>
-                      </VeniceCAS>
-                    </OverlapGroup8>
-                    <OverlapGroup12>
-                      <NATIONWIDE>{nationwide}</NATIONWIDE>
-                      <LosAngelesCA>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText79}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText80}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText81}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText82}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText83}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText84}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText85}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText86}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText87}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText88}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText89}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText90}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText91}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText92}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText93}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText94}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText95}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText96}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText97}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText98}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText99}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText100}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText101}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText102}
-                        </span>
-                        <span className="myriadpro-regular-normal-charlotte-12px">
-                          {spanText103}
-                        </span>
-                        <span className="museosansrounded-300-normal-charlotte-12px">
-                          {spanText104}
-                        </span>
-                      </LosAngelesCA>
-                      {/* <Rectangle1046></Rectangle1046> */}
-                    </OverlapGroup12>
-                    <PoochMarketplace>{poochMarketplace}</PoochMarketplace>
-                    <EAppsStore src={'/landing-page/apps-store@3x.webp'} />
-                    <EGooglePlay src={'/landing-page/google-play@3x.webp'} />
-                  </OverlapGroup51>
-                </OverlapGroup6>
-                <Group7Copy2>
-                  <OverlapGroup22>
-                    <NATIONWIDE>{features}</NATIONWIDE>
-                    <ListOnThePooc>
-                      <span className="myriadpro-regular-normal-charlotte-12px">{spanText105}</span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
-                        {spanText106}
-                      </span>
-                      <span className="myriadpro-regular-normal-charlotte-12px">{spanText107}</span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
-                        {spanText108}
-                      </span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
-                        {spanText109}
-                      </span>
-                      <span className="myriadpro-regular-normal-charlotte-12px">{spanText110}</span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
-                        {spanText111}
-                      </span>
-                      <span className="myriadpro-regular-normal-charlotte-12px">{spanText112}</span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
-                        {spanText113}
-                      </span>
-                      <span className="myriadpro-regular-normal-charlotte-12px">{spanText114}</span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
-                        {spanText115}
-                      </span>
-                      <span className="myriadpro-regular-normal-charlotte-12px">{spanText116}</span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
-                        {spanText117}
-                      </span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
-                        {spanText118}
-                      </span>
-                      <span className="myriadpro-regular-normal-charlotte-12px">{spanText119}</span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
-                        {spanText120}
-                      </span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
-                        {spanText121}
-                      </span>
-                      <span className="myriadpro-regular-normal-charlotte-12px">{spanText122}</span>
-                      <span className="museosansrounded-300-normal-charlotte-12px">
-                        {spanText123}
-                      </span>
-                    </ListOnThePooc>
+        </div>
+        <OverlapGroup4 id="works">
+          <HowItWorks>{howItWorks2}</HowItWorks>
+          {/* <Group76 src={group76} /> */}
+          <OverlapGroup5 style={{ backgroundImage: `url(${overlapGroup})` }}>
+            <SignUpAndInputAListing>
+              <span className="museosansrounded-700-normal-mine-shaft-18px">{spanText46}</span>
+              <span className="museosansrounded-700-normal-mine-shaft-18px">{spanText47}</span>
+            </SignUpAndInputAListing>
+          </OverlapGroup5>
+          <OverlapGroup11 style={{ backgroundImage: `url(${overlapGroup1})` }}>
+            <SignUpAndInputAListing>{acceptBookings}</SignUpAndInputAListing>
+          </OverlapGroup11>
+          <OverlapGroup21 style={{ backgroundImage: `url(${overlapGroup2})` }}>
+            <SignUpAndInputAListing>
+              <span className="museosansrounded-700-normal-mine-shaft-18px">{spanText48}</span>
+              <span className="museosansrounded-700-normal-mine-shaft-18px">{spanText49}</span>
+            </SignUpAndInputAListing>
+          </OverlapGroup21>
+          <Link
+            to="/signup"
+            style={{
+              position: 'absolute',
+              height: '68px',
+              top: '849px',
+              left: '40%',
+              display: 'flex',
+              padding: '10.9px 91.2px',
+              justifyContent: 'flex-end',
+              alignItems: 'flex-start',
+              minWidth: '247px',
+              backgroundColor: '#95e8f7',
+              borderRadius: '33.95px',
+              boxShadow: '-9.184850467946473e-16px 15px 20px #00a3ce26',
+              zIndex: 1,
+            }}
+          >
+            <SIGNUP className="sign-up-1">SIGN UP</SIGNUP>
+          </Link>
+        </OverlapGroup4>
+        <Powered>
+          <POWEREDBY>{poweredBy}</POWEREDBY>
+          <ELine2 src={eLine2} />
+          <LogoClouds />
+        </Powered>
+        <Footer>
+          <FlexCol3>
+            <GroupContainer>
+              <OverlapGroup6>
+                <EShape1670Copy src={'/landing-page/poochFolio.svg'} />
+                <OverlapGroup51>
+                  <Address>
+                    <span className="museosansrounded-300-normal-charlotte-15px">{spanText50}</span>
+                    <span className="museosansrounded-300-normal-charlotte-15px">{spanText51}</span>
+                    <span className="museosansrounded-300-normal-charlotte-15px">{spanText52}</span>
+                  </Address>
+                  <OverlapGroup8>
+                    <LOSANGELESCOUNTY>{losAngelesCounty}</LOSANGELESCOUNTY>
                     <Rectangle1046></Rectangle1046>
-                  </OverlapGroup22>
-                  <PayrollAndEmpl>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText124}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
-                      {spanText125}
+                    <VeniceCAS>
+                      <span
+                        className="museosansrounded-300-normal-charlotte-16px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.1,
+                        }}
+                      >
+                        {spanText54}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-16px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText56}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-16px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText58}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-16px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText60}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-16px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText62}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-16px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText64}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-16px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText66}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-16px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText68}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-16px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText70}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-16px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText72}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-16px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText74}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-16px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText76}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-16px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText78}
+                      </span>
+                    </VeniceCAS>
+                  </OverlapGroup8>
+                  <OverlapGroup12>
+                    <NATIONWIDE>{nationwide}</NATIONWIDE>
+                    <LosAngelesCA>
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText80}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText82}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText84}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText86}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText88}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText90}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText92}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText94}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText96}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText98}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText100}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText102}
+                      </span>
+
+                      <span
+                        className="museosansrounded-300-normal-charlotte-12px"
+                        style={{
+                          fontSize: 14,
+                          paddingnBottom: 40,
+                          marginTop: 10,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {spanText104}
+                      </span>
+                    </LosAngelesCA>
+                    {/* <Rectangle1046></Rectangle1046> */}
+                  </OverlapGroup12>
+                  <PoochMarketplace>{poochMarketplace}</PoochMarketplace>
+                  <EAppsStore src={'/landing-page/apps-store@3x.webp'} />
+                  <EGooglePlay src={'/landing-page/google-play@3x.webp'} />
+                </OverlapGroup51>
+              </OverlapGroup6>
+              <Group7Copy2>
+                <OverlapGroup22>
+                  <NATIONWIDE>{features}</NATIONWIDE>
+                  <ListOnThePooc>
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {spanText106}
                     </span>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText126}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
-                      {spanText127}
+
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {spanText108}
                     </span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
-                      {spanText128}
+
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {spanText111}
                     </span>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText129}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
-                      {spanText130}
+
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {spanText113}
                     </span>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText131}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
-                      {spanText132}
+
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {spanText115}
                     </span>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText133}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
-                      {spanText134}
+
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {spanText117}
                     </span>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText135}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
-                      {spanText136}
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {spanText118}
                     </span>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText137}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
-                      {spanText138}
+
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {spanText120}
                     </span>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText139}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
-                      {spanText140}
+
+                    <span
+                      className="museosansrounded-300-normal-charlotte-12px"
+                      style={{
+                        fontSize: 14,
+                        paddingnBottom: 40,
+                        marginTop: 10,
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {spanText123}
                     </span>
-                    <span className="myriadpro-regular-normal-charlotte-12px">{spanText141}</span>
-                    <span className="museosansrounded-300-normal-charlotte-12px">
-                      {spanText142}
-                    </span>
-                  </PayrollAndEmpl>
-                </Group7Copy2>
-              </GroupContainer>
-              <FlexRow>
-                <InvestorRelations>{investorRelations}</InvestorRelations>
-                <X2022POOCHTECHNOL>{x2022PoochTechnol}</X2022POOCHTECHNOL>
-              </FlexRow>
-            </FlexCol3>
-          </Footer>
-        </OverlapGroup7>
-      </div>
+                  </ListOnThePooc>
+                  <Rectangle1046></Rectangle1046>
+                </OverlapGroup22>
+                <PayrollAndEmpl>
+                  <span
+                    className="museosansrounded-300-normal-charlotte-12px"
+                    style={{
+                      fontSize: 14,
+                      paddingnBottom: 40,
+                      marginTop: 10,
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {spanText125}
+                  </span>
+
+                  <span
+                    className="museosansrounded-300-normal-charlotte-12px"
+                    style={{
+                      fontSize: 14,
+                      paddingnBottom: 40,
+                      marginTop: 10,
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {spanText127}
+                  </span>
+
+                  <span
+                    className="museosansrounded-300-normal-charlotte-12px"
+                    style={{
+                      fontSize: 14,
+                      paddingnBottom: 40,
+                      marginTop: 10,
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {spanText130}
+                  </span>
+
+                  <span
+                    className="museosansrounded-300-normal-charlotte-12px"
+                    style={{
+                      fontSize: 14,
+                      paddingnBottom: 40,
+                      marginTop: 10,
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {spanText132}
+                  </span>
+
+                  <span
+                    className="museosansrounded-300-normal-charlotte-12px"
+                    style={{
+                      fontSize: 14,
+                      paddingnBottom: 40,
+                      marginTop: 10,
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {spanText134}
+                  </span>
+
+                  <span
+                    className="museosansrounded-300-normal-charlotte-12px"
+                    style={{
+                      fontSize: 14,
+                      paddingnBottom: 40,
+                      marginTop: 10,
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {spanText136}
+                  </span>
+
+                  <span
+                    className="museosansrounded-300-normal-charlotte-12px"
+                    style={{
+                      fontSize: 14,
+                      paddingnBottom: 40,
+                      marginTop: 10,
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {spanText138}
+                  </span>
+
+                  <span
+                    className="museosansrounded-300-normal-charlotte-12px"
+                    style={{
+                      fontSize: 14,
+                      paddingnBottom: 40,
+                      marginTop: 10,
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {spanText140}
+                  </span>
+
+                  <span
+                    className="museosansrounded-300-normal-charlotte-12px"
+                    style={{
+                      fontSize: 14,
+                      paddingnBottom: 40,
+                      marginTop: 10,
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {spanText142}
+                  </span>
+                </PayrollAndEmpl>
+              </Group7Copy2>
+            </GroupContainer>
+            <FlexRow>
+              <InvestorRelations>{investorRelations}</InvestorRelations>
+              <X2022POOCHTECHNOL>{x2022PoochTechnol}</X2022POOCHTECHNOL>
+            </FlexRow>
+          </FlexCol3>
+        </Footer>
+      </OverlapGroup7>
     </div>
   );
 }
 
 const OverlapGroup7 = styled.div`
-  width: 8076px;
-  height: 7983px;
-  position: relative;
-  margin-left: -1161px;
+  // width: 8076px;
+  // height: 7983px;
+width:100%;
+  // margin-left: -1161px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color:white;
 `;
 
 const ColorFill2 = styled.div`
-  position: absolute;
-  width: 7945px;
-  height: 7983px;
+  // position: absolute;
+  // width: 100%
+  // height: 7983px;
   top: 0;
-  left: 131px;
-  background-color: var(--white);
+  // left: 131px;
+  background-color: white;
 `;
 
 const Nav = styled.div`
   ${Museosansrounded500NormalWhite15px}
-  position: absolute;
+  position: sticky;
   height: 130px;
-  top: 0;
-  left: 1144px;
+  top: 0px;
+  left: 0;
+  right:0;
+  margin-left: auto;
+  margin-right: auto;
+  // left: 1144px;
   display: flex;
-  padding: 25px 246px;
-  align-items: flex-start;
-  min-width: 1634px;
+  // padding: 25px 246px;
+  align-items: center;
+  // min-width: 1634px;
   background-size: cover;
   background-position: 50% 50%;
+  // width: 100%;
+  padding-right:200px
 `;
 
 const Logo = styled.img`
   width: 142px;
   height: 63px;
   object-fit: cover;
+  margin-left: 8%;
+  margin-right:12%
 `;
 
-const MARKETPLACE = styled.div`
-  min-height: 20px;
-  margin-left: 80px;
-  margin-top: 10.98px;
-  min-width: 104px;
-  letter-spacing: 0;
-  line-height: 30.4px;
-  white-space: nowrap;
-`;
 
 const MANAGEMENT = styled.div`
   min-height: 20px;
-  margin-left: 65px;
+  padding-left: 12%;
   margin-top: 10.98px;
   min-width: 105px;
   letter-spacing: 0;
@@ -862,7 +1145,8 @@ const MANAGEMENT = styled.div`
 
 const HOWITWORKS = styled.div`
   min-height: 20px;
-  margin-left: 84px;
+ padding-left: 12%;
+ 
   margin-top: 10.98px;
   min-width: 113px;
   letter-spacing: 0;
@@ -880,37 +1164,42 @@ const SignUp = styled.div`
   letter-spacing: 0;
   line-height: 30.4px;
   white-space: nowrap;
+  marginLeft:8%;
+
 `;
 
-const Slider = styled.div`
-  position: absolute;
-  height: 905px;
-  top: 110px;
-  left: 1159px;
-  display: flex;
-  padding: 68px 133.6px;
-  justify-content: flex-end;
-  align-items: flex-start;
-  min-width: 1402px;
-  background-size: contain;
-  // background-position: 50% 50%;
-  background-repeat: no-repeat;
-  z-index:900;
-  width:1800;
-  padding-right:200px;
-`;
+  const Slider = styled.div`
+    position: relative;
+    height: 1205px;
+    top: 0px;
+    // left: 1179px;
+    left:0;
+    display: flex;
+    padding-top: 68px 
+    padding-left:130px
+    justify-content: flex-end;
+    align-items: flex-start;
+    min-width: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+object-fit:contain;
+    // width: 1950;
+    padding-right: 200px;
 
-const OverlapGroup = styled.div`
-  width: 1337px;
-  height: 874px;
-  position: relative;
-`;
-const Untitled1 = styled.img`
+  `;
+
+  const OverlapGroup = styled.div`
+    width: 100%;
+    height: 874px;
+    position: relative;
+  `;
+  const Untitled1 = styled.img`
   position: absolute;
-  width: 761px;
+  width: 100%
   height: 626px;
-  top: 0;
-  left: 476px;
+  top: 50px;
+  left: 60%;
   object-fit: cover;
 `;
 
@@ -920,20 +1209,27 @@ const MarketingAndManag = styled.h1`
   width: 559px;
   height: 466px;
   top: 125px;
-  left: 0;
+  left: 15%;
   letter-spacing: 0;
   line-height: 72px;
 `;
 
 
 const Marketplace = styled.div`
-  position: absolute;
-  height: 745px;
-  top: 965px;
-  left: 1311px;
+  position: relative;
+  height: 845px;
+  top: 15px;
+  // left: 8%;
   display: flex;
   align-items: flex-start;
-  min-width: 1341px;
+  min-width: 100%;
+  background-color:white;
+  padding-left:9%;
+
+  justify-content:flex-start
+  ;
+  margin-top:20px;
+  
 `;
 
 const EIphoneX1Copy = styled.img`
@@ -941,6 +1237,7 @@ const EIphoneX1Copy = styled.img`
   height: 795px;
   margin-top: 0;
   object-fit: contain;
+  margin-right:100px;
 `;
 const SIGNUP = styled.div`
   ${Museosansrounded900NormalMetallicSe}
@@ -953,7 +1250,7 @@ const SIGNUP = styled.div`
 `;
 
 const FlexCol = styled.div`
-  width: 585px;
+  width: 100%;
   align-self: center;
   margin-left: 32px;
   margin-top: 88.35px;
@@ -994,7 +1291,7 @@ const BusinessManagementFeatures = styled.div`
   width: 585px;
   height: 164px;
   top: 25px;
-  left: 0;
+  padding-left: 0;
   letter-spacing: 0;
   line-height: 48px;
 `;
@@ -1002,10 +1299,10 @@ const BusinessManagementFeatures = styled.div`
 const STOPWORRYINGABOUTVACANCY = styled.div`
   ${Museosansrounded900NormalBlack16px}
   position: absolute;
-  width: 585px;
+  width: 100%;
   height: 79px;
   top: 0;
-  left: 0;
+  // left: 16%;
   letter-spacing: 0;
   line-height: 19.2px;
 `;
@@ -1083,86 +1380,67 @@ const LISTYOURBUSINESSONOURMARKETPLACE = styled.p`
 
 const OverlapGroup3 = styled.div`
   position: absolute;
-  width: 1188px;
+  width: 100%;
   height: 726px;
-  top: 1820px;
-  left: 1390px;
+  top: 0px;
+ padding-left: 14%;
+  background-color:white;
+  display:flex;
+  padding-bottom:100px
 `;
 
-const PoochProfileAndIn = styled.p`
-  ${Museosansrounded500NormalGraniteGra}
-  position: absolute;
-  width: 237px;
-  height: 515px;
-  top: 163px;
-  left: 33px;
-  letter-spacing: 0;
-  line-height: 22px;
-`;
 
-const AnalyticsAndQuickB = styled.p`
-  ${Museosansrounded500NormalGraniteGra}
-  position: absolute;
-  width: 223px;
-  height: 516px;
-  top: 163px;
-  left: 331px;
-  letter-spacing: 0;
-  line-height: 22px;
-`;
 
-const Shape6Copy3 = styled.img`
-  position: absolute;
-  width: 314px;
-  height: 400px;
-  top: 164px;
-  left: 0;
-  object-fit: cover;
-`;
 
 const EStatistics = styled.img`
   position: absolute;
   width: 669px;
   height: 675px;
   top: 31px;
-  left: 519px;
+  left: 50%;
+  object-fit: cover;
+`;
+
+const EStatistics1 = styled.img`
+  position: absolute;
+  width: 499px;
+  height: 395px;
+  top: 120px;
+ 
   object-fit: cover;
 `;
 
 const OverlapGroup4 = styled.div`
-  position: absolute;
-  width: 3709px;
-  height: 1647px;
-  top: 2308px;
+  position: relative;
+  width: 100%;
+  height: 600px;
+top: -560px;
   left: -1px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-color: white;
 `;
 
 const HowItWorks = styled.div`
   ${Museosansrounded900NormalMineShaft4}
   position: absolute;
-  width: 585px;
+  width: 100%;
   height: 164px;
   top: 427px;
-  left: 1670px;
+  justify-content: center;
   text-align: center;
   letter-spacing: 0;
   line-height: 48px;
+  background-color: white;
 `;
 
-const Group76 = styled.img`
-  position: absolute;
-  width: 3709px;
-  height: 1647px;
-  top: 0;
-  left: 0;
-  object-fit: cover;
-`;
 
 const OverlapGroup5 = styled.div`
   position: absolute;
   height: 316px;
   top: 532px;
-  left: 1346px;
+  left: 8%;
   display: flex;
   padding: 82.1px 9.3px;
   justify-content: flex-end;
@@ -1170,6 +1448,7 @@ const OverlapGroup5 = styled.div`
   min-width: 454px;
   background-size: cover;
   background-position: 50% 50%;
+  background-color: white;
 `;
 
 const SignUpAndInputAListing = styled.div`
@@ -1185,7 +1464,7 @@ const OverlapGroup11 = styled.div`
   position: absolute;
   height: 307px;
   top: 541px;
-  left: 1732px;
+  left: 36%;
   display: flex;
   padding: 73.1px 8.3px;
   justify-content: flex-end;
@@ -1193,13 +1472,14 @@ const OverlapGroup11 = styled.div`
   min-width: 454px;
   background-size: cover;
   background-position: 50% 50%;
+  background-color: white;
 `;
 
 const OverlapGroup21 = styled.div`
   position: absolute;
   height: 311px;
   top: 537px;
-  left: 2121px;
+  left: 64%;
   display: flex;
   padding: 82.1px 9.3px;
   justify-content: flex-end;
@@ -1207,17 +1487,19 @@ const OverlapGroup21 = styled.div`
   min-width: 454px;
   background-size: cover;
   background-position: 50% 50%;
+  background-color: white;
 `;
 
 const Powered = styled.div`
   position: absolute;
-  width: 1108px;
-  top: 3359px;
-  left: 1406px;
+  width: 100%;
+  top: 3659px;
+  // left: 1406px;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 208px;
+  background-color: white;
 `;
 
 const POWEREDBY = styled.div`
@@ -1244,26 +1526,26 @@ const ELine2 = styled.img`
 
 const Footer = styled.div`
   position: absolute;
-  height: 904px;
-  top: 3674px;
-  left: 1159px;
+  height: 704px;
+  top: 3874px;
+  // left: 1159px;
   display: flex;
   padding: 107.1px 73.6px;
   justify-content: flex-end;
   align-items: flex-start;
-  min-width: 1602px;
+  min-width: 100%;
   background-size: cover;
-  background-position: 50% 50%;
+  // background-position: 50% 50%;
   background-color: #077997;
   border-top-right-radius:20px;
   border-top-left-radius:20px;
 `;
 
 const FlexCol3 = styled.div`
-  width: 1147px;
+  width: 90%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   min-height: 493px;
   // left: -200px;
 `;
@@ -1313,7 +1595,7 @@ const Address = styled.p`
 const OverlapGroup8 = styled.div`
   position: absolute;
   width: 254px;
-  height: 410px;
+  height: 510px;
   top: 0;
   left: 205px;
 `;
@@ -1338,11 +1620,11 @@ const Rectangle1046 = styled.div`
   background-color: var(--anakiwa);
 `;
 
-const VeniceCAS = styled.p`
+const VeniceCAS = styled.div`
   ${MyriadproRegularNormalCharlotte12px}
   position: absolute;
   width: 197px;
-  height: 357px;
+  height: 457px;
   top: 53px;
   left: 2px;
   letter-spacing: 0;

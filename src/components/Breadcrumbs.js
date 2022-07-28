@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
+
 import Header from './Header';
 
 export default function Breadcrumbs() {
+
+
   let location = useLocation();
-const [createProfileStatus] = useState('complete')
+const [createProfileStatus, setCreateProfileStatus] = useState('upcoming')
 const [inputListingStatus, setInputListingStatus] = useState('upcoming');
 const [AvailableStatus, setAvailableStatus] = useState('upcoming');
   useEffect(() => {
@@ -16,13 +19,16 @@ const [AvailableStatus, setAvailableStatus] = useState('upcoming');
      if (location.pathname === '/sign-up/availability1') {
        setAvailableStatus('complete');
      }
+     if (location.pathname === '/sign-up/create-profile') {
+       setCreateProfileStatus('complete');
+     }
   }, [location]);
 
   const steps = [
     {
       id: '01',
       name: 'Sign Up',
-      href: '/signup',
+      href: '/sign-up/signup',
       status: 'complete',
       iconComplete: require('../assessts/images/signUpCompleteIcon.png'),
     },
@@ -65,9 +71,10 @@ const [AvailableStatus, setAvailableStatus] = useState('upcoming');
           borderWidth: 4,
           borderTopRightRadius: 30,
           borderTopLeftRadius: 30,
-          marginTop: -25,
-          borderColor: 'transparent',
+          marginTop: -26,
+          borderColor: 'red',
           backgroundColor: '#E7F0FD',
+          zIndex: 99,
         }}
       >
         <ol
@@ -84,8 +91,7 @@ const [AvailableStatus, setAvailableStatus] = useState('upcoming');
           {steps.map((step, stepIdx) => (
             <li key={step.name} className="relative md:flex-1 md:flex">
               {step.status === 'complete' && step.id === '01' ? (
-                <Link
-                  to={step.href}
+                <div
                   className="group flex items-center w-full"
                   style={{
                     backgroundColor: '#EBFDFF',
@@ -104,9 +110,9 @@ const [AvailableStatus, setAvailableStatus] = useState('upcoming');
                     </span>
                     <span className="ml-4 text-sm font-medium text-gray-900">{step.name}</span>
                   </span>
-                </Link>
+                </div>
               ) : step.status === 'complete' && step.id !== '01' && step.id !== '04' ? (
-                <Link
+                <div
                   to={step.href}
                   className="px-6 py-4 flex items-center text-sm font-medium "
                   aria-current="step"
@@ -125,9 +131,9 @@ const [AvailableStatus, setAvailableStatus] = useState('upcoming');
                     <img style={{ height: 42, width: 42 }} src={step.iconComplete} alt="" />
                   </span>
                   <span className="ml-4 text-sm font-medium text-[#077997]">{step.name}</span>
-                </Link>
+                </div>
               ) : step.status === 'complete' && step.id === '04' ? (
-                <Link
+                <div
                   to={step.href}
                   className="px-6 py-4 flex items-center text-sm font-medium "
                   aria-current="step"
@@ -146,9 +152,9 @@ const [AvailableStatus, setAvailableStatus] = useState('upcoming');
                     <img style={{ height: 42, width: 42 }} src={step.iconComplete} alt="" />
                   </span>
                   <span className="ml-4 text-sm font-medium text-[#077997]">{step.name}</span>
-                </Link>
+                </div>
               ) : step.status === 'current' ? (
-                <Link
+                <div
                   to={step.href}
                   className="px-6 py-4 flex items-center text-sm font-medium "
                   aria-current="step"
@@ -169,9 +175,9 @@ const [AvailableStatus, setAvailableStatus] = useState('upcoming');
                     <img style={{ height: 24, width: 18.95 }} src={step.iconComplete} alt="" />
                   </span>
                   <span className="ml-4 text-sm font-medium text-[#077997]">{step.name}</span>
-                </Link>
+                </div>
               ) : (
-                <Link to={step.href} className="group flex items-center">
+                <div to={step.href} className="group flex items-center">
                   <span className="px-6 py-4 flex items-center text-sm font-medium">
                     <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400">
                       <img style={{ height: 24, width: 18.95 }} src={step.iconNotComplete} alt="" />
@@ -180,7 +186,7 @@ const [AvailableStatus, setAvailableStatus] = useState('upcoming');
                       {step.name}
                     </span>
                   </span>
-                </Link>
+                </div>
               )}
               {stepIdx !== steps.length - 1 ? (
                 <>

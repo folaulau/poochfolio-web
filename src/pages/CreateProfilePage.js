@@ -41,7 +41,7 @@ const formatPhoneNumberForUpload = (number) => {
     const secondCheckPhoneNumber = number?.replace(phoneRegex, '$1$2$3');
     return secondCheckPhoneNumber;
   } else {
-    alert('Please enter a valid phone number');
+    // alert('Please enter a valid phone number');
   }
 };
   console.log(formatPhoneNumberForUpload(phoneNumber))

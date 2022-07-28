@@ -23,63 +23,109 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
  const provider = new FacebookAuthProvider();
  const FirebaseApi = {
-    
+   signUpWithEmail: (email, password) => {
+     return createUserWithEmailAndPassword(auth, email, password);
+   },
+   signInWithEmail: (email, password) => {
+     return signInWithEmailAndPassword(auth, email, password);
+   },
+   signInWithGoogle: async (navigate) => {
+     const googleProvider = new GoogleAuthProvider();
+     provider.addScope('profile');
+     provider.addScope('email');
+     try {
+       const res = await signInWithPopup(auth, googleProvider);
+       const user = res.user;
+       console.log('USER');
 
-    signUpWithEmail: (email,password) => {
-        return createUserWithEmailAndPassword(auth, email, password)
-    },
-    signInWithEmail: (email,password) => {
-        return signInWithEmailAndPassword(auth, email, password)
-    },
-    signInWithGoogle: async (navigate) => {
-    const googleProvider = new GoogleAuthProvider();
-    provider.addScope('profile');
-    provider.addScope('email');
-    try {
-      const res = await signInWithPopup(auth, googleProvider);
-      const user = res.user;
-      console.log('USER')
-  
-      console.log("this is the intent", user);
-         let authentication = {
-           'token': user.accessToken,
-         };
+       console.log('this is the intent', user);
+       let authentication = {
+         'token': user.accessToken,
+       };
 
-         GroomerApi.authenticate(authentication).then((response) => {
-           console.log('Success:', response.data);
-           localStorage.setItem('poochToken', response.data.token);
-           localStorage.setItem('uuid', response.data.uuid);
-           navigate('/sign-up/create-profile');
-         });
-    } catch (err) {
-      console.error(err);
-      alert(err.message);
-    }
-  },
+       GroomerApi.authenticate(authentication).then((response) => {
+         console.log('Success:', response.data);
+         localStorage.setItem('poochToken', response.data.token);
+         localStorage.setItem('uuid', response.data.uuid);
+         navigate('/sign-up/create-profile');
+       });
+     } catch (err) {
+       console.error(err);
+       alert(err.message);
+     }
+   },
+   loginInWithGoogle: async (navigate) => {
+     const googleProvider = new GoogleAuthProvider();
+     provider.addScope('profile');
+     provider.addScope('email');
+     try {
+       const res = await signInWithPopup(auth, googleProvider);
+       const user = res.user;
+       console.log('USER');
+
+       console.log('this is the intent', user);
+       let authentication = {
+         'token': user.accessToken,
+       };
+
+       GroomerApi.authenticate(authentication).then((response) => {
+         console.log('Success:', response.data);
+         localStorage.setItem('poochToken', response.data.token);
+         localStorage.setItem('uuid', response.data.uuid);
+         navigate('/dashboard');
+       });
+     } catch (err) {
+       console.error(err);
+       alert(err.message);
+     }
+   },
    signInWithFacebook: async (navigate) => {
-    try {
-      const res = await signInWithPopup(auth, provider);
-   
-      const user = res.user;
-      console.log('USER');
+     try {
+       const res = await signInWithPopup(auth, provider);
 
-      console.log('this is the intent', user);
-      let authentication = {
-        'token': user.accessToken,
-      };
+       const user = res.user;
+       console.log('USER');
 
-      GroomerApi.authenticate(authentication).then((response) => {
-        console.log('Success:', response.data);
-        localStorage.setItem('poochToken', response.data.token);
-        localStorage.setItem('uuid', response.data.uuid);
-        navigate('/sign-up/create-profile');
-      });
-    } catch (err) {
-      console.error(err);
-      alert(err.message);
-    }
-  }
-}
+       console.log('this is the intent', user);
+       let authentication = {
+         'token': user.accessToken,
+       };
+
+       GroomerApi.authenticate(authentication).then((response) => {
+         console.log('Success:', response.data);
+         localStorage.setItem('poochToken', response.data.token);
+         localStorage.setItem('uuid', response.data.uuid);
+         navigate('/sign-up/create-profile');
+       });
+     } catch (err) {
+       console.error(err);
+       alert(err.message);
+     }
+   },
+   loginWithFacebook: async (navigate) => {
+     try {
+       const res = await signInWithPopup(auth, provider);
+
+       const user = res.user;
+       console.log('USER');
+
+       console.log('this is the intent', user);
+       let authentication = {
+         'token': user.accessToken,
+       };
+
+       GroomerApi.authenticate(authentication).then((response) => {
+         console.log('Success:', response.data);
+         localStorage.setItem('poochToken', response.data.token);
+         localStorage.setItem('uuid', response.data.uuid);
+         navigate('/dashboard');
+       });
+     } catch (err) {
+       console.error(err);
+       alert(err.message);
+     }
+   },
+ };
 
 export default FirebaseApi;
 
