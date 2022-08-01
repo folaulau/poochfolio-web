@@ -7,7 +7,7 @@ function ButtonCopy3(props) {
 
   return (
     <Link
-      to="/signup"
+      to="/sign-up/signup"
       style={{
         position: 'absolute',
         height: '68px',
