@@ -1,5 +1,5 @@
 import React from 'react';
-import Home2 from './Home';
+import Home1 from './Home1';
 
 export default function LandingPage2() {
   const buttonCopy32Data = {
@@ -597,7 +597,7 @@ export default function LandingPage2() {
     supportProps2: supportData,
   };
   return (
-    <Home2 {...landingPageData} />
+    <Home1 {...landingPageData} />
     // <div className="bg-[#077997]">
     //   <LandingHeader />
     //   <main className="bg-white rounded-t-2xl font-Museo-Sans-Rounded-900">

@@ -14,7 +14,7 @@ import MarketPlace from './pages/MarketPlace2';
 import Availability10 from './pages/Availability1';
 import LandingPage from './pages/LandingPage';
 
-import LandingPage2 from './pages/LandingPage2';
+
 export default function PoochRoutes() {
  
 
@@ -26,7 +26,6 @@ export default function PoochRoutes() {
   return (
     <>
       <Routes>
-        <Route path="/home" element={<LandingPage2 />} />
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<Login />} />
         {/* <Route path="/signup" element={<Signup />} /> */}

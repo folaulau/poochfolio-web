@@ -445,7 +445,7 @@ function Home1(props) {
 
             {/* <Shape6Copy3 src={shape6Copy3} /> */}
             <Link
-              to="/signup"
+              to="/sign-up/signup"
               style={{
                 position: 'absolute',
                 height: '68px',
@@ -487,7 +487,7 @@ function Home1(props) {
             </SignUpAndInputAListing>
           </OverlapGroup21>
           <Link
-            to="/signup"
+            to="/sign-up/signup"
             style={{
               position: 'absolute',
               height: '68px',
