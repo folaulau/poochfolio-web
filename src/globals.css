@@ -1,36 +1,35 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+@import url('https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css');
 
 @font-face {
-  font-family: "MuseoSansRounded-700";
+  font-family: 'MuseoSansRounded-700';
   font-style: normal;
   font-weight: 400;
-  src: url("https://fonts.animaapp.com/MuseoSansRounded-700") format("opentype");
+  src: url('https://fonts.animaapp.com/MuseoSansRounded-700') format('opentype');
 }
 @font-face {
-  font-family: "MuseoSansRounded-300";
+  font-family: 'MuseoSansRounded-300';
   font-style: normal;
   font-weight: 400;
-  src: url("https://fonts.animaapp.com/MuseoSansRounded-300") format("opentype");
+  src: url('https://fonts.animaapp.com/MuseoSansRounded-300') format('opentype');
 }
 @font-face {
-  font-family: "MuseoSansRounded-900";
+  font-family: 'MuseoSansRounded-900';
   font-style: normal;
   font-weight: 400;
-  src: url("https://fonts.animaapp.com/MuseoSansRounded-900") format("opentype");
+  src: url('https://fonts.animaapp.com/MuseoSansRounded-900') format('opentype');
 }
 @font-face {
-  font-family: "MuseoSansRounded-500";
+  font-family: 'MuseoSansRounded-500';
   font-style: normal;
   font-weight: 400;
-  src: url("https://fonts.animaapp.com/MuseoSansRounded-500") format("opentype");
+  src: url('https://fonts.animaapp.com/MuseoSansRounded-500') format('opentype');
 }
 
-
 @font-face {
-  font-family: "MyriadPro-Regular";
+  font-family: 'MyriadPro-Regular';
   font-style: normal;
   font-weight: 400;
-  src: url("https://fonts.animaapp.com/MyriadPro-Regular") format("truetype");
+  src: url('https://fonts.animaapp.com/MyriadPro-Regular') format('truetype');
 }
 
 .screen a {
@@ -69,7 +68,8 @@
   margin: 0 auto;
 }
 
-.arrow-closed, .arrow-open {
+.arrow-closed,
+.arrow-open {
   border: solid #999;
   border-width: 0 2px 2px 0;
   display: inline-block;
@@ -109,7 +109,7 @@
   position: absolute;
   right: 15px;
   top: 24px;
-  width: 0
+  width: 0;
 }
 
 .is-open .Dropdown-arrow {
@@ -119,7 +119,7 @@
 
 .Dropdown-menu {
   background-color: white;
-  border: 1px solid #C9D9EF;
+  border: 1px solid #c9d9ef;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
   box-sizing: border-box;
   margin-top: -1px;
@@ -145,12 +145,12 @@
   cursor: pointer;
   display: block;
   padding: 8px 10px;
-  padding-left:30px
+  padding-left: 30px;
 }
 
 .Dropdown-option:last-child {
   border-bottom-right-radius: 2px;
-   border-bottom-left-radius: 2px;
+  border-bottom-left-radius: 2px;
 }
 
 .Dropdown-option:hover {
@@ -198,4 +198,10 @@
 
 * {
   box-sizing: border-box;
+}
+
+@media only screen and (min-width: 1024px) {
+  .column-count-2 {
+    column-count: 2;
+  }
 }

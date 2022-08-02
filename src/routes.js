@@ -12,17 +12,9 @@ import ForgotPassword from './pages/forgotPassword';
 import BookingDetails from './pages/BookingDetailsPage';
 import MarketPlace from './pages/MarketPlace2';
 import Availability10 from './pages/Availability1';
-import LandingPage from './pages/LandingPage';
-
+import { LandingPage } from './pages/LandingPage';
 
 export default function PoochRoutes() {
- 
-
-
-
-
-
-
   return (
     <>
       <Routes>

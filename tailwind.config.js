@@ -7,6 +7,14 @@ module.exports = {
         'sidebar-background': "url('/src/assessts/images/sidebar-bg.png')",
       },
       colors: {
+        white: '#FFFFFF',
+        gray: '#666666',
+        dark: '#333333',
+        black: '#000000',
+
+        primary: '#077997',
+        'blue-light': '#95e8f7',
+
         'pooch-blue-1': '#ebfdff',
         'pooch-blue-2': '#077997',
         'pooch-blue-3': '#e7f0fd',
@@ -20,6 +28,9 @@ module.exports = {
         'disabled-gray': '#abafb4',
         'calendar-gray': '#f4f4f4',
       },
+      boxShadow: {
+        primary: '0px 15px 20px #00a3ce26 !important',
+      },
       fontFamily: {
         'Museo-Sans-Rounded-300': ['MuseoSansRounded-300'],
         'Museo-Sans-Rounded-500': ['MuseoSansRounded-500'],
@@ -31,7 +42,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
+  plugins: [require('@tailwindcss/forms')],
 };
