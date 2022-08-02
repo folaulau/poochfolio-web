@@ -7,7 +7,7 @@ import { PoweredBySection } from './PoweredBySection';
 export const LandingPage = () => {
   return (
     <section>
-      {/* <HeroSection /> */}
+      <HeroSection />
       <VacancySection />
       <ManagementSection />
       <HowItWorksSection />
