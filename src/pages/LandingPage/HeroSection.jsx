@@ -14,7 +14,7 @@ export const HeroSection = () => {
         <img src={HeroBackgroundImg} className="w-full" alt="hero-background" />
       </div>
 
-      <div className="absolute lg:-translate-x-full lg:left-1/2 lg:top-[60px] left-0 top-[100px] w-full text-center lg:text-left lg:w-auto">
+      <div className="absolute lg:-translate-x-full lg:-translate-y-full lg:left-1/2 lg:top-1/2 left-0 top-[100px] w-full text-center lg:text-left lg:w-auto">
         <div className="text-[60px] leading-[72px] font-Museo-Sans-Rounded-900 w-[476px] mb-[40px] mx-auto lg:mx-0">
           <span className="text-primary">Marketing</span> and{' '}
           <span className="text-primary">Management</span> for all Groomers and Kennels
