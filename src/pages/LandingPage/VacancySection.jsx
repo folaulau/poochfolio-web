@@ -36,7 +36,7 @@ export const VacancySection = () => {
           <div className="text-primary">{TITLE.emphasis}</div>
           <div className="text-dark">{TITLE.normal}</div>
         </div>
-        <div className="text-[20px] lg:text-[15px] leading-[30px] lg:leading-[22px] text-gray font-Museo-Sans-Rounded-500 mb-[30px] inline-block">
+        <div className="text-[20px] lg:text-[15px] leading-[30px] lg:leading-[22px] text-gray font-Museo-Sans-Rounded-500 lg:mb-[30px] inline-block">
           {LIST.map((item, itemIndex) => (
             <div className="flex items-start mb-[28px] text-left" key={itemIndex}>
               <img className="mr-[22px]" src={CheckMarkSVG} alt="check-mark" />
