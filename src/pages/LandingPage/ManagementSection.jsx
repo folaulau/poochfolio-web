@@ -51,9 +51,8 @@ export const ManagementSection = () => {
             </div>
           ))}
         </div>
-
         <button
-          className="hidden lg:block py-[25px] px-[92px] bg-blue-light-500 text-primary font-Museo-Sans-Rounded-900 text-[15px] rounded-[34px] shadow-primary hover:contrast-125 uppercase"
+          className="hidden lg:flex bg-blue-light-500 text-primary font-Museo-Sans-Rounded-900 text-[15px] rounded-full shadow-primary hover:contrast-125 uppercase w-[247px] h-[68px] justify-center items-center"
           onClick={handleSignup}
         >
           Sign up
