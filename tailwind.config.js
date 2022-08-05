@@ -13,7 +13,8 @@ module.exports = {
         black: '#000000',
 
         primary: '#077997',
-        'blue-light': '#95e8f7',
+        'blue-light-500': '#95e8f7',
+        'blue-light-300': '#E0F4FA',
 
         'pooch-blue-1': '#ebfdff',
         'pooch-blue-2': '#077997',
