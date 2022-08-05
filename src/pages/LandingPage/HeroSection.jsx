@@ -17,7 +17,7 @@ const HeroSectionDesktop = ({ onSignup }) => {
           <span className="text-dark"> for all Groomers and Kennels</span>
         </div>
         <button
-          className="hidden lg:flex bg-blue-light-500 text-primary font-Museo-Sans-Rounded-900 text-[15px] rounded-[34px] shadow-primary hover:contrast-125 uppercase w-[247px] h-[68px] justify-center items-center"
+          className="hidden lg:flex bg-blue-light-500 text-primary font-Museo-Sans-Rounded-900 text-[15px] rounded-full shadow-primary hover:contrast-125 uppercase w-[247px] h-[68px] justify-center items-center"
           onClick={onSignup}
         >
           Sign up
@@ -31,7 +31,7 @@ const HeroSectionMobile = () => {
   return (
     <div className="relative block overflow-hidden lg:hidden">
       <div className="bg-blue-light-300">
-        <div className="pt-[105px] pl-[24px] pr-[24px] max-w-[730px] mx-auto text-[45px] leading-[54px] font-Museo-Sans-Rounded-900 text-center">
+        <div className="pt-[105px] px-[24px] max-w-[730px] mx-auto text-[45px] leading-[54px] font-Museo-Sans-Rounded-900 text-center">
           <span className="text-primary">Marketing</span>
           <span className="text-dark"> and </span>
           <span className="text-primary">Management</span>

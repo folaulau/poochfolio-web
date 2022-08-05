@@ -23,22 +23,22 @@ export const VacancySection = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row items-start lg:items-end justify-center gap-[45px] lg:gap-[30px] mb-[90px] lg:mb-[110px] mx-[50px]">
-      <div className="-ml-[45px] -mr-[45px] lg:mr-0 w-[calc(100%+90px)] lg:w-auto">
+    <div className="text-center lg:text-left max-w-[1140px] px-[24px] mx-auto grid grid-rows-[auto_auto] lg:grid-cols-[6fr_5fr] gap-[50px] lg:gap-[24px] lg:items-center">
+      <div className="-mx-[24px] lg:mx-0">
         <img src={VacancyImage} className="w-full" alt="vacancy" />
       </div>
 
-      <div className="lg:mb-[110px] w-full lg:w-auto">
+      <div>
         <div className="text-black text-[16px] leading-[19px] font-Museo-Sans-Rounded-900 mb-[6px] uppercase">
           {DESCRIPTION}
         </div>
-        <div className="text-[40px] leading-[48px] font-Museo-Sans-Rounded-900 mb-[20px]">
+        <div className="text-[32px] lg:text-[40px] leading-[38px] lg:leading-[48px] font-Museo-Sans-Rounded-900 mb-[28px]">
           <div className="text-primary">{TITLE.emphasis}</div>
           <div className="text-dark">{TITLE.normal}</div>
         </div>
-        <div className="text-[15px] leading-[22px] text-gray font-Museo-Sans-Rounded-500 mb-[20px]">
+        <div className="text-[20px] lg:text-[15px] leading-[30px] lg:leading-[22px] text-gray font-Museo-Sans-Rounded-500 mb-[30px] inline-block">
           {LIST.map((item, itemIndex) => (
-            <div className="flex items-start mb-[24px]">
+            <div className="flex items-start mb-[28px] text-left" key={itemIndex}>
               <img className="mr-[22px]" src={CheckMarkSVG} alt="check-mark" />
               <span>{item}</span>
             </div>
@@ -46,10 +46,11 @@ export const VacancySection = () => {
         </div>
 
         <button
-          className="py-[25px] px-[60px] lg:px-[70px] w-full lg:w-auto bg-blue-light text-primary font-Museo-Sans-Rounded-900 text-[20px] lg:text-[15px] rounded-[34px] shadow-primary hover:contrast-125 uppercase"
+          className="block mx-auto h-[68px] px-[70px] bg-blue-light-500 text-primary font-Museo-Sans-Rounded-900 leading-[24px] text-[20px] lg:text-[15px] rounded-full shadow-primary hover:contrast-125 uppercase"
           onClick={handleList}
         >
-          List Your Business On Our Marketplace
+          <span className="lg:hidden">List Your Business</span>
+          <span className="hidden lg:block">List Your Business On Our Marketplace</span>
         </button>
       </div>
     </div>
