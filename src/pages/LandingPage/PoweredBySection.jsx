@@ -29,18 +29,18 @@ export const PoweredBySection = () => {
   );
 
   return (
-    <div className="max-w-[1024px] lg:mx-auto pb-[100px] mx-[50px]">
-      <div className="flex items-center mb-[30px]">
+    <div className="max-w-[1024px] px-[24px] mx-auto">
+      <div className="flex items-center mb-[42px]">
         <hr className="flex-1 border-primary opacity-[0.2]" />
-        <span className="text-gray text-[12px] mx-[32px] uppercase tracking-[2.4px] font-Museo-Sans-Rounded-500">
+        <span className="text-gray text-[12px] mx-[36px] uppercase tracking-[2.4px] font-Museo-Sans-Rounded-500">
           Powered By
         </span>
         <hr className="flex-1 border-primary opacity-[0.2]" />
       </div>
 
-      <div className="flex gap-x-[62px] gap-y-[42px] flex-wrap justify-center items-center">
+      <div className="lg:flex gap-x-[64px] gap-y-[60px] lg:gap-y-[90px] lg:flex-wrap justify-center items-center grid grid-cols-[1fr_1fr] max-w-[335px] lg:max-w-none mx-auto">
         {companyIcons.map((icon, iconIndex) => (
-          <div key={iconIndex}>
+          <div className="mx-auto" key={iconIndex}>
             <img src={icon.img} alt={icon.label} />
           </div>
         ))}
