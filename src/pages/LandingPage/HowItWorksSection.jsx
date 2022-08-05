@@ -12,18 +12,18 @@ export const HowItWorksSection = () => {
   };
 
   return (
-    <div className="max-w-[1140px] px-[24px] mx-auto">
+    <div className="max-w-[1140px] px-[24px] mx-auto mb-[92px] lg:mb-[134px]">
       <div className="text-dark text-[32px] leading-[38px] lg:text-[40px] lg:leading-[48px] mb-[38px] lg:mb-[42px] font-Museo-Sans-Rounded-900 text-center">
         How It Works
       </div>
-      <div className="flex flex-col lg:flex-row items-center lg:items-end justify-center gap-[36px] lg:gap-[22px] lg:mb-[56px]">
-        <div className="">
+      <div className="grid lg:grid-cols-[1fr_1fr_1fr] items-center lg:items-end justify-center gap-[36px] lg:gap-[22px] lg:mb-[56px]">
+        <div>
           <img src={HowItWorks1Image} alt="how-it-works-1" />
         </div>
-        <div className="">
+        <div>
           <img src={HowItWorks2Image} alt="how-it-works-2" />
         </div>
-        <div className="">
+        <div>
           <img src={HowItWorks3Image} alt="how-it-works-3" />
         </div>
       </div>

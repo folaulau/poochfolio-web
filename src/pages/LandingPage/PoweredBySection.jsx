@@ -38,9 +38,9 @@ export const PoweredBySection = () => {
         <hr className="flex-1 border-primary opacity-[0.2]" />
       </div>
 
-      <div className="lg:flex gap-x-[64px] gap-y-[60px] lg:gap-y-[90px] lg:flex-wrap justify-center items-center grid grid-cols-[1fr_1fr] max-w-[335px] lg:max-w-none mx-auto">
+      <div className="lg:flex gap-x-[64px] gap-y-[60px] lg:flex-wrap lg:gap-0 justify-center items-center grid grid-cols-[1fr_1fr] max-w-[335px] lg:max-w-none mx-auto">
         {companyIcons.map((icon, iconIndex) => (
-          <div className="mx-auto" key={iconIndex}>
+          <div className="mx-auto lg:m-[30px]" key={iconIndex}>
             <img src={icon.img} alt={icon.label} />
           </div>
         ))}

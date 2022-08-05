@@ -5,7 +5,7 @@ import HeroBackgroundMobileImg from './assets/images/hero--background-mobile.png
 
 const HeroSectionDesktop = ({ onSignup }) => {
   return (
-    <div className="relative hidden lg:block">
+    <div className="relative hidden lg:block mb-[80px]">
       <div className="mx-auto flex justify-center items-center max-h-[1000px] overflow-hidden 2xl:overflow-visible">
         <img src={HeroBackgroundImg} className="w-full min-w-[1400px]" alt="hero-background" />
       </div>
@@ -29,7 +29,7 @@ const HeroSectionDesktop = ({ onSignup }) => {
 
 const HeroSectionMobile = () => {
   return (
-    <div className="relative block overflow-hidden lg:hidden">
+    <div className="relative block overflow-hidden lg:hidden mb-[92px]">
       <div className="bg-blue-light-300">
         <div className="pt-[105px] px-[24px] max-w-[730px] mx-auto text-[45px] leading-[54px] font-Museo-Sans-Rounded-900 text-center">
           <span className="text-primary">Marketing</span>

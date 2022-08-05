@@ -34,8 +34,8 @@ export const ManagementSection = () => {
   };
 
   return (
-    <div className="text-center lg:text-left max-w-[1140px] px-[24px] grid grid-rows-[auto_auto] lg:grid-cols-[1fr_1fr] gap-[50px] lg:gap-[24px] lg:items-end mx-auto">
-      <div className="">
+    <div className="mb-[106px] lg:mb-[192px] text-center lg:text-left max-w-[1140px] px-[24px] grid grid-rows-[auto_auto] lg:grid-cols-[1fr_1fr] gap-[50px] lg:gap-[24px] lg:items-end mx-auto">
+      <div>
         <div className="text-black text-[16px] leading-[19px] font-Museo-Sans-Rounded-900 mb-[6px] uppercase">
           {DESCRIPTION}
         </div>

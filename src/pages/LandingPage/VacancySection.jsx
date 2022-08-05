@@ -23,7 +23,7 @@ export const VacancySection = () => {
   };
 
   return (
-    <div className="text-center lg:text-left max-w-[1140px] px-[24px] mx-auto grid grid-rows-[auto_auto] lg:grid-cols-[6fr_5fr] gap-[50px] lg:gap-[24px] lg:items-center">
+    <div className="mb-[92px] text-center lg:text-left max-w-[1140px] px-[24px] mx-auto grid grid-rows-[auto_auto] lg:grid-cols-[6fr_5fr] gap-[50px] lg:gap-[24px] lg:items-center">
       <div className="-mx-[24px] lg:mx-0">
         <img src={VacancyImage} className="w-full" alt="vacancy" />
       </div>

@@ -6,7 +6,7 @@ import { PoweredBySection } from './PoweredBySection';
 
 export const LandingPage = () => {
   return (
-    <section>
+    <section className="pb-[95px] bg-white">
       <HeroSection />
       <VacancySection />
       <ManagementSection />
