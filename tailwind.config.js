@@ -1,37 +1,60 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
-    extend: {
-      backgroundImage: {
-        'background-header': "url('/background-header.svg')",
-        'sidebar-background': "url('/src/assessts/images/sidebar-bg.png')",
+    colors: {
+      primary: {
+        lightest: "#EBFDFF",
+        lighter: "#EBFDFF",
+        light: "#C0EBF6",
+        DEFAULT: "#95E8F7",
+        dark: "#5DE6FF",
+        darker: "#00A3CE",
+        darkest: "#077997",
       },
-      colors: {
-        'pooch-blue-1': '#ebfdff',
-        'pooch-blue-2': '#077997',
-        'pooch-blue-3': '#e7f0fd',
-        'pooch-blue-4': '#f3f8ff',
-        'pooch-blue-5': '#85d8e7',
-        'pooch-blue-6': '#95e8f7',
-        'pooch-gray-1': '#666666',
-        'pooch-gray-2': '#909294',
-        'pooch-black-1': '#333333',
-        'toggle-green': '#c5e9a0',
-        'disabled-gray': '#abafb4',
-        'calendar-gray': '#f4f4f4',
+      gray: {
+        DEFAULT: "#666666",
+        dark: "#333333",
       },
-      fontFamily: {
-        'Museo-Sans-Rounded-300': ['MuseoSansRounded-300'],
-        'Museo-Sans-Rounded-500': ['MuseoSansRounded-500'],
-        'Museo-Sans-Rounded-700': ['MuseoSansRounded-700'],
-        'Museo-Sans-Rounded-900': ['MuseoSansRounded-900'],
-      },
-      spacing: {
-        '103': '30rem',
+      white: "#FFFFFF",
+      black: "#000000",
+      transparent: "transparent",
+    },
+    fontFamily: {
+      body: ["MuseoSansRounded", "Arial", "sans-serif"],
+    },
+    fontSize: {
+      12: ["12px", 1],
+      15: ["15px", 1],
+      16: ["16px", 1],
+      18: ["18px", 1],
+      40: ["40px", 1],
+      54: ["54px", 1],
+      60: ["60px", 1],
+    },
+    fontWeight: {
+      100: 100,
+      300: 300,
+      500: 500,
+      700: 700,
+      900: 900,
+      1000: 1000,
+    },
+    container: {
+      center: true,
+      padding: "3rem",
+      screens: {
+        sm: "1024px",
+        "2xl": "1280px",
       },
     },
+    boxShadow: {
+      button: "0px 15px 20px #00A3CE26",
+    },
+    extend: {},
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
+  plugins: [],
 };
