@@ -1,5 +1,5 @@
-import Button from "components/atoms/Button";
-import CheckedDescription from "components/molecules/CheckedDescription";
+import Button from "components/atoms/Button"
+import CheckedDescription from "components/molecules/CheckedDescription"
 
 export default function LandingMarketplace() {
   return (
@@ -11,17 +11,12 @@ export default function LandingMarketplace() {
       <div className="flex-1">
         <div className="text-16 font-900">STOP WORRYING ABOUT VACANCY.</div>
         <h2 className="text-40 mt-1 font-900  max-w-[460px]">
-          <span className="text-primary-darkest">The Pooch Marketplace</span>{" "}
-          has you covered!
+          <span className="text-primary-darkest">The Pooch Marketplace</span> has you covered!
         </h2>
 
         <div className="mt-6 space-y-7">
-          <CheckedDescription>
-            Direct listing on the Pooch Marketplace.
-          </CheckedDescription>
-          <CheckedDescription>
-            Dog leads for Groomers, Daycares and Kennels.
-          </CheckedDescription>
+          <CheckedDescription>Direct listing on the Pooch Marketplace.</CheckedDescription>
+          <CheckedDescription>Dog leads for Groomers, Daycares and Kennels.</CheckedDescription>
           <CheckedDescription>
             Instant bookings for dog hotels seeking minimum vacancy.
           </CheckedDescription>
@@ -35,5 +30,5 @@ export default function LandingMarketplace() {
         </Button>
       </div>
     </div>
-  );
+  )
 }

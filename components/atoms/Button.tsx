@@ -1,20 +1,20 @@
-import { ComponentProps } from "react";
-import classNames from "classnames";
+import classNames from "classnames"
+import { ComponentProps, forwardRef } from "react"
 
 interface Props extends ComponentProps<"button"> {
-  variant: "filled" | "outlined" | "shadowed";
-  size: "sm" | "md";
+  variant: "filled" | "outlined" | "shadowed"
+  size: "sm" | "md"
 }
 
-export default function Button({ variant, size, className, ...props }: Props) {
-  return (
+const Button = forwardRef<HTMLButtonElement, Props>(
+  ({ variant, size, className, ...props }, ref) => (
     <button
+      ref={ref}
       {...props}
       className={classNames(
         "rounded-full flex gap-3.5 items-center",
 
-        variant === "filled" &&
-          "bg-primary-lighter text-primary-darkest hover:bg-primary-dark",
+        variant === "filled" && "bg-primary-lightest text-primary-darkest hover:bg-primary-dark",
         variant === "outlined" &&
           "bg-transparent text-white border-2 border-white hover:bg-primary-dark hover:text-primary-darkest hover:border-primary",
         variant === "shadowed" &&
@@ -26,5 +26,7 @@ export default function Button({ variant, size, className, ...props }: Props) {
         className
       )}
     />
-  );
-}
+  )
+)
+
+export default Button

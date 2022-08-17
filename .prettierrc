@@ -1,0 +1,20 @@
+{
+  "tabWidth": 2,
+  "useTabs": false,
+  "printWidth": 100,
+  "semi": false,
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "^states/(.*)$",
+    "^hooks/(.*)$",
+    "^constants/(.*)$",
+    "^utils/(.*)$",
+    "^types/(.*)$",
+    "^styles/(.*)$",
+    "^components/(.*)$",
+    "^pages/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}

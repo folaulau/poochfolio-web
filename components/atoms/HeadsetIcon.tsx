@@ -14,5 +14,5 @@ export default function HeadsetIcon() {
         fill="currentColor"
       />
     </svg>
-  );
+  )
 }

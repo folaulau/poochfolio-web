@@ -1,12 +1,8 @@
-import FooterTitle from "components/atoms/FooterTitle";
-import Logo from "components/atoms/Logo";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebookF,
-  faInstagram,
-  faLinkedin,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
+import { faFacebookF, faInstagram, faLinkedin, faYoutube } from "@fortawesome/free-brands-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
+import FooterTitle from "components/atoms/FooterTitle"
+import Logo from "components/atoms/Logo"
 
 export default function Footer() {
   return (
@@ -20,16 +16,10 @@ export default function Footer() {
               319 North Venice Blvd. Venice, CA 90291 info@poochapp.com
             </div>
 
-            <div className="mt-11 text-primary-light font-900">
-              Pooch Marketplace
-            </div>
+            <div className="mt-11 text-primary-light font-900">Pooch Marketplace</div>
 
             <img src="/images/app-store.png" alt="App Store" className="mt-6" />
-            <img
-              src="/images/google-play.png"
-              alt="App Store"
-              className="mt-3"
-            />
+            <img src="/images/google-play.png" alt="App Store" className="mt-3" />
           </div>
 
           <div className="grid flex-1 grid-cols-9 gap-14 2xl:gap-16">
@@ -103,13 +93,10 @@ export default function Footer() {
 
         <div className="flex items-center mt-24 text-12 font-300">
           <div className="flex flex-1 w-2/5 gap-3">
-            <div>Investor Relations</div>|<div>Licensing</div>|
-            <div>Privacy Policy</div>
+            <div>Investor Relations</div>|<div>Licensing</div>|<div>Privacy Policy</div>
           </div>
 
-          <div className="w-2/5 text-center">
-            © 2022 POOCH TECHNOLOGIES INC © POOCHFOLIO LLC
-          </div>
+          <div className="w-2/5 text-center">© 2022 POOCH TECHNOLOGIES INC © POOCHFOLIO LLC</div>
 
           <div className="flex justify-end flex-1 gap-8 text-white">
             <FontAwesomeIcon icon={faFacebookF} size="lg" />
@@ -120,5 +107,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }

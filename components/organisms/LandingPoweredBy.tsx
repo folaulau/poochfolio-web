@@ -1,5 +1,5 @@
-const topRows = ["twilio", "stripe", "aws", "docu-sign", "plaid", "paypal"];
-const bottomRows = ["google-cloud", "mule-soft", "elastic", "google-maps"];
+const topRows = ["twilio", "stripe", "aws", "docu-sign", "plaid", "paypal"]
+const bottomRows = ["google-cloud", "mule-soft", "elastic", "google-maps"]
 
 export default function LandingPoweredBy() {
   return (
@@ -22,5 +22,5 @@ export default function LandingPoweredBy() {
         </div>
       </div>
     </div>
-  );
+  )
 }

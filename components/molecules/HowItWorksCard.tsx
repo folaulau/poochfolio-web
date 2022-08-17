@@ -1,15 +1,11 @@
-import classNames from "classnames";
-import { ComponentProps } from "react";
+import classNames from "classnames"
+import { ComponentProps } from "react"
 
 interface Props extends ComponentProps<"div"> {
-  bgImage: string;
+  bgImage: string
 }
 
-export default function HowItWorksCard({
-  bgImage,
-  children,
-  className,
-}: Props) {
+export default function HowItWorksCard({ bgImage, children, className }: Props) {
   return (
     <div className="relative flex-1">
       <img src={bgImage} alt="" className="w-full" />
@@ -17,5 +13,5 @@ export default function HowItWorksCard({
         <div className={classNames("text-center", className)}>{children}</div>
       </div>
     </div>
-  );
+  )
 }

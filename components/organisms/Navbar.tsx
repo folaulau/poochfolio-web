@@ -1,10 +1,12 @@
-import Button from "components/atoms/Button";
-import Logo from "components/atoms/Logo";
-import HeadsetIcon from "components/atoms/HeadsetIcon";
+import Link from "next/link"
 
-export default function LandingNavbar() {
+import Button from "components/atoms/Button"
+import HeadsetIcon from "components/atoms/HeadsetIcon"
+import Logo from "components/atoms/Logo"
+
+export default function Navbar() {
   return (
-    <nav className="bg-[url(/images/navbar.svg)] bg-center">
+    <nav className="bg-[url(/images/navbar.svg)] bg-center sticky top-0 z-10">
       <div className="container flex pt-6 pb-10">
         <Logo />
 
@@ -25,9 +27,11 @@ export default function LandingNavbar() {
             <Button variant="filled" size="sm">
               Login
             </Button>
-            <Button variant="filled" size="sm">
-              Sign Up
-            </Button>
+            <Link href="/sign-up" passHref>
+              <Button variant="filled" size="sm">
+                Sign Up
+              </Button>
+            </Link>
             <Button variant="outlined" size="sm">
               <HeadsetIcon />
               Support
@@ -36,5 +40,5 @@ export default function LandingNavbar() {
         </div>
       </div>
     </nav>
-  );
+  )
 }

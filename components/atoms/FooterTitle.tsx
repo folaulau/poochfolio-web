@@ -1,4 +1,4 @@
-import { ComponentProps } from "react";
+import { ComponentProps } from "react"
 
 export default function FooterTitle({ children }: ComponentProps<"div">) {
   return (
@@ -6,5 +6,5 @@ export default function FooterTitle({ children }: ComponentProps<"div">) {
       <div className="text-white font-700">{children}</div>
       <div className="mt-2.5 h-[3px] bg-primary w-[53px]" />
     </div>
-  );
+  )
 }
