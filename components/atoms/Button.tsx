@@ -14,11 +14,11 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       className={classNames(
         "rounded-full flex gap-3.5 items-center",
 
-        variant === "filled" && "bg-primary-lightest text-primary-darkest hover:bg-primary-dark",
+        variant === "filled" && "bg-primary-200 text-primary-800 hover:bg-primary-600",
         variant === "outlined" &&
-          "bg-transparent text-white border-2 border-white hover:bg-primary-dark hover:text-primary-darkest hover:border-primary",
+          "bg-transparent text-white border-2 border-white hover:bg-primary-600 hover:text-primary-800 hover:border-primary-500",
         variant === "shadowed" &&
-          "text-primary-darkest bg-primary shadow-button hover:bg-primary-dark",
+          "text-primary-800 bg-primary-500 shadow-button hover:bg-primary-600",
 
         size === "sm" && "px-8 h-[46px]",
         size === "md" && "font-900 px-24 h-[68px]",

@@ -4,17 +4,18 @@ module.exports = {
   theme: {
     colors: {
       primary: {
-        lightest: "#EBFDFF",
-        lighter: "#E7F0FD",
-        light: "#C0EBF6",
-        DEFAULT: "#95E8F7",
-        dark: "#5DE6FF",
-        darker: "#00A3CE",
-        darkest: "#077997",
+        100: "#F3F8FF",
+        200: "#EBFDFF",
+        300: "#E7F0FD",
+        400: "#C0EBF6",
+        500: "#95E8F7",
+        600: "#5DE6FF",
+        700: "#00A3CE",
+        800: "#077997",
       },
       gray: {
-        DEFAULT: "#666666",
-        dark: "#333333",
+        500: "#666666",
+        700: "#333333",
       },
       white: "#FFFFFF",
       black: "#000000",

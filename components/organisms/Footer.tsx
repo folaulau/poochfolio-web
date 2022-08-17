@@ -6,8 +6,8 @@ import Logo from "components/atoms/Logo"
 
 export default function Footer() {
   return (
-    <footer className="pb-8 bg-primary-darkest py-28 rounded-t-3xl">
-      <div className="container text-primary-light">
+    <footer className="pb-8 bg-primary-800 py-28 rounded-t-3xl">
+      <div className="container text-primary-400">
         <div className="flex gap-14">
           <div>
             <Logo />
@@ -16,7 +16,7 @@ export default function Footer() {
               319 North Venice Blvd. Venice, CA 90291 info@poochapp.com
             </div>
 
-            <div className="mt-11 text-primary-light font-900">Pooch Marketplace</div>
+            <div className="mt-11 text-primary-400 font-900">Pooch Marketplace</div>
 
             <img src="/images/app-store.png" alt="App Store" className="mt-6" />
             <img src="/images/google-play.png" alt="App Store" className="mt-3" />

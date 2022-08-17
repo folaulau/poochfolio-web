@@ -9,7 +9,7 @@ export default function LandingBusinessManagement() {
       <div className="flex-1">
         <div className="text-16 font-900">MANAGEMENT</div>
         <h2 className="text-40 mt-1 font-900  max-w-[430px]">
-          Business <span className="text-primary-darkest">Management Features</span>
+          Business <span className="text-primary-800">Management Features</span>
         </h2>
 
         <div className="flex gap-4 mt-9">

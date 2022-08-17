@@ -11,7 +11,7 @@ export default function LandingMarketplace() {
       <div className="flex-1">
         <div className="text-16 font-900">STOP WORRYING ABOUT VACANCY.</div>
         <h2 className="text-40 mt-1 font-900  max-w-[460px]">
-          <span className="text-primary-darkest">The Pooch Marketplace</span> has you covered!
+          <span className="text-primary-800">The Pooch Marketplace</span> has you covered!
         </h2>
 
         <div className="mt-6 space-y-7">
