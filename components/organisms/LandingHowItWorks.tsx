@@ -26,7 +26,7 @@ export default function LandingHowItWorks() {
         </div>
         <div className="flex justify-center mt-14">
           <Link href="/sign-up" passHref>
-            <Button variant="shadowed" size="md">
+            <Button variant="shadowed" size="lg">
               SIGN UP
             </Button>
           </Link>

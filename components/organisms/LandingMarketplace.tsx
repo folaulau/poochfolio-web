@@ -25,7 +25,7 @@ export default function LandingMarketplace() {
           </CheckedDescription>
         </div>
 
-        <Button variant="shadowed" size="md" className="mt-8">
+        <Button variant="shadowed" size="lg" className="mt-8">
           LIST YOUR BUSINESS ON OUR MARKETPLACE
         </Button>
       </div>

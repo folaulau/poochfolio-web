@@ -13,7 +13,7 @@ export default function LandingHeader() {
             <span className="text-primary-800">Management</span> for all Groomers and Kennels
           </h1>
           <Link href="/sign-up" passHref>
-            <Button variant="shadowed" size="md" className="mt-5">
+            <Button variant="shadowed" size="lg" className="mt-5">
               SIGN UP
             </Button>
           </Link>

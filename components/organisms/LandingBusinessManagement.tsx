@@ -36,7 +36,7 @@ export default function LandingBusinessManagement() {
         </div>
 
         <Link href="/sign-up" passHref>
-          <Button variant="shadowed" size="md" className="mt-16">
+          <Button variant="shadowed" size="lg" className="mt-16">
             SIGN UP
           </Button>
         </Link>

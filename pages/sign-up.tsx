@@ -1,45 +1,25 @@
-import { faDoorOpen, faKey, faList, faListCheck, faUser } from "@fortawesome/pro-regular-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useMeasure } from "react-use"
+import { useState } from "react"
 
-import BreadcrumbItem, {
-  BREADCRUMB_IMAGE_WIDTH,
-  BREADCRUMB_START_IMAGE_WIDTH,
-} from "components/atoms/BreadcrumbItem"
+import SignUpBreadcrumb from "components/molecules/SignUpBreadcrumb"
+import Footer from "components/organisms/Footer"
 import Navbar from "components/organisms/Navbar"
+import SignUpForm from "components/organisms/SignUpForm"
 
 export default function SignUp() {
-  const [ref, { width }] = useMeasure<HTMLDivElement>()
-
-  const overlapWidth = (BREADCRUMB_START_IMAGE_WIDTH + BREADCRUMB_IMAGE_WIDTH * 3 - width) / 3
+  const [step, setStep] = useState(0)
 
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       <Navbar />
       <div className="relative z-20 pt-10 pb-6 -mt-4 bg-primary-300 rounded-t-2xl">
         <div className="container">
-          <div className="flex" ref={ref}>
-            <BreadcrumbItem index={0} overlapWidth={overlapWidth} icon={faKey} text="Sign Up" />
-            <BreadcrumbItem
-              index={1}
-              overlapWidth={overlapWidth}
-              icon={faUser}
-              text="Create Profile"
-            />
-            <BreadcrumbItem
-              index={2}
-              overlapWidth={overlapWidth}
-              icon={faList}
-              text="Input Listing"
-            />
-            <BreadcrumbItem
-              index={3}
-              overlapWidth={overlapWidth}
-              icon={faDoorOpen}
-              text="Availability"
-            />
-          </div>
+          <SignUpBreadcrumb step={step} />
         </div>
+      </div>
+      <div className="h-[5px] bg-white" />
+      <div className="flex flex-col flex-1 overflow-auto bg-primary-100">
+        <SignUpForm onSubmitSuccess={() => setStep(1)} />
+        <Footer />
       </div>
     </div>
   )

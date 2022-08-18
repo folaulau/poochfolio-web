@@ -1,5 +1,5 @@
-import Footer from "components/organisms/Footer"
 import LandingBusinessManagement from "components/organisms/LandingBusinessManagement"
+import LandingFooter from "components/organisms/LandingFooter"
 import LandingHeader from "components/organisms/LandingHeader"
 import LandingHowItWorks from "components/organisms/LandingHowItWorks"
 import LandingMarketplace from "components/organisms/LandingMarketplace"
@@ -16,7 +16,7 @@ export default function Landing() {
         <LandingBusinessManagement />
         <LandingHowItWorks />
         <LandingPoweredBy />
-        <Footer />
+        <LandingFooter />
       </div>
     </div>
   )
