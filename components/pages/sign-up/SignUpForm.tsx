@@ -2,11 +2,14 @@ import { faApple, faFacebookSquare, faGoogle } from "@fortawesome/free-brands-sv
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { ComponentProps } from "react"
 import { useForm } from "react-hook-form"
-import { validateEmail } from "utils"
 
-import Button from "components/atoms/Button"
-import Divider from "components/atoms/Divider"
-import InputControl from "components/molecules/InputControl"
+import Button from "@/components/atoms/Button"
+import Divider from "@/components/atoms/Divider"
+import InputControl from "@/components/molecules/InputControl"
+import useSignUp from "@/hooks/api/useSignUp"
+import { AuthWithEmailRequest } from "@/types/auth"
+import { toastError } from "@/utils/error"
+import { validateEmail } from "@/utils/validation"
 
 const SocialButton = (props: ComponentProps<"button">) => (
   <button
@@ -15,17 +18,15 @@ const SocialButton = (props: ComponentProps<"button">) => (
   />
 )
 
-interface FormValues {
-  email: string
-  password: string
+interface FormValues extends AuthWithEmailRequest {
   confirmPassword: string
 }
 
 interface Props {
-  onSubmitSuccess: () => void
+  onSuccess: () => void
 }
 
-export default function SignUpForm({ onSubmitSuccess }: Props) {
+export default function SignUpForm({ onSuccess }: Props) {
   const { control, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {
       email: "",
@@ -34,9 +35,10 @@ export default function SignUpForm({ onSubmitSuccess }: Props) {
     },
   })
   const password = watch("password")
+  const signUp = useSignUp()
 
-  const onSubmit = (values: FormValues) => {
-    onSubmitSuccess()
+  const onSubmit = ({ email, password }: FormValues) => {
+    signUp.mutate({ email, password }, { onSuccess, onError: toastError })
   }
 
   return (
@@ -64,7 +66,7 @@ export default function SignUpForm({ onSubmitSuccess }: Props) {
           label="Email Address"
           placeholder="Email Address"
           rules={{
-            required: "Email Address is required",
+            required: "Email address is required",
             validate: (value) => validateEmail(value) || "Invalid email address",
           }}
         />
@@ -90,7 +92,12 @@ export default function SignUpForm({ onSubmitSuccess }: Props) {
           }}
         />
 
-        <Button onClick={handleSubmit(onSubmit)} size="md" variant="shadowed-dark">
+        <Button
+          onClick={handleSubmit(onSubmit)}
+          size="md"
+          variant="shadowed-dark"
+          loading={signUp.isLoading}
+        >
           SIGN UP
         </Button>
       </div>

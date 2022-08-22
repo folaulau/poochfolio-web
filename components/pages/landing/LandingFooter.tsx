@@ -1,8 +1,8 @@
 import { faFacebookF, faInstagram, faLinkedin, faYoutube } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-import FooterTitle from "components/atoms/FooterTitle"
-import Logo from "components/atoms/Logo"
+import FooterTitle from "@/components/atoms/FooterTitle"
+import Logo from "@/components/atoms/Logo"
 
 export default function LandingFooter() {
   return (

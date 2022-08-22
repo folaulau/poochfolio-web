@@ -4,7 +4,7 @@ import { useMeasure } from "react-use"
 import BreadcrumbItem, {
   BREADCRUMB_IMAGE_WIDTH,
   BREADCRUMB_START_IMAGE_WIDTH,
-} from "components/atoms/BreadcrumbItem"
+} from "@/components/atoms/BreadcrumbItem"
 
 interface Props {
   step: number

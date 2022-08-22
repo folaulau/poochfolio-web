@@ -3,18 +3,7 @@
   "useTabs": false,
   "printWidth": 100,
   "semi": false,
-  "importOrder": [
-    "<THIRD_PARTY_MODULES>",
-    "^states/(.*)$",
-    "^hooks/(.*)$",
-    "^constants/(.*)$",
-    "^utils/(.*)$",
-    "^types/(.*)$",
-    "^styles/(.*)$",
-    "^components/(.*)$",
-    "^pages/(.*)$",
-    "^[./]"
-  ],
+  "importOrder": ["<THIRD_PARTY_MODULES>", "@/(.*)$", "^[./]"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true
 }

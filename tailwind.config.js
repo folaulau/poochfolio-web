@@ -5,6 +5,7 @@ module.exports = {
     colors: {
       primary: {
         100: "#F3F8FF",
+        150: "#F1F7FF",
         200: "#EBFDFF",
         300: "#E7F0FD",
         350: "#C9D9EF",
@@ -18,6 +19,7 @@ module.exports = {
       },
       gray: {
         200: "#A1A1A1",
+        300: "#9697A3",
         500: "#666666",
         550: "#626675",
         575: "#5B6C84",
@@ -62,6 +64,7 @@ module.exports = {
     boxShadow: {
       button: "0px 15px 20px #00A3CE26",
       breadcrumb: "0px 10px 15px #DFECFF",
+      "button-inset": "inset 3px 0.26px 18px #85D8E759",
     },
     extend: {},
   },

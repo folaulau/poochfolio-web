@@ -1,7 +1,7 @@
-import Button from "components/atoms/Button"
-import CheckedDescription from "components/molecules/CheckedDescription"
+import Button from "@/components/atoms/Button"
+import CheckedDescription from "@/components/molecules/CheckedDescription"
 
-export default function LandingMarketplace() {
+export default function Marketplace() {
   return (
     <div id="marketplace" className="container flex items-center gap-6 pt-4">
       <div className="flex-1">

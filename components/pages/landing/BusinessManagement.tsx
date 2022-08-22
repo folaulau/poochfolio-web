@@ -1,9 +1,9 @@
 import Link from "next/link"
 
-import Button from "components/atoms/Button"
-import CheckedDescription from "components/molecules/CheckedDescription"
+import Button from "@/components/atoms/Button"
+import CheckedDescription from "@/components/molecules/CheckedDescription"
 
-export default function LandingBusinessManagement() {
+export default function BusinessManagement() {
   return (
     <div id="business-management" className="container flex items-center pt-8 mt-12 gap-9">
       <div className="flex-1">

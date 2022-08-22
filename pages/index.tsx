@@ -1,21 +1,21 @@
-import LandingBusinessManagement from "components/organisms/LandingBusinessManagement"
-import LandingFooter from "components/organisms/LandingFooter"
-import LandingHeader from "components/organisms/LandingHeader"
-import LandingHowItWorks from "components/organisms/LandingHowItWorks"
-import LandingMarketplace from "components/organisms/LandingMarketplace"
-import LandingPoweredBy from "components/organisms/LandingPoweredBy"
-import Navbar from "components/organisms/Navbar"
+import Navbar from "@/components/organisms/Navbar"
+import BusinessManagement from "@/components/pages/landing/BusinessManagement"
+import HowItWorks from "@/components/pages/landing/HowItWorks"
+import LandingFooter from "@/components/pages/landing/LandingFooter"
+import LandingHeader from "@/components/pages/landing/LandingHeader"
+import Marketplace from "@/components/pages/landing/Marketplace"
+import PoweredBy from "@/components/pages/landing/PoweredBy"
 
 export default function Landing() {
   return (
     <div>
-      <Navbar />
+      <Navbar landingLinksVisible loginVisible signUpVisible />
       <div className="overflow-x-hidden">
         <LandingHeader />
-        <LandingMarketplace />
-        <LandingBusinessManagement />
-        <LandingHowItWorks />
-        <LandingPoweredBy />
+        <Marketplace />
+        <BusinessManagement />
+        <HowItWorks />
+        <PoweredBy />
         <LandingFooter />
       </div>
     </div>

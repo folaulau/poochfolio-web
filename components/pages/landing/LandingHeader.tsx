@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-import Button from "components/atoms/Button"
+import Button from "@/components/atoms/Button"
 
 export default function LandingHeader() {
   return (

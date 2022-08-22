@@ -1,9 +1,9 @@
 import Link from "next/link"
 
-import Button from "components/atoms/Button"
-import HowItWorksCard from "components/molecules/HowItWorksCard"
+import Button from "@/components/atoms/Button"
+import HowItWorksCard from "@/components/molecules/HowItWorksCard"
 
-export default function LandingHowItWorks() {
+export default function HowItWorks() {
   return (
     <div id="how-it-works" className="relative pt-8 mt-36">
       <img
