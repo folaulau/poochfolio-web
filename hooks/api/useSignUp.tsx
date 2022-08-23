@@ -1,14 +1,19 @@
 import { useMutation } from "@tanstack/react-query"
 import { AxiosError } from "axios"
-import { User, createUserWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword } from "firebase/auth"
 
-import { useApp } from "@/contexts/AppContext"
-import { useFirebase } from "@/contexts/FirebaseContext"
+import { useApiClientContext } from "@/contexts/ApiClientContext"
+import { useFirebaseContext } from "@/contexts/FirebaseContext"
 import { AuthResponse, AuthWithEmailRequest } from "@/types/auth"
 
+import useToken from "../useToken"
+import useUser from "../useUser"
+
 export default function useSignUp() {
-  const { auth } = useFirebase()
-  const { apiClient, setToken, setUser } = useApp()
+  const { auth } = useFirebaseContext()
+  const apiClient = useApiClientContext()
+  const { setToken } = useToken()
+  const { setUser } = useUser()
 
   return useMutation<AuthResponse, AxiosError, AuthWithEmailRequest>(
     async ({ email, password }) => {
@@ -23,6 +28,9 @@ export default function useSignUp() {
     {
       onSuccess({ token, ...rest }) {
         setToken(token)
+
+        console.log(rest)
+
         setUser(rest)
       },
     }

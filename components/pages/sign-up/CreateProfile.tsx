@@ -2,9 +2,10 @@ import { useState } from "react"
 import { usePlacesWidget } from "react-google-autocomplete"
 import { useForm } from "react-hook-form"
 
+import PhoneInputControl from "@/components/molecules/PhoneInputControl"
 import { GOOGLE_API_KEY } from "@/constants"
-import { useApp } from "@/contexts/AppContext"
 import useCreateProfile from "@/hooks/api/useCreateProfile"
+import useUser from "@/hooks/useUser"
 import { Draft } from "@/types"
 import { Address } from "@/types/address"
 import { User } from "@/types/user"
@@ -31,7 +32,7 @@ interface Props {
 }
 
 export default function CreateProfile({ onSuccess }: Props) {
-  const { control, handleSubmit, setValue, formState } = useForm<FormValues>({
+  const { control, handleSubmit, setValue, formState, getFieldState } = useForm<FormValues>({
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -42,7 +43,7 @@ export default function CreateProfile({ onSuccess }: Props) {
   })
   const [addressError, setAddressError] = useState("Address is required")
   const createProfile = useCreateProfile()
-  const { user } = useApp()
+  const { user, setUser } = useUser()
 
   const { ref } = usePlacesWidget({
     apiKey: GOOGLE_API_KEY,
@@ -64,12 +65,26 @@ export default function CreateProfile({ onSuccess }: Props) {
     createProfile.mutate(
       {
         uuid: user?.uuid!,
-        careServices: careServices.map((name) => ({ name })),
+        careServices: careServices.map((name) => ({
+          name,
+          smallPrice: 0,
+          serviceSmall: true,
+          mediumPrice: 0,
+          serviceMedium: true,
+          largePrice: 0,
+          serviceLarge: true,
+        })),
         address,
-        phoneNumber: Number(phoneNumber),
+        phoneNumber: Number(phoneNumber.replace(/\D/g, "")),
         ...rest,
       },
-      { onSuccess, onError: toastError }
+      {
+        onSuccess(data) {
+          setUser(data)
+          onSuccess()
+        },
+        onError: toastError,
+      }
     )
   }
 
@@ -97,10 +112,10 @@ export default function CreateProfile({ onSuccess }: Props) {
           placeholder="Business Name"
           rules={{ required: "Business name is required" }}
         />
-        <InputControl
+        <PhoneInputControl
           control={control}
           name="phoneNumber"
-          label="Phone Name"
+          label="Phone Number"
           placeholder="Phone Number"
           rules={{ required: "Phone number is required" }}
         />

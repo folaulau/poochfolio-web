@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query"
 import { AxiosError } from "axios"
 
-import { useApp } from "@/contexts/AppContext"
+import { useApiClientContext } from "@/contexts/ApiClientContext"
 import { Draft } from "@/types"
 import { Address } from "@/types/address"
 import { CareService } from "@/types/careService"
@@ -14,7 +14,7 @@ interface CreateProfileRequest
 }
 
 export default function useCreateProfile() {
-  const { apiClient } = useApp()
+  const apiClient = useApiClientContext()
 
   return useMutation<User, AxiosError, CreateProfileRequest>((variables) =>
     apiClient.put("/groomers/create-profile", variables).then((r) => r.data)

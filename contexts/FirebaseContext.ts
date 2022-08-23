@@ -5,7 +5,7 @@ import { useMemo } from "react"
 
 import { FIREBASE_CONFIG } from "@/constants"
 
-export const [FirebaseProvider, useFirebase] = constate(() => {
+export const [FirebaseProvider, useFirebaseContext] = constate(() => {
   const app = useMemo(() => initializeApp(FIREBASE_CONFIG), [])
 
   const auth = useMemo(() => getAuth(app), [app])
