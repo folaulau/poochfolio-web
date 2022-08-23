@@ -28,6 +28,7 @@ jobs:
       - name: Copy version to application and add build to GH outputs
         id: build-folder
         run: |
+          cp version.txt build/BUILD_ID
           cd build
           ls
           echo "::set-output name=dist-build::build"
