@@ -12,7 +12,7 @@ interface Props {
 
 export default function Navbar({ landingLinksVisible, loginVisible, signUpVisible }: Props) {
   return (
-    <nav className="bg-[url(/images/navbar.svg)] bg-center sticky top-0 z-10">
+    <nav className="sticky top-0 z-10 bg-center bg-primary-800">
       <div className="container flex pt-6 pb-10">
         <Logo />
 

@@ -20,9 +20,10 @@ import Input from "../../molecules/Input"
 import InputControl from "../../molecules/InputControl"
 import ToggleButtonsControl from "../../molecules/ToggleButtonsControl"
 
-interface FormValues extends Pick<User, "firstName" | "lastName" | "businessName" | "phoneNumber"> {
+interface FormValues extends Pick<User, "firstName" | "lastName" | "businessName"> {
   careServices: string[]
   address: Draft<Address> | null
+  phoneNumber: string
 }
 
 interface Props {
@@ -55,7 +56,7 @@ export default function CreateProfile({ onSuccess }: Props) {
     },
   })
 
-  const onSubmit = ({ careServices, address, ...rest }: FormValues) => {
+  const onSubmit = ({ careServices, address, phoneNumber, ...rest }: FormValues) => {
     if (!address) {
       return
     }
@@ -65,6 +66,7 @@ export default function CreateProfile({ onSuccess }: Props) {
         uuid: user?.uuid!,
         careServices: careServices.map((name) => ({ name })),
         address,
+        phoneNumber: Number(phoneNumber),
         ...rest,
       },
       { onSuccess, onError: toastError }

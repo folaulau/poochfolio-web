@@ -5,7 +5,7 @@ import CheckedDescription from "@/components/molecules/CheckedDescription"
 
 export default function BusinessManagement() {
   return (
-    <div id="business-management" className="container flex items-center pt-8 mt-12 gap-9">
+    <div id="business-management" className="container flex items-center pt-24 mt-12 gap-9">
       <div className="flex-1">
         <div className="text-16 font-900">MANAGEMENT</div>
         <h2 className="text-40 mt-1 font-900  max-w-[430px]">
@@ -17,7 +17,6 @@ export default function BusinessManagement() {
             <CheckedDescription>Pooch profile and intake form</CheckedDescription>
             <CheckedDescription>Client management</CheckedDescription>
             <CheckedDescription>Instant bookings</CheckedDescription>
-            <CheckedDescription>Pick-up drop-off API for kennels and groomers</CheckedDescription>
             <CheckedDescription>Machine learning SMS integration and automation</CheckedDescription>
             <CheckedDescription>Cloud storage and data security</CheckedDescription>
             <CheckedDescription>Payroll and Employee management</CheckedDescription>
@@ -31,7 +30,6 @@ export default function BusinessManagement() {
             <CheckedDescription>Stripe integration</CheckedDescription>
             <CheckedDescription>Text to pay</CheckedDescription>
             <CheckedDescription>Calendar integration</CheckedDescription>
-            <CheckedDescription>AI Capital - expand your business!</CheckedDescription>
           </div>
         </div>
 

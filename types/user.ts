@@ -10,7 +10,7 @@ export interface User {
   email: string
   emailVerified: boolean
   emailTemp: boolean
-  phoneNumber: string
+  phoneNumber: number
   phoneNumberVerified: boolean
   rating: number
   offeredPickUp: boolean

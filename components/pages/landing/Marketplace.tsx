@@ -3,7 +3,7 @@ import CheckedDescription from "@/components/molecules/CheckedDescription"
 
 export default function Marketplace() {
   return (
-    <div id="marketplace" className="container flex items-center gap-6 pt-4">
+    <div id="marketplace" className="container flex items-center gap-10 -mt-16">
       <div className="flex-1">
         <img src="/images/landing/marketplace.png" alt="" className="w-full" />
       </div>
