@@ -3,7 +3,7 @@ name: Build and deploy code to dev S3/Cloudfront
 on:
   push:
     branches:
-      - development
+      - dev2-techlead
 
 jobs:
   build:
