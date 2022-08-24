@@ -9,7 +9,7 @@ import InputListing from "./InputListing"
 import SignUpForm from "./SignUpForm"
 
 export default function SignUp() {
-  const [step, setStep] = useState(2)
+  const [step, setStep] = useState(0)
 
   return (
     <div className="flex flex-col h-screen">
