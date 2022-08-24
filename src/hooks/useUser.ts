@@ -1,6 +1,5 @@
 import { useCookies } from "react-cookie"
-
-import { User } from "@/types/user"
+import { User } from "types/user"
 
 export default function useUser() {
   const [cookies, setCookie] = useCookies(["user"])

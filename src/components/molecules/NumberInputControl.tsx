@@ -1,14 +1,15 @@
-import { AsYouType } from "libphonenumber-js"
 import { ComponentProps } from "react"
 import { FieldPath, FieldValues, UseControllerProps, useController } from "react-hook-form"
+import NumberFormat from "react-number-format"
 
 import Input from "./Input"
 
 interface Props<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>
   extends UseControllerProps<TFieldValues, TName>,
-    Omit<ComponentProps<typeof Input>, "defaultValue" | "name"> {}
+    Omit<ComponentProps<typeof NumberFormat>, "defaultValue" | "name">,
+    Pick<ComponentProps<typeof Input>, "variant"> {}
 
-export default function PhoneInputControl<
+export default function NumberInputControl<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>
 >({
@@ -21,7 +22,7 @@ export default function PhoneInputControl<
   ...props
 }: Props<TFieldValues, TName>) {
   const {
-    field: { value, onChange, ...field },
+    field: { value, onChange, onBlur },
     fieldState,
   } = useController({
     name,
@@ -32,19 +33,15 @@ export default function PhoneInputControl<
   })
 
   return (
-    <Input
-      {...props}
-      {...field}
+    <NumberFormat
+      customInput={Input}
+      onBlur={onBlur}
       value={value}
-      onChange={(e) => {
-        const newValue = new AsYouType("US").input(e.target.value)
-        if (value === newValue && newValue.endsWith(")")) {
-          onChange(newValue.slice(0, -1))
-        } else {
-          onChange(newValue)
-        }
+      onValueChange={(value) => {
+        onChange(value.value)
       }}
       error={fieldState.error?.message}
+      {...props}
     />
   )
 }

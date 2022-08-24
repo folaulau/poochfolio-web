@@ -3,6 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import classNames from "classnames"
 import { ComponentProps } from "react"
 
+import breadcrumbStartImage from "assets/images/breadcrumb-start.svg"
+import breadcrumbImage from "assets/images/breadcrumb.svg"
+
 export const BREADCRUMB_IMAGE_WIDTH = 469
 export const BREADCRUMB_START_IMAGE_WIDTH = 305
 
@@ -27,8 +30,9 @@ export default function BreadcrumbItem({ index, overlapWidth, icon, text, step }
     >
       {index <= step && (
         <img
-          src={`/images/${index === 0 ? "breadcrumb-start" : "breadcrumb"}.svg`}
+          src={index === 0 ? breadcrumbStartImage : breadcrumbImage}
           className="absolute -top-[14px] -left-6 max-w-none z-[-1]"
+          alt="breadcrumb"
         />
       )}
       <div

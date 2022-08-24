@@ -1,13 +1,15 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import React from "react"
 import ReactDOM from "react-dom/client"
-import App from "./App"
-import reportWebVitals from "./reportWebVitals"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import "./index.css"
 import { Toaster } from "react-hot-toast"
 
-import { ApiClientProvider } from "@/contexts/ApiClientContext"
-import { FirebaseProvider } from "@/contexts/FirebaseContext"
+import { ApiClientProvider } from "contexts/ApiClientContext"
+import { FirebaseProvider } from "contexts/FirebaseContext"
+
+import App from "./App"
+import "./index.css"
+import reportWebVitals from "./reportWebVitals"
+
 const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
@@ -17,9 +19,7 @@ root.render(
       <Toaster position="top-right" />
       <FirebaseProvider>
         <ApiClientProvider>
-          <div className="font-body text-gray-700 text-15 font-500 min-w-[1024px]">
-            <App />
-          </div>
+          <App />
         </ApiClientProvider>
       </FirebaseProvider>
     </QueryClientProvider>

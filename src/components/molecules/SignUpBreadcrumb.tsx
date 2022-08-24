@@ -1,10 +1,9 @@
 import { faDoorOpen, faKey, faList, faUser } from "@fortawesome/pro-regular-svg-icons"
-import { useMeasure } from "react-use"
-
 import BreadcrumbItem, {
   BREADCRUMB_IMAGE_WIDTH,
   BREADCRUMB_START_IMAGE_WIDTH,
-} from "@/components/atoms/BreadcrumbItem"
+} from "components/atoms/BreadcrumbItem"
+import { useMeasure } from "react-use"
 
 interface Props {
   step: number

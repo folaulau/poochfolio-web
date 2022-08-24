@@ -1,5 +1,5 @@
-import { Draft } from "@/types"
-import { Address } from "@/types/address"
+import { Draft } from "types"
+import { Address } from "types/address"
 
 export interface AddressComponent {
   long_name: string

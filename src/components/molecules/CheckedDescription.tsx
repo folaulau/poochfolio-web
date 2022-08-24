@@ -1,9 +1,11 @@
 import { PropsWithChildren } from "react"
 
+import Icon from "components/atoms/Icon"
+
 export default function CheckedDescription({ children }: PropsWithChildren<{}>) {
   return (
     <div className="flex items-start gap-5">
-      <img src="/icons/rounded-check.svg" alt="Check" />
+      <Icon name="RoundedCheck" />
       <div className="mt-[3px]">{children}</div>
     </div>
   )

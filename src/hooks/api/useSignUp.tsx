@@ -1,10 +1,9 @@
 import { useMutation } from "@tanstack/react-query"
 import { AxiosError } from "axios"
+import { useApiClientContext } from "contexts/ApiClientContext"
+import { useFirebaseContext } from "contexts/FirebaseContext"
 import { createUserWithEmailAndPassword } from "firebase/auth"
-
-import { useApiClientContext } from "@/contexts/ApiClientContext"
-import { useFirebaseContext } from "@/contexts/FirebaseContext"
-import { AuthResponse, AuthWithEmailRequest } from "@/types/auth"
+import { AuthResponse, AuthWithEmailRequest } from "types/auth"
 
 import useToken from "../useToken"
 import useUser from "../useUser"

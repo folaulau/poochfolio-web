@@ -1,8 +1,8 @@
-import Link from "next/link"
+import { Link } from "react-router-dom"
 
-import Button from "@/components/atoms/Button"
-import Logo from "@/components/atoms/Logo"
-import HeadsetIcon from "@/components/icons/HeadsetIcon"
+import Button from "components/atoms/Button"
+import Icon from "components/atoms/Icon"
+import Logo from "components/atoms/Logo"
 
 interface Props {
   landingLinksVisible?: boolean
@@ -38,14 +38,14 @@ export default function Navbar({ landingLinksVisible, loginVisible, signUpVisibl
               </Button>
             )}
             {signUpVisible && (
-              <Link href="/sign-up" passHref>
+              <Link to="/sign-up">
                 <Button variant="filled" size="sm">
                   Sign Up
                 </Button>
               </Link>
             )}
             <Button variant="outlined" size="sm">
-              <HeadsetIcon />
+              <Icon name="Headset" />
               Support
             </Button>
           </div>

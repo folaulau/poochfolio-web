@@ -1,9 +1,9 @@
 import axios from "axios"
 import constate from "constate"
+import { API_URL, X_API_KEY } from "consts"
 import { useMemo } from "react"
 
-import { API_URL, X_API_KEY } from "@/constants"
-import useToken from "@/hooks/useToken"
+import useToken from "hooks/useToken"
 
 export const [ApiClientProvider, useApiClientContext] = constate(() => {
   const { token } = useToken()
