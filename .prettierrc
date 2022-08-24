@@ -1,10 +1,20 @@
 {
-    "arrowParens": "always",
-    "semi": true,
-    "tabWidth": 2,
-    "printWidth": 100,
-    "singleQuote": true,
-    "trailingComma": "all",
-    "quoteProps": "preserve",
-    "endOfLine": "auto"
-  }
+  "tabWidth": 2,
+  "useTabs": false,
+  "printWidth": 100,
+  "semi": false,
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "^assets/(.*)$",
+    "^components/(.*)$",
+    "^consts/(.*)$",
+    "^contexts/(.*)$",
+    "^hooks/(.*)$",
+    "^pages/(.*)$",
+    "^types/(.*)$",
+    "^utils/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
