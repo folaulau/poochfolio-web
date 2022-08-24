@@ -1,5 +1,6 @@
 import { Switch } from "@headlessui/react"
 import classNames from "classnames"
+import { forwardRef } from "react"
 
 import Icon from "./Icon"
 
@@ -8,9 +9,9 @@ interface Props {
   onChange: (newVal: boolean) => void
 }
 
-export default function Toogle({ value, onChange }: Props) {
+const Toggle = forwardRef<HTMLButtonElement, Props>(({ value, onChange }, ref) => {
   return (
-    <Switch checked={value} onChange={onChange}>
+    <Switch ref={ref} checked={value} onChange={onChange}>
       <div className="w-[51px] h-[26px] relative">
         <Icon
           name={value ? "ToggleOn" : "ToggleOff"}
@@ -19,4 +20,6 @@ export default function Toogle({ value, onChange }: Props) {
       </div>
     </Switch>
   )
-}
+})
+
+export default Toggle
