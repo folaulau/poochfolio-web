@@ -7,26 +7,18 @@ import Dashboard from './pages/Dashboard';
 import Breadcrumbs from './components/Breadcrumbs';
 import Payments from './pages/dashboard/payments';
 import Login from './pages/Signin';
-import Signup from './pages/Signup';
+import Signup from './pages/Signup1';
 import ForgotPassword from './pages/forgotPassword';
 import BookingDetails from './pages/BookingDetailsPage';
 import MarketPlace from './pages/MarketPlace2';
 import Availability10 from './pages/Availability1';
-import LandingPage from './pages/LandingPage';
-
+import Landing from './pages/Landing';
 
 export default function PoochRoutes() {
- 
-
-
-
-
-
-
   return (
     <>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/signin" element={<Login />} />
         {/* <Route path="/signup" element={<Signup />} /> */}
         <Route path="/forgotpassword" element={<ForgotPassword />} />
