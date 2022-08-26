@@ -50,6 +50,16 @@ module.exports = {
         black: '#000000',
         transparent: 'transparent',
       },
+      fontSize: {
+        10: ['10px', 1],
+        12: ['12px', 1],
+        15: ['15px', 1],
+        16: ['16px', 1],
+        18: ['18px', 1],
+        40: ['40px', 1],
+        54: ['54px', 1],
+        60: ['60px', 1],
+      },
       fontFamily: {
         'Museo-Sans-Rounded-300': ['MuseoSansRounded-300'],
         'Museo-Sans-Rounded-500': ['MuseoSansRounded-500'],
