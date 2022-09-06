@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="82.56" height="46.06" viewBox="0 0 82.56 46.06">
+  <defs>
+    <filter id="BASE">
+      <feOffset dy="1" input="SourceAlpha" />
+      <feGaussianBlur stdDeviation="0.5" result="blur" />
+      <feFlood flood-opacity="0.38" result="color" />
+      <feComposite operator="out" in="SourceGraphic" in2="blur" />
+      <feComposite operator="in" in="color" />
+      <feComposite operator="in" in2="SourceGraphic" />
+    </filter>
+    <linearGradient id="linear-gradient" x1="0.5" y1="1" x2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff" />
+      <stop offset="1" stop-color="#ccc" />
+    </linearGradient>
+    <filter id="DIAL" x="36.5" y="0" width="46.06" height="46.06" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha" />
+      <feGaussianBlur stdDeviation="2.5" result="blur-2" />
+      <feFlood flood-opacity="0.651" />
+      <feComposite operator="in" in2="blur-2" />
+      <feComposite in="SourceGraphic" />
+    </filter>
+  </defs>
+  <g id="ON" transform="translate(-3194 -3523.5)">
+    <g data-type="innerShadowGroup">
+      <rect id="BASE-2" data-name="BASE" width="77" height="35" rx="17.5" transform="translate(3194 3526)" fill="#c5c5c5" />
+      <g transform="matrix(1, 0, 0, 1, 3194, 3523.5)" filter="url(#BASE)">
+        <rect id="BASE-3" data-name="BASE" width="77" height="35" rx="17.5" transform="translate(0 2.5)" fill="#fff" />
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 3194, 3523.5)" filter="url(#DIAL)">
+      <g id="DIAL-2" data-name="DIAL" transform="translate(44 4.5)" stroke="#707070" stroke-linejoin="round" stroke-width="2" fill="url(#linear-gradient)">
+        <circle cx="15.53" cy="15.53" r="15.53" stroke="none" />
+        <circle cx="15.53" cy="15.53" r="14.53" fill="none" />
+      </g>
+    </g>
+    <text id="OFF" transform="translate(3207 3549)" fill="#666" font-size="14" font-family="MuseoSans-300, 'Museo Sans \33 00'" font-weight="300">
+      <tspan x="0" y="0">OFF</tspan>
+    </text>
+  </g>
+</svg>

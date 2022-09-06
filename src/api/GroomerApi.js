@@ -28,7 +28,7 @@ const GroomerApi = {
         };
         return instance.put('/groomers/create-profile', JSON.stringify(groomer), options);
     },
-    createUpdateListings: (groomer) => {
+    createListings: (groomer) => {
 
         const options = {
             headers: {
@@ -37,6 +37,25 @@ const GroomerApi = {
             }
         };
         return instance.put('/groomers/create-listing', JSON.stringify(groomer), options);
+    },
+    createAvailability: (groomer) => {
+         const options = {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': localStorage.getItem("poochToken")
+            }
+        };
+         return instance.put('/groomers/availability', JSON.stringify(groomer), options);
+    },
+    updateListings: (groomer) => {
+
+        const options = {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': localStorage.getItem("poochToken")
+            }
+        };
+        return instance.put('/groomers/update-listing', JSON.stringify(groomer), options);
     },
     updateProfile: (groomer) => {
 
@@ -77,7 +96,73 @@ const GroomerApi = {
             }
         };
         return instance.post(`/groomers/${uuid}/contract/documents`, formdata, options);
-    }
+    },
+    acceptBooking: (bookingUuid) => {
+        const putBody = {
+            uuid: bookingUuid, // booking uuid
+            approved: true,
+            note: "Accepted",
+          };
+        const options = {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': localStorage.getItem("poochToken")
+            }
+        };
+        return instance.put(`bookings/groomer/approval`, JSON.stringify(putBody), options);
+    },
+    cancelBooking: (bookingUuid) => {
+        const putBody = {
+            uuid: bookingUuid, // booking uuid 
+            reason: "Cancelled by groomer",
+          };
+        const options = {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': localStorage.getItem("poochToken")
+            }
+        };
+        return instance.put(`bookings/cancel`, JSON.stringify(putBody), options);
+    },
+    checkin: (bookingUuid, groomerUuid) => {
+        const putBody = {
+            groomerUuid: groomerUuid, // groomer uuid
+            uuid: bookingUuid, // booking uuid
+          };
+        const options = {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': localStorage.getItem("poochToken")
+            }
+        };
+        return instance.put(`bookings/checkin`, JSON.stringify(putBody), options);
+    },
+    checkout: (bookingUuid, groomerUuid) => {
+        const putBody = {
+            groomerUuid: groomerUuid, // groomer uuid
+            uuid: bookingUuid, // booking uuid
+          };
+        const options = {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': localStorage.getItem("poochToken")
+            }
+        };
+        return instance.put(`bookings/checkout`, JSON.stringify(putBody), options);
+    },
+    updateSettings: (bookingUuid, groomerUuid) => {
+        const putBody = {
+            groomerUuid: groomerUuid, // groomer uuid
+            uuid: bookingUuid, // booking uuid
+          };
+        const options = {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': localStorage.getItem("poochToken")
+            }
+        };
+        return instance.put(`groomers/settings`, JSON.stringify(putBody), options);
+    },
 }
 
 export default GroomerApi;

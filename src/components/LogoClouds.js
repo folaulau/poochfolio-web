@@ -19,9 +19,6 @@ export default function LogoClouds() {
         <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
           <img className="h-10" src="/intuit.svg" alt="Intuit" />
         </div>
-        <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-          <img className="h-10" src="/docusign.svg" alt="Docusign" />
-        </div>
       </div>
     </div>
   );

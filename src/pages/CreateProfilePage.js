@@ -6,7 +6,8 @@ import { services } from "../data/services";
 import { useNavigate } from "react-router-dom";
 import GroomerApi from "../api/GroomerApi";
 import GroomerGraphql from "../graphql/GroomerGraphQL";
-
+import styled from 'styled-components';
+import { Museosansrounded500NormalGraniteGra } from '../styledMixins';
 const CreateProfilePage = () => {
   let navigate = useNavigate();
 
@@ -14,17 +15,17 @@ const CreateProfilePage = () => {
     {
       name: "Grooming",
       uuid: "",
-      selected: true,
+      selected: false,
     },
     {
       name: "Dog Daycare",
       uuid: "",
-      selected: true,
+      selected: false,
     },
     {
       name: "Overnight",
       uuid: "",
-      selected: true,
+      selected: false,
     },
     // {
     //   name: "Pick up/Drop off",
@@ -33,12 +34,22 @@ const CreateProfilePage = () => {
     // },
   ]);
 
+  const [phoneNumber, setPhoneNumber] = useState(null)
+const formatPhoneNumberForUpload = (number) => {
+  var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+  if (phoneRegex.test(number)) {
+    const secondCheckPhoneNumber = number?.replace(phoneRegex, '$1$2$3');
+    return secondCheckPhoneNumber;
+  } else {
+    // alert('Please enter a valid phone number');
+  }
+};
+  console.log(formatPhoneNumberForUpload(phoneNumber))
   const [groomerInfo, setGroomerInfo] = useState({
     uuid: localStorage.getItem("uuid"),
     firstName: "",
     lastName: "",
     businessName: "",
-    phoneNumber: "",
     signUpStatus: "ADD_SERVICES",
   });
 
@@ -60,7 +71,6 @@ const CreateProfilePage = () => {
     loadProfile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   const loadProfile = () => {
     GroomerGraphql.getOnlyProfile()
       .then((response) => {
@@ -150,6 +160,7 @@ const CreateProfilePage = () => {
         return careService.selected;
       }),
       address: address,
+      phoneNumber: formatPhoneNumberForUpload(phoneNumber),
     };
 
     GroomerApi.createUpdateProfile(putBody)
@@ -188,119 +199,179 @@ const CreateProfilePage = () => {
       [e.target.name]: e.target.value,
     });
   };
-
+const handlePhone = e => {
+  setPhoneNumber(e.target.value)
+}
   return (
-    <form onSubmit={handleSubmit} className="pt-16 bg-[#f3f8ff]">
-      <section className="grid grid-cols-1 sm:grid-cols-2 justify-center my-12 sm:gap-x-8 md:max-w-3xl mx-auto w-1/2">
-        <Input
-          labelText="First Name"
-          placeholderText="John"
-          type="name"
-          name="firstName"
-          handleChange={handleChange}
-          value={groomerInfo.firstName}
-          required={true}
-        />
-        <Input
-          labelText="Last Name"
-          placeholderText="Doe"
-          type="name"
-          name="lastName"
-          handleChange={handleChange}
-          value={groomerInfo.lastName}
-          required={true}
-        />
-        <Input
-          labelText="Business Name"
-          placeholderText="John Corporations"
-          type="name"
-          name="businessName"
-          handleChange={handleChange}
-          value={groomerInfo.businessName}
-          required={true}
-        />
-        <Input
-          labelText="Phone Number"
-          placeholderText="123-45-6789"
-          type="tel"
-          name="phoneNumber"
-          handleChange={handleChange}
-          value={groomerInfo.phoneNumber}
-          required={true}
-        />
-        <div className="mb-5 sm:col-span-2">
-          <label
-            htmlFor="name"
-            className="text-[15px] text-[#666666] ml-2 font-Museo-Sans-Rounded-700"
-          >
-            Address
-          </label>
-          <div className="mt-3.5">
-            <Autocomplete
-              type="address"
-              name="name"
-              id="name"
-              defaultValue={addressAsLine}
-              ref={addressUuidInput}
-              required={true}
-              className="shadow-sm block w-full p-3 rounded-full text-[15px] text-[#a1a1a1] font-Museo-Sans-Rounded-500 bg-red-[#f1f7ff]"
-              apiKey="AIzaSyCWPe0Y1xqKVM4mMNqMxNYwSsmB5dsg-lk"
-              onPlaceSelected={(place, inputRef, autocomplete) =>
-                updateAddress(place)
-              }
-              style={{ border: "1px solid #85d8e7", color: "black" }}
-              options={{
-                types: ["address"],
-              }}
-            />
-          </div>
-        </div>
-      </section>
-      <section className="flex flex-col justify-center items-center w-1/2 mx-auto">
-        <h4>Which Services does your business offer</h4>
-        <div className="my-8 md:flex md:flex-row">
-          {services.map((service) => {
-            let careService = careServices.find(
-              (careService) => careService.name === service.name
-            );
-
-            const isSelected = careService.selected;
-
-            return (
-              <button
-                type="button"
-                key={service.name}
-                style={{ boxShadow: "inset 0px 0px 15px #81d6e6" }}
-                className={`w-40 h-[68px] rounded-xl border ${
-                  isSelected ? "bg-[#95e8f7]" : "bg-[#f1f7ff]"
-                }  flex justify-center items-center gap-x-3 m-1`}
-                onClick={() => toggleCareService(careService)}
-              >
-                <service.icon
-                  className={`${
-                    isSelected ? "text-[#077997]" : "text-[#9697a3]"
-                  } h-8 w-8`}
-                />
-                <span
-                  className={`${
-                    isSelected ? "text-[#077997]" : "text-[#9697a3]"
-                  } `}
-                >
-                  {service.name}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-        <button
-          type="submit"
-          className="w-1/2 justify-center inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997] mb-8"
+    <>
+      <form
+        onSubmit={handleSubmit}
+        className="pt-4 bg-[#f3f8ff]"
+        style={{
+          borderWidth: 5,
+          borderLeftColor: 'transparent',
+          borderRightColor: 'transparent',
+          borderBottomColor: 'transparent',
+          borderTopColor: '#FFFFFF',
+        }}
+      >
+        <section
+          className="grid grid-cols-1 sm:grid-cols-2 justify-center my-12 sm:gap-x-8 md:max-w-3xl mx-auto w-1/2"
+          style={{ marginBottom: '41.97px' }}
         >
-          Continue
-        </button>
-      </section>
-    </form>
+          <Input
+            labelText="First Name"
+            placeholderText="John"
+            type="name"
+            name="firstName"
+            handleChange={handleChange}
+            value={groomerInfo.firstName}
+            required={true}
+          />
+          <Input
+            labelText="Last Name"
+            placeholderText="Doe"
+            type="name"
+            name="lastName"
+            handleChange={handleChange}
+            value={groomerInfo.lastName}
+            required={true}
+          />
+          <Input
+            labelText="Business Name"
+            placeholderText="John Corporations"
+            type="name"
+            name="businessName"
+            handleChange={handleChange}
+            value={groomerInfo.businessName}
+            required={true}
+          />
+          <Input
+            labelText="Phone Number"
+            placeholderText="123-45-6789"
+            type="tel"
+            name="phoneNumber"
+            handleChange={handlePhone}
+            value={phoneNumber}
+            required={true}
+          />
+          <div className="mb-5 sm:col-span-2">
+            <label
+              htmlFor="name"
+              className="text-[15px] text-[#666666] ml-2 font-Museo-Sans-Rounded-700"
+            >
+              Address
+            </label>
+            <div className="mt-3.5">
+              <Autocomplete
+                type="address"
+                name="name"
+                id="name"
+                defaultValue={addressAsLine}
+                ref={addressUuidInput}
+                required={true}
+                className="shadow-sm block w-full p-3 rounded-full text-[15px] text-[#a1a1a1] font-Museo-Sans-Rounded-500 bg-red-[#f1f7ff]"
+                apiKey="AIzaSyCWPe0Y1xqKVM4mMNqMxNYwSsmB5dsg-lk"
+                onPlaceSelected={(place, inputRef, autocomplete) => updateAddress(place)}
+                style={{
+                  border: '2px solid #85d8e7',
+                  color: 'black',
+                  height: '58.3px',
+                  width: '729.29px',
+                }}
+                options={{
+                  types: ['address'],
+                }}
+              />
+            </div>
+          </div>
+        </section>
+        <section className="flex flex-col justify-center items-center w-1/2 mx-auto">
+          <h4>Which Services does your business offer</h4>
+          <div className="my-4 md:flex md:flex-row">
+            {services.map((service) => {
+              let careService = careServices.find(
+                (careService) => careService.name === service.name,
+              );
+
+              const isSelected = careService.selected;
+
+              return (
+                <button
+                  type="button"
+                  key={service.name}
+                  style={{
+                    boxShadow: 'inset 0px 0px 15px #81d6e6',
+                    width: '158.94px',
+                    marginRight: '31.06px',
+                  }}
+                  className={`w-40 h-[66.94px] rounded-xl border ${
+                    isSelected ? 'bg-[#95e8f7]' : 'bg-[#f1f7ff]'
+                  }  flex justify-center items-center gap-x-3 m-1`}
+                  onClick={() => toggleCareService(careService)}
+                >
+                  <service.icon
+                    className={`${isSelected ? 'text-[#077997]' : 'text-[#9697a3]'} h-8 w-8`}
+                  />
+                  <span className={`${isSelected ? 'text-[#077997]' : 'text-[#9697a3]'} `}>
+                    {service.name}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+          <button
+            type="submit"
+            className="w-1/2 justify-center inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#077997] hover:bg-[#077997] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#077997] mb-8"
+            style={{ marginTop: '34.16px', width: '544.62px', height: '56.48px' }}
+          >
+            Continue
+          </button>
+        </section>
+      </form>
+      <Powered>
+        <PoochTechnologiesInc>Pooch Technologies Inc</PoochTechnologiesInc>
+        <PrivacyPolicyTermsOfUse>
+          Privacy Policy&nbsp;&nbsp;|&nbsp;&nbsp; Terms of Use
+        </PrivacyPolicyTermsOfUse>
+      </Powered>
+    </>
   );
 };
 
+
+const Powered = styled.div`
+  ${Museosansrounded500NormalGraniteGra}
+  position: absolute;
+  width: 100%;
+  height: 42px;
+  bottom: -300px;
+  // left: 3038px;
+  top: 948px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-color: var(--lily-white);
+`;
+
+const PoochTechnologiesInc = styled.div`
+  // margin-bottom: -30.5px;
+  width: 122px;
+  height: 25px;
+  margin-left: 175px;
+  letter-spacing: 0.5px;
+  // line-height: 100px;
+  white-space: nowrap;
+`;
+
+const PrivacyPolicyTermsOfUse = styled.p`
+  // margin-bottom: -30.5px;
+  width: 153px;
+  height: 25px;
+  margin-right: 177.5px;
+  text-align: right;
+  letter-spacing: 0.5px;
+  // line-height: 100px;
+  white-space: nowrap;
+`;
 export default CreateProfilePage;
