@@ -206,18 +206,27 @@ const handleGroomerOccupancy = (value) => {
   };
 
   const handleServicePrice = (e, serviceName, serviceSize) => {
-    // const updatedPrices = careServices.map((item) => ({
-    //   ...item,
-    //   [e.target.name]: serviceName === item.name ? e.target.value : item[e.target.name],
-    // }));
-    const updatedPrices = careServices.map(item => {
-      if(serviceName === item.name ){
-        item[e.target.name] = e.target.value 
-        item[serviceSize] = true
+    if(e.target.value.includes('$')) {
+      if(!isNaN(e.target.value.substring(1))) {
+        const updatedPrices = careServices.map(item => {
+          if(serviceName === item.name ){
+              item[e.target.name] = Number(e.target.value.substring(1))
+              item[serviceSize] = true
+          }
+          return item
+        });
+        setCareServices(updatedPrices);
       }
-      return item
-    });
-    setCareServices(updatedPrices);
+    } else if(!isNaN(e.target.value)) {
+      const updatedPrices = careServices.map(item => {
+        if(serviceName === item.name ){
+            item[e.target.name] = Number(e.target.value)
+            item[serviceSize] = true
+        }
+        return item
+      });
+      setCareServices(updatedPrices);
+    }
   };
 
   const handleServiceTypes = (e) => {
@@ -292,13 +301,13 @@ const handleGroomerOccupancy = (value) => {
        
       >
         <div className=" mt-12">
-          <div className="py-2 " style={{ width: '729.57px', height: '195.91px', marginBottom: 8 }}>
+          <div className="py-2 " style={{ width: '729.57px', marginBottom: 8 }}>
             <div
-              className="overflow-x-scroll ring-1 ring-gray-300 rounded-xl"
-              style={{ width: '729.57px', height: '195.91px', boxShadow: '0px 10px 15px #DFECFF' }}
+              className="ring-1 ring-gray-300"
+              style={{ width: '729.57px', boxShadow: '0px 10px 15px #DFECFF', borderRadius: 25 }}
             >
-              <table className="min-w-full bg-white">
-                <thead className="border-b" style={{ boxShadow: '0px 1px 10px #c9d9ef' }}>
+              <table className="min-w-full bg-white" style={{ borderRadius: 25 }}>
+                <thead className="border-b" style={{ boxShadow: '0px 1px 10px #c9d9ef', borderRadius: '25px 25px 0px 0px' }}>
                   <tr>
                     <th
                       scope="col"
@@ -310,13 +319,13 @@ const handleGroomerOccupancy = (value) => {
                       scope="col"
                       className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                     >
-                      Small 1-20 lbs
+                      Small 1-19 lbs
                     </th>
                     <th
                       scope="col"
                       className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                     >
-                      Medium 20-40 lbs
+                      Medium 20-39 lbs
                     </th>
                     <th
                       scope="col"
@@ -340,31 +349,31 @@ const handleGroomerOccupancy = (value) => {
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         <input
-                          type="number"
+                          type="text"
                           name="smallPrice"
                           required={true}
-                          value={service.smallPrice != null ? service.smallPrice : ''}
-                          className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
+                          value={service.smallPrice != null ? "$" + service.smallPrice : ''}
+                          className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold border-[#EBFDFF]"
                           onChange={(e) => handleServicePrice(e, service.name, 'serviceSmall')}
                         />
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         <input
-                          type="number"
+                          type="text"
                           name="mediumPrice"
                           required={true}
-                          value={service.mediumPrice != null ? service.mediumPrice : ''}
-                          className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
+                          value={service.mediumPrice != null ? "$" + service.mediumPrice : ''}
+                          className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold border-[#EBFDFF]"
                           onChange={(e) => handleServicePrice(e, service.name, 'serviceMedium')}
                         />
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         <input
-                          type="number"
+                          type="text"
                           name="largePrice"
                           required={true}
-                          value={service.largePrice != null ? service.largePrice : ''}
-                          className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold"
+                          value={service.largePrice != null ? "$" + service.largePrice : ''}
+                          className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold border-[#EBFDFF]"
                           onChange={(e) => handleServicePrice(e, service.name, 'serviceLarge')}
                         />
                       </td>
@@ -378,7 +387,7 @@ const handleGroomerOccupancy = (value) => {
                         onClick={() => setOpen(true)}
                       >
                         <PlusCircleIcon className="h-7 w-7 text-[#077997]" />
-                        <span>Add Services</span>
+                        <span className="text-[#077997]">Add Services</span>
                       </button>
                     </td>
                   </tr>
@@ -388,8 +397,8 @@ const handleGroomerOccupancy = (value) => {
           </div>
         </div>
         <div
-          className="w-1/2 mt-6 bg-white ring-1 ring-1 ring-gray-300 rounded-xl"
-          style={{ width: '729.57px', boxShadow: '0px 10px 15px #DFECFF' }}
+          className="w-1/2 mt-6 bg-white ring-gray-300 rounded-xl"
+          style={{ width: '729.57px', boxShadow: '0px 10px 15px #DFECFF', borderRadius: 25 }}
         >
           <div className="flex pt-8 px-7 justify-between">
             <h1 className="uppercase text-[#2a8ca6] font-bold">Instant Booking</h1>
@@ -400,14 +409,14 @@ const handleGroomerOccupancy = (value) => {
                 instantBooking ? 'bg-toggle-green' : 'bg-gray-200',
                 'relative inline-flex flex-shrink-0 h-6 w-14 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-3 focus:ring-indigo-500',
               )}
-              style={{ width: '77px', height: '35px' }}
+              style={{ width: '77px', height: '35px', transform: 'rotate(180deg)' }}
             >
               {instantBooking ? (
                 <span
                   className="text-center ml-1 text-sm text-pooch-blue-2"
                   style={{ alignSelf: 'center', paddingLeft: 4 }}
                 >
-                  ON
+                  NO
                 </span>
               ) : (
                 <span className="sr-only"></span>
@@ -423,7 +432,7 @@ const handleGroomerOccupancy = (value) => {
             </Switch>
           </div>
           <div className="flex py-8 px-7 justify-between">
-            <h1>Do You Offer Pick Up Services?</h1>
+            <h1 className=" text-[#666666] font-Museo-Sans-Rounded-700">Do You Offer Pick Up Services?</h1>
             <fieldset>
               <legend className="sr-only">Do You Offer Pick Up Services?</legend>
               <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
@@ -435,12 +444,12 @@ const handleGroomerOccupancy = (value) => {
                       value={pickUpService.value}
                       checked={pickDrop.offeredPickUp === pickUpService.value}
                       onChange={handlePickDrop}
-                      className="focus:ring-[#077997] h-4 w-4 text-[#077997] border-gray-300"
-                      style={{ height: '26px', width: '28px' }}
+                      className="focus:ring-[#077997] focus:ring-1 h-4 w-4 text-[#077997] border-[#077997]"
+                      style={{ height: '24px', width: '26px', borderRadius: 5 }}
                     />
                     <label
                       htmlFor={pickUpService.id}
-                      className="ml-3 block text-sm font-medium text-gray-700"
+                      className="ml-3 block text-sm  text-[#666666] font-Museo-Sans-Rounded-700"
                     >
                       {pickUpService.title}
                     </label>
@@ -450,7 +459,7 @@ const handleGroomerOccupancy = (value) => {
             </fieldset>
           </div>
           <div className="flex pb-8 px-7 justify-between">
-            <h1>Do You Offer Drop Off Services?</h1>
+            <h1 className=" text-[#666666] font-Museo-Sans-Rounded-700">Do You Offer Drop Off Services?</h1>
             <fieldset>
               <legend className="sr-only">Do You Offer Drop Off Services?</legend>
               <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
@@ -462,12 +471,12 @@ const handleGroomerOccupancy = (value) => {
                       value={dropOffService.value}
                       checked={pickDrop.offeredDropOff === dropOffService.value}
                       onChange={handlePickDrop}
-                      className="focus:ring-[#077997] h-4 w-4 text-[#077997] border-gray-300"
-                      style={{ height: '26px', width: '28px' }}
+                      className="focus:ring-[#077997] focus:ring-1 h-4 w-4 text-[#077997] border-[#077997]"
+                      style={{ height: '24px', width: '26px', borderRadius: 5 }}
                     />
                     <label
                       htmlFor={dropOffService.id}
-                      className="ml-3 block text-sm font-medium text-gray-700"
+                      className="ml-3 block text-sm text-[#666666] font-Museo-Sans-Rounded-700"
                     >
                       {dropOffService.title}
                     </label>
@@ -477,7 +486,7 @@ const handleGroomerOccupancy = (value) => {
             </fieldset>
           </div>
           <div className="flex pb-8 px-7 justify-between">
-            <h1>How Much Do You Charge Per Mile?</h1>
+            <h1 className=" text-[#666666] font-Museo-Sans-Rounded-700">How Much Do You Charge Per Mile?</h1>
             <input
               type="number"
               className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold border border-[#81d6e6]"
@@ -490,7 +499,7 @@ const handleGroomerOccupancy = (value) => {
         </div>
         <div style={{ width: '729.57px' }}>
           <div className="flex py-8 justify-between">
-            <h1>What is the Maximum Occupancy at Your Business?</h1>
+            <h1 className=" text-[#666666] font-Museo-Sans-Rounded-700">What is the Maximum Occupancy at Your Business?</h1>
             <h1 className="text-[#077977] font-bold">{groomerInfo.numberOfOccupancy}</h1>
           </div>
 
@@ -515,12 +524,12 @@ const handleGroomerOccupancy = (value) => {
             }}
           />
           <div className="flex py-8 justify-between">
-            <h1>1 Dog</h1>
-            <h1>200 Dogs</h1>
+            <h1 className=" text-[#666666] font-Museo-Sans-Rounded-700" style={{ fontSize: 12 }}>1 Dog</h1>
+            <h1 className=" text-[#666666] font-Museo-Sans-Rounded-700" style={{ fontSize: 12 }}>200 Dogs</h1>
           </div>
         </div>
         <div className="mb-6 mt-6" style={{ width: '729.57px', height: '122.3px' }}>
-          <h1>Description</h1>
+          <h1 className=" text-[#666666] font-Museo-Sans-Rounded-700">Description</h1>
           <textarea
             className="w-full rounded-2xl border, mt-2  border-[#81d6e6] bg-inherit pt-6 pl-8"
             onChange={handleGroomerInfoChange}

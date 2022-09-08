@@ -118,17 +118,17 @@ const Availability1 = () => {
       operateSunday: false,
     },
   ]);
-  const [selectedClosingHour, setSelectedClosingHour] = useState(nightOptions[0].label);
-  const [selectedOpeningHour, setSelectedOpeningHour] = useState(options[0].label);
+  const [selectedClosingHour, setSelectedClosingHour] = useState(nightOptions[4].label);
+  const [selectedOpeningHour, setSelectedOpeningHour] = useState(options[8].label);
   const [openingHour, setOpeningHour] = useState(null);
   const [closingHour, setClosingHour] = useState(null);
   const [operateMondayHours, setOperateMondayHours] = useState(false);
-const [operateTuesdayHours, setOperateTuesdayHours] = useState(false);
-const [operateWednesdayHours, setOperateWednesdayHours] = useState(false);
-const [operateThursdayHours, setOperateThursdayHours] = useState(false);
-const [operateFridayHours, setOperateFridayHours] = useState(false);
-const [operateSaturdayHours, setOperateSaturdayHours] = useState(false);
-const [operateSundayHours, setOperateSundayHours] = useState(false);
+  const [operateTuesdayHours, setOperateTuesdayHours] = useState(false);
+  const [operateWednesdayHours, setOperateWednesdayHours] = useState(false);
+  const [operateThursdayHours, setOperateThursdayHours] = useState(false);
+  const [operateFridayHours, setOperateFridayHours] = useState(false);
+  const [operateSaturdayHours, setOperateSaturdayHours] = useState(false);
+  const [operateSundayHours, setOperateSundayHours] = useState(false);
   const [groomerInfo, setGroomerInfo] = useState({
     uuid: localStorage.getItem('uuid'),
     firstName: '',
@@ -138,7 +138,7 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
     signUpStatus: 'ADD_SERVICES',
   });
 
-  const [ setAddress] = useState({
+  const [setAddress] = useState({
     uuid: '',
     street: '',
     city: '',
@@ -153,9 +153,9 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
 
   const [setAddressAsLine] = useState('');
   const addressUuidInput = useRef(null);
- 
+
   useEffect(() => {
-    loadProfile();
+    // loadProfile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -177,9 +177,9 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
     thursdays: 'Thursdays',
     fridays: 'Fridays',
     saturdays: 'Saturdays',
- 
+
     youCanCustomizeYourHoursLater: 'You can customize your hours later',
-   
+
   };
 
   const loadProfile = () => {
@@ -207,8 +207,9 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
            */
           let selctedCareServices = careServices.map((careService) => {
             let groomerCareService = groomerCareServices.find(
-              (groomerCareService) => careService.name === groomerCareService.name,
+              (groomerCare) => careService.name === groomerCare.name,
             );
+            console.log("groomerCareService : ", groomerCareServices, careService)
             if (groomerCareService === undefined) {
               careService['selected'] = false;
               return careService;
@@ -218,7 +219,7 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
               return careService;
             }
           });
-
+          console.log("selctedCareServices : ", selctedCareServices )
           setCareServices(selctedCareServices);
         }
 
@@ -235,12 +236,12 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
         ) {
           setAddressAsLine(
             mainAddress.street +
-              ', ' +
-              mainAddress.city +
-              ', ' +
-              mainAddress.state +
-              ' ' +
-              mainAddress.zipcode,
+            ', ' +
+            mainAddress.city +
+            ', ' +
+            mainAddress.state +
+            ' ' +
+            mainAddress.zipcode,
           );
         }
       })
@@ -257,24 +258,24 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
       if (careService.name === cs.name && careService.name === 'Monday') {
         setOperateMondayHours(true);
       }
-       if (careService.name === cs.name && careService.name === 'Tuesday') {
-         setOperateTuesdayHours(true);
-       }
-        if (careService.name === cs.name && careService.name === 'Wednesday') {
-          setOperateWednesdayHours(true);
-        }
-         if (careService.name === cs.name && careService.name === 'Thursday') {
-           setOperateThursdayHours(true);
-         }
-          if (careService.name === cs.name && careService.name === 'Friday') {
-            setOperateFridayHours(true);
-          }
-           if (careService.name === cs.name && careService.name === 'Saturday') {
-             setOperateSaturdayHours(true);
-           }
-            if (careService.name === cs.name && careService.name === 'Sunday') {
-              setOperateSundayHours(true);
-            }
+      if (careService.name === cs.name && careService.name === 'Tuesday') {
+        setOperateTuesdayHours(true);
+      }
+      if (careService.name === cs.name && careService.name === 'Wednesday') {
+        setOperateWednesdayHours(true);
+      }
+      if (careService.name === cs.name && careService.name === 'Thursday') {
+        setOperateThursdayHours(true);
+      }
+      if (careService.name === cs.name && careService.name === 'Friday') {
+        setOperateFridayHours(true);
+      }
+      if (careService.name === cs.name && careService.name === 'Saturday') {
+        setOperateSaturdayHours(true);
+      }
+      if (careService.name === cs.name && careService.name === 'Sunday') {
+        setOperateSundayHours(true);
+      }
 
       return cs;
     });
@@ -313,8 +314,8 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
     GroomerApi.createAvailability(putBody)
       .then((response) => {
         console.log('Success:', response);
-        if(response.status  === 200) {
-         navigate('/dashboard');
+        if (response.status === 200) {
+          navigate('/dashboard');
         }
         else {
           return
@@ -372,7 +373,7 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
                   <div className="my-4 md:flex md:flex-row">
                     {days.map((service) => {
                       let careService = careServices.find(
-                        (careService) => careService.name === service.name,
+                        (care) => care.name === service.name,
                       );
 
                       const isSelected = careService.selected;
@@ -388,9 +389,8 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
                             marginRight: '31.06px',
                             flexDirection: 'column',
                           }}
-                          className={`w-40 h-[66.94px] rounded-xl border ${
-                            isSelected ? 'bg-[#95e8f7]' : 'bg-[#f1f7ff]'
-                          }  flex justify-center items-center gap-x-2 m-1`}
+                          className={`w-40 h-[66.94px] rounded-xl border ${isSelected ? 'bg-[#95e8f7]' : 'bg-[#f1f7ff]'
+                            }  flex justify-center items-center gap-x-2 m-1`}
                           onClick={() => toggleCareService(careService)}
                         >
                           {isSelected ? (
@@ -407,7 +407,7 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
                             />
                           )}
                           <span className={`${isSelected ? 'text-[#077997]' : 'text-[#9697a3]'} `}>
-                      
+
                             {service.name}
                           </span>
                         </button>
@@ -446,7 +446,6 @@ const Powered = styled.div`
   width: 100%;
   height: 42px;
   top: 1129px;
-  // left: 3038px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -480,7 +479,6 @@ const AvailableHours = styled.div`
   min-height: 24px;
   margin-left: 4.93px;
   letter-spacing: 0;
-  line-height: 91.4px;
   white-space: nowrap;
 `;
 
@@ -509,7 +507,6 @@ const OverlapGroup2 = styled.div`
   width: 966px;
   height: 165px;
   position: relative;
-  margin-top: 26px;
 `;
 
 const YouCanCustomizeYourHoursLater = styled.p`
@@ -589,7 +586,6 @@ const AvailablesDays = styled.div`
   min-height: 24px;
   margin-left: 1.36px;
   letter-spacing: 0;
-  // line-height: 91.4px;
   white-space: nowrap;
 `;
 
@@ -600,18 +596,19 @@ const Group15Copy = styled.div`
   flex-direction: column;
   align-items: flex-start;
   min-height: 98px;
+  margin-top: 40px;
 `;
 
 const LetTheCustomerKno = styled.p`
   ${Museosansrounded700NormalGraniteGra}
   min-height: 20px;
   margin-top: 12px;
-  margin-left: 36.71px;
   min-width: 414px;
   text-align: center;
   letter-spacing: 0;
   line-height: 91.4px;
   white-space: nowrap;
+  font-size: 15px;
 `;
 
 const Content = styled.div`
@@ -635,6 +632,7 @@ const Title = styled.h1`
   letter-spacing: 0;
   line-height: 100px;
   white-space: nowrap;
+  font-size: 26px;
 `;
 
 const ButtonCopy5 = styled.div`
