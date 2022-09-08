@@ -176,79 +176,76 @@ const Availability1 = () => {
     wednesdays: 'Wednesdays',
     thursdays: 'Thursdays',
     fridays: 'Fridays',
-    saturdays: 'Saturdays',
-
-    youCanCustomizeYourHoursLater: 'You can customize your hours later',
-
+    saturdays: 'Saturdays'
   };
 
-  const loadProfile = () => {
-    GroomerGraphql.getOnlyProfile()
-      .then((response) => {
-        console.log('Profile:', response);
-        let groomer = response.data.data?.groomer[0];
+  // const loadProfile = () => {
+  //   GroomerGraphql.getOnlyProfile()
+  //     .then((response) => {
+  //       console.log('Profile:', response);
+  //       let groomer = response.data.data?.groomer[0];
 
-        let groomerData = {
-          uuid: groomer?.uuid || '',
-          firstName: groomer?.firstName || '',
-          lastName: groomer?.lastName || '',
-          businessName: groomer?.businessName || '',
-          phoneNumber: groomer?.phoneNumber || '',
-        };
+  //       let groomerData = {
+  //         uuid: groomer?.uuid || '',
+  //         firstName: groomer?.firstName || '',
+  //         lastName: groomer?.lastName || '',
+  //         businessName: groomer?.businessName || '',
+  //         phoneNumber: groomer?.phoneNumber || '',
+  //       };
 
-        setGroomerInfo(groomerData);
+  //       setGroomerInfo(groomerData);
 
-        let groomerCareServices = groomer?.careServices || [];
+  //       let groomerCareServices = groomer?.careServices || [];
 
-        if (groomerCareServices.length > 0) {
-          /**
-           * By default careServices are all selected.
-           * Now select only the careServices that have been selected before
-           */
-          let selctedCareServices = careServices.map((careService) => {
-            let groomerCareService = groomerCareServices.find(
-              (groomerCare) => careService.name === groomerCare.name,
-            );
-            console.log("groomerCareService : ", groomerCareServices, careService)
-            if (groomerCareService === undefined) {
-              careService['selected'] = false;
-              return careService;
-            } else {
-              careService['uuid'] = groomerCareService?.uuid || '';
-              careService['selected'] = true;
-              return careService;
-            }
-          });
-          console.log("selctedCareServices : ", selctedCareServices )
-          setCareServices(selctedCareServices);
-        }
+  //       if (groomerCareServices.length > 0) {
+  //         /**
+  //          * By default careServices are all selected.
+  //          * Now select only the careServices that have been selected before
+  //          */
+  //         let selctedCareServices = careServices.map((careService) => {
+  //           let groomerCareService = groomerCareServices.find(
+  //             (groomerCare) => careService.name === groomerCare.name,
+  //           );
+  //           console.log("groomerCareService : ", groomerCareServices, careService)
+  //           if (groomerCareService === undefined) {
+  //             careService['selected'] = false;
+  //             return careService;
+  //           } else {
+  //             careService['uuid'] = groomerCareService?.uuid || '';
+  //             careService['selected'] = true;
+  //             return careService;
+  //           }
+  //         });
+  //         console.log("selctedCareServices : ", selctedCareServices )
+  //         setCareServices(selctedCareServices);
+  //       }
 
-        let mainAddress = groomer?.addresses?.[0];
+  //       let mainAddress = groomer?.addresses?.[0];
 
-        setAddress(mainAddress);
+  //       setAddress(mainAddress);
 
-        addressUuidInput.current = mainAddress?.uuid || '';
+  //       addressUuidInput.current = mainAddress?.uuid || '';
 
-        if (
-          mainAddress !== undefined &&
-          mainAddress.uuid !== undefined &&
-          mainAddress.uuid !== ''
-        ) {
-          setAddressAsLine(
-            mainAddress.street +
-            ', ' +
-            mainAddress.city +
-            ', ' +
-            mainAddress.state +
-            ' ' +
-            mainAddress.zipcode,
-          );
-        }
-      })
-      .catch((error) => {
-        console.log('Error', error);
-      });
-  };
+  //       if (
+  //         mainAddress !== undefined &&
+  //         mainAddress.uuid !== undefined &&
+  //         mainAddress.uuid !== ''
+  //       ) {
+  //         setAddressAsLine(
+  //           mainAddress.street +
+  //           ', ' +
+  //           mainAddress.city +
+  //           ', ' +
+  //           mainAddress.state +
+  //           ' ' +
+  //           mainAddress.zipcode,
+  //         );
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log('Error', error);
+  //     });
+  // };
 
   const toggleCareService = (careService) => {
     let selectedCareServices = careServices.map((cs) => {
