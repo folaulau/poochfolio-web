@@ -1,10 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
-import React from 'react';
-
-
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GroomerApi from '../api/GroomerApi';
-import GroomerGraphql from '../graphql/GroomerGraphQL';
 import Button from '../components/Button';
 import styled from 'styled-components';
 
@@ -129,7 +125,7 @@ const Availability1 = () => {
   const [operateFridayHours, setOperateFridayHours] = useState(false);
   const [operateSaturdayHours, setOperateSaturdayHours] = useState(false);
   const [operateSundayHours, setOperateSundayHours] = useState(false);
-  const [groomerInfo, setGroomerInfo] = useState({
+  const [groomerInfo] = useState({
     uuid: localStorage.getItem('uuid'),
     firstName: '',
     lastName: '',
@@ -138,26 +134,7 @@ const Availability1 = () => {
     signUpStatus: 'ADD_SERVICES',
   });
 
-  const [setAddress] = useState({
-    uuid: '',
-    street: '',
-    city: '',
-    state: '',
-    zipcode: '',
-    country: '',
-    longitude: 0,
-    latitude: 0,
-  });
-
   console.log('this is night options', selectedClosingHour)
-
-  const [setAddressAsLine] = useState('');
-  const addressUuidInput = useRef(null);
-
-  useEffect(() => {
-    // loadProfile();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const availabilityData = {
 
@@ -176,76 +153,9 @@ const Availability1 = () => {
     wednesdays: 'Wednesdays',
     thursdays: 'Thursdays',
     fridays: 'Fridays',
-    saturdays: 'Saturdays'
+    saturdays: 'Saturdays',
+    youCanCustomizeYourHoursLater: 'You can customize your hours later'
   };
-
-  // const loadProfile = () => {
-  //   GroomerGraphql.getOnlyProfile()
-  //     .then((response) => {
-  //       console.log('Profile:', response);
-  //       let groomer = response.data.data?.groomer[0];
-
-  //       let groomerData = {
-  //         uuid: groomer?.uuid || '',
-  //         firstName: groomer?.firstName || '',
-  //         lastName: groomer?.lastName || '',
-  //         businessName: groomer?.businessName || '',
-  //         phoneNumber: groomer?.phoneNumber || '',
-  //       };
-
-  //       setGroomerInfo(groomerData);
-
-  //       let groomerCareServices = groomer?.careServices || [];
-
-  //       if (groomerCareServices.length > 0) {
-  //         /**
-  //          * By default careServices are all selected.
-  //          * Now select only the careServices that have been selected before
-  //          */
-  //         let selctedCareServices = careServices.map((careService) => {
-  //           let groomerCareService = groomerCareServices.find(
-  //             (groomerCare) => careService.name === groomerCare.name,
-  //           );
-  //           console.log("groomerCareService : ", groomerCareServices, careService)
-  //           if (groomerCareService === undefined) {
-  //             careService['selected'] = false;
-  //             return careService;
-  //           } else {
-  //             careService['uuid'] = groomerCareService?.uuid || '';
-  //             careService['selected'] = true;
-  //             return careService;
-  //           }
-  //         });
-  //         console.log("selctedCareServices : ", selctedCareServices )
-  //         setCareServices(selctedCareServices);
-  //       }
-
-  //       let mainAddress = groomer?.addresses?.[0];
-
-  //       setAddress(mainAddress);
-
-  //       addressUuidInput.current = mainAddress?.uuid || '';
-
-  //       if (
-  //         mainAddress !== undefined &&
-  //         mainAddress.uuid !== undefined &&
-  //         mainAddress.uuid !== ''
-  //       ) {
-  //         setAddressAsLine(
-  //           mainAddress.street +
-  //           ', ' +
-  //           mainAddress.city +
-  //           ', ' +
-  //           mainAddress.state +
-  //           ' ' +
-  //           mainAddress.zipcode,
-  //         );
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log('Error', error);
-  //     });
-  // };
 
   const toggleCareService = (careService) => {
     let selectedCareServices = careServices.map((cs) => {
