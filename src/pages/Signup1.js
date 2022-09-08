@@ -67,7 +67,7 @@ const googleLogin = () => {
   return (
     <>
       <div
-        className="min-h-full flex flex-col justify-center   font-Museo-Sans-Rounded-900"
+        className="min-h-full flex flex-col justify-start   font-Museo-Sans-Rounded-900"
         style={{
           borderWidth: 3,
           borderColor: 'transparent',
@@ -77,7 +77,7 @@ const googleLogin = () => {
           backgroundColor: '#F3F8FF',
         }}
       >
-        <div
+        {/* <div
           style={{
             height: 5,
             backgroundColor: 'white',
@@ -85,7 +85,7 @@ const googleLogin = () => {
             width: '100%',
             marginBottom: 5,
           }}
-        />
+        /> */}
         <div
           style={{
             display: 'flex',
@@ -130,15 +130,10 @@ const googleLogin = () => {
           </Button>
     
         </div>
-        <div>
-          {/* <img
-            className="mx-auto h-12 w-auto"
-            src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-            alt="Workflow"
-          /> */}
-
-          <p style={{ fontSize: '12px', textAlign: 'center', color: '#666666' }}>or continue with </p>
-        
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ height: 1, width: 150, background: '#C4DFEA' }} />
+          <p className="font-Museo-Sans-Rounded-500" style={{ fontSize: '12px', textAlign: 'center', color: '#666666', marginRight: 20,  marginLeft: 20 }}>or continue with </p>
+          <div style={{ height: 1, width: 150, background: '#C4DFEA' }} />
         </div>
         <div className="mt-2 " style={{ justifyContent: 'center', display: 'flex' }}>
           <div className=" py-8 px-4   sm:px-10">
@@ -146,6 +141,7 @@ const googleLogin = () => {
               <div>
                 <label
                   htmlFor="password"
+                  className="font-Museo-Sans-Rounded-500"
                   style={{ fontSize: '12px', color: '#666666', lineHeight: 3, marginLeft: 8 }}
                 >
                   Email Address
@@ -159,7 +155,7 @@ const googleLogin = () => {
                     value={userInfo.email}
                     onChange={handleInputChange}
                     required
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm font-Museo-Sans-Rounded-500 text-gray-700"
                     style={{
                       width: '542px',
                       height: '56px',
@@ -167,6 +163,7 @@ const googleLogin = () => {
                       borderColor: '#85D8E7',
                       borderRadius: 28,
                       marginBottom: 20,
+                      fontSize: 15
                     }}
                   />
                 </div>
@@ -175,6 +172,7 @@ const googleLogin = () => {
               <div>
                 <label
                   htmlFor="password"
+                  className="font-Museo-Sans-Rounded-500"
                   style={{ fontSize: '12px', color: '#666666', lineHeight: 3, marginLeft: 8 }}
                 >
                   Password
@@ -188,7 +186,7 @@ const googleLogin = () => {
                     value={userInfo.password}
                     onChange={handleInputChange}
                     required
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm font-Museo-Sans-Rounded-500 text-gray-700"
                     style={{
                       width: '542px',
                       height: '56px',
@@ -196,6 +194,7 @@ const googleLogin = () => {
                       borderColor: '#85D8E7',
                       borderRadius: 28,
                       marginBottom: 20,
+                      fontSize: 15
                     }}
                   />
                 </div>
@@ -203,6 +202,7 @@ const googleLogin = () => {
               <div>
                 <label
                   htmlFor="password"
+                  className="font-Museo-Sans-Rounded-500"
                   style={{ fontSize: '12px', color: '#666666', lineHeight: 3, marginLeft: 8 }}
                 >
                   Confirm Password
@@ -216,7 +216,7 @@ const googleLogin = () => {
                     value={userInfo.password}
                     onChange={handleInputChange}
                     required
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm"
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#077997] focus:border-[#077997] sm:text-sm font-Museo-Sans-Rounded-500 text-gray-700"
                     style={{
                       width: '542px',
                       height: '56px',
@@ -224,6 +224,7 @@ const googleLogin = () => {
                       borderColor: '#85D8E7',
                       borderRadius: 28,
                       marginBottom: 20,
+                      fontSize: 15
                     }}
                   />
                 </div>

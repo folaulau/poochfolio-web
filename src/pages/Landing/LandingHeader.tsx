@@ -6,7 +6,7 @@ import Button from 'components/atoms/Button';
 
 export default function LandingHeader() {
   return (
-    <div className="relative">
+    <div className="relative pt-32">
       <img src={headerImage} alt="" className="w-full -mt-4" style={{ zIndex: -1 }} />
       <div className="container absolute inset-x-0 bottom-1/3 z-10">
         <div className="w-1/2 pb-8 pr-10 xl:pb-14 2xl:pb-36">

@@ -10,7 +10,7 @@ import HowItWorksCard from 'components/molecules/HowItWorksCard';
 
 export default function HowItWorks() {
   return (
-    <div id="how-it-works" className="relative pt-8 mt-36">
+    <div id="how-it-works" className="relative pt-52 mt-36">
       <img
         src={curveFillImage}
         alt=""
