@@ -176,10 +176,7 @@ const Availability1 = () => {
     wednesdays: 'Wednesdays',
     thursdays: 'Thursdays',
     fridays: 'Fridays',
-    saturdays: 'Saturdays',
-
-    youCanCustomizeYourHoursLater: 'You can customize your hours later',
-
+    saturdays: 'Saturdays'
   };
 
   // const loadProfile = () => {
