@@ -6,7 +6,6 @@ import styled from 'styled-components';
 
 import {
   Museosansrounded700NormalGraniteGra,
-  Museosansrounded300NormalGraniteGra,
   Museosansrounded900NormalGraniteGra,
   Museosansrounded700NormalMetallicSe,
   Museosansrounded700NormalWhite15px,
