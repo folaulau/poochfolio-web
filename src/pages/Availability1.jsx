@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GroomerApi from '../api/GroomerApi';
-import Button from '../components/Button';
 import styled from 'styled-components';
 
 
@@ -408,18 +407,6 @@ const OverlapGroup2 = styled.div`
   position: relative;
 `;
 
-const YouCanCustomizeYourHoursLater = styled.p`
-  ${Museosansrounded300NormalGraniteGra}
-  min-height: 20px;
-  margin-top: 140px;
-  margin-left: 4.71px;
-  min-width: 238px;
-  max-width:238px
-  text-align: center;
-  letter-spacing: 0;
-  line-height: 91.4px;
-  white-space: nowrap;
-`;
 const X0500pm = styled.div`
   position: absolute;
   top: 1px;

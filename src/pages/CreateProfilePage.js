@@ -295,7 +295,7 @@ const CreateProfilePage = () => {
                 }}
               />
               <div style={{ position: 'absolute', top: 17.5, right: 10, cursor: 'pointer' }}>
-                <img src={LocationSvg} />
+                <img src={LocationSvg} alt="location-img" />
               </div>
             </div>
           </div>
