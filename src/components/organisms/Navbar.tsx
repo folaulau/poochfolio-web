@@ -4,6 +4,7 @@ import Button from 'components/atoms/Button';
 import Icon from 'components/atoms/Icon';
 import Logo from 'components/atoms/Logo';
 import { useEffect, useState } from 'react';
+import { onShowLiveChat } from 'support';
 interface Props {
   landingLinksVisible?: boolean;
   loginVisible?: boolean;
@@ -62,6 +63,10 @@ export default function Navbar({ landingLinksVisible, loginVisible, signUpVisibl
     return () => window.removeEventListener("scroll", onScroll);
   }, [scrollDir]);
 
+  const onShow = () => {
+    onShowLiveChat();
+  }
+
   return (
       <nav className={`fixed w-full top-0 z-30 bg-center myheader bg-primary-800 ${scrolling !== "stop" && scrollDir === "down" ? 'header-hide' : 'header-show'}`}>
         <div className="container flex pt-6 pb-6">
@@ -96,7 +101,7 @@ export default function Navbar({ landingLinksVisible, loginVisible, signUpVisibl
                   </Button>
                 </Link>
               )}
-              <Button variant="outlined" size="sm">
+              <Button variant="outlined" size="sm" onClick={onShow}>
                 <Icon name="Headset" />
                 Support
               </Button>
