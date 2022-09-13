@@ -1,5 +1,4 @@
 import { useState } from "react";
-import React from 'react';
 import { useNavigate } from "react-router-dom";
 
 import GroomerApi from "../api/GroomerApi";
@@ -15,9 +14,8 @@ import {
 } from '../styledMixins';
 
 const Signup = () => {
-
   const [userInfo, setUserInfo] = useState({
-    email: "folaudev+"+Math.floor(Math.random() * 1000000000)+"@gmail.com",
+    email: "folaudev+" + Math.floor(Math.random() * 1000000000) + "@gmail.com",
     password: "Test1234!",
   });
 
@@ -29,17 +27,20 @@ const Signup = () => {
       [e.target.name]: e.target.value,
     });
   };
-const facebookLogin = () => {
-  FirebaseApi.signInWithFacebook(navigate)
-}
-const googleLogin = () => {
-  FirebaseApi.signInWithGoogle(navigate)
-}
+
+  const facebookLogin = () => {
+    FirebaseApi.signInWithFacebook(navigate)
+  }
+
+  const googleLogin = () => {
+    FirebaseApi.signInWithGoogle(navigate)
+  }
+
   const handleSubmit = (e) => {
 
     e.preventDefault();
 
-      FirebaseApi.signUpWithEmail(userInfo.email, userInfo.password)
+    FirebaseApi.signUpWithEmail(userInfo.email, userInfo.password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("userCredential", userCredential);
@@ -49,15 +50,15 @@ const googleLogin = () => {
         };
 
         GroomerApi.authenticate(authentication)
-        .then((response) => {
-          console.log("Success:", response.data);
-          localStorage.setItem("poochToken", response.data.token);
-          localStorage.setItem("uuid", response.data.uuid);
-          navigate("/sign-up/create-profile");
-        })
-        .catch((error) => {
-          console.log("Error", error);
-        });
+          .then((response) => {
+            console.log("Success:", response.data);
+            localStorage.setItem("poochToken", response.data.token);
+            localStorage.setItem("uuid", response.data.uuid);
+            navigate("/sign-up/create-profile");
+          })
+          .catch((error) => {
+            console.log("Error", error);
+          });
       })
       .catch((error) => {
         console.error("Error: ", error);
@@ -67,7 +68,8 @@ const googleLogin = () => {
   return (
     <>
       <div
-        className="min-h-full flex flex-col justify-start   font-Museo-Sans-Rounded-900"
+        id="signup_root"
+        className="min-h-full flex flex-col justify-start font-Museo-Sans-Rounded-900 custom-animation"
         style={{
           borderWidth: 3,
           borderColor: 'transparent',
@@ -92,9 +94,9 @@ const googleLogin = () => {
             flexDirection: 'row',
             justifyContent: 'space-between',
             marginTop: 30,
-            width:'550px',
-            alignSelf:'center',
-            marginBottom:50
+            width: '550px',
+            alignSelf: 'center',
+            marginBottom: 50
           }}
         >
           <Button
@@ -128,11 +130,11 @@ const googleLogin = () => {
           >
             <img className="self-center w-6" src={googleSvg} alt={googleSvg} />
           </Button>
-    
+
         </div>
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
           <div style={{ height: 1, width: 150, background: '#C4DFEA' }} />
-          <p className="font-Museo-Sans-Rounded-500" style={{ fontSize: '12px', textAlign: 'center', color: '#666666', marginRight: 20,  marginLeft: 20 }}>or continue with </p>
+          <p className="font-Museo-Sans-Rounded-500" style={{ fontSize: '12px', textAlign: 'center', color: '#666666', marginRight: 20, marginLeft: 20 }}>or continue with </p>
           <div style={{ height: 1, width: 150, background: '#C4DFEA' }} />
         </div>
         <div className="mt-2 " style={{ justifyContent: 'center', display: 'flex' }}>

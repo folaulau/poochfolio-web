@@ -49,66 +49,66 @@ const Availability1 = () => {
 
   const days = [
     {
-      name: 'Sunday',
+      name: 'Sundays',
     },
     {
-      name: 'Monday',
+      name: 'Mondays',
     },
     {
-      name: 'Tuesday',
+      name: 'Tuesdays',
     },
     {
-      name: 'Wednesday',
+      name: 'Wednesdays',
     },
     {
-      name: 'Thursday',
+      name: 'Thursdays',
     },
     {
-      name: 'Friday',
+      name: 'Fridays',
     },
     {
-      name: 'Saturday',
+      name: 'Saturdays',
     },
   ];
   const [careServices, setCareServices] = useState([
     {
-      name: 'Monday',
+      name: 'Mondays',
       uuid: '',
       selected: true,
       operateMonday: true,
     },
     {
-      name: 'Tuesday',
+      name: 'Tuesdays',
       uuid: '',
       selected: true,
       operateTuesday: true,
     },
     {
-      name: 'Wednesday',
+      name: 'Wednesdays',
       uuid: '',
       selected: true,
       operateWednesday: true,
     },
     {
-      name: 'Thursday',
+      name: 'Thursdays',
       uuid: '',
       selected: true,
       operateThursday: true,
     },
     {
-      name: 'Friday',
+      name: 'Fridays',
       uuid: '',
       selected: true,
       operateFriday: true,
     },
     {
-      name: 'Saturday',
+      name: 'Saturdays',
       uuid: '',
       selected: false,
       operateSaturday: false,
     },
     {
-      name: 'Sunday',
+      name: 'Sundays',
       uuid: '',
       selected: false,
       operateSunday: false,
@@ -162,25 +162,25 @@ const Availability1 = () => {
       if (careService.name === cs.name) {
         cs.selected = !cs.selected;
       }
-      if (careService.name === cs.name && careService.name === 'Monday') {
+      if (careService.name === cs.name && careService.name === 'Mondays') {
         setOperateMondayHours(true);
       }
-      if (careService.name === cs.name && careService.name === 'Tuesday') {
+      if (careService.name === cs.name && careService.name === 'Tuesdays') {
         setOperateTuesdayHours(true);
       }
-      if (careService.name === cs.name && careService.name === 'Wednesday') {
+      if (careService.name === cs.name && careService.name === 'Wednesdays') {
         setOperateWednesdayHours(true);
       }
-      if (careService.name === cs.name && careService.name === 'Thursday') {
+      if (careService.name === cs.name && careService.name === 'Thursdays') {
         setOperateThursdayHours(true);
       }
-      if (careService.name === cs.name && careService.name === 'Friday') {
+      if (careService.name === cs.name && careService.name === 'Fridays') {
         setOperateFridayHours(true);
       }
-      if (careService.name === cs.name && careService.name === 'Saturday') {
+      if (careService.name === cs.name && careService.name === 'Saturdays') {
         setOperateSaturdayHours(true);
       }
-      if (careService.name === cs.name && careService.name === 'Sunday') {
+      if (careService.name === cs.name && careService.name === 'Sundays') {
         setOperateSundayHours(true);
       }
 
@@ -237,8 +237,7 @@ const Availability1 = () => {
 
   return (
     <>
-      <div style={{ height: 5, backgroundColor: 'white' }} />
-      <div className="container-center-horizontal">
+      <div className="container-center-horizontal custom-animation">
         <div className="availability screen">
           <OverlapGroup4>
             <ColorFill2></ColorFill2>
@@ -291,9 +290,9 @@ const Availability1 = () => {
                           key={service.name}
                           style={{
                             boxShadow: 'inset 0px 0px 10px #81d6e6',
-                            width: '138px',
+                            width: '130px',
                             height: '105px',
-                            marginRight: '31.06px',
+                            marginRight: '14px',
                             flexDirection: 'column',
                           }}
                           className={`w-40 h-[66.94px] rounded-xl border ${isSelected ? 'bg-[#95e8f7]' : 'bg-[#f1f7ff]'
@@ -304,16 +303,16 @@ const Availability1 = () => {
                             <img
                               src="/landing-page/bluecheck1.svg"
                               alt=""
-                              style={{ height: 30, width: 30, paddingBottom: 10 }}
+                              style={{ height: 38, width: 38 }}
                             />
                           ) : (
                             <img
                               src="/landing-page/bluecircle.svg"
                               alt=""
-                              style={{ height: 30, width: 30, paddingBottom: 10 }}
+                              style={{ height: 38, width: 38 }}
                             />
                           )}
-                          <span className={`${isSelected ? 'text-[#077997]' : 'text-[#9697a3]'} `}>
+                          <span className={`font-Museo-Sans-Rounded-300 ${isSelected ? 'text-[#077997]' : 'text-[#9697a3]'}`} style={{ fontSize: 15, marginTop: 20 }}>
 
                             {service.name}
                           </span>
@@ -323,17 +322,10 @@ const Availability1 = () => {
                   </div>
                 </OverlapGroup2>
               </AvailableDaysCopy>
-              <YouCanCustomizeYourHoursLater>
-                You can customize your hours later
-              </YouCanCustomizeYourHoursLater>
-              <Button />
             </Content>
             <ButtonCopy5 onClick={handleSubmit}>
               <CONTINUE>CONTINUE</CONTINUE>
             </ButtonCopy5>
-            <YouCanCustomizeYourHoursLater>
-              You can customize your hours later
-            </YouCanCustomizeYourHoursLater>
           </OverlapGroup4>
         </div>
       </div>
@@ -546,7 +538,7 @@ const ButtonCopy5 = styled.div`
   ${Border1pxSkyBlue}
   position: absolute;
   height: 56px;
-  top: 657px;
+  top: 560px;
   left: 3495px;
   display: flex;
   padding: 0 231.8px;

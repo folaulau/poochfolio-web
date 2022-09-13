@@ -24,7 +24,7 @@ function classNames(...classes) {
 const InputListingPage2 = () => {
 
   let navigate = useNavigate();
-  
+
   const [open, setOpen] = useState(false);
   const [groomerInfo, setGroomerInfo] = useState({
     numberOfOccupancy: 0,
@@ -105,21 +105,22 @@ const InputListingPage2 = () => {
         let groomer = response.data.data?.groomer[0];
         console.log("groomer:", groomer);
 
-        if(groomer.numberOfOccupancy===null || groomer.numberOfOccupancy===undefined){
+        if (groomer.numberOfOccupancy === null || groomer.numberOfOccupancy === undefined) {
           groomer.numberOfOccupancy = 0
         }
 
-        if(groomer.chargePerMile===null || groomer.chargePerMile===undefined){
+        if (groomer.chargePerMile === null || groomer.chargePerMile === undefined) {
           groomer.chargePerMile = ''
         }
 
-        if(groomer.description===null || groomer.description===undefined){
+        if (groomer.description === null || groomer.description === undefined) {
           groomer.description = ''
         }
 
         setPickDrop({
           offeredDropOff: groomer.offeredDropOff,
-          offeredPickUp: groomer.offeredPickUp})
+          offeredPickUp: groomer.offeredPickUp
+        })
 
         setGroomerInfo(groomer);
 
@@ -144,20 +145,21 @@ const InputListingPage2 = () => {
       });
   };
 
-  const files = acceptedFiles.map((file) => {
-    return (
-      <li key={file.path}>
-        {file.path} - {file.size} bytes
-      </li>
-    );
-  });
-  const contractFiles = af.map((file) => {
-    return (
-      <li key={file.path}>
-        {file.path} - {file.size} bytes
-      </li>
-    );
-  });
+  // const files = acceptedFiles.map((file) => {
+  //   return (
+  //     <li key={file.path}>
+  //       {file.path} - {file.size} bytes
+  //     </li>
+  //   );
+  // });
+
+  // const contractFiles = af.map((file) => {
+  //   return (
+  //     <li key={file.path}>
+  //       {file.path} - {file.size} bytes
+  //     </li>
+  //   );
+  // });
 
   const handleGroomerInfoChange = (event) => {
 
@@ -171,14 +173,14 @@ const InputListingPage2 = () => {
       [name]: value,
     });
   };
-const handleGroomerOccupancy = (value) => {
-  console.log('THIS IS VALUE', value)
-  setGroomerInfo({
-    ...groomerInfo,
-    numberOfOccupancy:value
-  });
-} 
- 
+  const handleGroomerOccupancy = (value) => {
+    console.log('THIS IS VALUE', value)
+    setGroomerInfo({
+      ...groomerInfo,
+      numberOfOccupancy: value
+    });
+  }
+
   const handlePickDrop = (e) => {
     setPickDrop({
       ...pickDrop,
@@ -187,7 +189,7 @@ const handleGroomerOccupancy = (value) => {
   };
 
   const uploadProfileImages = async () => {
-    if(acceptedFiles.length<=0){
+    if (acceptedFiles.length <= 0) {
       return "no profile images to upload";
     }
     let formdata = new FormData();
@@ -197,7 +199,7 @@ const handleGroomerOccupancy = (value) => {
   };
 
   const uploadContracts = async () => {
-    if(af.length<=0){
+    if (af.length <= 0) {
       return "no contracts to upload";
     }
     let formdata = new FormData();
@@ -206,22 +208,22 @@ const handleGroomerOccupancy = (value) => {
   };
 
   const handleServicePrice = (e, serviceName, serviceSize) => {
-    if(e.target.value.includes('$')) {
-      if(!isNaN(e.target.value.substring(1))) {
+    if (e.target.value.includes('$')) {
+      if (!isNaN(e.target.value.substring(1))) {
         const updatedPrices = careServices.map(item => {
-          if(serviceName === item.name ){
-              item[e.target.name] = Number(e.target.value.substring(1))
-              item[serviceSize] = true
+          if (serviceName === item.name) {
+            item[e.target.name] = Number(e.target.value.substring(1))
+            item[serviceSize] = true
           }
           return item
         });
         setCareServices(updatedPrices);
       }
-    } else if(!isNaN(e.target.value)) {
+    } else if (!isNaN(e.target.value)) {
       const updatedPrices = careServices.map(item => {
-        if(serviceName === item.name ){
-            item[e.target.name] = Number(e.target.value)
-            item[serviceSize] = true
+        if (serviceName === item.name) {
+          item[e.target.name] = Number(e.target.value)
+          item[serviceSize] = true
         }
         return item
       });
@@ -231,7 +233,7 @@ const handleGroomerOccupancy = (value) => {
 
   const handleServiceTypes = (e) => {
     const selectedValue = e.target.value;
-    console.log("selectedValue: "+selectedValue)
+    console.log("selectedValue: " + selectedValue)
     const localCareServices = [...careServices];
 
     if (careServices.some((careService) => careService.name === selectedValue)) {
@@ -257,48 +259,46 @@ const handleGroomerOccupancy = (value) => {
 
     console.log("payload", payload);
     GroomerApi.createListings(payload)
-    .then((response) => {
-      console.log("response")
-      console.log(response)
-
-      uploadContracts().then((response)=>{
-        console.log("upload contracts responded")
+      .then((response) => {
+        console.log("response")
         console.log(response)
 
-        uploadProfileImages().then((response)=>{
-          console.log("upload profileImages responded")
+        uploadContracts().then((response) => {
+          console.log("upload contracts responded")
           console.log(response)
-          
-          navigate('/sign-up/availability1');
 
+          uploadProfileImages().then((response) => {
+            console.log("upload profileImages responded")
+            console.log(response)
+
+            navigate('/sign-up/availability1');
+
+          }).catch((error) => {
+            console.log("upload profileImages error")
+
+            console.log(error)
+          })
         }).catch((error) => {
-          console.log("upload profileImages error")
-    
+          console.log("upload contracts error")
+
           console.log(error)
         })
-      }).catch((error) => {
-        console.log("upload contracts error")
-  
+
+
+      })
+      .catch((error) => {
+        console.log("error")
+
         console.log(error)
       })
-    
-      
-    })
-    .catch((error) => {
-      console.log("error")
-
-      console.log(error)
-    })
   };
 
   return (
     <>
-      <div style={{ height: 5, backgroundColor: 'white' }} />
-
       <form
         onSubmit={postList}
-        className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500 bg-[#f3f8ff]"
-       
+        className="flex flex-col items-center text-[15px] font-Museo-Sans-Rounded-500 bg-[#f3f8ff] custom-animation"
+
       >
         <div className=" mt-12">
           <div className="py-2 " style={{ width: '729.57px', marginBottom: 8 }}>
@@ -545,25 +545,42 @@ const handleGroomerOccupancy = (value) => {
         <div
           {...getRootProps({ className: 'dropzone' })}
           className=" mt-6 border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40 flex flex-col justify-center items-center"
-          style={{ width: '729.57px' }}
+          style={{ width: '729.57px', height: 'auto', padding: 10, minHeight: 200 }}
         >
           <input {...getInputProps()} />
-          <PhotographIcon className="h-6 text-[#077997]" />
-          <p className="text-[#077997]">Drag and Drop Images</p>
-          <ul>{files}</ul>
+          {acceptedFiles.length === 0 ? (
+            <>
+              <PhotographIcon className="h-6 text-[#077997]" />
+              <p className="text-[#077997]">Drag and Drop Images</p>
+            </>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+              {acceptedFiles.map((file) => (
+                <img src={URL.createObjectURL(file)} style={{ width: 78, height: 78, margin: 5 }} />
+              ))}
+            </div>
+          )}
         </div>
 
         <div
           {...grp({ className: 'dropzone' })}
           className=" mt-6 border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40 flex flex-col justify-center items-center"
-          style={{ width: '729.57px', height: '228.3px' }}
+          style={{ width: '729.57px', height: 'auto', padding: 10, minHeight: 200 }}
         >
-          <ClipboardCheckIcon className="h-6 text-[#077997]" />
           <input {...gip()} />
-
-          <p className="text-[#077997]">Drag and Drop</p>
-          <p className="text-[#077997]">Contract you need your customers to sign</p>
-          <ul>{contractFiles}</ul>
+          {af.length === 0 ? (
+            <>
+              <ClipboardCheckIcon className="h-6 text-[#077997]" />
+              <p className="text-[#077997]">Drag and Drop</p>
+              <p className="text-[#077997]">Contract you need your customers to sign</p>
+            </>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+              {af.map((file) => (
+                <img src={URL.createObjectURL(file)} style={{ width: 78, height: 78, margin: 5 }} />
+              ))}
+            </div>
+          )}
         </div>
         <div className=" flex justify-center" style={{ width: '729.57px' }}>
           <button

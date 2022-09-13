@@ -19,6 +19,7 @@ export default function Breadcrumbs() {
       setAvailableStatus('upcoming')
     }
     if (location.pathname === '/sign-up/input-listing2') {
+      setCreateProfileStatus('complete');
       setInputListingStatus('complete')
     }
     if (location.pathname === '/sign-up/availability1') {
@@ -100,12 +101,12 @@ export default function Breadcrumbs() {
             <>
               <li className='arrow-start-box-complete relative md:flex-1 md:flex'>
                   <div className='arrow-start-content-complete relative md:flex-1 md:flex'>
-                    <div className="group flex items-center w-full">
+                    <div className="group flex items-center justify-center w-full">
                       <span className="px-6 py-4 flex items-center text-sm font-medium">
                         <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-[#077997] rounded-full group-hover:bg-[#094b5c]">
                           <img style={{ height: 42, width: 42 }} src={steps[0].iconComplete} alt="" />
                         </span>
-                        <span className="ml-4 text-sm font-medium text-[#333333]">{steps[0].name}</span>
+                        <span className="ml-4 text-sm font-medium text-[#333333] font-Museo-Sans-Rounded-500">{steps[0].name}</span>
                       </span>
                     </div>
                 </div>
@@ -117,7 +118,7 @@ export default function Breadcrumbs() {
                       <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400">
                         <img style={{ height: 24, width: 18.95 }} src={steps[1].iconNotComplete} alt="" />
                       </span>
-                      <span className="ml-4 text-sm font-medium text-[#333333]">
+                      <span className="ml-4 text-sm font-medium text-[#333333] font-Museo-Sans-Rounded-500">
                         {steps[1].name}
                       </span>
                     </span>
@@ -131,7 +132,7 @@ export default function Breadcrumbs() {
                       <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400">
                         <img style={{ height: 24, width: 18.95 }} src={steps[2].iconNotComplete} alt="" />
                       </span>
-                      <span className="ml-4 text-sm font-medium text-[#333333]">
+                      <span className="ml-4 text-sm font-medium text-[#333333] font-Museo-Sans-Rounded-500">
                         {steps[2].name}
                       </span>
                     </span>
@@ -144,7 +145,7 @@ export default function Breadcrumbs() {
                     <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400">
                       <img style={{ height: 24, width: 18.95 }} src={steps[3].iconNotComplete} alt="" />
                     </span>
-                    <span className="ml-4 text-sm font-medium text-[#333333]">
+                    <span className="ml-4 text-sm font-medium text-[#333333] font-Museo-Sans-Rounded-500">
                       {steps[3].name}
                     </span>
                   </span>
@@ -156,12 +157,12 @@ export default function Breadcrumbs() {
             <>
               <li className='arrow-start-box-complete relative md:flex-1 md:flex'>
                 <div className='arrow-start-content-complete relative md:flex-1 md:flex'>
-                  <div className="group flex items-center w-full">
+                  <div className="group flex items-center justify-center w-full">
                     <span className="px-6 py-4 flex items-center text-sm font-medium">
                       <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-[#077997] rounded-full group-hover:bg-[#094b5c]">
                         <img style={{ height: 42, width: 42 }} src={steps[0].iconComplete} alt="" />
                       </span>
-                      <span className="ml-4 text-sm font-medium text-[#333333]">{steps[0].name}</span>
+                      <span className="ml-4 text-sm font-medium text-[#333333] font-Museo-Sans-Rounded-500">{steps[0].name}</span>
                     </span>
                   </div>
                 </div>
@@ -172,7 +173,7 @@ export default function Breadcrumbs() {
                     <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-[#077997] rounded-full">
                       <img style={{ height: 42, width: 42 }} src={steps[1].iconComplete} alt="" />
                     </span>
-                    <span className="ml-4 text-sm font-medium text-[#333333]">{steps[1].name}</span>
+                    <span className="ml-4 text-sm font-medium text-[#333333] font-Museo-Sans-Rounded-500">{steps[1].name}</span>
                   </div>
                 </div>
               </li>
@@ -182,7 +183,7 @@ export default function Breadcrumbs() {
                     <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400">
                       <img style={{ height: 24, width: 18.95 }} src={steps[2].iconNotComplete} alt="" />
                     </span>
-                    <span className="ml-4 text-sm font-medium text-[#333333]">{steps[2].name}</span>
+                    <span className="ml-4 text-sm font-medium text-[#333333] font-Museo-Sans-Rounded-500">{steps[2].name}</span>
                   </div>
                 </div>
               </li>
@@ -191,7 +192,7 @@ export default function Breadcrumbs() {
                   <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400">
                     <img style={{ height: 24, width: 18.95 }} src={steps[3].iconNotComplete} alt="" />
                   </span>
-                  <span className="ml-4 text-sm font-medium text-[#333333]">{steps[3].name}</span>
+                  <span className="ml-4 text-sm font-medium text-[#333333] font-Museo-Sans-Rounded-500">{steps[3].name}</span>
                 </div>
               </li>
             </>
@@ -200,12 +201,12 @@ export default function Breadcrumbs() {
             <>
               <li className='arrow-start-box-complete relative md:flex-1 md:flex'>
                 <div className='arrow-start-content-complete relative md:flex-1 md:flex'>
-                  <div className="group flex items-center w-full">
+                  <div className="group flex items-center justify-center w-full">
                     <span className="px-6 py-4 flex items-center text-sm font-medium">
                       <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-[#077997] rounded-full group-hover:bg-[#094b5c]">
                         <img style={{ height: 42, width: 42 }} src={steps[0].iconComplete} alt="" />
                       </span>
-                      <span className="ml-4 text-sm font-medium text-[#333333]">{steps[0].name}</span>
+                      <span className="ml-4 text-sm font-medium text-[#333333] font-Museo-Sans-Rounded-500">{steps[0].name}</span>
                     </span>
                   </div>
                 </div>
@@ -216,7 +217,7 @@ export default function Breadcrumbs() {
                     <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-[#077997] rounded-full">
                       <img style={{ height: 42, width: 42 }} src={steps[1].iconComplete} alt="" />
                     </span>
-                    <span className="ml-4 text-sm font-medium text-[#333333]">{steps[1].name}</span>
+                    <span className="ml-4 text-sm font-medium text-[#333333] font-Museo-Sans-Rounded-500">{steps[1].name}</span>
                   </div>
                 </div>
               </li>
@@ -226,7 +227,7 @@ export default function Breadcrumbs() {
                     <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-[#077997] rounded-full">
                       <img style={{ height: 42, width: 42 }} src={steps[2].iconComplete} alt="" />
                     </span>
-                    <span className="ml-4 text-sm font-medium text-[#333333]">{steps[2].name}</span>
+                    <span className="ml-4 text-sm font-medium text-[#333333] font-Museo-Sans-Rounded-500">{steps[2].name}</span>
                   </div>
                 </div>
               </li>
@@ -235,7 +236,7 @@ export default function Breadcrumbs() {
                   <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400">
                     <img style={{ height: 24, width: 18.95 }} src={steps[3].iconNotComplete} alt="" />
                   </span>
-                  <span className="ml-4 text-sm font-medium text-[#333333]">{steps[3].name}</span>
+                  <span className="ml-4 text-sm font-medium text-[#333333] font-Museo-Sans-Rounded-500">{steps[3].name}</span>
                 </div>
               </li>
             </>
@@ -244,12 +245,12 @@ export default function Breadcrumbs() {
             <>
               <li className='arrow-start-box-complete relative md:flex-1 md:flex'>
                 <div className='arrow-start-content-complete relative md:flex-1 md:flex'>
-                  <div className="group flex items-center w-full">
+                  <div className="group flex items-center justify-center w-full">
                     <span className="px-6 py-4 flex items-center text-sm font-medium">
                       <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-[#077997] rounded-full group-hover:bg-[#094b5c]">
                         <img style={{ height: 42, width: 42 }} src={steps[0].iconComplete} alt="" />
                       </span>
-                      <span className="ml-4 text-sm font-medium text-[#333333]">{steps[0].name}</span>
+                      <span className="ml-4 text-sm font-medium text-[#333333] font-Museo-Sans-Rounded-500">{steps[0].name}</span>
                     </span>
                   </div>
                 </div>
@@ -260,7 +261,7 @@ export default function Breadcrumbs() {
                     <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-[#077997] rounded-full">
                       <img style={{ height: 42, width: 42 }} src={steps[1].iconComplete} alt="" />
                     </span>
-                    <span className="ml-4 text-sm font-medium text-[#333333]">{steps[1].name}</span>
+                    <span className="ml-4 text-sm font-medium text-[#333333] font-Museo-Sans-Rounded-500">{steps[1].name}</span>
                   </div>
                 </div>
               </li>
@@ -270,7 +271,7 @@ export default function Breadcrumbs() {
                     <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-[#077997] rounded-full">
                       <img style={{ height: 42, width: 42 }} src={steps[2].iconComplete} alt="" />
                     </span>
-                    <span className="ml-4 text-sm font-medium text-[#333333]">{steps[2].name}</span>
+                    <span className="ml-4 text-sm font-medium text-[#333333] font-Museo-Sans-Rounded-500">{steps[2].name}</span>
                   </div>
                 </div>
               </li>
@@ -280,7 +281,7 @@ export default function Breadcrumbs() {
                     <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-[#077997] rounded-full">
                       <img style={{ height: 42, width: 42 }} src={steps[3].iconComplete} alt="" />
                     </span>
-                    <span className="ml-4 text-sm font-medium text-[#333333]">{steps[3].name}</span>
+                    <span className="ml-4 text-sm font-medium text-[#333333] font-Museo-Sans-Rounded-500">{steps[3].name}</span>
                   </div>
                 </div>
               </li>
