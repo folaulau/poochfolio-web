@@ -555,8 +555,8 @@ const InputListingPage2 = () => {
             </>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
-              {acceptedFiles.map((file) => (
-                <img src={URL.createObjectURL(file)} style={{ width: 78, height: 78, margin: 5 }} />
+              {acceptedFiles.map((file, i) => (
+                <img src={URL.createObjectURL(file)} style={{ width: 78, height: 78, margin: 5 }} alt={"preview-img" + i} />
               ))}
             </div>
           )}
@@ -576,8 +576,8 @@ const InputListingPage2 = () => {
             </>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
-              {af.map((file) => (
-                <img src={URL.createObjectURL(file)} style={{ width: 78, height: 78, margin: 5 }} />
+              {af.map((file, i) => (
+                <img src={URL.createObjectURL(file)} style={{ width: 78, height: 78, margin: 5 }} alt={"contract-preview-img" + i} />
               ))}
             </div>
           )}
