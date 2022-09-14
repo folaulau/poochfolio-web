@@ -13,7 +13,6 @@ interface Props {
 
 export default function Navbar({ landingLinksVisible, loginVisible, signUpVisible }: Props) {
   const [scrollDir, setScrollDir] = useState("up");
-  const [scrolling, setScrolling] = useState("stop");
 
   useEffect(() => {
     const threshold = 0;
@@ -40,21 +39,15 @@ export default function Navbar({ landingLinksVisible, loginVisible, signUpVisibl
 
     const onScroll = () => {
       let timer: any;
-      setScrolling("scroll");
 
       if(timer) {
         clearTimeout(timer);
-        setScrolling("scroll");
       }
 
       if (!ticking) {
         window.requestAnimationFrame(updateScrollDir);
         ticking = true;
       }
-
-      timer = setTimeout(() => {
-        setScrolling("stop");
-      }, 1000);
     };
 
     window.addEventListener("scroll", onScroll);
