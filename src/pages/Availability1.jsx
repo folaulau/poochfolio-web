@@ -114,13 +114,13 @@ const Availability1 = () => {
   ]);
   const [selectedClosingHour, setSelectedClosingHour] = useState(nightOptions[4].label);
   const [selectedOpeningHour, setSelectedOpeningHour] = useState(options[8].label);
-  const [openingHour, setOpeningHour] = useState(null);
-  const [closingHour, setClosingHour] = useState(null);
-  const [operateMondayHours, setOperateMondayHours] = useState(false);
-  const [operateTuesdayHours, setOperateTuesdayHours] = useState(false);
-  const [operateWednesdayHours, setOperateWednesdayHours] = useState(false);
-  const [operateThursdayHours, setOperateThursdayHours] = useState(false);
-  const [operateFridayHours, setOperateFridayHours] = useState(false);
+  const [openingHour, setOpeningHour] = useState(options[8].value);
+  const [closingHour, setClosingHour] = useState(nightOptions[4].value);
+  const [operateMondayHours, setOperateMondayHours] = useState(true);
+  const [operateTuesdayHours, setOperateTuesdayHours] = useState(true);
+  const [operateWednesdayHours, setOperateWednesdayHours] = useState(true);
+  const [operateThursdayHours, setOperateThursdayHours] = useState(true);
+  const [operateFridayHours, setOperateFridayHours] = useState(true);
   const [operateSaturdayHours, setOperateSaturdayHours] = useState(false);
   const [operateSundayHours, setOperateSundayHours] = useState(false);
   const [groomerInfo] = useState({

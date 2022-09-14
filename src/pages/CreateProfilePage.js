@@ -288,7 +288,6 @@ const CreateProfilePage = () => {
                   border: '2px solid #85d8e7',
                   color: 'black',
                   height: '58.3px',
-                  width: '729.29px',
                 }}
                 options={{
                   types: ['address'],

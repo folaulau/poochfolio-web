@@ -23,7 +23,7 @@ const Input = ({
           className="shadow-sm block w-full py-3 px-4 rounded-full text-[15px] font-Museo-Sans-Rounded-500 bg-red-[#f1f7ff] text-gray-700"
           placeholder={placeholderText}
           
-          style={{ border: '2px solid #85d8e7', width: '348.29px', height: '56.3px' }}
+          style={{ border: '2px solid #85d8e7', height: '56.3px' }}
         />
       </div>
     </div>
