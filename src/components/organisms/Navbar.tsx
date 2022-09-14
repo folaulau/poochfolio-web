@@ -68,7 +68,7 @@ export default function Navbar({ landingLinksVisible, loginVisible, signUpVisibl
   }
 
   return (
-      <nav className={`fixed w-full top-0 z-30 bg-center myheader bg-primary-800 ${scrolling !== "stop" && scrollDir === "down" ? 'header-hide' : 'header-show'}`}>
+      <nav className={`fixed w-full top-0 z-30 bg-center myheader bg-primary-800 ${scrollDir === "down" ? 'header-hide' : 'header-show'}`}>
         <div className="container flex pt-6 pb-6">
           <Logo />
           <div className="flex items-center flex-1">
