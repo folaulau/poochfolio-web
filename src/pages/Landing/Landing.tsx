@@ -1,6 +1,6 @@
 import Navbar from 'components/organisms/Navbar';
 import { useEffect } from 'react';
-import { onSupport, onShowLiveChat } from 'support';
+import { onSupport } from 'support';
 
 import BusinessManagement from './BusinessManagement';
 import HowItWorks from './HowItWorks';
