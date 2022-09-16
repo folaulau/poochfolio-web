@@ -11,7 +11,7 @@ export const onSupport = () => {
     document.getElementsByTagName("head")[0].appendChild(script);
     window.$crisp.push(["set", "user:nickname", ['visitor']]);
     // window.$crisp.push(["set", "user:email", email]);
-    window.$crisp.push(["do", "chat:hide"]);
+    // window.$crisp.push(["do", "chat:hide"]);
 }
 
 export const onShowLiveChat = () => {
@@ -19,6 +19,6 @@ export const onShowLiveChat = () => {
     window.$crisp.push(['do', 'chat:open']);
     window.$crisp.push(["do", "message:read"])
     window.$crisp.push(["on", "chat:closed", function () {
-        window.$crisp.push(["do", "chat:hide"]);
+        // window.$crisp.push(["do", "chat:hide"]);
     }])
 }

@@ -12,12 +12,6 @@ import PoweredBy from './PoweredBy';
 export default function Landing() {
   useEffect(() => {
     onSupport();
-
-    const timer = setTimeout(() => {
-      onShowLiveChat();
-    }, 10000)
-
-    return () => clearTimeout(timer);
   }, [])
 
   return (
