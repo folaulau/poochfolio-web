@@ -546,3 +546,20 @@ input::placeholder {
     opacity:1;
   }
 }
+
+.bm-menu-wrap {
+  background-color: #EDFAFE;
+  padding: 60px 40px;
+}
+
+.bm-item {
+  color: #077997;
+  font-family: 'MuseoSansRounded-700';
+  font-size: 26px;
+  margin-bottom: 40px;
+}
+
+.bm-item-list > a {
+  text-decoration: none;
+  outline: none;
+}
