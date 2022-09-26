@@ -69,7 +69,7 @@ export default function MobileNavbar() {
         <a onClick={() => { setShowMenu(false) }} id="Marketplace"  className="menu-item" href="#marketplace">Marketplace</a>
         <a onClick={() => { setShowMenu(false) }} id="Management" className="menu-item" href="#business-management">Management</a>
         <a onClick={() => { setShowMenu(false) }} id="howitworks" className="menu-item" href="#how-it-works">How it works</a>
-        <a onClick={() => { setShowMenu(false) }} className="menu-item" href="https://www.linkedin.com/company/poochfolio/"
+        <a onClick={() => { setShowMenu(false) }} className="menu-item" rel="noopener noreferrer" href="https://www.linkedin.com/company/poochfolio/"
               target="_blank">Investor relations</a>
         <a id="contact" className="menu-item" href="/">Contact</a>
       </Menu>
