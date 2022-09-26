@@ -3,10 +3,8 @@ import Icon from 'components/atoms/Icon';
 import { useEffect, useState } from 'react';
 import { onShowLiveChat } from 'support';
 import { slide as Menu } from 'react-burger-menu'
-interface Props {
-}
 
-export default function MobileNavbar({ }: Props) {
+export default function MobileNavbar() {
   const [scrollDir, setScrollDir] = useState("up");
   const [showMenu, setShowMenu] = useState(false);
 
