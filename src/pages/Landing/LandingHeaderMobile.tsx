@@ -17,7 +17,7 @@ export default function LandingHeaderMobile() {
             <span className="text-primary-800">Management</span> for Groomers and Kennels
           </h1>
         </div>
-        <img src={dogImage} alt="dog-image" className="w-full mt-8 max-w-[450px]" />
+        <img src={dogImage} alt="dog" className="w-full mt-8 max-w-[450px]" />
       </div>
     </div>
   );
