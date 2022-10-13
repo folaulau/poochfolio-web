@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import {
-  ClipboardCheckIcon,
   PlusCircleIcon,
   PhotographIcon,
 } from "@heroicons/react/solid";
@@ -10,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import GroomerGraphql from "../graphql/GroomerGraphQL";
 import GroomerApi from "../api/GroomerApi";
 import Modal from "../components/input-listing/modal";
-
+import ClockLoader from "react-spinners/ClockLoader";
 import "../components/common/thumbStyle.css";
 
 import Slider from 'rc-slider';
@@ -26,6 +25,7 @@ const InputListingPage2 = () => {
   let navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [groomerInfo, setGroomerInfo] = useState({
     numberOfOccupancy: 0,
     description: '',
@@ -33,7 +33,6 @@ const InputListingPage2 = () => {
   });
   const [careServices, setCareServices] = useState([]);
   const [images, setImages] = useState([]);
-  const [contracts, setContracts] = useState([]);
   const [instantBooking, setInstantBooking] = useState(false);
   const [pickDrop, setPickDrop] = useState({
     offeredPickUp: false,
@@ -69,28 +68,6 @@ const InputListingPage2 = () => {
 
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     onImageDrop,
-  });
-
-  const onContractDrop = useCallback((acceptedFiles, rejectedFiles) => {
-    acceptedFiles.forEach((file) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setContracts((prevState) => [...prevState, reader.result]);
-      };
-      reader.readAsDataURL(file);
-    });
-    contracts.forEach((img) => {
-
-    });
-    // eslint-disable-next-line
-  }, []);
-
-  const {
-    acceptedFiles: af,
-    getRootProps: grp,
-    getInputProps: gip,
-  } = useDropzone({
-    onContractDrop,
   });
 
   useEffect(() => {
@@ -144,7 +121,6 @@ const InputListingPage2 = () => {
         console.log("Error", error);
       });
   };
-
   // const files = acceptedFiles.map((file) => {
   //   return (
   //     <li key={file.path}>
@@ -198,14 +174,14 @@ const InputListingPage2 = () => {
     return GroomerApi.uploadProfileImages(localStorage.getItem("uuid"), formdata);
   };
 
-  const uploadContracts = async () => {
-    if (af.length <= 0) {
-      return "no contracts to upload";
-    }
-    let formdata = new FormData();
-    formdata.append("docs", af[0], af[0].path);
-    return GroomerApi.uploadContracts(localStorage.getItem("uuid"), formdata);
-  };
+  // const uploadContracts = async () => {
+  //   if (af.length <= 0) {
+  //     return "no contracts to upload";
+  //   }
+  //   let formdata = new FormData();
+  //   formdata.append("docs", af[0], af[0].path);
+  //   return GroomerApi.uploadContracts(localStorage.getItem("uuid"), formdata);
+  // };
 
   const handleServicePrice = (e, serviceName, serviceSize) => {
     if (e.target.value.includes('$')) {
@@ -248,6 +224,7 @@ const InputListingPage2 = () => {
   };
   const postList = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     console.log("instantBooking, ", instantBooking)
 
@@ -263,35 +240,40 @@ const InputListingPage2 = () => {
         console.log("response")
         console.log(response)
 
-        uploadContracts().then((response) => {
-          console.log("upload contracts responded")
+        uploadProfileImages().then((response) => {
+          console.log("upload profileImages responded")
           console.log(response)
+          setLoading(false);
+          navigate('/sign-up/availability1');
 
-          uploadProfileImages().then((response) => {
-            console.log("upload profileImages responded")
-            console.log(response)
-
-            navigate('/sign-up/availability1');
-
-          }).catch((error) => {
-            console.log("upload profileImages error")
-
-            console.log(error)
-          })
         }).catch((error) => {
-          console.log("upload contracts error")
-
+          console.log("upload profileImages error")
+          setLoading(false);
           console.log(error)
         })
-
 
       })
       .catch((error) => {
         console.log("error")
-
+        setLoading(false);
         console.log(error)
       })
   };
+
+  if (loading) {
+    return (
+      <div style={{ width: '100%', height: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <ClockLoader
+          color={'#077997'}
+          loading={loading}
+          // cssOverride={override}
+          size={70}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </div>
+    )
+  }
 
   return (
     <>
@@ -458,44 +440,48 @@ const InputListingPage2 = () => {
               </div>
             </fieldset>
           </div>
-          <div className="flex pb-8 px-7 justify-between">
-            <h1 className=" text-[#666666] font-Museo-Sans-Rounded-700">Do You Offer Drop Off Services?</h1>
-            <fieldset>
-              <legend className="sr-only">Do You Offer Drop Off Services?</legend>
-              <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
-                {dropOffServices.map((dropOffService) => (
-                  <div key={dropOffService.id} className="flex items-center">
-                    <input
-                      name="offeredDropOff"
-                      type="checkbox"
-                      value={dropOffService.value}
-                      checked={pickDrop.offeredDropOff === dropOffService.value}
-                      onChange={handlePickDrop}
-                      className="focus:ring-[#077997] focus:ring-1 h-4 w-4 text-[#077997] border-[#077997]"
-                      style={{ height: '24px', width: '26px', borderRadius: 5 }}
-                    />
-                    <label
-                      htmlFor={dropOffService.id}
-                      className="ml-3 block text-sm text-[#666666] font-Museo-Sans-Rounded-700"
-                    >
-                      {dropOffService.title}
-                    </label>
+          {pickDrop.offeredPickUp && (
+            <>
+              <div className="flex pb-8 px-7 justify-between">
+                <h1 className=" text-[#666666] font-Museo-Sans-Rounded-700">Do You Offer Drop Off Services?</h1>
+                <fieldset>
+                  <legend className="sr-only">Do You Offer Drop Off Services?</legend>
+                  <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+                    {dropOffServices.map((dropOffService) => (
+                      <div key={dropOffService.id} className="flex items-center">
+                        <input
+                          name="offeredDropOff"
+                          type="checkbox"
+                          value={dropOffService.value}
+                          checked={pickDrop.offeredDropOff === dropOffService.value}
+                          onChange={handlePickDrop}
+                          className="focus:ring-[#077997] focus:ring-1 h-4 w-4 text-[#077997] border-[#077997]"
+                          style={{ height: '24px', width: '26px', borderRadius: 5 }}
+                        />
+                        <label
+                          htmlFor={dropOffService.id}
+                          className="ml-3 block text-sm text-[#666666] font-Museo-Sans-Rounded-700"
+                        >
+                          {dropOffService.title}
+                        </label>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </fieldset>
               </div>
-            </fieldset>
-          </div>
-          <div className="flex pb-8 px-7 justify-between">
-            <h1 className=" text-[#666666] font-Museo-Sans-Rounded-700">How Much Do You Charge Per Mile?</h1>
-            <input
-              type="number"
-              className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold border border-[#81d6e6]"
-              name="chargePerMile"
-              value={groomerInfo.chargePerMile}
-              onChange={handleGroomerInfoChange}
-              style={{ width: '130.65px', height: '35.81px' }}
-            />
-          </div>
+              <div className="flex pb-8 px-7 justify-between">
+                <h1 className=" text-[#666666] font-Museo-Sans-Rounded-700">How Much Do You Charge Per Mile?</h1>
+                <input
+                  type="number"
+                  className="w-24 bg-[#ebfdff] rounded-2xl h-9 text-center text-[#41a3bb] font-semibold border border-[#81d6e6]"
+                  name="chargePerMile"
+                  value={groomerInfo.chargePerMile}
+                  onChange={handleGroomerInfoChange}
+                  style={{ width: '130.65px', height: '35.81px' }}
+                />
+              </div>
+            </>
+          )}
         </div>
         <div style={{ width: '729.57px' }}>
           <div className="flex py-8 justify-between">
@@ -557,27 +543,6 @@ const InputListingPage2 = () => {
             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
               {acceptedFiles.map((file, i) => (
                 <img src={URL.createObjectURL(file)} style={{ width: 78, height: 78, margin: 5 }} alt={"preview-img" + i} />
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div
-          {...grp({ className: 'dropzone' })}
-          className=" mt-6 border border-[#81d6e6] border-dashed border-2 rounded-2xl bg-white h-40 flex flex-col justify-center items-center"
-          style={{ width: '729.57px', height: 'auto', padding: 10, minHeight: 200 }}
-        >
-          <input {...gip()} />
-          {af.length === 0 ? (
-            <>
-              <ClipboardCheckIcon className="h-6 text-[#077997]" />
-              <p className="text-[#077997]">Drag and Drop</p>
-              <p className="text-[#077997]">Contract you need your customers to sign</p>
-            </>
-          ) : (
-            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
-              {af.map((file, i) => (
-                <img src={URL.createObjectURL(file)} style={{ width: 78, height: 78, margin: 5 }} alt={"contract-preview-img" + i} />
               ))}
             </div>
           )}
