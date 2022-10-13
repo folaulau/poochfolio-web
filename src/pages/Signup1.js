@@ -15,8 +15,8 @@ import {
 
 const Signup = () => {
   const [userInfo, setUserInfo] = useState({
-    email: "folaudev+" + Math.floor(Math.random() * 1000000000) + "@gmail.com",
-    password: "Test1234!",
+    email: "",
+    password: "",
   });
 
   let navigate = useNavigate();

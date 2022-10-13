@@ -11,7 +11,7 @@ const Signin = () => {
 
   const [groomerInfo, setGroomerInfo] = useState({
     email: "",
-    password: "Test1234!",
+    password: "",
   });
 
   let navigate = useNavigate();
