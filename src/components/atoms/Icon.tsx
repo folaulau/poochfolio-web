@@ -12,6 +12,7 @@ import { ReactComponent as ToggleOffLarge } from "assets/icons/toggle-off-large.
 import { ReactComponent as ToggleOff } from "assets/icons/toggle-off.svg"
 import { ReactComponent as ToggleOnLarge } from "assets/icons/toggle-on-large.svg"
 import { ReactComponent as ToggleOn } from "assets/icons/toggle-on.svg"
+import { ReactComponent as Menu } from "assets/icons/menu.svg"
 
 const icons = {
   RoundedCheck,
@@ -24,6 +25,7 @@ const icons = {
   ToggleOff,
   Check,
   Thumb,
+  Menu,
   ToggleOnLarge,
   ToggleOffLarge,
 }

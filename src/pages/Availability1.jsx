@@ -1,17 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
-import React from 'react';
-
-
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GroomerApi from '../api/GroomerApi';
-import GroomerGraphql from '../graphql/GroomerGraphQL';
-import Button from '../components/Button';
 import styled from 'styled-components';
 
 
 import {
   Museosansrounded700NormalGraniteGra,
-  Museosansrounded300NormalGraniteGra,
   Museosansrounded900NormalGraniteGra,
   Museosansrounded700NormalMetallicSe,
   Museosansrounded700NormalWhite15px,
@@ -53,83 +47,83 @@ const Availability1 = () => {
 
   const days = [
     {
-      name: 'Sunday',
+      name: 'Sundays',
     },
     {
-      name: 'Monday',
+      name: 'Mondays',
     },
     {
-      name: 'Tuesday',
+      name: 'Tuesdays',
     },
     {
-      name: 'Wednesday',
+      name: 'Wednesdays',
     },
     {
-      name: 'Thursday',
+      name: 'Thursdays',
     },
     {
-      name: 'Friday',
+      name: 'Fridays',
     },
     {
-      name: 'Saturday',
+      name: 'Saturdays',
     },
   ];
   const [careServices, setCareServices] = useState([
     {
-      name: 'Monday',
+      name: 'Mondays',
       uuid: '',
       selected: true,
       operateMonday: true,
     },
     {
-      name: 'Tuesday',
+      name: 'Tuesdays',
       uuid: '',
       selected: true,
       operateTuesday: true,
     },
     {
-      name: 'Wednesday',
+      name: 'Wednesdays',
       uuid: '',
       selected: true,
       operateWednesday: true,
     },
     {
-      name: 'Thursday',
+      name: 'Thursdays',
       uuid: '',
       selected: true,
       operateThursday: true,
     },
     {
-      name: 'Friday',
+      name: 'Fridays',
       uuid: '',
       selected: true,
       operateFriday: true,
     },
     {
-      name: 'Saturday',
+      name: 'Saturdays',
       uuid: '',
       selected: false,
       operateSaturday: false,
     },
     {
-      name: 'Sunday',
+      name: 'Sundays',
       uuid: '',
       selected: false,
       operateSunday: false,
     },
   ]);
-  const [selectedClosingHour, setSelectedClosingHour] = useState(nightOptions[0].label);
-  const [selectedOpeningHour, setSelectedOpeningHour] = useState(options[0].label);
-  const [openingHour, setOpeningHour] = useState(null);
-  const [closingHour, setClosingHour] = useState(null);
-  const [operateMondayHours, setOperateMondayHours] = useState(false);
-const [operateTuesdayHours, setOperateTuesdayHours] = useState(false);
-const [operateWednesdayHours, setOperateWednesdayHours] = useState(false);
-const [operateThursdayHours, setOperateThursdayHours] = useState(false);
-const [operateFridayHours, setOperateFridayHours] = useState(false);
-const [operateSaturdayHours, setOperateSaturdayHours] = useState(false);
-const [operateSundayHours, setOperateSundayHours] = useState(false);
-  const [groomerInfo, setGroomerInfo] = useState({
+  const [selectedClosingHour, setSelectedClosingHour] = useState(nightOptions[4].label);
+  const [selectedOpeningHour, setSelectedOpeningHour] = useState(options[8].label);
+  const [openingHour, setOpeningHour] = useState(options[8].value);
+  const [closingHour, setClosingHour] = useState(nightOptions[4].value);
+  const [operateMondayHours, setOperateMondayHours] = useState(true);
+  const [operateTuesdayHours, setOperateTuesdayHours] = useState(true);
+  const [operateWednesdayHours, setOperateWednesdayHours] = useState(true);
+  const [operateThursdayHours, setOperateThursdayHours] = useState(true);
+  const [operateFridayHours, setOperateFridayHours] = useState(true);
+  const [operateSaturdayHours, setOperateSaturdayHours] = useState(false);
+  const [operateSundayHours, setOperateSundayHours] = useState(false);
+  const [groomerInfo] = useState({
     uuid: localStorage.getItem('uuid'),
     firstName: '',
     lastName: '',
@@ -138,26 +132,7 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
     signUpStatus: 'ADD_SERVICES',
   });
 
-  const [ setAddress] = useState({
-    uuid: '',
-    street: '',
-    city: '',
-    state: '',
-    zipcode: '',
-    country: '',
-    longitude: 0,
-    latitude: 0,
-  });
-
   console.log('this is night options', selectedClosingHour)
-
-  const [setAddressAsLine] = useState('');
-  const addressUuidInput = useRef(null);
- 
-  useEffect(() => {
-    loadProfile();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const availabilityData = {
 
@@ -177,76 +152,7 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
     thursdays: 'Thursdays',
     fridays: 'Fridays',
     saturdays: 'Saturdays',
- 
-    youCanCustomizeYourHoursLater: 'You can customize your hours later',
-   
-  };
-
-  const loadProfile = () => {
-    GroomerGraphql.getOnlyProfile()
-      .then((response) => {
-        console.log('Profile:', response);
-        let groomer = response.data.data?.groomer[0];
-
-        let groomerData = {
-          uuid: groomer?.uuid || '',
-          firstName: groomer?.firstName || '',
-          lastName: groomer?.lastName || '',
-          businessName: groomer?.businessName || '',
-          phoneNumber: groomer?.phoneNumber || '',
-        };
-
-        setGroomerInfo(groomerData);
-
-        let groomerCareServices = groomer?.careServices || [];
-
-        if (groomerCareServices.length > 0) {
-          /**
-           * By default careServices are all selected.
-           * Now select only the careServices that have been selected before
-           */
-          let selctedCareServices = careServices.map((careService) => {
-            let groomerCareService = groomerCareServices.find(
-              (groomerCareService) => careService.name === groomerCareService.name,
-            );
-            if (groomerCareService === undefined) {
-              careService['selected'] = false;
-              return careService;
-            } else {
-              careService['uuid'] = groomerCareService?.uuid || '';
-              careService['selected'] = true;
-              return careService;
-            }
-          });
-
-          setCareServices(selctedCareServices);
-        }
-
-        let mainAddress = groomer?.addresses?.[0];
-
-        setAddress(mainAddress);
-
-        addressUuidInput.current = mainAddress?.uuid || '';
-
-        if (
-          mainAddress !== undefined &&
-          mainAddress.uuid !== undefined &&
-          mainAddress.uuid !== ''
-        ) {
-          setAddressAsLine(
-            mainAddress.street +
-              ', ' +
-              mainAddress.city +
-              ', ' +
-              mainAddress.state +
-              ' ' +
-              mainAddress.zipcode,
-          );
-        }
-      })
-      .catch((error) => {
-        console.log('Error', error);
-      });
+    youCanCustomizeYourHoursLater: 'You can customize your hours later'
   };
 
   const toggleCareService = (careService) => {
@@ -254,27 +160,27 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
       if (careService.name === cs.name) {
         cs.selected = !cs.selected;
       }
-      if (careService.name === cs.name && careService.name === 'Monday') {
+      if (careService.name === cs.name && careService.name === 'Mondays') {
         setOperateMondayHours(true);
       }
-       if (careService.name === cs.name && careService.name === 'Tuesday') {
-         setOperateTuesdayHours(true);
-       }
-        if (careService.name === cs.name && careService.name === 'Wednesday') {
-          setOperateWednesdayHours(true);
-        }
-         if (careService.name === cs.name && careService.name === 'Thursday') {
-           setOperateThursdayHours(true);
-         }
-          if (careService.name === cs.name && careService.name === 'Friday') {
-            setOperateFridayHours(true);
-          }
-           if (careService.name === cs.name && careService.name === 'Saturday') {
-             setOperateSaturdayHours(true);
-           }
-            if (careService.name === cs.name && careService.name === 'Sunday') {
-              setOperateSundayHours(true);
-            }
+      if (careService.name === cs.name && careService.name === 'Tuesdays') {
+        setOperateTuesdayHours(true);
+      }
+      if (careService.name === cs.name && careService.name === 'Wednesdays') {
+        setOperateWednesdayHours(true);
+      }
+      if (careService.name === cs.name && careService.name === 'Thursdays') {
+        setOperateThursdayHours(true);
+      }
+      if (careService.name === cs.name && careService.name === 'Fridays') {
+        setOperateFridayHours(true);
+      }
+      if (careService.name === cs.name && careService.name === 'Saturdays') {
+        setOperateSaturdayHours(true);
+      }
+      if (careService.name === cs.name && careService.name === 'Sundays') {
+        setOperateSundayHours(true);
+      }
 
       return cs;
     });
@@ -313,8 +219,8 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
     GroomerApi.createAvailability(putBody)
       .then((response) => {
         console.log('Success:', response);
-        if(response.status  === 200) {
-         navigate('/dashboard');
+        if (response.status === 200) {
+          navigate('/dashboard');
         }
         else {
           return
@@ -329,8 +235,7 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
 
   return (
     <>
-      <div style={{ height: 5, backgroundColor: 'white' }} />
-      <div className="container-center-horizontal">
+      <div className="container-center-horizontal custom-animation">
         <div className="availability screen">
           <OverlapGroup4>
             <ColorFill2></ColorFill2>
@@ -372,7 +277,7 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
                   <div className="my-4 md:flex md:flex-row">
                     {days.map((service) => {
                       let careService = careServices.find(
-                        (careService) => careService.name === service.name,
+                        (care) => care.name === service.name,
                       );
 
                       const isSelected = careService.selected;
@@ -383,31 +288,30 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
                           key={service.name}
                           style={{
                             boxShadow: 'inset 0px 0px 10px #81d6e6',
-                            width: '138px',
+                            width: '130px',
                             height: '105px',
-                            marginRight: '31.06px',
+                            marginRight: '14px',
                             flexDirection: 'column',
                           }}
-                          className={`w-40 h-[66.94px] rounded-xl border ${
-                            isSelected ? 'bg-[#95e8f7]' : 'bg-[#f1f7ff]'
-                          }  flex justify-center items-center gap-x-2 m-1`}
+                          className={`w-40 h-[66.94px] rounded-xl border ${isSelected ? 'bg-[#95e8f7]' : 'bg-[#f1f7ff]'
+                            }  flex justify-center items-center gap-x-2 m-1`}
                           onClick={() => toggleCareService(careService)}
                         >
                           {isSelected ? (
                             <img
                               src="/landing-page/bluecheck1.svg"
                               alt=""
-                              style={{ height: 30, width: 30, paddingBottom: 10 }}
+                              style={{ height: 38, width: 38 }}
                             />
                           ) : (
                             <img
                               src="/landing-page/bluecircle.svg"
                               alt=""
-                              style={{ height: 30, width: 30, paddingBottom: 10 }}
+                              style={{ height: 38, width: 38 }}
                             />
                           )}
-                          <span className={`${isSelected ? 'text-[#077997]' : 'text-[#9697a3]'} `}>
-                      
+                          <span className={`font-Museo-Sans-Rounded-300 ${isSelected ? 'text-[#077997]' : 'text-[#9697a3]'}`} style={{ fontSize: 15, marginTop: 20 }}>
+
                             {service.name}
                           </span>
                         </button>
@@ -416,17 +320,10 @@ const [operateSundayHours, setOperateSundayHours] = useState(false);
                   </div>
                 </OverlapGroup2>
               </AvailableDaysCopy>
-              <YouCanCustomizeYourHoursLater>
-                You can customize your hours later
-              </YouCanCustomizeYourHoursLater>
-              <Button />
             </Content>
             <ButtonCopy5 onClick={handleSubmit}>
               <CONTINUE>CONTINUE</CONTINUE>
             </ButtonCopy5>
-            <YouCanCustomizeYourHoursLater>
-              You can customize your hours later
-            </YouCanCustomizeYourHoursLater>
           </OverlapGroup4>
         </div>
       </div>
@@ -446,7 +343,6 @@ const Powered = styled.div`
   width: 100%;
   height: 42px;
   top: 1129px;
-  // left: 3038px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -480,7 +376,6 @@ const AvailableHours = styled.div`
   min-height: 24px;
   margin-left: 4.93px;
   letter-spacing: 0;
-  line-height: 91.4px;
   white-space: nowrap;
 `;
 
@@ -509,21 +404,8 @@ const OverlapGroup2 = styled.div`
   width: 966px;
   height: 165px;
   position: relative;
-  margin-top: 26px;
 `;
 
-const YouCanCustomizeYourHoursLater = styled.p`
-  ${Museosansrounded300NormalGraniteGra}
-  min-height: 20px;
-  margin-top: 140px;
-  margin-left: 4.71px;
-  min-width: 238px;
-  max-width:238px
-  text-align: center;
-  letter-spacing: 0;
-  line-height: 91.4px;
-  white-space: nowrap;
-`;
 const X0500pm = styled.div`
   position: absolute;
   top: 1px;
@@ -589,7 +471,6 @@ const AvailablesDays = styled.div`
   min-height: 24px;
   margin-left: 1.36px;
   letter-spacing: 0;
-  // line-height: 91.4px;
   white-space: nowrap;
 `;
 
@@ -600,18 +481,19 @@ const Group15Copy = styled.div`
   flex-direction: column;
   align-items: flex-start;
   min-height: 98px;
+  margin-top: 40px;
 `;
 
 const LetTheCustomerKno = styled.p`
   ${Museosansrounded700NormalGraniteGra}
   min-height: 20px;
   margin-top: 12px;
-  margin-left: 36.71px;
   min-width: 414px;
   text-align: center;
   letter-spacing: 0;
   line-height: 91.4px;
   white-space: nowrap;
+  font-size: 15px;
 `;
 
 const Content = styled.div`
@@ -635,13 +517,14 @@ const Title = styled.h1`
   letter-spacing: 0;
   line-height: 100px;
   white-space: nowrap;
+  font-size: 26px;
 `;
 
 const ButtonCopy5 = styled.div`
   ${Border1pxSkyBlue}
   position: absolute;
   height: 56px;
-  top: 657px;
+  top: 560px;
   left: 3495px;
   display: flex;
   padding: 0 231.8px;

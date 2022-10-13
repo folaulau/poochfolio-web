@@ -1,6 +1,11 @@
 import React from "react";
+import { onShowLiveChat } from "support";
 
 export default function Header() {
+
+  const onShowChat = () => {
+    onShowLiveChat()
+  }
   return (
     // <header className='px-5 lg:px-44 gap-x-4 lg:gap-x-8 bg-pooch-blue-2 bg-center bg-cover bg-no-repeat bg-background-header h-36 flex items-center justify-around'>
     <header
@@ -14,6 +19,7 @@ export default function Header() {
       <button
         className="sm:ml-auto rounded-full px-6 py-4  font-Museo-Sans-Rounded-500 flex align-center"
         style={{ borderWidth: 2, borderColor: '#FFFFFF', width: '148.53px', height: '45.66px' }}
+        onClick={onShowChat}
       >
         <img className="shrink-0" src="/landing-page/headset.svg" alt="Support" style={{alignSelf:'center'}}/>
         <span className="ml-3.5 text-pooch-blue-2" style={{ color: '#ffffff', alignSelf:'center' }}>

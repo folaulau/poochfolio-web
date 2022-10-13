@@ -9,7 +9,7 @@ export default function BusinessManagement() {
   return (
     <div
       id="business-management"
-      className="container flex items-center pt-24 mt-12 gap-9 z-20 relative"
+      className="container flex items-center pt-36 mt-12 gap-9 z-20 relative"
     >
       <div className="flex-1">
         <div className="text-16 font-900">MANAGEMENT</div>

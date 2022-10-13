@@ -4,7 +4,7 @@ import { ComponentProps, forwardRef } from "react"
 import Spinner from "./Spinner"
 
 interface Props extends ComponentProps<"button"> {
-  variant: "filled" | "outlined" | "shadowed" | "shadowed-dark"
+  variant: "default" | "filled" | "outlined" | "shadowed" | "shadowed-dark"
   size: "sm" | "md" | "lg"
   loading?: boolean
 }
@@ -20,7 +20,10 @@ const Button = forwardRef<HTMLButtonElement, Props>(
         disabled={loading || disabled}
         className={classNames(
           "rounded-full relative",
-
+          variant === "default" && [
+            "text-primary-800",
+            !disabled && "hover:bg-primary-600",
+          ],
           variant === "filled" && [
             "bg-primary-200 text-primary-800",
             !disabled && "hover:bg-primary-600",

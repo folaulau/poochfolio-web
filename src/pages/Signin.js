@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import React from 'react';
+// import React from 'react';
 import { useNavigate } from "react-router-dom";
-import GroomerGraphql from "../graphql/GroomerGraphQL";
+// import GroomerGraphql from "../graphql/GroomerGraphQL";
 import FirebaseApi from "../api/FirebaseApi";
 import GroomerApi from "../api/GroomerApi";
 import { Button } from 'react-bootstrap';
@@ -20,50 +20,50 @@ const Signin = () => {
 
     // const data = await startFetchGetGroomer(poochToken);
     // setProfileData(data);
-    loadProfile()
+    // loadProfile()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const loadProfile = () =>{
-    GroomerGraphql.getProfile()
-    .then((response) => {
-      console.log("Success:", response);
-      let groomerInfo = response.data.data?.groomer[0];
-      console.log("groomerInfo:", groomerInfo);
+  // const loadProfile = () =>{
+  //   GroomerGraphql.getProfile()
+  //   .then((response) => {
+  //     console.log("Success:", response);
+  //     let groomerInfo = response.data.data?.groomer[0];
+  //     console.log("groomerInfo:", groomerInfo);
 
-      goToNextDestination(groomerInfo.status, groomerInfo.signUpStatus);
-    })
-    .catch((error) => {
-      console.log("Error", error);
-    });
-  }
+  //     goToNextDestination(groomerInfo.status, groomerInfo.signUpStatus);
+  //   })
+  //   .catch((error) => {
+  //     console.log("Error", error);
+  //   });
+  // }
 
-  const goToNextDestination = (status,signUpStatus) => {
-    console.log("goToNextDestination")
-    console.log("status, ", status)
-    console.log("signUpStatus, ", signUpStatus)
-    if(status==="ACTIVE" || status==="PENDING_APPROVAL"){
-      navigate("/dashboard");
-    }else if(status==="SIGNING_UP"){
-      switch (signUpStatus) {
-        case "SIGNED_UP":
-          navigate("/sign-up/create-profile");
-          break;
-        case "PROFILE_CREATED":
-          navigate("/sign-up/input-listing2");
-          break;
-        case "LISTING_CREATED":
-          navigate("/payment-method");
-          break;
-        default:
-          navigate("/");
-      }
-    }else{
-      // display message to user that he's either inactive or blocked
-    }
+  // const goToNextDestination = (status,signUpStatus) => {
+  //   console.log("goToNextDestination")
+  //   console.log("status, ", status)
+  //   console.log("signUpStatus, ", signUpStatus)
+  //   if(status==="ACTIVE" || status==="PENDING_APPROVAL"){
+  //     navigate("/dashboard");
+  //   }else if(status==="SIGNING_UP"){
+  //     switch (signUpStatus) {
+  //       case "SIGNED_UP":
+  //         navigate("/sign-up/create-profile");
+  //         break;
+  //       case "PROFILE_CREATED":
+  //         navigate("/sign-up/input-listing2");
+  //         break;
+  //       case "LISTING_CREATED":
+  //         navigate("/payment-method");
+  //         break;
+  //       default:
+  //         navigate("/");
+  //     }
+  //   }else{
+  //     // display message to user that he's either inactive or blocked
+  //   }
 
     
-  }
+  // }
 const facebookLogin = () => {
   FirebaseApi.loginWithFacebook(navigate);
 };
@@ -96,8 +96,8 @@ const googleLogin = () => {
           console.log("auth, ", auth);
           localStorage.setItem("poochToken", auth.token);
           localStorage.setItem("uuid", auth.uuid);
-
-          goToNextDestination(auth.status, auth.signUpStatus);
+          navigate("/dashboard");
+          // goToNextDestination(auth.status, auth.signUpStatus);
       })
       .catch((error) => {
         console.log("Error", error);
@@ -115,7 +115,7 @@ const googleLogin = () => {
       <nav className="bg-pooch-blue-2 bg-center bg-cover bg-no-repeat">
         <Header />
       </nav>
-      <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-Museo-Sans-Rounded-900">
+      <div className="flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-Museo-Sans-Rounded-900 mt-12">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           {/* <img
             className="mx-auto h-12 w-auto"
@@ -123,7 +123,7 @@ const googleLogin = () => {
             alt="Workflow"
           /> */}
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            🐾 Sign In to Pooch 🐶
+          Sign In
           </h2>
           {/* <p className="mt-2 text-center text-sm text-gray-600">
             Or{" "}

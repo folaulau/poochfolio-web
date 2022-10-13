@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import PoochRoutes from './routes';
 import { BackdropProvider } from './context/BackDropProvider';
+import ScrollToTop from 'scrollToTop';
 
 console.log('node env: ' + process.env.REACT_APP_ENV);
 console.log('api x-api-key: ' + process.env.REACT_APP_X_API_KEY);
@@ -16,6 +17,7 @@ ReactDOM.render(
   <Suspense>
     <BackdropProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <PoochRoutes />
       </BrowserRouter>
     </BackdropProvider>

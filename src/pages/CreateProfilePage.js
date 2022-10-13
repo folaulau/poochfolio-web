@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import React from 'react';
 import Input from "../components/common/Input";
 import Autocomplete from "react-google-autocomplete";
 import { services } from "../data/services";
@@ -8,6 +7,8 @@ import GroomerApi from "../api/GroomerApi";
 import GroomerGraphql from "../graphql/GroomerGraphQL";
 import styled from 'styled-components';
 import { Museosansrounded500NormalGraniteGra } from '../styledMixins';
+import LocationSvg from "../assets/images/landing/location.svg";
+
 const CreateProfilePage = () => {
   let navigate = useNavigate();
 
@@ -35,15 +36,16 @@ const CreateProfilePage = () => {
   ]);
 
   const [phoneNumber, setPhoneNumber] = useState(null)
-const formatPhoneNumberForUpload = (number) => {
-  var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-  if (phoneRegex.test(number)) {
-    const secondCheckPhoneNumber = number?.replace(phoneRegex, '$1$2$3');
-    return secondCheckPhoneNumber;
-  } else {
-    // alert('Please enter a valid phone number');
-  }
-};
+  const formatPhoneNumberForUpload = (number) => {
+    var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+    if (phoneRegex.test(number)) {
+      const secondCheckPhoneNumber = number?.replace(phoneRegex, '$1$2$3');
+      return secondCheckPhoneNumber;
+    } else {
+      return false
+      // alert('Please enter a valid phone number');
+    }
+  };
   console.log(formatPhoneNumberForUpload(phoneNumber))
   const [groomerInfo, setGroomerInfo] = useState({
     uuid: localStorage.getItem("uuid"),
@@ -71,6 +73,16 @@ const formatPhoneNumberForUpload = (number) => {
     loadProfile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if(careServices.filter((item) => item.selected === true).length) {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
+  }, [careServices])
+
   const loadProfile = () => {
     GroomerGraphql.getOnlyProfile()
       .then((response) => {
@@ -125,12 +137,12 @@ const formatPhoneNumberForUpload = (number) => {
         ) {
           setAddressAsLine(
             mainAddress.street +
-              ", " +
-              mainAddress.city +
-              ", " +
-              mainAddress.state +
-              " " +
-              mainAddress.zipcode
+            ", " +
+            mainAddress.city +
+            ", " +
+            mainAddress.state +
+            " " +
+            mainAddress.zipcode
           );
         }
       })
@@ -162,7 +174,7 @@ const formatPhoneNumberForUpload = (number) => {
       address: address,
       phoneNumber: formatPhoneNumberForUpload(phoneNumber),
     };
-
+    console.log("body : ", putBody)
     GroomerApi.createUpdateProfile(putBody)
       .then((response) => {
         console.log("Success:", response);
@@ -187,10 +199,7 @@ const formatPhoneNumberForUpload = (number) => {
       longitude: place.geometry.location.lng(),
     };
 
-    setAddress((address) => ({
-      ...address,
-      ...newAddress,
-    }));
+    setAddress(newAddress);
   };
 
   const handleChange = (e) => {
@@ -199,14 +208,16 @@ const formatPhoneNumberForUpload = (number) => {
       [e.target.name]: e.target.value,
     });
   };
-const handlePhone = e => {
-  setPhoneNumber(e.target.value)
-}
+
+  const handlePhone = e => {
+    setPhoneNumber(e.target.value)
+  }
+
   return (
     <>
       <form
         onSubmit={handleSubmit}
-        className="pt-4 bg-[#f3f8ff]"
+        className="pt-4 bg-[#f3f8ff] custom-animation"
         style={{
           borderWidth: 5,
           borderLeftColor: 'transparent',
@@ -248,7 +259,7 @@ const handlePhone = e => {
           />
           <Input
             labelText="Phone Number"
-            placeholderText="123-45-6789"
+            placeholderText="123-456-7890"
             type="tel"
             name="phoneNumber"
             handleChange={handlePhone}
@@ -258,11 +269,11 @@ const handlePhone = e => {
           <div className="mb-5 sm:col-span-2">
             <label
               htmlFor="name"
-              className="text-[15px] text-[#666666] ml-2 font-Museo-Sans-Rounded-700"
+              className="text-[12px] text-[#666666] ml-2 font-Museo-Sans-Rounded-500"
             >
               Address
             </label>
-            <div className="mt-3.5">
+            <div className="mt-3.5" style={{ position: 'relative' }}>
               <Autocomplete
                 type="address"
                 name="name"
@@ -277,12 +288,14 @@ const handlePhone = e => {
                   border: '2px solid #85d8e7',
                   color: 'black',
                   height: '58.3px',
-                  width: '729.29px',
                 }}
                 options={{
                   types: ['address'],
                 }}
               />
+              <div style={{ position: 'absolute', top: 17.5, right: 10, cursor: 'pointer' }}>
+                <img src={LocationSvg} alt="location-img" />
+              </div>
             </div>
           </div>
         </section>
@@ -305,9 +318,8 @@ const handlePhone = e => {
                     width: '158.94px',
                     marginRight: '31.06px',
                   }}
-                  className={`w-40 h-[66.94px] rounded-xl border ${
-                    isSelected ? 'bg-[#95e8f7]' : 'bg-[#f1f7ff]'
-                  }  flex justify-center items-center gap-x-3 m-1`}
+                  className={`w-40 h-[66.94px] rounded-xl border ${isSelected ? 'bg-[#95e8f7]' : 'bg-[#f1f7ff]'
+                    }  flex justify-center items-center gap-x-3 m-1`}
                   onClick={() => toggleCareService(careService)}
                 >
                   <service.icon
