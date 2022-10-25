@@ -326,7 +326,7 @@ const CreateProfilePage = () => {
                     className={`${isSelected ? 'text-[#077997]' : 'text-[#9697a3]'} h-8 w-8`}
                   />
                   <span className={`${isSelected ? 'text-[#077997]' : 'text-[#9697a3]'} `}>
-                    {service.name}
+                    {service.name === 'Overnight' ? 'Dog Boarding' : service.name}
                   </span>
                 </button>
               );
