@@ -1,0 +1,1 @@
+export { ComingPage as default } from './Coming';
