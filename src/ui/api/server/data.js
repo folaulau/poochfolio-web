@@ -104,3 +104,25 @@ export const acceptBooking = (dispatch, data) => new Promise((resolve, reject) =
             reject(handleError(err))
         })
 })
+
+export const linkStripeAccount = (dispatch, data) => new Promise((resolve, reject) => {
+    dispatch({
+        type: SET_DATA_LOADING,
+        payload: true
+    })
+    HTTPS.get(`/groomers/${data.uuid}/stripe-account-link`)
+        .then((response) => {
+            dispatch({
+                type: SET_DATA_LOADING,
+                payload: false
+            })
+            resolve(response.data);
+        })
+        .catch((err) => {
+            dispatch({
+                type: SET_DATA_LOADING,
+                payload: false
+            })
+            reject(handleError(err))
+        })
+})

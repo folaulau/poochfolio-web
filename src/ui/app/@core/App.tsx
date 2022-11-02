@@ -10,6 +10,7 @@ import ScrollToTop from '../../../scrollToTop';
 import { Page404 } from '../../screens/@core/404';
 
 import Landing from '../../screens/landing';
+import { ProtectedRoute } from './ProtectedRoute';
 
 const Signin = React.lazy(() => import('../../screens/signin'))
 const Signup = React.lazy(() => import('../../screens/signup'))
@@ -41,10 +42,18 @@ export const App = () => {
                         <Route path='/signup' element={<Signup />} />
                     </Route>
                     <Route path='/' element={<Layout />}>
-                        <Route path='/reservations' element={<Reservations />} />
+                        <Route path='/reservations' element={
+                            <ProtectedRoute>
+                                <Reservations />
+                            </ProtectedRoute>
+                        } />
                         <Route path='/calendar' element={<ComingPage />} />
                         <Route path='/marketplace' element={<ComingPage />} />
-                        <Route path='/payments' element={<Payment />} />
+                        <Route path='/payments' element={
+                            <ProtectedRoute>
+                                <Payment />
+                            </ProtectedRoute>
+                        } />
                         <Route path='/invoice' element={<ComingPage />} />
                         <Route path='/employees' element={<ComingPage />} />
                         <Route path='/quickbooks' element={<ComingPage />} />

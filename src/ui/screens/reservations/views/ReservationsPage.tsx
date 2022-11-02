@@ -12,26 +12,23 @@ import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import 'react-calendar/dist/Calendar.css';
 import { acceptBooking, checkinBooking, checkoutBooking, getBookings } from '../../../api/server/data';
 import { useDispatch, useSelector } from 'react-redux';
-import { SET_AUTH } from '../../../redux/types';
-import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Spinner } from '../../@core/Spinner';
-import { NoResult } from '../../@core/NoResult';
 import { Nothing } from '../../@core/Nothing';
 
 type Props = {};
 
 const DATA = [
     {
-        "id": "erlang",
-        "label": "erlang",
-        "value": 42,
+        "id": "vacancy",
+        "label": "Vacancy",
+        "value": 13,
         "color": "#79D2E3"
     },
     {
-        "id": "c",
-        "label": "c",
-        "value": 309,
+        "id": "occupancy",
+        "label": "Occupancy",
+        "value": 87,
         "color": "#077997"
     },
 ]
@@ -97,8 +94,6 @@ export const ReservationsPage: React.FC<Props> = () => {
     const screen1 = useFullScreenHandle();
     const screen2 = useFullScreenHandle();
     const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const authed = useSelector((state: any) => state.auth.authed);
     const loading = useSelector((state: any) => state.data.loading);
     const bookings = useSelector((state: any) => state.data.bookings);
     const [searchFocus, setSearchFocus] = useState(false);
@@ -128,21 +123,11 @@ export const ReservationsPage: React.FC<Props> = () => {
     }, [screen1, screen2]);
 
     useEffect(() => {
-        if (!authed) {
-            navigate('/signin')
-        }
-    }, [authed])
-
-    useEffect(() => {
         getBookings(dispatch)
             .then((res) => { })
             .catch((err) => {
                 toast(err, { type: 'error' })
             })
-        // dispatch({
-        //     type: SET_AUTH,
-        //     payload: false
-        // })
     }, [])
 
     useEffect(() => {
@@ -374,12 +359,12 @@ export const ReservationsPage: React.FC<Props> = () => {
                         <styled.DetailWrapper>
                             <styled.Title>Analytics</styled.Title>
                             <styled.Vacancy>Vacancy : 13%</styled.Vacancy>
-                            <styled.Occupancy>Occupancy Rate : 13%</styled.Occupancy>
+                            <styled.Occupancy>Occupancy Rate : 87%</styled.Occupancy>
                         </styled.DetailWrapper>
                         <styled.ChartWrapper>
                             <ResponsivePie
                                 data={DATA}
-                                margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+                                margin={{ top: 32, right: 32, bottom: 32, left: 32 }}
                                 innerRadius={0.5}
                                 padAngle={1}
                                 activeOuterRadiusOffset={10}

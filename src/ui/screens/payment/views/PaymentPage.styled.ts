@@ -76,7 +76,7 @@ export const Wrapper = styled.div`
     align-items: center;
     width      : 100%;
     justify-content: center;
-    margin-top : 150px;
+    margin-top : 200px;
 `;
 
 export const Title = styled.label`
