@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import * as styled from './Occupant.styled';
 import { AiTwotoneEdit } from 'react-icons/ai';
 import DOG from '../../../../../assets/images/sample/dog.jpeg';

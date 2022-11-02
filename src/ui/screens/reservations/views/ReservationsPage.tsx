@@ -128,7 +128,7 @@ export const ReservationsPage: React.FC<Props> = () => {
             .catch((err) => {
                 toast(err, { type: 'error' })
             })
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         let newBookings = [];
@@ -139,6 +139,7 @@ export const ReservationsPage: React.FC<Props> = () => {
             if (today >= startDate && today <= endDate) {
                 return item
             }
+            return null
         })
         setCurrentOccupants(newBookings);
     }, [bookings])
@@ -148,12 +149,12 @@ export const ReservationsPage: React.FC<Props> = () => {
         if (filter === 0) {
             newBookings = bookings.filter((item: any) => {
                 const startDate = new Date(item.start_date_time);
-                const endDate = new Date(item.end_date_time);
                 var tomorrow = new Date();
                 tomorrow.setDate(tomorrow.getDate() + 1);
                 if (tomorrow < startDate) {
                     return item
                 }
+                return null
             })
             setOccupants(newBookings)
         } else if (filter === 1) {
@@ -164,6 +165,7 @@ export const ReservationsPage: React.FC<Props> = () => {
                 if (today >= startDate && today <= endDate) {
                     return item
                 }
+                return null
             })
             setOccupants(newBookings)
         } else if (filter === 2) {
@@ -174,6 +176,7 @@ export const ReservationsPage: React.FC<Props> = () => {
                 if (today >= startDate && today <= endDate) {
                     return item
                 }
+                return null
             })
             setOccupants(newBookings)
         } else {
@@ -183,6 +186,7 @@ export const ReservationsPage: React.FC<Props> = () => {
                 if (today > endDate) {
                     return item
                 }
+                return null
             })
             setOccupants(newBookings)
         }

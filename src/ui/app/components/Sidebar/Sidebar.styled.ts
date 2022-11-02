@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { COLOR } from '../../../../assets/colors';
 import { MOBILE, TABLET } from '../../../../assets/screen';
-import { SMALL_DESKTOP } from '../../../../assets/screen/screen';
 
 export const Container = styled.div`
 	display        : flex;

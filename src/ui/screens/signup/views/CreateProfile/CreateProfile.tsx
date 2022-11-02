@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import * as styled from './CreateProfile.styled';
 import LocationSvg from "../../../../../assets/images/landing/location.svg";
 import { services } from "./CreateProfile.config";
@@ -8,15 +8,13 @@ import { Spinner } from '../../../@core/Spinner';
 import { toast } from 'react-toastify';
 import { maskPhoneNumber } from '../../../../../utils/phoneMask';
 import { validatePhone } from '../../../../../utils/phoneValidate';
-import axios from 'axios';
 import { GOOGLE_API_KEY } from '../../../../api/constant';
 import { createProfile } from '../../../../api/server/auth';
 
 type Props = {
 };
 
-export const CreateProfile: React.FC<Props> = ({
-}) => {
+export const CreateProfile: React.FC<Props> = () => {
     const addressUuidInput = useRef(null);
     const dispatch = useDispatch();
     const loading = useSelector((state: any) => state.auth.loading);

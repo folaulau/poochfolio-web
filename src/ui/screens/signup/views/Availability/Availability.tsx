@@ -12,8 +12,7 @@ import { Spinner } from '../../../@core/Spinner';
 type Props = {
 };
 
-export const Availability: React.FC<Props> = ({
-}) => {
+export const Availability: React.FC<Props> = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const loading = useSelector((state: any) => state.auth.loading);

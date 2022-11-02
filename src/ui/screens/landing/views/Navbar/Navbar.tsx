@@ -23,7 +23,7 @@ export const Navbar: React.FC<Props> = ({
         if(authed) {
             navigate('/reservations')
         }
-    }, [authed])
+    }, [authed, navigate])
 
     useEffect(() => {
         const threshold = 0;

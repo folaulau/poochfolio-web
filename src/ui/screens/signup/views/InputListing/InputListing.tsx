@@ -11,12 +11,10 @@ import { useDropzone } from "react-dropzone";
 import Switch from "react-switch";
 import { Checkbox } from '../../../@core/Checkbox';
 import { useDispatch, useSelector } from 'react-redux';
-import { moneyMask } from '../../../../../utils/CurrencyMask';
 import { Spinner } from '../../../@core/Spinner';
 import { createListing, uploadPhoto } from '../../../../api/server/auth';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
-import { SET_LOADING } from '../../../../redux/types';
 
 Modal.setAppElement('#root');
 
@@ -44,8 +42,7 @@ const customStyles = {
 type Props = {
 };
 
-export const InputListing: React.FC<Props> = ({
-}) => {
+export const InputListing: React.FC<Props> = () => {
     const dispatch = useDispatch();
     const user = useSelector((state: any) => state.auth.user);
     const loading = useSelector((state: any) => state.auth.loading);
@@ -155,6 +152,7 @@ export const InputListing: React.FC<Props> = ({
         let formdata: any = new FormData();
         acceptedFiles.map((file) => {
             formdata.append("images", file, file.name);
+            return null;
         })
         uploadPhoto(dispatch, { uuid: user.uuid, images: formdata })
             .then((res) => {

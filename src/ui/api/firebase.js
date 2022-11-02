@@ -6,8 +6,8 @@ import {
     signInWithPopup,
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
-    sendPasswordResetEmail,
-    signOut,
+    // sendPasswordResetEmail,
+    // signOut,
 } from "firebase/auth";
 
 const firebaseConfig = {

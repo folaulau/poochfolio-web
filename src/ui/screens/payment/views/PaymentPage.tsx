@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Spinner } from '../../@core/Spinner';
 import { linkStripeAccount } from '../../../api/server/data';
 import { toast } from 'react-toastify';
-import { SET_AUTH } from '../../../redux/types';
 
 type Props = {};
 

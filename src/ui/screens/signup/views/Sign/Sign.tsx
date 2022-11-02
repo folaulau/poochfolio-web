@@ -11,8 +11,7 @@ import { toast } from 'react-toastify';
 type Props = {
 };
 
-export const Sign: React.FC<Props> = ({
-}) => {
+export const Sign: React.FC<Props> = () => {
     const dispatch = useDispatch();
     const loading = useSelector((state: any) => state.auth.loading);
     const [email, setEmail] = useState('');

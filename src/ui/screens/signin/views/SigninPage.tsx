@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import * as styled from './SigninPage.styled';
 import GOOGLE from '../../../../assets/images/google.svg';
 import FACEBOOK from '../../../../assets/images/facebook.svg';
