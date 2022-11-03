@@ -1,4 +1,4 @@
-import { SET_BOOKING, SET_DATA_LOADING, SET_GROOMER } from "../../redux/types"
+import { SET_BOOKING, SET_DATA_LOADING } from "../../redux/types"
 import { handleError } from "../handleError";
 import { HTTPS, HTTPS_GRAPH } from "../https"
 import { GET_BOOKING } from './queries';
@@ -18,11 +18,11 @@ export const getBookings = (dispatch) => new Promise((resolve, reject) => {
         type: SET_DATA_LOADING,
         payload: true
     })
-    HTTPS_GRAPH.get('/getBookings')
+    HTTPS_GRAPH.post('', { query: GET_BOOKING })
         .then((response) => {
             dispatch({
                 type: SET_BOOKING,
-                payload: response.data.booking
+                payload: response.data.data.booking
             })
             dispatch({
                 type: SET_DATA_LOADING,

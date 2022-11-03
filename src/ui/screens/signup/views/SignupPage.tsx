@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import * as styled from './SignupPage.styled';
 import KEY from '../../../../assets/images/key1.svg';
 import DOCUMENT from '../../../../assets/images/document.svg';
@@ -11,32 +11,18 @@ import { Sign } from './Sign/Sign';
 import { CreateProfile } from './CreateProfile';
 import { InputListing } from './InputListing';
 import { Availability } from './Availability';
-import { useDispatch, useSelector } from 'react-redux';
-import { SET_LOADING, SET_SIGNUP_STEP } from '../../../redux/types';
+import { useSelector } from 'react-redux';
 
 
 type Props = {};
 
 export const SignupPage: React.FC<Props> = () => {
-    const dispatch = useDispatch()
     const currentStep = useSelector((state : any) => state.auth.currentStep);
 
     useEffect(() => {
         let doc: any = document;
         doc.querySelector('.main_component').scrollTop = 0;
-        // dispatch({
-        //     type: SET_LOADING,
-        //     payload: false
-        // })
     }, [currentStep]);
-
-    const goNext = () => {
-        // setCurrentStep(prev => prev + 1);
-    }
-
-    // const goPrev = () => {
-    //     setCurrentStep(prev => prev - 1);
-    // }
 
     return (
         <styled.Container>

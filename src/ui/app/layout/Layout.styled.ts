@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { COLOR } from '../../../assets/colors';
-import { MOBILE, SMALL_DESKTOP, SMALL_TABLET } from '../../../assets/screen/screen';
+import { MOBILE, SMALL_DESKTOP } from '../../../assets/screen/screen';
 
 export const BodyWrapper = styled.div`
 	display        : flex;

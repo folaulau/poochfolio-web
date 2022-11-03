@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { COLOR } from '../../../../../assets/colors';
+import { MOBILE, SMALL_TABLET } from '../../../../../assets/screen';
 
 export const Container = styled.div`
     display        : flex;
@@ -14,6 +15,19 @@ export const Container = styled.div`
     &:hover {
         background : ${COLOR.primary3};
     }
+
+    @media(max-width: ${SMALL_TABLET}) {
+        flex-direction: column;
+        width         : 320px;
+        max-width     : 320px;
+        min-width     : 320px;
+    }
+
+    @media(max-width: ${MOBILE}) {
+        width         : 240px;
+        max-width     : 240px;
+        min-width     : 240px;
+    }
 `;
 
 export const InfoContainer = styled.div`
@@ -22,6 +36,11 @@ export const InfoContainer = styled.div`
     align-items   : center;
     padding       : 10px 16px;
     width         : 30%;
+
+    @media(max-width: ${SMALL_TABLET}) {
+        padding       : 10px 16px;
+        width         : calc(100% - 32px);
+    }
 `;
 
 export const Avatar = styled.img`
@@ -44,6 +63,11 @@ export const CheckContainer = styled.div`
     justify-content: space-between;
     width          : 40%;
     padding-right  : 30px;
+
+    @media(max-width: ${SMALL_TABLET}) {
+        padding       : 0px 16px;
+        width         : calc(100% - 32px);
+    }
 `;
 
 export const Divider = styled.div`
@@ -51,12 +75,19 @@ export const Divider = styled.div`
     width     : 1px;
     background: ${COLOR.gray1};
     
+    @media(max-width: ${SMALL_TABLET}) {
+        display : none;
+    }
 `;
 
 export const Services = styled.div`
     display        : flex;
     flex-direction : column;
     margin-left    : 16px;
+
+    @media(max-width: ${SMALL_TABLET}) {
+        margin-left    : 0px;
+    }
 `;
 
 export const SText = styled.label`
@@ -98,11 +129,17 @@ export const PaymentContainer = styled.div`
     justify-content: space-between;
     padding-right  : 10px;
     background     : #EBFDFF 0% 0% no-repeat padding-box;
+    // box-shadow     : 0px 10px 15px #DFECFF;
     border-top-right-radius: 14px;
     border-bottom-right-radius: 14px;
     padding        : 10px;
     width          : 30%;
     padding-left   : 30px;
+
+    @media(max-width: ${SMALL_TABLET}) {
+        padding       : 10px 16px;
+        width         : calc(100% - 32px);
+    }
 `;
 
 export const PaymentLinkButton = styled.div`
