@@ -158,3 +158,18 @@ code {
 .react-calendar__month-view__weekdays__weekday > abbr {
   color: #077997 !important;
 }
+
+@media screen and (max-width: 450px) {
+  .react-calendar {
+    width: 100% !important;
+  }
+
+  .react-calendar__tile {
+    padding: 2px !important;
+  }
+
+  .react-calendar__month-view__days {
+    gap: 1.6px;
+  }
+  
+}
