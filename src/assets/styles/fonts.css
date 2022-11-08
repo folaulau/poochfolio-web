@@ -1,0 +1,31 @@
+@font-face {
+    font-family: MuseoSansRouned100;
+    src: url("../fonts/MuseoSansRounded-100.ttf");
+    font-style: normal;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+@font-face {
+    font-family: MuseoSansRouned300;
+    src: url("../fonts/MuseoSansRounded-300.ttf");
+    font-style: normal;
+}
+@font-face {
+    font-family: MuseoSansRouned500;
+    src: url("../fonts/MuseoSansRounded-500.ttf");
+    font-style: normal;
+}
+@font-face {
+    font-family: MuseoSansRouned700;
+    src: url("../fonts/MuseoSansRounded-700.ttf");
+    font-style: normal;
+}
+@font-face {
+    font-family: MuseoSansRouned900;
+    src: url("../fonts/MuseoSansRounded-900.ttf");
+    font-style: normal;
+}
+@font-face {
+    font-family: MuseoSansRouned1000;
+    src: url("../fonts/MuseoSansRounded-1000.ttf");
+    font-style: normal;
+}

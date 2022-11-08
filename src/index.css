@@ -1,65 +1,175 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@font-face {
-  font-family: 'MuseoSansRounded-500';
-  src: url('/public/fonts/Museo/MuseoSansRounded-500.otf');
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@font-face {
-  font-family: 'MuseoSansRounded-300';
-  font-weight: 300;
-  src: url('/public/fonts/Museo/MuseoSansRounded-300.otf');
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
-@font-face {
-  font-family: 'MuseoSansRounded-700';
-  font-weight: 700;
-  src: url('/public/fonts/Museo/MuseoSansRounded-700.otf');
+.bm-menu-wrap {
+  background-color: #EDFAFE;
+  padding: 60px 30px;
 }
 
-@font-face {
-  font-family: 'MuseoSansRounded-900';
-  font-weight: 900;
-  src: url('/public/fonts/Museo/MuseoSansRounded-900.otf');
-}
-@font-face {
-  font-family: MuseoSansRounded;
-  src: url('./assets/fonts/MuseoSansRounded100.otf') format('opentype');
-  font-weight: 100;
+.bm-item {
+  color: #077997;
+  font-size: 26px;
+  margin-bottom: 40px;
+  font-family: 'MuseoSansRouned700';
 }
 
-@font-face {
-  font-family: MuseoSansRounded;
-  src: url('./assets/fonts/MuseoSansRounded300.otf') format('opentype');
-  font-weight: 300;
+.bm-item-list > a {
+  text-decoration: none;
+  outline: none;
 }
 
-@font-face {
-  font-family: MuseoSansRounded;
-  src: url('./assets/fonts/MuseoSansRounded500.otf') format('opentype');
-  font-weight: 500;
+#react-burger-menu-btn {
+  display: none !important;
 }
 
-@font-face {
-  font-family: MuseoSansRounded;
-  src: url('./assets/fonts/MuseoSansRounded700.otf') format('opentype');
-  font-weight: 700;
+.Dropdown-control {
+  height: 100%;
 }
 
-@font-face {
-  font-family: MuseoSansRounded;
-  src: url('./assets/fonts/MuseoSansRounded900.otf') format('opentype');
-  font-weight: 900;
+.Dropdown-placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
 }
 
-@font-face {
-  font-family: MuseoSansRounded;
-  src: url('./assets/fonts/MuseoSansRounded1000.otf') format('opentype');
-  font-weight: 1000;
+.Dropdown-option {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
 }
 
-html {
-  scroll-behavior: smooth;
+.Dropdown-option:hover {
+  background: #C9D9EF;
+}
+
+.Dropdown-menu {
+  height: 160px;
+  background: white;
+  overflow-y: auto;
+  box-shadow   : 0px 10px 15px #DFECFF;
+}
+
+.react-switch-bg > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checked {
+  background-color: #007a7e;
+  position: relative;
+}
+
+.checked::before {
+  content: "\2714";
+  font-size: 22px;
+  color: #fff;
+  position: absolute;
+  right: 2px;
+  top: 0px;
+}
+
+.ReactModalPortal {
+  z-index: 100;
+  position: absolute;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #E1EAF7;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #096b82;
+  border-radius: 10px;
+  background-image: url('./assets/images/scrollbar.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.day-render {
+  background: #F4F4F4 !important;
+  flex: 0 0 13.7657% !important;
+  border-radius: 4px !important;
+  text-align: start !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.day-render > abbr {
+  color: #A7ACAF !important;
+  font-size: 11px;
+  font-family: 'MuseoSansRouned500';
+}
+
+.react-calendar__month-view__days {
+  gap: 2px;
+}
+
+.react-calendar {
+  box-shadow: 10px 0.87px 50px #0779974D;
+  border: none !important;
+  border-radius: 15px;
+  padding: 2px;
+  height: auto !important;
+  height: 410px;
+}
+
+.react-calendar__tile {
+  padding: 6px !important;
+}
+
+.react-calendar__navigation__label__labelText {
+  font-family: 'MuseoSansRouned500';
+  color: #077997;
+  font-size: 18px;
+}
+
+.react-calendar__navigation button:hover {
+  background: white !important;
+}
+
+.react-calendar__navigation button:focus {
+  background: white !important;
+}
+
+.react-calendar__month-view__weekdays__weekday > abbr {
+  color: #077997 !important;
+}
+
+@media screen and (max-width: 450px) {
+  .react-calendar {
+    width: 100% !important;
+  }
+
+  .react-calendar__tile {
+    padding: 2px !important;
+  }
+
+  .react-calendar__month-view__days {
+    gap: 1.6px;
+  }
+  
 }
