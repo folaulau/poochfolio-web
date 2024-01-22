@@ -12,12 +12,13 @@ import { CreateProfile } from './CreateProfile';
 import { InputListing } from './InputListing';
 import { Availability } from './Availability';
 import { useSelector } from 'react-redux';
-
+import { Spinner } from '../../@core/Spinner';
 
 type Props = {};
 
 export const SignupPage: React.FC<Props> = () => {
-    const currentStep = useSelector((state : any) => state.auth.currentStep);
+    const currentStep = useSelector((state: any) => state.auth.currentStep);
+    const loading = useSelector((state: any) => state.auth.loading);
 
     useEffect(() => {
         let doc: any = document;
@@ -26,6 +27,7 @@ export const SignupPage: React.FC<Props> = () => {
 
     return (
         <styled.Container>
+            <Spinner visible={loading} />
             <styled.Header>
                 <styled.Stepper>
                     <styled.Step1>
@@ -55,10 +57,51 @@ export const SignupPage: React.FC<Props> = () => {
                 </styled.Stepper>
             </styled.Header>
             <styled.Body>
-                {currentStep === 0 && (<Sign  />)}
-                {currentStep === 1 && (<CreateProfile />)}
-                {currentStep === 2 && (<InputListing />)}
-                {currentStep === 3 && (<Availability />)}
+                {currentStep === 0 && (
+                    <styled.Motion
+                        initial={{ x: '100%' }}
+                        animate={{ x: 0 }}
+                        transition={{
+                            type: "tween",
+                            duration: 0.3
+                        }}
+                    >
+                        <Sign />
+                    </styled.Motion>)}
+                {currentStep === 1 && (
+                    <styled.Motion
+                        initial={{ x: '100%' }}
+                        animate={{ x: 0 }}
+                        transition={{
+                            type: "tween",
+                            duration: 0.3
+                        }}
+                    >
+                        <CreateProfile />
+                    </styled.Motion>
+                    )}
+                {currentStep === 2 && (
+                    <styled.Motion
+                        initial={{ x: '100%' }}
+                        animate={{ x: 0 }}
+                        transition={{
+                            type: "tween",
+                            duration: 0.3
+                        }}
+                    >
+                        <InputListing />
+                    </styled.Motion>)}
+                {currentStep === 3 && (
+                    <styled.Motion
+                        initial={{ x: '100%' }}
+                        animate={{ x: 0 }}
+                        transition={{
+                            type: "tween",
+                            duration: 0.3
+                        }}
+                    >
+                        <Availability />
+                    </styled.Motion>)}
             </styled.Body>
         </styled.Container>
     )

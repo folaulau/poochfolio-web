@@ -11,7 +11,6 @@ import { useDropzone } from "react-dropzone";
 import Switch from "react-switch";
 import { Checkbox } from '../../../@core/Checkbox';
 import { useDispatch, useSelector } from 'react-redux';
-import { Spinner } from '../../../@core/Spinner';
 import { createListing, uploadPhoto } from '../../../../api/server/auth';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
@@ -180,7 +179,6 @@ export const InputListing: React.FC<Props> = () => {
 
     return (
         <styled.Container id='ddd'>
-            <Spinner visible={loading} />
             <styled.Form>
                 <styled.Table>
                     <styled.Thead>

@@ -4,7 +4,6 @@ import LocationSvg from "../../../../../assets/images/landing/location.svg";
 import { services } from "./CreateProfile.config";
 import { COLOR } from '../../../../../assets/colors';
 import { useDispatch, useSelector } from 'react-redux';
-import { Spinner } from '../../../@core/Spinner';
 import { toast } from 'react-toastify';
 import { maskPhoneNumber } from '../../../../../utils/phoneMask';
 import { validatePhone } from '../../../../../utils/phoneValidate';
@@ -109,7 +108,6 @@ export const CreateProfile: React.FC<Props> = () => {
 
     return (
         <styled.Container>
-            <Spinner visible={loading} />
             <styled.Form>
                 <styled.Row>
                     <styled.InputWrapper>

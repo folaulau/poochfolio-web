@@ -10,6 +10,14 @@ type Props = {};
 
 export const Footer: React.FC<Props> = () => {
 
+    const goApple = () => {
+        window.open('https://apps.apple.com/us/app/pooch-marketplace/id6443412253', '_blank');
+    }
+
+    const goGoogle = () => {
+        window.open('https://play.google.com/store/apps/details?id=com.poochmobile&pli=1', '_blank');
+    }    
+
     return (
         <styled.Container>
             <styled.MainContainer>
@@ -19,8 +27,8 @@ export const Footer: React.FC<Props> = () => {
                     <styled.Text>info@poochapp.com</styled.Text>
                     <styled.Name>Pooch Marketplace</styled.Name>
                     <styled.LogoWrapper>
-                        <styled.AppLogo src={APPLESTORE} alt="apple-store" />
-                        <styled.AppLogo src={GOOGLEPLAY} alt="google-play" />
+                        <styled.AppLogo src={APPLESTORE} alt="apple-store" onClick={goApple} />
+                        <styled.AppLogo src={GOOGLEPLAY} alt="google-play" onClick={goGoogle} />
                     </styled.LogoWrapper>
                 </styled.LogoContainer>
                 <styled.ListContainer>

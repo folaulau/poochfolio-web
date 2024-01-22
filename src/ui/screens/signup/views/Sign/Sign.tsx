@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import * as styled from './Sign.styled';
 import GOOGLE from '../../../../../assets/images/google.svg';
 import FACEBOOK from '../../../../../assets/images/facebook.svg';
-import { Spinner } from '../../../@core/Spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { signup, signupFacebook, signupGoogle } from '../../../../api/server/auth';
 import { validateEmail } from '../../../../../utils/emailValidate';
@@ -70,7 +69,6 @@ export const Sign: React.FC<Props> = () => {
 
     return (
         <styled.Container>
-            <Spinner visible={loading} />
             <styled.Form>
                 <styled.SocialContainer>
                     <styled.SocialButton onClick={signupWithFacebook}>

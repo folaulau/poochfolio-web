@@ -4,6 +4,7 @@ import BACKGROUND from '../../../../../assets/images/main-background.png';
 import MOBILE_BACKGROUND from '../../../../../assets/images/landing/bg-mobile-1.png';
 import DOG from '../../../../../assets/images/landing/dog-mobile.png';
 import { COLOR } from '../../../../../assets/colors';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {};
 
@@ -14,6 +15,7 @@ const getWindowSize = () => {
 
 export const Main: React.FC<Props> = () => {
     const [windowSize, setWindowSize] = useState(getWindowSize());
+    const navigate = useNavigate();
 
     useEffect(() => {
         function handleWindowResize() {
@@ -27,6 +29,9 @@ export const Main: React.FC<Props> = () => {
         };
     }, []);
 
+    const goSignup = () => {
+        navigate('/signup')
+    }
 
     return (
         <styled.Container>
@@ -44,7 +49,7 @@ export const Main: React.FC<Props> = () => {
                 <styled.Title>
                     Kennels
                 </styled.Title>
-                <styled.Signup>
+                <styled.Signup onClick={goSignup}>
                     SIGN UP
                 </styled.Signup>
                 <styled.DogIcon src={DOG} alt="dog" />

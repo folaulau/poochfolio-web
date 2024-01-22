@@ -444,10 +444,15 @@ export const createAvailability = (dispatch, data) => new Promise((resolve, reje
         })
 })
 
-export const signout = (dispatch) => new Promise((resolve, reject) => {
-    dispatch({
-        type: SIGN_OUT,
-        payload: {}
-    })
-    resolve(true)
+export const signout = (dispatch) => new Promise(async (resolve, reject) => {
+    try {
+        await FirebaseAPI.signOut(FirebaseAuth);
+        dispatch({
+            type: SIGN_OUT,
+            payload: {}
+        })
+        resolve(true)
+    } catch(err) {
+        reject(handleError(err))
+    }
 })

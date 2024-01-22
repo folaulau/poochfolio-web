@@ -3,7 +3,7 @@ import { COLOR } from '../../../../../assets/colors';
 import { DESKTOP, MINI_TABLET, MOBILE, SMALL_DESKTOP, SMALL_TABLET, TABLET } from '../../../../../assets/screen';
 
 export const Container = styled.div`
-    padding-top: 106px;
+    padding-top: 86px;
 `;
 
 export const Wrapper = styled.div<{
@@ -12,8 +12,7 @@ export const Wrapper = styled.div<{
     display        : flex;
     flex-direction : column;
     justify-content: center;
-    height         : calc(100vh - 106px);
-    // background-image : url(${({ backgroundImage }) => backgroundImage});
+    height         : calc(100vh - 86px);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     padding        : 0px 16%;
@@ -31,12 +30,12 @@ export const Wrapper = styled.div<{
         justify-content: flex-start;
         text-align     : center;
         padding-top    : 80px;
-        height         : calc(100vh - 186px);
+        height         : calc(100vh - 166px);
         align-items    : center;
     }
 
     @media(max-width: ${MOBILE}) {
-        height         : calc(100vh - 186px);
+        height         : calc(100vh - 166px);
         text-align     : center;
         padding        : 0px 10px;
         padding-top    : 80px;
@@ -45,11 +44,10 @@ export const Wrapper = styled.div<{
 
 export const BackgrounImage = styled.img`
     position: absolute;
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    top: 0px;
-    z-index: -1;
+    width   : 100%;
+    object-fit: contain;
+    top     : 86px;
+    z-index : -1;
 `;
 
 export const DogIcon = styled.img`

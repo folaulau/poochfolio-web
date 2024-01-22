@@ -6,8 +6,6 @@ import { VscScreenFull } from 'react-icons/vsc';
 import { COLOR } from '../../../../assets/colors';
 import { Occupant } from '../components/Occupant';
 import Calendar from 'react-calendar';
-import { ResponsivePie } from '@nivo/pie'
-import { ResponsiveLine } from '@nivo/line'
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import 'react-calendar/dist/Calendar.css';
 import { acceptBooking, checkinBooking, checkoutBooking, getBookings } from '../../../api/server/data';
@@ -15,80 +13,105 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { Spinner } from '../../@core/Spinner';
 import { Nothing } from '../../@core/Nothing';
+import { motion } from "framer-motion";
+import { AreaChart, Area, XAxis, Tooltip, PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 
 type Props = {};
 
-const DATA = [
+const data = [
     {
-        "id": "vacancy",
-        "label": "Vacancy",
-        "value": 13,
-        "color": "#79D2E3"
+        name: 'Jan',
+        uv: 230,
     },
     {
-        "id": "occupancy",
-        "label": "Occupancy",
-        "value": 87,
-        "color": "#077997"
+        name: 'Feb',
+        uv: 180,
     },
-]
+    {
+        name: 'Mar',
+        uv: 200,
+    },
+    {
+        name: 'Apr',
+        uv: 180,
+    },
+    {
+        name: 'May',
+        uv: 170,
+    },
+    {
+        name: 'Jun',
+        uv: 160,
+    },
+    {
+        name: 'Jul',
+        uv: 120,
+    },
+    {
+        name: 'Aug',
+        uv: 140,
+    },
+    {
+        name: 'Sep',
+        uv: 170,
+    },
+    {
+        name: 'Oct',
+        uv: 180,
+    },
+    {
+        name: 'Nov',
+        uv: 250,
+    },
+    {
+        name: 'Dec',
+        uv: 230,
+    },
+];
 
-const DDATA = [
-    {
-        "id": "balance",
-        "color": "#077997",
-        "data": [
-            {
-                "x": "Jan",
-                "y": 296
-            },
-            {
-                "x": "Feb",
-                "y": 259
-            },
-            {
-                "x": "Mar",
-                "y": 86
-            },
-            {
-                "x": "Apr",
-                "y": 37
-            },
-            {
-                "x": "May",
-                "y": 71
-            },
-            {
-                "x": "Jun",
-                "y": 89
-            },
-            {
-                "x": "Jul",
-                "y": 42
-            },
-            {
-                "x": "Aug",
-                "y": 210
-            },
-            {
-                "x": "Sep",
-                "y": 59
-            },
-            {
-                "x": "Oct",
-                "y": 257
-            },
-            {
-                "x": "Nov",
-                "y": 271
-            },
-            {
-                "x": "Dec",
-                "y": 201
-            }
-        ]
-    },
-]
+const data1 = [
+    { name: 'Vacancy', value: 200 },
+    { name: 'Occupancy', value: 500 },
+    { name: 'Paid', value: 300 },
+    { name: 'Unpaid', value: 400 },
+    { name: 'Pickup', value: 300 },
+];
+
+const COLORS = ['#077997', '#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+
+const renderActiveShape = (props: any) => {
+    const { cx, cy, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent } = props;
+
+    return (
+        <g>
+            <text x={cx} y={cy - 10} dy={8} textAnchor="middle" fill={fill}>
+                {payload.name}
+            </text>
+            <text x={cx} y={cy + 10} dy={8} textAnchor="middle" fill={fill}>
+                {(percent * 100).toFixed(2)}%
+            </text>
+            <Sector
+                cx={cx}
+                cy={cy}
+                innerRadius={innerRadius}
+                outerRadius={outerRadius}
+                startAngle={startAngle}
+                endAngle={endAngle}
+                fill={fill}
+            />
+            <Sector
+                cx={cx}
+                cy={cy}
+                startAngle={startAngle}
+                endAngle={endAngle}
+                innerRadius={outerRadius + 4}
+                outerRadius={outerRadius + 8}
+                fill={fill}
+            />
+        </g>
+    );
+};
+
 
 export const ReservationsPage: React.FC<Props> = () => {
     const screen1 = useFullScreenHandle();
@@ -103,6 +126,8 @@ export const ReservationsPage: React.FC<Props> = () => {
     const [isFullScreen2, setIsFullScreen2] = useState(false);
     const [occupants, setOccupants] = useState([])
     const [currentOccupants, setCurrentOccupants] = useState([]);
+    // const [activeIndex, setActiveIndex] = useState(0);
+
 
     const reportChange = useCallback((state: any, handle: any) => {
         if (handle === screen1) {
@@ -229,7 +254,7 @@ export const ReservationsPage: React.FC<Props> = () => {
     }
 
     const goAccept = (book: any) => {
-        if(loading) return
+        if (loading) return
         acceptBooking(dispatch, {
             uuid: book.uuid,
             approved: true,
@@ -247,169 +272,243 @@ export const ReservationsPage: React.FC<Props> = () => {
         })
     }
 
+    // const onPieEnter = (_: any, index: any) => {
+    //     setActiveIndex(index)
+    // };
+
     return (
         <styled.Container>
             <Spinner visible={loading} />
             <styled.Dashboard>
-                <styled.Header>
-                    <styled.Title>Hotel Occupants</styled.Title>
-                    <styled.HeaderWrapper>
-                        <styled.SearchBar focus={searchFocus}>
-                            <styled.Search
-                                placeholder='Search for reservations, occupants, invoices, and more'
-                                onFocus={() => { setSearchFocus(true) }}
-                                onBlur={() => { setSearchFocus(false) }}
-                            />
-                            <BsSearch color={COLOR.primary0} size={24} />
-                        </styled.SearchBar>
-                        <styled.Toolbar>
-                            <styled.Button>
-                                <AiOutlinePlus size={18} color={COLOR.primary0} style={{ marginRight: 10 }} />
-                                Reservations
-                            </styled.Button>
-                            <styled.Button>
-                                <AiOutlinePlus size={18} color={COLOR.primary0} style={{ marginRight: 10 }} />
-                                Add Occupants
-                            </styled.Button>
-                        </styled.Toolbar>
-                    </styled.HeaderWrapper>
-                </styled.Header>
-                <FullScreen handle={screen1} onChange={reportChange}>
-                    <styled.Table isFullScreen={isFullScreen1}>
-                        <styled.TableHeader>
-                            <styled.Filter active={filter === 0} onClick={() => { setFilter(0) }} isFullScreen={isFullScreen1}>Incoming Occupants</styled.Filter>
-                            <styled.Filter active={filter === 1} onClick={() => { setFilter(1) }} isFullScreen={isFullScreen1}>Outgoing Occupants</styled.Filter>
-                            <styled.Filter active={filter === 2} onClick={() => { setFilter(2) }} isFullScreen={isFullScreen1}>Unpaid Occupants</styled.Filter>
-                            <styled.Filter active={filter === 3} onClick={() => { setFilter(3) }} isFullScreen={isFullScreen1}>Past Reservations Occupants</styled.Filter>
-                        </styled.TableHeader>
-                        <styled.FullIcon onClick={() => {
-                            if (isFullScreen1) {
-                                screen1.exit()
-                            } else {
-                                screen1.enter()
-                            }
-                        }}>
-                            <VscScreenFull size={18} color={COLOR.primary0} />
-                        </styled.FullIcon>
-                        <styled.TableBody isFullScreen={isFullScreen1}>
-                            {occupants.length === 0 && (
-                                <Nothing />
-                            )}
-                            {occupants.map((book: any, index: any) => {
-                                return (
-                                    <Occupant {...book} key={index} onCheckIn={() => goCheckIn(book)} onCheckOut={() => goCheckOut(book)} onAccept={() => goAccept(book)} />
-                                )
-                            })}
-                        </styled.TableBody>
-                    </styled.Table>
-                </FullScreen>
-                <FullScreen handle={screen2} onChange={reportChange}>
-                    <styled.Table isFullScreen={isFullScreen2}>
-                        <styled.TableHeader>
-                            <styled.Filter active isFullScreen={isFullScreen2}>Current Occupants</styled.Filter>
-                        </styled.TableHeader>
-                        <styled.FullIcon onClick={() => {
-                            if (isFullScreen2) {
-                                screen2.exit()
-                            } else {
-                                screen2.enter()
-                            }
-                        }}>
-                            <VscScreenFull size={18} color={COLOR.primary0} />
-                        </styled.FullIcon>
-                        <styled.TableBody isFullScreen={isFullScreen2}>
-                            {currentOccupants.length === 0 && (
-                                <Nothing />
-                            )}
-                            {currentOccupants.map((book: any, index: any) => {
-                                return (
-                                    <Occupant {...book} current key={index} onCheckIn={() => goCheckIn(book)} onCheckOut={() => goCheckOut(book)} onAccept={() => goAccept(book)} />
-                                )
-                            })}
-                        </styled.TableBody>
-                    </styled.Table>
-                </FullScreen>
+                <motion.div
+                    initial={{ x: '-100%' }}
+                    animate={{ x: 0 }}
+                    transition={{
+                        type: "tween",
+                        duration: 0.3
+                    }}
+                >
+                    <styled.Header>
+                        <styled.Title>Hotel Occupants</styled.Title>
+                        <styled.HeaderWrapper>
+                            <styled.SearchBar focus={searchFocus}>
+                                <styled.Search
+                                    placeholder='Search for reservations, occupants, invoices, and more'
+                                    onFocus={() => { setSearchFocus(true) }}
+                                    onBlur={() => { setSearchFocus(false) }}
+                                />
+                                <BsSearch color={COLOR.primary0} size={24} />
+                            </styled.SearchBar>
+                            <styled.Toolbar>
+                                <styled.Button>
+                                    <AiOutlinePlus size={18} color={COLOR.primary0} style={{ marginRight: 10 }} />
+                                    Reservations
+                                </styled.Button>
+                                <styled.Button>
+                                    <AiOutlinePlus size={18} color={COLOR.primary0} style={{ marginRight: 10 }} />
+                                    Add Occupants
+                                </styled.Button>
+                            </styled.Toolbar>
+                        </styled.HeaderWrapper>
+                    </styled.Header>
+                </motion.div>
+                <motion.div
+                    initial={{ x: '-100%' }}
+                    animate={{ x: 0 }}
+                    transition={{
+                        type: "tween",
+                        duration: 0.3,
+                        delay: 0.2
+                    }}
+                >
+                    <FullScreen handle={screen1} onChange={reportChange}>
+                        <styled.Table isFullScreen={isFullScreen1}>
+                            <styled.TableHeader>
+                                <styled.Filter active={filter === 0} onClick={() => { setFilter(0) }} isFullScreen={isFullScreen1}>Incoming Occupants</styled.Filter>
+                                <styled.Filter active={filter === 1} onClick={() => { setFilter(1) }} isFullScreen={isFullScreen1}>Outgoing Occupants</styled.Filter>
+                                <styled.Filter active={filter === 2} onClick={() => { setFilter(2) }} isFullScreen={isFullScreen1}>Unpaid Occupants</styled.Filter>
+                                <styled.Filter active={filter === 3} onClick={() => { setFilter(3) }} isFullScreen={isFullScreen1}>Past Reservations Occupants</styled.Filter>
+                            </styled.TableHeader>
+                            <styled.FullIcon onClick={() => {
+                                if (isFullScreen1) {
+                                    screen1.exit()
+                                } else {
+                                    screen1.enter()
+                                }
+                            }}>
+                                <VscScreenFull size={18} color={COLOR.primary0} />
+                            </styled.FullIcon>
+                            <styled.TableBody isFullScreen={isFullScreen1}>
+                                {occupants.length === 0 && (
+                                    <Nothing />
+                                )}
+                                {occupants.map((book: any, index: any) => {
+                                    return (
+                                        <motion.div
+                                            key={index}
+                                            initial={{ x: '-120%' }}
+                                            animate={{ x: 0 }}
+                                            transition={{
+                                                type: "tween",
+                                                duration: 0.3,
+                                                delay: 0.1 * index + (filter === 0 ? 0.8 : 0.4)
+                                            }}
+                                        >
+                                            <Occupant {...book} key={index} onCheckIn={() => goCheckIn(book)} onCheckOut={() => goCheckOut(book)} onAccept={() => goAccept(book)} />
+                                        </motion.div>
+                                    )
+                                })}
+                            </styled.TableBody>
+                        </styled.Table>
+                    </FullScreen>
+                </motion.div>
+                <motion.div
+                    initial={{ x: '-100%' }}
+                    animate={{ x: 0 }}
+                    transition={{
+                        type: "tween",
+                        duration: 0.3,
+                        delay: 0.4
+                    }}
+                >
+                    <FullScreen handle={screen2} onChange={reportChange}>
+                        <styled.Table isFullScreen={isFullScreen2}>
+                            <styled.TableHeader>
+                                <styled.Filter active isFullScreen={isFullScreen2}>Current Occupants</styled.Filter>
+                            </styled.TableHeader>
+                            <styled.FullIcon onClick={() => {
+                                if (isFullScreen2) {
+                                    screen2.exit()
+                                } else {
+                                    screen2.enter()
+                                }
+                            }}>
+                                <VscScreenFull size={18} color={COLOR.primary0} />
+                            </styled.FullIcon>
+                            <styled.TableBody isFullScreen={isFullScreen2}>
+                                {currentOccupants.length === 0 && (
+                                    <Nothing />
+                                )}
+                                {currentOccupants.map((book: any, index: any) => {
+                                    return (
+                                        <motion.div
+                                            key={index}
+                                            initial={{ x: '-120%' }}
+                                            animate={{ x: 0 }}
+                                            transition={{
+                                                type: "tween",
+                                                duration: 0.3,
+                                                delay: 0.1 * index + 1
+                                            }}
+                                        >
+                                            <Occupant {...book} current key={index} onCheckIn={() => goCheckIn(book)} onCheckOut={() => goCheckOut(book)} onAccept={() => goAccept(book)} />
+                                        </motion.div>
+                                    )
+                                })}
+                            </styled.TableBody>
+                        </styled.Table>
+                    </FullScreen>
+                </motion.div>
             </styled.Dashboard>
             <styled.CalendarBoard>
-                <styled.CalendarWrapper>
-                    <styled.CalendarHeader>
-                        <styled.Title>Calendar</styled.Title>
-                        <styled.CalendarType>
-                            <styled.Type active={true}>Month</styled.Type>
-                            <styled.Type active={false}>Day</styled.Type>
-                        </styled.CalendarType>
-                    </styled.CalendarHeader>
-                    <styled.CalendarBody>
-                        <Calendar
-                            onChange={setDate}
-                            value={date}
-                            nextLabel={<styled.NextButton size={24} />}
-                            next2Label={null}
-                            prevLabel={<styled.PrevButton size={24} />}
-                            prevAriaLabel="here"
-                            prev2Label={null}
-                            // showFixedNumberOfWeeks
-                            // showNavigation={false}
-                            calendarType="US"
-                            tileClassName="day-render"
-                            tileContent={<styled.PriceContent>$14</styled.PriceContent>}
-                            // formatShortWeekday={(locale, date) => locale()}
-                            view="month"
-                        />
-                    </styled.CalendarBody>
-                </styled.CalendarWrapper>
+                <motion.div
+                    initial={{ x: '100%' }}
+                    animate={{ x: 0 }}
+                    transition={{
+                        type: "tween",
+                        duration: 0.3
+                    }}
+                >
+                    <styled.CalendarWrapper>
+                        <styled.CalendarHeader>
+                            <styled.Title>Calendar</styled.Title>
+                            <styled.CalendarType>
+                                <styled.Type active={true}>Month</styled.Type>
+                                <styled.Type active={false}>Day</styled.Type>
+                            </styled.CalendarType>
+                        </styled.CalendarHeader>
+                        <styled.CalendarBody>
+                            <Calendar
+                                onChange={setDate}
+                                value={date}
+                                nextLabel={<styled.NextButton size={24} />}
+                                next2Label={null}
+                                prevLabel={<styled.PrevButton size={24} />}
+                                prevAriaLabel="here"
+                                prev2Label={null}
+                                // showFixedNumberOfWeeks
+                                // showNavigation={false}
+                                calendarType="US"
+                                tileClassName="day-render"
+                                tileContent={<styled.PriceContent>$14</styled.PriceContent>}
+                                // formatShortWeekday={(locale, date) => locale()}
+                                view="month"
+                            />
+                        </styled.CalendarBody>
+                    </styled.CalendarWrapper>
+                </motion.div>
                 <styled.AnalyticsWrapper>
-                    <styled.Analytics>
-                        <styled.DetailWrapper>
+                    <motion.div
+                        initial={{ x: '100%' }}
+                        animate={{ x: 0 }}
+                        transition={{
+                            type: "tween",
+                            duration: 0.3,
+                            delay: 0.2
+                        }}
+                        style={{ width: '90%', display: 'flex', justifyContent: 'center' }}
+                    >
+                        <styled.Analytics>
                             <styled.Title>Analytics</styled.Title>
-                            <styled.Vacancy>Vacancy : 13%</styled.Vacancy>
-                            <styled.Occupancy>Occupancy Rate : 87%</styled.Occupancy>
-                        </styled.DetailWrapper>
-                        <styled.ChartWrapper>
-                            <ResponsivePie
-                                data={DATA}
-                                margin={{ top: 32, right: 32, bottom: 32, left: 32 }}
-                                innerRadius={0.5}
-                                padAngle={1}
-                                activeOuterRadiusOffset={10}
-                                colors={{ datum: 'data.color' }}
-                                enableArcLinkLabels={false}
-                                arcLabel={(d) => `${d.value}%`}
-                                arcLabelsTextColor="white"
-                            />
-                        </styled.ChartWrapper>
-                    </styled.Analytics>
-                    <styled.Revenue>
-                        <styled.Title>Monthly Revenue</styled.Title>
-                        <styled.RevenueWrapper>
-                            <ResponsiveLine
-                                data={DDATA}
-                                margin={{ top: 30, right: 30, bottom: 30, left: 30 }}
-                                // axisLeft={null}
-                                // axisBottom={null}
-                                // xScale={{ type: 'point' }}
-                                // yScale={{
-                                //     type: 'linear',
-                                //     min: 'auto',
-                                //     max: 'auto',
-                                //     stacked: true,
-                                //     reverse: false
-                                // }}
-                                yFormat=">-.2f"
-                                colors={{ datum: 'color' }}
-                                curve="monotoneX"
-                                enableArea
-                                enableGridX={false}
-                                enableGridY={false}
-                                lineWidth={3}
-                                enablePoints={false}
-                                crosshairType="bottom"
-                                useMesh={true}
-                            />
-                        </styled.RevenueWrapper>
-                    </styled.Revenue>
+                            <styled.ChartWrapper>
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <PieChart width={400} height={400}>
+                                        <Pie
+                                            // activeIndex={activeIndex}
+                                            activeShape={renderActiveShape}
+                                            data={data1}
+                                            cx="50%"
+                                            cy="50%"
+                                            innerRadius={66}
+                                            outerRadius={100}
+                                            fill="#8884d8"
+                                            dataKey="value"
+                                            // onMouseEnter={onPieEnter}
+                                        >
+                                            {data1.map((entry, index) => (
+                                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                            ))}
+                                        </Pie>
+                                    </PieChart>
+                                </ResponsiveContainer>
+                            </styled.ChartWrapper>
+                        </styled.Analytics>
+                    </motion.div>
+                    <motion.div
+                        initial={{ x: '100%' }}
+                        animate={{ x: 0 }}
+                        transition={{
+                            type: "tween",
+                            duration: 0.3,
+                            delay: 0.4
+                        }}
+                        style={{ width: '90%', display: 'flex', justifyContent: 'center' }}
+                    >
+                        <styled.Revenue>
+                            <styled.Title>Monthly Revenue</styled.Title>
+                            <styled.RevenueWrapper>
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <AreaChart width={200} height={200} data={data}>
+                                        <Area type="monotone" dataKey="uv" stroke="#077997" fill="#EBFDFF" />
+                                        <XAxis dataKey="name" stroke="#CECECE" />
+                                        {/* <YAxis /> */}
+                                        <Tooltip />
+                                    </AreaChart>
+                                </ResponsiveContainer>
+                            </styled.RevenueWrapper>
+                        </styled.Revenue>
+                    </motion.div>
                 </styled.AnalyticsWrapper>
-
             </styled.CalendarBoard>
         </styled.Container>
     )

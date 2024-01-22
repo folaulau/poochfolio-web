@@ -4,11 +4,18 @@ import MANAGEMENT_IMAGE from '../../../../../assets/images/landing/business-mana
 import { COLOR } from '../../../../../assets/colors';
 
 import { AiFillCheckCircle } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {};
 
 
 export const Management: React.FC<Props> = () => {
+    const navigate = useNavigate();
+    
+    const goSignup = () => {
+        navigate('/signup')
+    }
+
     return (
         <styled.Container id="management">
             <styled.DescriptionContainer>
@@ -98,7 +105,7 @@ export const Management: React.FC<Props> = () => {
                         </styled.List>
                     </styled.ListRow>
                 </styled.ListWrapper>
-                <styled.ListButton>
+                <styled.ListButton onClick={goSignup}>
                     SIGN UP
                 </styled.ListButton>
             </styled.DescriptionContainer>

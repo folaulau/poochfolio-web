@@ -10,7 +10,7 @@ export const AuthLayout: React.FC<Props> = () => {
     return (
         <styled.BodyWrapper id="auth_layout">
             <AuthHeader />
-            <div className='main_component' style={{ paddingTop: 106 }}>
+            <div className='main_component' style={{ paddingTop: 86 }}>
                 <Content />
             </div>
             <AuthFooter />

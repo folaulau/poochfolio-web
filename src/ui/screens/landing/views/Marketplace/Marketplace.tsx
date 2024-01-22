@@ -4,11 +4,18 @@ import MOBILE from '../../../../../assets/images/landing/iphone-mobile.png';
 import { COLOR } from '../../../../../assets/colors';
 
 import { AiFillCheckCircle } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {};
 
 
 export const Marketplace: React.FC<Props> = () => {
+    const navigate = useNavigate();
+
+    const goSignup = () => {
+        navigate('/signup')
+    }
+
     return (
         <styled.Container id="marketplace">
             <styled.ImageContainer>
@@ -41,7 +48,7 @@ export const Marketplace: React.FC<Props> = () => {
                     </styled.IconContainer>
                     Pick-up and drop-off made easy with our custm software.
                 </styled.List>
-                <styled.ListButton>
+                <styled.ListButton onClick={goSignup}>
                     LIST YOUR BUSINESS ON OUR MARKETPLACE
                 </styled.ListButton>
             </styled.DescriptionContainer>

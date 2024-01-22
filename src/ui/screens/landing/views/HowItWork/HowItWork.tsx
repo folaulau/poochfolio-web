@@ -3,10 +3,17 @@ import * as styled from './HowItWork.styled';
 import HOW_IMG1 from '../../../../../assets/images/landing/how-it-works-1.svg';
 import HOW_IMG2 from '../../../../../assets/images/landing/how-it-works-2.svg';
 import HOW_IMG3 from '../../../../../assets/images/landing/how-it-works-3.svg';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {};
 
 export const HowItWork: React.FC<Props> = () => {
+    const navigate = useNavigate();
+
+    const goSignup = () => {
+        navigate('/signup')
+    }
+
     return (
         <styled.Container id="how-it-work">
             <styled.Title>How It Works</styled.Title>
@@ -30,7 +37,7 @@ export const HowItWork: React.FC<Props> = () => {
                     </styled.TextContainer>
                 </styled.ImageContainer>
             </styled.Wrapper>
-            <styled.ListButton>
+            <styled.ListButton onClick={goSignup}>
                 SIGN UP
             </styled.ListButton>
         </styled.Container>

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { COLOR } from '../../../../assets/colors';
 import { DESKTOP, MINI_TABLET, MOBILE, SMALL_DESKTOP, SMALL_TABLET, TABLET } from '../../../../assets/screen';
+import { motion } from "framer-motion";
 
 export const Container = styled.div`
     display        : flex;
@@ -48,18 +49,18 @@ export const Stepper = styled.div`
 `;
 
 export const Step1 = styled.div`
-    display: flex;
+    display       : flex;
     flex-direction: row;
-    align-items : center;
+    align-items   : center;
     justify-content: center;
-    width: 25%;
-    height: 64px;
-    background: ${COLOR.primary4};
-    position: relative;
-    border-radius: 32px 0px 0px 32px;
-	border: 1px solid ${COLOR.primary6};
-    z-index: 8;
-    filter: drop-shadow(6px 6px 10px ${COLOR.primary7});
+    width         : 25%;
+    height        : 64px;
+    background    : ${COLOR.primary4};
+    position      : relative;
+    border-radius : 32px 0px 0px 32px;
+	border        : 1px solid ${COLOR.primary6};
+    z-index       : 8;
+    filter        : drop-shadow(6px 6px 10px ${COLOR.primary7});
 
     & > img {
         padding   : 6px;
@@ -279,4 +280,10 @@ export const Body = styled.div`
     @media(max-width: ${MINI_TABLET}) {
         padding-top: 120px;
     }
+`;
+
+export const Motion = styled(motion.div)`
+    display: flex;
+    width  : 100%;
+    justify-content: center;
 `;

@@ -11,18 +11,23 @@ export const Container = styled.div`
 
     @media(max-width: ${DESKTOP}) {
         flex-direction : column;
-        padding-top    : 460px;
+        padding-top    : 610px;
     }
 
     @media(max-width: ${SMALL_DESKTOP}) {
-        padding-top    : 860px;
+        padding-top    : 960px;
+    }
+
+    @media(max-width: ${SMALL_TABLET}) {
+        padding-top    : 930px;
     }
 
     @media(max-width: ${MINI_TABLET}) {
+        padding-top    : 960px;
     }
 
     @media(max-width: ${MOBILE}) {
-        padding-top    : 1000px;
+        padding-top    : 1020px;
     }
 `;
 
@@ -67,7 +72,8 @@ export const CalendarBoard = styled.div`
 `;
 
 export const Header = styled.div`
-    padding: 30px 40px;
+    padding    : 30px 40px;
+    background : ${COLOR.background0};
 
     @media(max-width: ${SMALL_TABLET}) {
         width      : calc(100% - 80px);
@@ -165,6 +171,7 @@ export const Table = styled.div<{
     padding      : 20px 0px;
     border-top   : ${({isFullScreen}) => !isFullScreen? `4px solid white` : null};
     position     : relative;
+    background   : ${COLOR.background0};
 
     @media(max-width: ${SMALL_TABLET}) {
         display: flex;
@@ -200,7 +207,7 @@ export const Filter = styled.div<{
 }>`
     font-family : 'MuseoSansRouned700';
     font-size   : 18px;
-    color       : ${({ active, isFullScreen }) => active ? isFullScreen ? 'white' : COLOR.gray4 : COLOR.gray5};
+    color       : ${({ active }) => active ? COLOR.gray4 : COLOR.gray5};
     cursor      : pointer;
 
     @media(max-width: ${SMALL_DESKTOP}) {
@@ -329,10 +336,18 @@ export const Type = styled.div<{
 
 export const Analytics = styled.div`
     display       : flex;
-    flex-direction: row;
-    align-items   : center;
+    flex-direction: column;
     width         : 350px;
+    margin-top    : 50px;
     justify-content: space-between;
+
+    @media(max-width: ${DESKTOP}) {
+        margin-top    : 20px;
+    }
+
+    @media(max-width: ${SMALL_DESKTOP}) {
+        margin-top    : 50px;
+    }
 
     @media(max-width: ${MOBILE}) {
         width          : 100%;
@@ -352,8 +367,8 @@ export const DetailWrapper = styled.div`
 `;
 
 export const ChartWrapper = styled.div`
-    width         : 50%;
-    height        : 200px;
+    width         : 100%;
+    height        : 250px;
 
     @media(max-width: ${MOBILE}) {
         width          : 100%;
@@ -383,7 +398,9 @@ export const Revenue = styled.div`
 `;
 
 export const RevenueWrapper = styled.div`
-    height : 160px;
+    margin-top    : 20px;
+    width         : 100%;
+    height        : 250px;
 `;
 
 export const FullIcon = styled.div`

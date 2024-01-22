@@ -18,7 +18,7 @@ export const ContentWrapper = styled.div`
 	border-top-left-radius   : 20px;
 	border-bottom-left-radius: 20px;
 	margin-left              : -20px;
-	background               : ${COLOR.background0};
+	background               : white;
 
 	@media(max-width: ${SMALL_DESKTOP}) {
     }

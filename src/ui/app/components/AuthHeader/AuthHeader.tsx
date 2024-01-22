@@ -28,7 +28,7 @@ export const AuthHeader = () => {
             </styled.LogoContainer>
             <styled.Wrapper>
                 <styled.LoginButton onClick={goPage}>
-                    <styled.Text>{pathname === '/signin' ? 'Sing Up' : 'Login'}</styled.Text>
+                    <styled.Text>{pathname === '/signin' ? 'Sign Up' : 'Login'}</styled.Text>
                 </styled.LoginButton>
                 <styled.SupportButton onClick={goSupport}>
                     <styled.SupportImage src={SUPPORT} alt="support" />

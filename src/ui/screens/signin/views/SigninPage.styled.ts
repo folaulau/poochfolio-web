@@ -8,6 +8,7 @@ export const Container = styled.div`
     align-items    : center;
     justify-content: center;
     flex-direction : column;
+    padding-bottom : 52px;
 
     @media(max-width: ${MINI_TABLET}) {
     }

@@ -7,7 +7,7 @@ import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     // sendPasswordResetEmail,
-    // signOut,
+    signOut,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -31,7 +31,8 @@ const FirebaseAPI = {
     signupWithEmail: createUserWithEmailAndPassword,
     signinWithEmail: signInWithEmailAndPassword,
     signinWithFacebook: signInWithPopup,
-    signinWithGoogle: signInWithPopup
+    signinWithGoogle: signInWithPopup,
+    signOut: signOut
 }
 
 export { FirebaseApp, FirebaseAuth, FirebaseAPI }

@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createAvailability } from '../../../../api/server/auth';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { Spinner } from '../../../@core/Spinner';
 
 type Props = {
 };
@@ -147,7 +146,6 @@ export const Availability: React.FC<Props> = () => {
 
     return (
         <styled.Container>
-            <Spinner visible={loading} />
             <styled.Form>
                 <styled.Title>Set Your Availability</styled.Title>
                 <styled.Description>Let the customer know when you're available to do services</styled.Description>

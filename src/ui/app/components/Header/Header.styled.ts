@@ -118,13 +118,15 @@ export const IconContainer = styled.div`
 
 export const UserWrapper = styled.div`
     cursor       : pointer;
+    z-index      : 10000;
 `;
 
 export const UserAvatar = styled.img`
     width        : 44px;
     height       : 44px;
-    border-radius: 22px;
+    border-radius: 25px;
     object-fit   : cover;
+    border       : 3px solid white;
 `;
 
 
@@ -170,4 +172,19 @@ export const Badge = styled.label`
     font-family : 'MuseoSansRouned500';
     font-size   : 15px;
     padding-top : 2px;
+`;
+
+export const LogoutBtn = styled.div`
+    color       : white;
+    font-family : 'MuseoSansRouned700';
+    font-size   : 20px;
+    cursor      : pointer;
+    margin-top  : 20px;
+`;
+
+export const Text = styled.div`
+    color       : white;
+    font-family : 'MuseoSansRouned700';
+    font-size   : 14px;
+    margin-top  : 8px;
 `;

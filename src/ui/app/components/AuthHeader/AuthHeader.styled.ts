@@ -10,30 +10,29 @@ export const Container = styled.div<{
 	display          : flex;
     align-items      : center;
     justify-content  : space-between;
-    background-image : url(${({ backgroundImage }) => backgroundImage});
-    background-size  : cover;
-    padding        : 20px 16%;
+    background     : ${COLOR.primary0};
+    padding        : 10px 16%;
     position       : fixed;
     width          : 68%;
     z-index        : 10;
 
     @media(max-width: ${DESKTOP}) {
-        padding        : 20px 10%;
+        padding        : 10px 10%;
         width          : 80%;
     }
 
     @media(max-width: ${TABLET}) {
-        padding        : 20px 5%;
+        padding        : 10px 5%;
         width          : 90%;
     }
 
     @media(max-width: ${SMALL_DESKTOP}) {
-        padding        : 20px 30px;
+        padding        : 10px 30px;
         width          : calc(100% - 60px);
     }
 
     @media(max-width: ${MOBILE}) {
-        padding        : 20px 10px;
+        padding        : 10px 10px;
         width          : calc(100% - 20px);
     }
 `;

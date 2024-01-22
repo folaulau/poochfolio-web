@@ -9,7 +9,7 @@ export const Container = styled.div`
     background     : ${COLOR.primary0};
     padding        : 7px 168px;
     justify-content: space-between;
-    margin-top     : 70px;
+    margin-top     : 98px;
 
     @media(min-width: ${TABLET}) {
         padding        : 7px 18%;
